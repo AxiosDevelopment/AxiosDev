@@ -1,0 +1,525 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #DDDDDD url(images/bg_01.gif) repeat-x left top;
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #606060;
+}
+
+h1, h2, h3 {
+	margin-top: 0px;
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: normal;
+}
+
+p, ol, ul {
+	margin-top: 0px;
+	text-align: justify;
+	line-height: 22px;
+}
+
+strong {
+}
+
+a {
+	color: #4D80A3;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a.more1, p.more1 a {
+	display: inline-block;
+	height: 24px;
+	padding: 9px 12px 0px 12px;
+	background: url(images/homepage_10.gif) repeat-x left top;
+	text-decoration: none;
+	font: 13px Georgia, "Times New Roman", serif;
+	color: #FFFFFF;
+}
+
+a.more1:hover, p.more1 a:hover {
+	text-decoration: underline;
+}
+
+p.more1 {
+	text-align: right;
+}
+
+a img {
+	border: none;
+}
+
+img.border {
+}
+
+img.alignleft {
+	float: left;
+	margin: 0px 30px 0px 0px;
+}
+
+img.alignright {
+	float: right;
+	margin: 0px 0px 0px 30px;
+}
+
+img.aligncenter {
+	margin: 0px auto;
+}
+
+img.bordered {
+	padding: 2px;
+	border: 1px solid #C0CED7;
+}
+
+textarea {
+	resize: none;
+}
+
+hr {
+	display: none;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/** WRAPPER */
+
+#wrapper {
+	width: 980px;
+	margin: 0px auto;
+	background: #FFFFFF url(images/homepage_06.gif) repeat-y left top;
+}
+
+#wrapper-bgtop {
+	background: url(images/bg_03.gif) no-repeat left top;
+}
+
+.single #wrapper {
+	background-image: url(images/bg_02.gif);
+}
+
+.clearfix {
+	clear: both;
+	height: 0px;
+	overflow: hidden;
+}
+
+.nomargin {
+	margin: 0px;
+}
+
+/** HEADER */
+
+#header {
+	height: 150px;
+	padding: 0px 20px;
+}
+
+/** MENU */
+
+#menu {
+	height: 65px;
+	margin: 0px 20px;
+	background: #FFFFFF;
+}
+
+#menu ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	line-height: normal;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#menu li {
+	float: left;
+	height: 43px;
+	padding: 22px 0px 0px 0px;
+}
+
+#menu li a {
+	display: inline-block;
+	padding: 3px 30px 3px 30px;
+	border-left: 1px solid #D0DEE8;
+	text-decoration: none;
+	color: #606060;
+}
+
+#menu li a:hover {
+	text-decoration: underline;
+}
+
+#menu li.first a {
+	border-left: none;
+}
+
+#menu li.active {
+	background: url(images/homepage_03.gif) no-repeat center bottom;
+}
+
+/** PAGE */
+
+#page {
+	padding: 0px 20px;
+}
+
+/** BANNER */
+
+#banner-empty {
+	height: 64px;
+	background: url(images/subpage1_01.jpg) no-repeat left top;
+}
+
+#banner-empty h2 {
+	color: #fff;
+    font-size: 30px;
+	padding: 15px 0 0;
+}
+
+#banner img {
+	position: relative;
+	float: right;
+	margin-top: -65px;
+}
+
+#banner h1, #banner h2 {
+	margin: 0px;
+	padding-left: 37px;
+	font-family: Georgia, "Times New Roman", serif;
+}
+
+#banner .line1 {
+	padding-top: 70px;
+	font-size: 35px;
+	color: #FFFFFF;
+}
+
+#banner .line2 {
+	font-size: 30px;
+	color: #C5DEEF;
+}
+
+/** CONTENT */
+
+#content {
+	float: right;
+	width: 640px;
+}
+
+.single #content {
+	float: none;
+	width: auto;
+}
+
+/** SIDEBAR */
+
+#sidebar {
+	float: left;
+	width: 300px;
+	color: #FFFFFF;
+}
+
+#sidebar a {
+	color: #C6E4FA;
+}
+
+/** FOOTER */
+
+#footer {
+	width: 980px;
+	height: 80px;
+	margin: 0px auto;
+	background: url(images/bg_04.gif) no-repeat left top;
+}
+
+#footer p {
+	margin: 0px;
+	padding: 50px 0px;
+	text-align: center;
+	color: #919191;
+}
+
+#footer .legal {
+}
+
+#footer .links {
+}
+
+/** BOX STYLE 1 */
+
+.box-style1 {
+}
+
+.box-style1 .title {
+	height: 62px;
+	padding: 24px 35px 0px 35px;
+	background: url(images/homepage_07.jpg) no-repeat left top;
+}
+
+.box-style1 .title h2 {
+	margin: 0px;
+	font-size: 21px;
+}
+
+.box-style1 .title h3 {
+	margin: 0px;
+	font-size: 12px;
+	color: #C7E1F2;
+}
+
+.box-style1 .entry {
+	padding: 30px 35px;
+}
+
+.box-style1 .entry h4 {
+	margin: 0px 0px 22px 0px;
+	font-size: 12px;
+}
+
+.box-style1 .entry h4 em {
+	display: block;
+	color: #C6E0F2;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.box-style1 .entry-style1 {
+	background: url(images/homepage_08.jpg) no-repeat left bottom;
+}
+
+.box-style1 .entry-style2 {
+}
+
+/** BOX STYLE 2 */
+
+.box-style2 {
+	padding: 35px;
+	background: url(images/homepage_11.gif) no-repeat left bottom;
+}
+
+.box-style2 .title {
+}
+
+.box-style2 .title h2 {
+	margin: 0px;
+	font-size: 25px;
+	color: #2A6E9D;
+}
+
+.box-style2 .title h3 {
+	margin: 0px;
+	font-size: 14px;
+	color: #949494;
+}
+
+.box-style2 .entry {
+	padding-top: 25px;
+}
+
+/** BOX STYLE 3 */
+
+.box-style3 {
+}
+
+.box-style3 .title {
+	padding: 35px 35px 25px 35px;
+}
+
+.box-style3 .title h2 {
+	margin: 0px;
+	font-size: 25px;
+	color: #2A6E9D;
+}
+
+.box-style3 .title h3 {
+	margin: 0px;
+	font-size: 14px;
+	color: #949494;
+}
+
+.box-style3 .entry {
+}
+
+.box-style3 ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.box-style3 li {
+	float: left;
+	width: 265px;
+	padding: 0px 0px 35px 35px;
+}
+
+/** BOX STYLE 4 */
+
+.box-style4 {
+	padding: 25px;
+}
+
+.box-style4 .title {
+}
+
+.box-style4 .title h2 {
+	margin: 0px;
+	font-size: 25px;
+	color: #2A6E9D;
+}
+
+.box-style4 .title h3 {
+	margin: 0px;
+	font-size: 14px;
+	color: #949494;
+}
+
+.box-style4 .entry {
+	padding-top: 25px;
+}
+
+.box-style4 .entry .title {
+	padding-bottom: 20px;
+	color: #3c3c3c;
+}
+
+.box-style4 .entry p, .box-style4 .entry ul, .box-style4 .entry ol, .box-style4 .entry dl {
+	margin-bottom: 22px;
+}
+
+table {
+	text-align: left;
+	border-collapse:collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #606060;
+	padding: 5px 3px ;
+}
+
+/** MESSAGES **/
+
+#messages {
+	border: 1px solid #606060;
+	width: 400px;
+	height: 300px; 
+}
+
+#msgID {
+	width: 50px;
+}
+
+#status {
+	width: 90px;
+}
+
+#fCall {
+	width: 40px;
+}
+
+#client {
+	width: 212px;
+}
+
+#clients {
+	border: 1px solid #606060;
+	width: 450px;
+	height: 300px; 
+}
+
+#clientID {
+	width: 40px;
+}
+
+#newMessage {
+	width: 350px;
+	padding: 10px;
+	background: #efefef;
+}
+
+#addMessage label {
+	float: left;
+	margin: 3px 5px 0 0;
+	width: 39px;
+}
+
+#addMessage input, select{
+	float: left;
+	width: 300px;
+	margin: 0 0 10px;
+}
+
+#nMsgPhone, #nMsgAlt {
+	width: 200px !important;
+}
+
+#nMsgPhoneX, #nMsgAltX {
+	width: 59px !important;
+}
+
+label[for=nMsgPhoneX], label[for=nMsgAltX] {
+	width: 20px !important;
+	margin: 3px 5px 0 10px !important;
+}
+
+#addMessage input[type=checkbox] {
+	width: 20px;
+	clear: left;
+}
+
+#addMessage textarea {
+	width: 340px;
+	height: 100px;
+	margin: 0 0 10px;
+}
+
+#submitMessage {
+	width: 150px !important;
+	clear: both;
+}
+
+#onCall {
+	width: 187px;
+}
+
+#mainInfo {
+	width: 310px;
+}
+
+#onCall label, #mainInfo label {
+	float: left;
+	float: left;
+    margin: 5px 0 0;
+} 
+
+#clientInfo {
+	width: 510px;
+}
+
+#onCallInfo, #onCallNotes {
+	width: 180px;
+}
+
+#onCallInfo {
+	height: 200px;
+}
+
+#onCallNotes {
+	height: 272px;
+}
+
+#clientMainInfo {
+	width: 303px;
+	height: 520px;
+}
