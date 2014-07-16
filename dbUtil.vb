@@ -16,8 +16,8 @@ Public Class dbUtil
     '
     Public Sub New()
         m_ConStr = ConfigurationManager.ConnectionStrings("ConnectionString").ToString()
-        m_ProfileImageDir = ConfigurationManager.AppSettings("profileImageDir").ToString()
-        Me.WriteLog("New DB: " & m_ConStr)
+        'm_ProfileImageDir = ConfigurationManager.AppSettings("profileImageDir").ToString()
+        'Me.Write() 'Log("New DB: " & m_ConStr)
     End Sub
 
     Public Sub WriteLog(ByRef sMsg As String)
