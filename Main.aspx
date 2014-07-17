@@ -66,7 +66,8 @@
 								<th id="clientName">Client Name</th>
 								<th id="onCall">On Call</th>
 							</tr>
-							<tr>
+                                <%=DList%>
+<%--							<tr>
 								<td><a href="#">25590</a></td>
 								<td><a href="#">Valleywide Towing</a></td>
 								<td>Robert Sammwise</td>
@@ -75,7 +76,7 @@
 								<td><a href="#">29950</a></td>
 								<td><a href="#">Some Mortuary</a></td>
 								<td>Harvey Goodman</td>
-							</tr>
+							</tr>--%>
 						</table>
 						</div>
 					</div>
