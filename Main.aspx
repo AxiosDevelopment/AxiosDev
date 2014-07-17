@@ -60,21 +60,11 @@
 						</table>
 						</div>
 						<div class="right" id="clients">
-							<table width="100%">
+							<table width="100%" id="ClientTable" runat="server">
 							<tr>
 								<th id="clientID">Clt ID</th>
 								<th id="clientName">Client Name</th>
 								<th id="onCall">On Call</th>
-							</tr>
-							<tr>
-								<td><a href="#">25590</a></td>
-								<td><a href="#">Valleywide Towing</a></td>
-								<td>Robert Sammwise</td>
-							</tr>
-							<tr>
-								<td><a href="#">29950</a></td>
-								<td><a href="#">Some Mortuary</a></td>
-								<td>Harvey Goodman</td>
 							</tr>
 						</table>
 						</div>

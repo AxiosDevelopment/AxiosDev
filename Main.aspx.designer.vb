@@ -12,4 +12,40 @@ Option Explicit On
 
 
 Partial Public Class Main
+
+  '''<summary>
+  '''ClientTable control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ClientTable As Global.System.Web.UI.HtmlControls.HtmlTable
+
+  '''<summary>
+  '''clientID control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents clientID As Global.System.Web.UI.HtmlControls.HtmlTableCell
+
+  '''<summary>
+  '''clientName control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents clientName As Global.System.Web.UI.HtmlControls.HtmlTableCell
+
+  '''<summary>
+  '''onCall control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents onCall As Global.System.Web.UI.HtmlControls.HtmlTableCell
 End Class

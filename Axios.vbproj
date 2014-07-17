@@ -84,6 +84,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.css" />
+    <Content Include="images\bg_01.gif" />
+    <Content Include="images\bg_02.gif" />
+    <Content Include="images\bg_03.gif" />
+    <Content Include="images\bg_04.gif" />
+    <Content Include="images\homepage_01.jpg" />
+    <Content Include="images\homepage_02.gif" />
+    <Content Include="images\homepage_03.gif" />
+    <Content Include="images\homepage_05.jpg" />
+    <Content Include="images\homepage_06.gif" />
+    <Content Include="images\homepage_07.jpg" />
+    <Content Include="images\homepage_08.jpg" />
+    <Content Include="images\homepage_10.gif" />
+    <Content Include="images\homepage_11.gif" />
+    <Content Include="images\spacer.gif" />
+    <Content Include="images\subpage1_01.jpg" />
     <Content Include="layout.css" />
     <Content Include="Main.aspx" />
     <Content Include="main.html" />
@@ -138,6 +153,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\Thumbs.db" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
