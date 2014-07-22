@@ -93,6 +93,35 @@ hr {
 	float: right;
 }
 
+.mTop5 {
+	margin-top: 5px;
+}
+
+.mTop10 {
+	margin-top: 10px;
+}
+.mTop15 {
+	margin-top: 15px;
+}
+.mTop20 {
+	margin-top: 20px;
+}
+
+.mr_10 {
+	margin-right: 10px;
+}
+.mr_15 {
+	margin-right: 15px;
+}
+
+.pTop5 {
+	padding-top: 5px;
+}
+
+.lineH1_6 {
+	line-height: 1.6em;
+}
+
 /** WRAPPER */
 
 #wrapper {
@@ -454,7 +483,7 @@ th, td {
 	width: 39px;
 }
 
-#addMessage input, select{
+#addMessage input, #addMessage select{
 	float: left;
 	width: 300px;
 	margin: 0 0 10px;
@@ -522,4 +551,57 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 #clientMainInfo {
 	width: 303px;
 	height: 520px;
+}
+
+/** FIRST CALL **/
+
+#fCallForm {
+	width: 680px;
+	background: #efefef;
+	width: 680px;
+}
+
+.row {
+	margin-bottom: 10px;
+	clear: both;
+	display: table;
+}
+
+#placeofD {
+	width: 300px;
+}
+
+#facilityType {
+	width: 98px;
+}
+
+#facilityCity {
+	width: 150px;
+}
+
+#facilityState {
+	width: 45px;
+}
+
+#relationship {
+	width: 150px;
+}
+
+#specialInstructionsR {
+	width: 400px;
+	height: 100px;
+}
+
+#specialInstructionsA {
+	width: 400px;
+	height: 100px;
+}
+
+#fCallNotes {
+	width: 200px;
+}
+
+#facilityNotes, #operatorNotes {
+	width: 195px;
+	height: 292px;
 }

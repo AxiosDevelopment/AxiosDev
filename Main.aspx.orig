@@ -66,16 +66,30 @@
 								<th id="clientName">Client Name</th>
 								<th id="onCall">On Call</th>
 							</tr>
-							</table>
+<<<<<<< HEAD
+                                <%=DList%>
+<%--							<tr>
+								<td><a href="#">25590</a></td>
+								<td><a href="#">Valleywide Towing</a></td>
+								<td>Robert Sammwise</td>
+							</tr>
+							<tr>
+								<td><a href="#">29950</a></td>
+								<td><a href="#">Some Mortuary</a></td>
+								<td>Harvey Goodman</td>
+							</tr>--%>
+=======
+>>>>>>> d9ca87c1f04a9f1276163e704c79126c413e0b4f
+						</table>
 						</div>
 					</div>
-				<div class="clearfix">&nbsp;</div>	
+					<div class="clearfix">&nbsp;</div>
 				</div>
 			</div>
 			<div class="clearfix">&nbsp;</div>
 		</div>
 	</div>
-
+</div>
 <div id="footer">
 	<p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
 </div>
