@@ -31,6 +31,11 @@ Axios
  Module used to define the properties that are available in the My Namespace for Web projects.
  </summary>
 	<remarks></remarks>
+</member><member name="M:Axios.Main.GetClients">
+	<summary>
+ Gets the list of clients in ClientUpdate table
+ </summary>
+	<remarks></remarks>
 </member><member name="F:Axios.Main.ClientTable">
 	<summary>
 ClientTable control.
