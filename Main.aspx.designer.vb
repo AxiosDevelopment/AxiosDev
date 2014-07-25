@@ -14,6 +14,51 @@ Option Explicit On
 Partial Public Class Main
 
   '''<summary>
+  '''MessageTable control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents MessageTable As Global.System.Web.UI.HtmlControls.HtmlTable
+
+  '''<summary>
+  '''msgID control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents msgID As Global.System.Web.UI.HtmlControls.HtmlTableCell
+
+  '''<summary>
+  '''status control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents status As Global.System.Web.UI.HtmlControls.HtmlTableCell
+
+  '''<summary>
+  '''fCall control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents fCall As Global.System.Web.UI.HtmlControls.HtmlTableCell
+
+  '''<summary>
+  '''client control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents client As Global.System.Web.UI.HtmlControls.HtmlTableCell
+
+  '''<summary>
   '''ClientTable control.
   '''</summary>
   '''<remarks>
