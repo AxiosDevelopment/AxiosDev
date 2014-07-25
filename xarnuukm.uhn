@@ -1,0 +1,57 @@
+﻿Imports System.Data.SqlClient
+
+Public Class Messages
+  Inherits System.Web.UI.Page
+  Protected test As String = "Test"
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="sender"></param>
+  ''' <param name="e"></param>
+  ''' <remarks></remarks>
+  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+    If Not (Page.IsPostBack) Then
+
+      Dim successed As Boolean
+      Dim custId As String
+
+      custId = Request.QueryString.Get("CustID").ToString()
+      If Not String.IsNullOrEmpty(custId) Then
+        successed = GetClient(custId)
+      End If
+
+      clientMessageId.InnerText = "TESTING ID"
+
+    End If
+
+  End Sub
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Function GetClient(custId As String) As Boolean
+
+    test = "Hi  testing the greeting"
+
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
+
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM ClientUpdate WITH (NOLOCK) WHERE CustID = " + custId)
+   
+    Do While rsData.Read()
+      'a.InnerText = rsData(0)
+      clientMessageId.InnerHtml = "TESTING ID"
+      clientName.InnerText = "TESTING NAME"
+    Loop
+
+    Return True
+
+  End Function
+
+
+
+End Class

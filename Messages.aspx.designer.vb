@@ -12,4 +12,76 @@ Option Explicit On
 
 
 Partial Public Class Messages
+
+  '''<summary>
+  '''clientMessageId control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents clientMessageId As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+  '''<summary>
+  '''clientName control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents clientName As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+  '''<summary>
+  '''addMessage control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents addMessage As Global.System.Web.UI.HtmlControls.HtmlForm
+
+  '''<summary>
+  '''to control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents [to] As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+  '''<summary>
+  '''from control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents from As Global.System.Web.UI.HtmlControls.HtmlInputText
+
+  '''<summary>
+  '''FromMessage control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents FromMessage As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''quickMessage control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents quickMessage As Global.System.Web.UI.HtmlControls.HtmlSelect
+
+  '''<summary>
+  '''clientMainInfo control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents clientMainInfo As Global.System.Web.UI.HtmlControls.HtmlTextArea
 End Class

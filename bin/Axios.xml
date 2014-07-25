@@ -6,7 +6,71 @@ Axios
 </name>
 </assembly>
 <members>
-<member name="P:Axios.My.MyWebExtension.Computer">
+<member name="F:Axios.Messages.clientMessageId">
+	<summary>
+clientMessageId control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.clientName">
+	<summary>
+clientName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.addMessage">
+	<summary>
+addMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.to">
+	<summary>
+to control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.from">
+	<summary>
+from control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.FromMessage">
+	<summary>
+FromMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.quickMessage">
+	<summary>
+quickMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.clientMainInfo">
+	<summary>
+clientMainInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="P:Axios.My.MyWebExtension.Computer">
 	<summary>
  Returns information about the host computer.
  </summary>

@@ -38,24 +38,12 @@
 					</div>
 					<div class="entry">
 						<div class="left" id="messages">
-						<table width="100%">
+						<table width="100%" id="MessageTable" runat="server">
 							<tr>
 								<th id="msgID"></th>
 								<th id="status">Status</th>
 								<th id="fCall">FCall</th>
 								<th id="client">Client</th>
-							</tr>
-							<tr>
-								<td><a href="#">25590</a></td>
-								<td>On Hold</td>
-								<td>No</td>
-								<td>Valleywide Towing</td>
-							</tr>
-							<tr>
-								<td><a href="#">29950</a></td>
-								<td>Not Delivered</td>
-								<td>Yes</td>
-								<td>Some Mortuary</td>
 							</tr>
 						</table>
 						</div>
