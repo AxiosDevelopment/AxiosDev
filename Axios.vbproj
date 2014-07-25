@@ -84,6 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.css" />
+    <Content Include="firstCall.aspx" />
+    <Content Include="firstCall.html" />
     <Content Include="images\bg_01.gif" />
     <Content Include="images\bg_02.gif" />
     <Content Include="images\bg_03.gif" />
@@ -110,6 +112,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dbUtil.vb" />
+    <Compile Include="firstCall.aspx.designer.vb">
+      <DependentUpon>firstCall.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="firstCall.aspx.vb">
+      <DependentUpon>firstCall.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Main.aspx.designer.vb">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
