@@ -124,7 +124,7 @@
         console.log('do search');
         
         $.ajax({
-            url: "Messages.aspx?query=" + searchStr,
+            url: "FromAutoSearch.aspx?query=" + searchStr,
             cache: false
         })
         .done(function(data) {

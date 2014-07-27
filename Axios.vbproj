@@ -84,6 +84,9 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Axios.dll" />
+    <Content Include="bin\Axios.pdb" />
+    <Content Include="bin\Axios.xml" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -149,6 +152,7 @@
     <Content Include="default.css" />
     <Content Include="firstCall.aspx" />
     <Content Include="firstCall.html" />
+    <Content Include="FromAutoSearch.aspx" />
     <Content Include="images\bg_01.gif" />
     <Content Include="images\bg_02.gif" />
     <Content Include="images\bg_03.gif" />
@@ -169,10 +173,96 @@
     <Content Include="main.html" />
     <Content Include="Messages.aspx" />
     <Content Include="messages.html" />
+    <Content Include="obj\Debug\Axios.dll" />
+    <Content Include="obj\Debug\Axios.pdb" />
+    <Content Include="obj\Debug\Axios.vbproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Axios.xml" />
+    <Content Include="obj\Debug\TempPE\My Project.Resources.Designer.vb.dll" />
     <Content Include="packages.config" />
+    <Content Include="bin\Axios.dll.config" />
+    <Content Include="obj\Debug\Axios.vbproj.GenerateResource.Cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="packages\jQuery.1.6.4\jQuery.1.6.4.nupkg" />
+    <Content Include="packages\jQuery.1.6.4\jQuery.1.6.4.nuspec" />
+    <Content Include="packages\jQuery.1.6.4\Tools\install.ps1" />
+    <Content Include="packages\jQuery.1.6.4\Tools\uninstall.ps1" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\jQuery.UI.Combined.1.10.4.nupkg" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\jQuery.UI.Combined.1.10.4.nuspec" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Tools\common.ps1" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Tools\install.ps1" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Tools\uninstall.ps1" />
+    <Content Include="packages\repositories.config" />
     <None Include="Scripts\jquery-2.1.1-vsdoc.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <None Include="packages\jQuery.1.6.4\Content\Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="packages\jQuery.1.6.4\Content\Scripts\jquery-1.6.4.js" />
+    <Content Include="packages\jQuery.1.6.4\Content\Scripts\jquery-1.6.4.min.js" />
+    <Content Include="packages\jQuery.1.6.4\Tools\jquery-1.6.4-vsdoc-para.js" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery-ui.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.all.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.base.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.button.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.core.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="packages\jQuery.UI.Combined.1.10.4\Content\Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
@@ -192,6 +282,13 @@
     </Compile>
     <Compile Include="firstCall.aspx.vb">
       <DependentUpon>firstCall.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="FromAutoSearch.aspx.designer.vb">
+      <DependentUpon>FromAutoSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FromAutoSearch.aspx.vb">
+      <DependentUpon>FromAutoSearch.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Main.aspx.designer.vb">
@@ -235,6 +332,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\Axios.Resources.resources" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\Thumbs.db" />
