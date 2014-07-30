@@ -88,7 +88,7 @@ Public Class Messages
       clientMessageId.InnerHtml = rsData("CustID").ToString()
       clientName.InnerText = rsData("CompanyName")
       clientGreeting = rsData("ClientAnswer")
-      clientMainInfo.Value = rsData("ClientData")
+            clientMainInfo.Value = db.ClearNull(rsData("ClientData"))
     Loop
 
     Return True
