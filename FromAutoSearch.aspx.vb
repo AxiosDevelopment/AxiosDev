@@ -9,12 +9,13 @@ Public Class FromAutoSearch
         Dim strDataContacts = ""
         rsData = db.GetDataReader("SELECT CustID, CompanyName FROM ClientUpdate where CompanyName like '%" & Request.QueryString("query") & "%' ORDER BY CompanyName ASC")
         If rsData.HasRows Then
-            strContacts = "{""query"":""" & Request.QueryString("query") & ""","
+            strContacts = ""
             While rsData.Read
-                strDataContacts &= ",{""value"":""" & rsData(1) & """,""data"":""" & rsData(0) & """}"
+                'strDataContacts &= ",{""value"":""" & rsData(1) & """,""data"":""" & rsData(0) & """}"
+                strContacts = strContacts & "<li>" & rsData(1) & "</li>"
             End While
             rsData.Close()
-            strContacts &= """suggestions"":[" & strDataContacts & "]  }"
+            'strContacts &= """suggestions"":[" & strDataContacts & "]  }"
             Response.Write(strContacts)
             'Else
             '    Response.Write("{""query"":""Los Angeles"",""suggestions"":[{""value"":""Los Angeles"",""data"":""C-15546""}]  }")
