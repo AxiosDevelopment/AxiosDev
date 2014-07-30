@@ -95,6 +95,89 @@ To modify move field declaration from designer file to code-behind file.
  Module used to define the properties that are available in the My Namespace for Web projects.
  </summary>
 	<remarks></remarks>
+</member><member name="M:Axios.Messages.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetMessageLookup">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetClient(System.String)">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetMessage(System.Int32)">
+	<summary>
+	</summary>
+	<param name="msgId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetBusinessAutoComplete(System.String)">
+	<summary>
+	</summary>
+	<param name="prefix"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+ Page_Load
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.GetClients">
+	<summary>
+ Gets the list of clients in ClientUpdate table
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.GetMessages">
+	<summary>
+ Gets the list of messages in Msg table
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Axios.Main.MessageTable">
+	<summary>
+MessageTable control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.msgID">
+	<summary>
+msgID control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.status">
+	<summary>
+status control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.fCall">
+	<summary>
+fCall control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.client">
+	<summary>
+client control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.Main.ClientTable">
 	<summary>
 ClientTable control.
@@ -127,18 +210,6 @@ onCall control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="M:Axios.Main.Page_Load(System.Object,System.EventArgs)">
-	<summary>
- Page_Load
- </summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.Main.GetClients">
-	<summary>
- Gets the list of clients in ClientUpdate table
- </summary>
-	<remarks></remarks>
 </member>
 </members>
 </doc>
