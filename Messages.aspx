@@ -10,6 +10,7 @@
     @import "layout.css";
   </style>
   <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/init.js"></script>
 </head>
 <body class="single">
   <div id="wrapper">
@@ -26,7 +27,7 @@
           <!-- CLEAR FORM CREATED NEW MESSAGE ID ON SUBMIT -->
           <li><a href="#" title="">New Message</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
-          <li><a href="#" title="">All Messages</a></li>
+          <li><a id="searchMessages" href="#" title="">All Messages</a></li>
           <li><a href="#" title="">First Call</a></li>
           <li><a href="#" title="">Print Message</a></li>
         </ul>
@@ -45,12 +46,12 @@
                 <form id="addMessage" method="post" action="#" runat="server">
                   <label for="to">To:</label>
                   <input type="text" name="to" id="to" runat="server" />
+                   <div id="searchAuto" class="hide" hidden="hidden">
+                    <ul id="autoSearch"></ul>
+                   </div>
                   <label for="from">From:</label>
                   <!--<input type="text" name="from" id="from" runat="server" />-->
                   <asp:TextBox ID="FromMessage" runat="server" />
-                  <div id="searchAuto" class="hide" hidden="hidden">
-                    <ul id="autoSearch"></ul>
-                  </div>
                   <label for="nMsgPhone">Phone:</label>
                   <input type="text" name="nMsgPhone" id="nMsgPhone" />
                   <label for="nMsgPhoneX">Ext:</label>
@@ -95,45 +96,12 @@
         </div>
         <div class="clearfix">&nbsp;</div>
       </div>
+      <div id="messageContainer" class="hide popup"><img src="images/exit.png" width="20" class="exit"/><ul id="allMessages"></ul></div>
     </div>
   </div>
-
-
-
   <div id="footer">
     <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
   </div>
-  <script type = "text/javascript">
-
-    var delay = (function () {
-      var timer = 0;
-      return function (callback, ms) {
-        clearTimeout(timer);
-        timer = setTimeout(callback, ms);
-      };
-    })();
-
-    $('#FromMessage').keyup(function () {
-      var searchStr = $(this).val();
-      if (searchStr === '') {
-        $('#searchAuto').hide();
-        return;
-      }
-      $('#searchAuto').show();
-      delay(function () {
-        console.log('do search');
-        
-        $.ajax({
-            url: "FromAutoSearch.aspx?query=" + searchStr,
-            cache: false
-        })
-        .done(function(data) {
-          $('#autoSearch').html(data);
-        });
-        
-      }, 1000);
-    })
-
-  </script>
+    <div id="containerBg"></div>
 </body>
 </html>
