@@ -41,40 +41,166 @@ Partial Public Class Messages
   Protected WithEvents addMessage As Global.System.Web.UI.HtmlControls.HtmlForm
 
   '''<summary>
-  '''to control.
+  '''ValidationSummary1 control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents [to] As Global.System.Web.UI.HtmlControls.HtmlInputText
+  Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
 
   '''<summary>
-  '''from control.
+  '''MsgScriptManager control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents from As Global.System.Web.UI.HtmlControls.HtmlInputText
+  Protected WithEvents MsgScriptManager As Global.System.Web.UI.ScriptManager
 
   '''<summary>
-  '''FromMessage control.
+  '''MsgTo control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents FromMessage As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents MsgTo As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''quickMessage control.
+  '''ReqTo control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents quickMessage As Global.System.Web.UI.HtmlControls.HtmlSelect
+  Protected WithEvents ReqTo As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''MsgFrom control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents MsgFrom As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqFrom control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqFrom As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nMsgPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nMsgPhone As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nMsgPhoneX control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nMsgPhoneX As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''nMsgAlt control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nMsgAlt As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqAltPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqAltPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nMsgAltX control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nMsgAltX As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''QwkMessage control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents QwkMessage As Global.System.Web.UI.WebControls.DropDownList
+
+  '''<summary>
+  '''ReqQwkMessage control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqQwkMessage As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''Message control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents Message As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqMessage control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqMessage As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''Notes control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents Notes As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''submitMessage control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents submitMessage As Global.System.Web.UI.WebControls.Button
 
   '''<summary>
   '''clientMainInfo control.
