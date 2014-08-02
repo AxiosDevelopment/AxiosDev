@@ -28,7 +28,7 @@
           <li><a href="#" title="">New Message</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
-          <li><a href="FirstCall.aspx" title="">First Call</a></li>
+          <li><a href="FirstCall.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
           <li><a href="#" title="">Print Message</a></li>
         </ul>
       </div>

@@ -75,9 +75,21 @@ Public Class Main
 
     Dim db As dbUtil 'access to db functions
     Dim rsData As SqlDataReader
+    Dim strSQL As New StringBuilder()
+
+    strSQL.Append("SELECT m.MsgID AS MessageID, 'N/A' AS Status, 'No' AS FirstCall, m.MsgCustID AS CustId, ci.CompanyName AS CompanyName ")
+    strSQL.Append("FROM Msg m WITH (NOLOCK) ")
+    strSQL.Append("LEFT JOIN CompanyInfo ci ")
+    strSQL.Append("ON m.MsgCustID = ci.CustID ")
+    strSQL.Append("WHERE m.MsgDeliver = 0 ")
+    strSQL.Append("UNION ")
+    strSQL.Append("SELECT First_CallID as MessageID, 'N/A' AS Status, 'Yes' AS FirstCall, First_CustID AS CustId, First_CompanyName AS CompanyName ")
+    strSQL.Append("FROM FirstCall WITH (NOLOCK) ")
+    strSQL.Append("WHERE First_Delivered = 0 ")
+    strSQL.Append("ORDER BY MessageID ASC")
 
     db = New dbUtil()
-    rsData = db.GetDataReader("SELECT m.MsgID, 'N/A' AS Status, 'N/A' AS FirstCall, m.MsgCustID, cu.CompanyName FROM Msg m WITH (NOLOCK) LEFT JOIN ClientUpdate cu ON m.MsgCustID = cu.CustID WHERE m.MsgDeliver = 0 ORDER BY m.MsgID ASC")
+    rsData = db.GetDataReader(strSQL.ToString())
 
     Dim row As HtmlTableRow
     Dim cell As HtmlTableCell
@@ -89,7 +101,11 @@ Public Class Main
         row = New HtmlTableRow()
         'Message ID
         cell = New HtmlTableCell
-        a = New HtmlAnchor With {.HRef = "~/Messages.aspx?MsgId=" + rsData("MsgID").ToString() + "&ClientId=" + rsData("MsgCustID").ToString()}
+        If String.Format(rsData("FirstCall")).ToUpper() = "YES" Then
+          a = New HtmlAnchor With {.HRef = "~/firstCall.aspx?FirstCallId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CustID").ToString()}
+        Else
+          a = New HtmlAnchor With {.HRef = "~/Messages.aspx?MsgId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CustID").ToString()}
+        End If
         a.InnerText = rsData(0)
         cell.Controls.Add(a)
         row.Controls.Add(cell)

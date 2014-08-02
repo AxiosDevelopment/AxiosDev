@@ -3,253 +3,272 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Axios First Call</title>
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<style type="text/css">
-@import "layout.css";
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Axios First Call</title>
+  <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+  <style type="text/css">
+    @import "layout.css";
+  </style>
 </head>
 <body class="single">
-<div id="wrapper">
-	<div id="wrapper-bgtop">
-		<div id="header">
-			<div id="logo">
-				<h1><a href="#">Axios Online</a></h1>
-				<p></p>
-			</div>
-			
-		</div>
-		<div id="menu">
-			<ul>
-				<li class="first"><a href="main.aspx" title="">Main Menu</a></li>
-				<li><a href="#" title="">Facility Messages</a></li>
-				<!-- POPUP WITH FORM TO FIND FIRST CALL -->
-				<li><a href="#" title="">Search First Calls</a></li>
-				<!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-				<li><a href="#" title="">Fax First Call</a></li>
-				<li><a href="#" title="">Doctors</a></li>
-				<li><a href="#" title="">Facilities</a></li>
-			</ul>
-		</div>
-		<div id="page">
-			<div id="banner-empty">
-				<div class="title">
-					<h2 align="center">Mortuary Name Here</h2>
-				</div>
-			</div>
-			<div id="content">
-				<div class="box-style4">
-					<div class="title">
-						<h2>First Call</h2>
-					</div>
-					<div class="entry">
-						<div class="left" id="fCallForm">
-							<div class="row">
-								<div class="left mr_10">
-									<label for="clientId">ClientId</label><br/>
-									<input type="text" name="clientId" id=" clientId" size="7" />
-								</div>
-								<div class="left mr_10">
-									<label for="clientName">Client Name</label></br>
-									<input type="text" name="clientName" id="clientName" size="65" />
-								</div>
-								<div class="left mr_10">
-									<label for="msgDate">Date</label><br/>
-									<input type="text" id="msgDate" name="msgDate" size="10" />
-								</div>
-								<div class="left mr_10">
-									<label for="msgTime">Time</label><br/>
-									<input type="text" id="msgTime" name="msgTime" size="10" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="reportingName">Reporting Party Name</label><br/>
-									<input type="text" name="reportingName" id="reportingName" size="36" />
-								</div>
-								<div class="left mr_10">
-									<label for="deceasedName">Client Name</label></br>
-									<input type="text" name="deceasedName" id="deceasedName" size="36" />
-								</div>
-								<div class="left mr_10">
-									<label for="dDate">Date of Death</label><br/>
-									<input type="text" id="dDate" name="dDate" size="10" />
-								</div>
-								<div class="left mr_10">
-									<label for="dTime">Time of Death</label><br/>
-									<input type="text" id="dTime" name="dTime" size="10" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="placeofD">Place of Death</label><br/>
-									<select id="placeofD">
-										<option value="1">Kaiser Fontana CA</option>
-									</select>
-								</div>
-								<div class="left mr_10">
-									<label for="facilityAddr">Address</label></br>
-									<input type="text" name="facilityAddr" id="facilityAddr" size="56" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="facilityType">Facility Type</label><br/>
-									<select id="facilityType">
-										<option value="1">Hospital</option>
-										<option value="2">Residence</option>
-									</select>
-								</div>
-								<div class="left mr_10">
-									<label for="facilityCity">City</label><br/>
-									<select id="facilityCity">
-										<option value="1">Anaheim</option>
-										<option value="2">City of Industry</option>
-									</select>
-								</div>
-								<div class="left mr_10">
-									<label for="facilityState">State</label><br/>
-									<select id="facilityState">
-										<option value="1">AZ</option>
-										<option value="2">CA</option>
-									</select>
-								</div>
-								<div class="left mr_10">
-									<label for="facilityCounty">County</label></br>
-									<input type="text" name="facilityCounty" id="facilityCounty" size="12" />
-								</div>
-								<div class="left mr_10">
-									<label for="facilityZip">Zip</label></br>
-									<input type="text" name="facilityZip" id="facilityZip" size="5" />
-								</div>
-								<div class="left mr_10">
-									<label for="facilityPhone">Phone Number</label></br>
-									<input type="text" name="facilityPhone" id="facilityPhone" size="17" />
-								</div>
-								<div class="left mr_10">
-									<label for="phoneExt">Ext.</label></br>
-									<input type="text" name="phoneExt" id="phoneExt" size="4" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="partyName">Next of Kin/Responsible Party</label><br/>
-									<input type="text" name="partyName" id="partyName" size="30" /> 
-								</div>
-								<div class="left mr_10">
-									<label for="relationship">Relationship</label></br>
-									<select id="relationship">
-										<option value="1">None</option>
-										<option value="2">Brother</option>
-									</select>
-								</div>
-								<div class="left mr_10">
-									<label for="responsiblePhone">Phone</label></br>
-									<input type="text" name="responsiblePhone" id="responsiblePhone" size="17" />
-								</div>
-								<div class="left mr_10">
-									<label for="responsiblePhoneExt">Ext.</label></br>
-									<input type="text" name="responsiblePhoneExt" id="responsiblePhoneExt" size="4" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="physicianName">Attending Physician</label><br/>
-									<input type="text" name="physicianName" id="physicianName" size="36" /> <!--AUTOCOMPLETE -->
-								</div>
-								<div class="left mr_10">
-									<label for="physicianPhone">Physician Phone</label></br>
-									<input type="text" name="physicianPhone" id="physicianPhone" size="17" />
-								</div>
-								<div class="left mr_10">
-									<label for="physicianPhoneExt">Ext.</label></br>
-									<input type="text" name="physicianPhoneExt" id="physicianPhoneExt" size="4" />
-								</div>
-								<div class="left mr_10">
-									<label for="physicianDate">Last Saw Patient</label></br>
-									<input type="text" name="physicianDate" id="physicianDate" size="15" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="coronerName">Coroner Name</label><br/>
-									<input type="text" name="coronerName" id="coronerName" size="27" /> 
-								</div>
-								<div class="left mr_10">
-									<label for="caseNumber">Case Number</label></br>
-									<input type="text" name="caseNumber" id="caseNumber" size="16" />
-								</div>
-								<div class="left mr_10">
-									<label for="counselorName">Counselor Name</label></br>
-									<input type="text" name="counselorName" id="counselorName" size="28" />
-								</div>
-								<div class="left mr_10">
-									<label for="coronerDate">Date</label></br>
-									<input type="text" name="coronerDate" id="coronerDate" size="10" />
-								</div>
-								<div class="left mr_10">
-									<label for="coronerTime">Time</label></br>
-									<input type="text" name="coronerTime" id="coronerTime" size="5" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="ssn">SSN</label><br/>
-									<input type="text" name="ssn" id="ssn" size="12" /> 
-								</div>
-								<div class="left mr_10">
-									<label for="dob">Date of Birth</label></br>
-									<input type="text" name="dob" id="dob" size="12" />
-								</div>
-								<div class="left mr_10">
-									<label for="weight">Weight</label></br>
-									<input type="text" name="weight" id="weight" size="10" />
-								</div>
-							</div>
-							<div class="row">
-								<label for="specialInstructionsR">Special Instructions - Reporting Party</label><br/>
-								<textarea id="specialInstructionsR"></textarea>
-							</div>
-							<div class="row">
-								<div class="left mr_10">
-									<label for="specialInstructionsA">Special Instructions - This Account</label><br/>
-									<textarea id="specialInstructionsA"></textarea>
-								</div>
-								<div class="left mr_10">
-									<div class="mTop20">
-										<input type="checkbox" id="deliver" class="left"><span class="lineH1_6">Deliver Message</span>
-									</div>
-									<div class="mTop5">
-										<input type="checkbox" id="hold" class="left"><span class="lineH1_6">Hold Message</span>
-									</div>
-									<div class="mTop5">
-										<input type="checkbox" id="remove" class="left"><span class="lineH1_6">Remove Message</span>
-									</div>
-									<div class="mTop5">
-										<input type="submit" id="submitMessage" name="submitMessage" value="Submit Message"/>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="right" id="fCallNotes">
-							<label for="facilityNotes" class="left pTop5">Facility Notes</label>
-							<button class="right">Update</button>
-							<textarea id="facilityNotes"></textarea>
-							<label for="operatorNotes" class="mTop20 left">Operator Notes</label>
-							<button class="right mTop15">Update</button>
-							<textarea id="operatorNotes"></textarea>
-						</div>
-					</div>
-					<div class="clearfix">&nbsp;</div>
-				</div>
-			</div>
-			<div class="clearfix">&nbsp;</div>
-		</div>
-	</div>
-</div>
-<div id="footer">
-	<p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
-</div>
+  <div id="wrapper">
+    <div id="wrapper-bgtop">
+      <div id="header">
+        <div id="logo">
+          <h1><a href="#">Axios Online</a></h1>
+          <p></p>
+        </div>
+
+      </div>
+      <div id="menu">
+        <ul>
+          <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
+          <li><a href="#" title="">Facility Messages</a></li>
+          <!-- POPUP WITH FORM TO FIND FIRST CALL -->
+          <li><a href="#" title="">Search First Calls</a></li>
+          <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
+          <li><a href="#" title="">Fax First Call</a></li>
+          <li><a href="#" title="">Doctors</a></li>
+          <li><a href="#" title="">Facilities</a></li>
+        </ul>
+      </div>
+      <div id="page">
+        <div id="banner-empty">
+          <div class="title">
+            <h2 align="center"><asp:Literal ID="ClientHeader" runat="server" /></h2>
+          </div>
+        </div>
+        <div id="content">
+          <div class="box-style4">
+            <div class="title">
+              <h2>First Call</h2>
+            </div>
+            <div class="entry">
+              <form id="addFirstCall" method="post" action="#" runat="server">
+                <asp:ValidationSummary ID="ValidationSummaryFirstCall" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
+                <asp:ScriptManager ID="MsgScriptManager" runat="server">
+                  <Scripts>
+                    <asp:ScriptReference Name="jquery" />
+                    <asp:ScriptReference Path="~/Scripts/WebForms/WebUIValidation.js" />
+                  </Scripts>
+                </asp:ScriptManager>
+                <div class="left" id="fCallForm">
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="clientId">ClientId</label><br />
+                      <asp:TextBox ID="clientId" runat="server" Width="100" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="clientName">Client Name</label><br />
+                      <asp:TextBox ID="clientName" runat="server" Width="300" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="msgDate">Date</label><br />
+                      <asp:TextBox ID="msgDate" runat="server" Width="80" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="msgTime">Time</label><br />
+                      <asp:TextBox ID="msgTime" runat="server" Width="80" ReadOnly="true"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="reportingName">Reporting Party Name</label><br />
+                      <asp:TextBox ID="reportingName" runat="server" Width="250"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqReportingName" runat="server" ErrorMessage="Reporting Party Name is required" ControlToValidate="reportingName" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="deceasedName">Deceased Name</label><br />
+                      <asp:TextBox ID="deceasedName" runat="server" Width="200"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqDeceasedName" runat="server" ErrorMessage="Deceased Name is required" ControlToValidate="deceasedName" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="dDate">Date of Death</label><br />
+                      <asp:TextBox ID="dDate" runat="server" Width="80"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqDateOfDeath" runat="server" ErrorMessage="Date of Death is required" ControlToValidate="dDate" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="dTime">Time of Death</label><br />
+                      <asp:TextBox ID="dTime" runat="server" Width="80"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqTimeOfDeath" runat="server" ErrorMessage="Time of Death is required" ControlToValidate="dTime" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="ssn">SSN</label><br />
+                      <asp:TextBox ID="ssn" runat="server" Width="100"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="dob">Date of Birth</label><br />
+                      <asp:TextBox ID="dob" runat="server" Width="80"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="weight">Weight</label><br />
+                      <asp:TextBox ID="weight" runat="server" Width="50"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="placeofD">Place of Death</label><br />
+                      <asp:DropDownList ID="placeofD" runat="server">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                        <asp:ListItem Value="1" Text="Kaiser Fontana CA" />
+                      </asp:DropDownList>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="facilityAddr">Address</label><br />
+                      <asp:TextBox ID="facilityAddr" runat="server" Width="300"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="facilityType">Facility Type</label><br />
+                      <asp:DropDownList ID="facilityType" runat="server">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                        <asp:ListItem Value="1" Text="Hospital" />
+                        <asp:ListItem Value="2" Text="Residence" />
+                      </asp:DropDownList>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="facilityCity">City</label><br />
+                      <asp:DropDownList ID="facilityCity" runat="server">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                        <asp:ListItem Value="1" Text="Anaheim" />
+                        <asp:ListItem Value="2" Text="City of Industry" />
+                      </asp:DropDownList>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="facilityState">State</label><br />
+                      <asp:DropDownList ID="facilityState" runat="server">
+                        <asp:ListItem Value="-1" Text="--" />
+                        <asp:ListItem Value="1" Text="AZ" />
+                        <asp:ListItem Value="2" Text="CA" />
+                      </asp:DropDownList>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="facilityCounty">County</label><br />
+                      <asp:TextBox ID="facilityCounty" runat="server" Width="100"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="facilityZip">Zip</label><br />
+                      <asp:TextBox ID="facilityZip" runat="server" Width="60"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="facilityPhone">Phone Number</label><br />
+                      <asp:TextBox ID="facilityPhone" runat="server" Width="90"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="phoneExt">Ext.</label><br />
+                      <asp:TextBox ID="phoneExt" runat="server" Width="30"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="partyName">Next of Kin/Responsible Party</label><br />
+                      <asp:TextBox ID="partyName" runat="server" Width="200"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="relationship">Relationship</label><br />
+                      <asp:DropDownList ID="relationship" runat="server">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                        <asp:ListItem Value="1" Text="None" />
+                        <asp:ListItem Value="2" Text="Brother" />
+                      </asp:DropDownList>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="responsiblePhone">Phone</label><br />
+                      <asp:TextBox ID="responsiblePhone" runat="server" Width="90"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="responsiblePhoneExt">Ext.</label><br />
+                      <asp:TextBox ID="responsiblePhoneExt" runat="server" Width="30"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="physicianName">Attending Physician</label><br />
+                      <asp:TextBox ID="physicianName" runat="server" Width="250"></asp:TextBox>
+                      <!--AUTOCOMPLETE -->
+                    </div>
+                    <div class="left mr_10">
+                      <label for="physicianPhone">Physician Phone</label><br />
+                      <asp:TextBox ID="physicianPhone" runat="server" Width="90"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="physicianPhoneExt">Ext.</label><br />
+                      <asp:TextBox ID="physicianPhoneExt" runat="server" Width="30"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="physicianDate">Last Saw Patient</label><br />
+                      <asp:TextBox ID="physicianDate" runat="server" Width="100"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="coronerName">Coroner Name</label><br />
+                      <asp:TextBox ID="coronerName" runat="server" Width="200"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="caseNumber">Case Number</label><br />
+                      <asp:TextBox ID="caseNumber" runat="server" Width="100"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="counselorName">Counselor Name</label><br />
+                      <asp:TextBox ID="counselorName" runat="server" Width="200"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="coronerDate">Date</label><br />
+                      <asp:TextBox ID="coronerDate" runat="server" Width="80"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="coronerTime">Time</label><br />
+                      <asp:TextBox ID="coronerTime" runat="server" Width="80"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label for="specialInstructionsR">Special Instructions - Reporting Party</label><br />
+                    <asp:TextBox ID="specialInstructionsR" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="specialInstructionsA">Special Instructions - This Account</label><br />
+                      <asp:TextBox ID="specialInstructionsA" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <div class="mTop20">
+                        <input type="checkbox" id="deliver" class="left" /><span class="lineH1_6">Deliver Message</span>
+                      </div>
+                      <div class="mTop5">
+                        <input type="checkbox" id="hold" class="left" /><span class="lineH1_6">Hold Message</span>
+                      </div>
+                      <div class="mTop5">
+                        <input type="checkbox" id="remove" class="left" /><span class="lineH1_6">Remove Message</span>
+                      </div>
+                      <div class="mTop5">
+                        <asp:Button ID="submitMessage" runat="server" Text="Submit Message" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="right" id="fCallNotes">
+                  <label for="facilityNotes" class="left pTop5">Facility Notes</label>
+                  <asp:Button ID="FacilityNotesUpdate" CssClass="right" runat="server" Text="Update" />
+                  <asp:TextBox ID="facilityNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
+                  <label for="operatorNotes" class="mTop20 left">Operator Notes</label>
+                  <asp:Button ID="Button1" runat="server" Text="Update" CssClass="right mTop15" />
+                  <asp:TextBox ID="operatorNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
+                </div>
+              </form>
+            </div>
+            <div class="clearfix">&nbsp;</div>
+          </div>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
+  </div>
 </body>
 </html>

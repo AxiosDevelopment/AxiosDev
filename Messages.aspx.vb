@@ -6,6 +6,7 @@ Public Class Messages
   Inherits System.Web.UI.Page
 
   Protected clientGreeting As String = ""
+  Protected cid As String = ""
   Public fromNames As String = ""
 
   ''' <summary>
@@ -29,6 +30,7 @@ Public Class Messages
       clientId = Request.QueryString.Get("ClientId").ToString()
 
       If Not String.IsNullOrEmpty(clientId) Then
+        cid = clientId
         successed = GetClient(clientId)
 
         If msgId > 0 Then
@@ -65,14 +67,14 @@ Public Class Messages
   ''' 
   ''' </summary>
   ''' <remarks></remarks>
-  Private Function GetClient(clientId As String) As Boolean
+  Private Function GetClient(id As String) As Boolean
 
     Dim db As dbUtil 'access to db functions
     Dim rsData As SqlDataReader
 
     db = New dbUtil()
-        'rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM ClientUpdate WITH (NOLOCK) WHERE CustID = " + clientId)
-        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + clientId)
+    'rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM ClientUpdate WITH (NOLOCK) WHERE CustID = " + clientId)
+    rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
 
     Do While rsData.Read()
       clientMessageId.InnerHtml = rsData("CustID").ToString()
@@ -121,7 +123,7 @@ Public Class Messages
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
-    SQL.Append("INSERT INTO [dbo].[Msg] ([MsgID],[MsgDateTime],[MsgCustID],[MsgDate],[MsgTime],[MsgTo],[MsgFrom],[MsgBusiness],[MsgPhone],[MsgExt],[MsgAltPhone],[MsgQwkMsgs],[MsgMessage],[MsgOperatorNotes],[MsgHoldMsg],[MsgDelDate],[MsgDelTime],[MsgDeliver],[MsgOnCall],[MsgProcedure])")
+    SQL.Append("INSERT INTO [dbo].[Msg] ([MsgDateTime],[MsgCustID],[MsgDate],[MsgTime],[MsgTo],[MsgFrom],[MsgBusiness],[MsgPhone],[MsgExt],[MsgAltPhone],[MsgQwkMsgs],[MsgMessage],[MsgOperatorNotes],[MsgHoldMsg],[MsgDelDate],[MsgDelTime],[MsgDeliver],[MsgOnCall],[MsgProcedure])")
     SQL.Append(" VALUES ")
     SQL.Append("('" & DateTime.Now & "',") 'MsgDateTime
     SQL.Append("'" & Convert.ToInt32(clientMessageId.InnerHtml) & "',") 'MsgCustID
@@ -145,7 +147,7 @@ Public Class Messages
 
    
     returnedID = db.GetID(SQL.ToString())
-    test = "succeeded"
+    Response.Redirect("Main.aspx")
 
   End Sub
 
