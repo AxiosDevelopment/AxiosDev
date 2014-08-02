@@ -1117,4 +1117,17 @@ Public Class dbUtil
         conn.Close()
         Return dtRet
     End Function
+
+    '
+    ' Executes SQL. Used for generic processes to insert, update, delete.
+    '
+    Public Sub ExecSQL(ByVal sSQL As String)
+        WriteLog("ExecSQL: " & sSQL)
+        Using dbConn As New SqlConnection(Me.ConStr)
+            dbConn.Open()
+            Dim dbCmd As SqlCommand = New SqlCommand(sSQL, dbConn)
+            dbCmd.ExecuteNonQuery()
+            dbConn.Close()
+        End Using
+    End Sub
 End Class
