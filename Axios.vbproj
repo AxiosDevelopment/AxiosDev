@@ -153,6 +153,7 @@
     <Content Include="firstCall.aspx" />
     <Content Include="firstCall.html" />
     <Content Include="FromAutoSearch.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="images\bg_01.gif" />
     <Content Include="images\bg_02.gif" />
     <Content Include="images\bg_03.gif" />
@@ -271,6 +272,16 @@
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -290,6 +301,9 @@
     <Compile Include="FromAutoSearch.aspx.vb">
       <DependentUpon>FromAutoSearch.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Main.aspx.designer.vb">
       <DependentUpon>Main.aspx</DependentUpon>

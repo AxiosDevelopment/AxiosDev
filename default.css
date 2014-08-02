@@ -710,3 +710,9 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
     position: absolute;
     z-index: 9999;
 }
+
+/** ERROR MESSAGES */
+.ErrorMessage
+{
+  color: red;
+}

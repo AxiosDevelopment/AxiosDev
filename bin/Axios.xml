@@ -6,7 +6,262 @@ Axios
 </name>
 </assembly>
 <members>
-<member name="F:Axios.Main.MessageTable">
+<member name="F:Axios.Messages.clientMessageId">
+	<summary>
+clientMessageId control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.clientName">
+	<summary>
+clientName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.addMessage">
+	<summary>
+addMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.ValidationSummary1">
+	<summary>
+ValidationSummary1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.MsgScriptManager">
+	<summary>
+MsgScriptManager control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.MsgTo">
+	<summary>
+MsgTo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.ReqTo">
+	<summary>
+ReqTo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.MsgFrom">
+	<summary>
+MsgFrom control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.ReqFrom">
+	<summary>
+ReqFrom control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.nMsgPhone">
+	<summary>
+nMsgPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.ReqPhone">
+	<summary>
+ReqPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.nMsgPhoneX">
+	<summary>
+nMsgPhoneX control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.nMsgAlt">
+	<summary>
+nMsgAlt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.ReqAltPhone">
+	<summary>
+ReqAltPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.nMsgAltX">
+	<summary>
+nMsgAltX control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.QwkMessage">
+	<summary>
+QwkMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.ReqQwkMessage">
+	<summary>
+ReqQwkMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.Message">
+	<summary>
+Message control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.ReqMessage">
+	<summary>
+ReqMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.Notes">
+	<summary>
+Notes control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.submitMessage">
+	<summary>
+submitMessage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Messages.clientMainInfo">
+	<summary>
+clientMainInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="P:Axios.My.MyWebExtension.Computer">
+	<summary>
+ Returns information about the host computer.
+ </summary>
+</member><member name="P:Axios.My.MyWebExtension.User">
+	<summary>
+ Returns information for the current Web user.
+ </summary>
+</member><member name="P:Axios.My.MyWebExtension.Request">
+	<summary>
+ Returns Request object.
+ </summary>
+</member><member name="P:Axios.My.MyWebExtension.Response">
+	<summary>
+ Returns Response object.
+ </summary>
+</member><member name="P:Axios.My.MyWebExtension.Log">
+	<summary>
+ Returns the Asp log object.
+ </summary>
+</member><member name="T:Axios.My.MyWebExtension">
+	<summary>
+ Module used to define the properties that are available in the My Namespace for Web projects.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetMessageLookup">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetClient(System.String)">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetMessage(System.Int32)">
+	<summary>
+	</summary>
+	<param name="msgId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.submitMessage_Click(System.Object,System.EventArgs)">
+	<summary>
+ Event Handler on Submit Message button
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.SaveMessage">
+	<summary>
+ Save New Message
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.UpdateMessage">
+	<summary>
+ Update Existing Message
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+ Page_Load
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.GetClients">
+	<summary>
+ Gets the list of clients in ClientUpdate table
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.GetMessages">
+	<summary>
+ Gets the list of messages in Msg table
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Axios.Main.MessageTable">
 	<summary>
 MessageTable control.
 </summary>
@@ -73,121 +328,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Axios.Main.onCall">
 	<summary>
 onCall control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="P:Axios.My.MyWebExtension.Computer">
-	<summary>
- Returns information about the host computer.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.User">
-	<summary>
- Returns information for the current Web user.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.Request">
-	<summary>
- Returns Request object.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.Response">
-	<summary>
- Returns Response object.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.Log">
-	<summary>
- Returns the Asp log object.
- </summary>
-</member><member name="T:Axios.My.MyWebExtension">
-	<summary>
- Module used to define the properties that are available in the My Namespace for Web projects.
- </summary>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.Page_Load(System.Object,System.EventArgs)">
-	<summary>
-	</summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetMessageLookup">
-	<summary>
-	</summary>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetClient(System.String)">
-	<summary>
-	</summary>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetMessage(System.Int32)">
-	<summary>
-	</summary>
-	<param name="msgId"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetBusinessAutoComplete(System.String)">
-	<summary>
-	</summary>
-	<param name="prefix"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="F:Axios.Messages.clientMessageId">
-	<summary>
-clientMessageId control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Messages.clientName">
-	<summary>
-clientName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Messages.addMessage">
-	<summary>
-addMessage control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Messages.to">
-	<summary>
-to control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Messages.from">
-	<summary>
-from control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Messages.FromMessage">
-	<summary>
-FromMessage control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Messages.quickMessage">
-	<summary>
-quickMessage control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Messages.clientMainInfo">
-	<summary>
-clientMainInfo control.
 </summary>
 	<remarks>
 Auto-generated field.

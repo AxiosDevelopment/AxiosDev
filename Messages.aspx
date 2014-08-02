@@ -9,8 +9,8 @@
   <style type="text/css">
     @import "layout.css";
   </style>
-  <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="Scripts/init.js"></script>
+  <!--jquery.min.js file is referenced in global.asax file and reference in this page thru ScriptManager below -->
+  <script type="text/javascript" src="Scripts/init.js"></script>
 </head>
 <body class="single">
   <div id="wrapper">
@@ -44,34 +44,48 @@
             <div class="entry">
               <div class="left" id="newMessage">
                 <form id="addMessage" method="post" action="#" runat="server">
+                  <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
+                  <asp:ScriptManager ID="MsgScriptManager" runat="server">
+                    <Scripts>
+                      <asp:ScriptReference Name="jquery" />
+                      <asp:ScriptReference Path="~/Scripts/WebForms/WebUIValidation.js" />
+                    </Scripts>
+                  </asp:ScriptManager>
                   <label for="to">To:</label>
-                  <input type="text" name="to" id="to" runat="server" />
-                   <div id="searchAuto" class="hide" hidden="hidden">
+                  <asp:TextBox ID="MsgTo" runat="server"></asp:TextBox>
+                  <div id="searchAuto" class="hide" hidden="hidden">
                     <ul id="autoSearch"></ul>
-                   </div>
+                  </div>
+                  <asp:RequiredFieldValidator ID="ReqTo" runat="server" ErrorMessage="To: is required" ControlToValidate="MsgTo" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="from">From:</label>
-                  <!--<input type="text" name="from" id="from" runat="server" />-->
-                  <asp:TextBox ID="FromMessage" runat="server" />
+                  <asp:TextBox ID="MsgFrom" runat="server"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="ReqFrom" runat="server" ErrorMessage="From: is required" ControlToValidate="MsgFrom" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="nMsgPhone">Phone:</label>
-                  <input type="text" name="nMsgPhone" id="nMsgPhone" />
+                  <asp:TextBox ID="nMsgPhone" runat="server"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="ReqPhone" runat="server" ErrorMessage="Phone: is required" ControlToValidate="nMsgPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="nMsgPhoneX">Ext:</label>
-                  <input type="text" name="nMsgPhoneX" id="nMsgPhoneX" />
+                  <asp:TextBox ID="nMsgPhoneX" runat="server"></asp:TextBox>
                   <label for="nMsgAlt">Alt:</label>
-                  <input type="text" name="nMsgAlt" id="nMsgAlt" />
+                  <asp:TextBox ID="nMsgAlt" runat="server"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="ReqAltPhone" runat="server" ErrorMessage="Alt: is required" ControlToValidate="nMsgAlt" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="nMsgAltX">Ext:</label>
-                  <input type="text" name="nMsgAltX" id="nMsgAltX" />
-                  <label for="quickMessage">Msg:</label>
-                  <select id="quickMessage" runat="server">
-                    <option value="-1">--Select--</option>
-                  </select><br />
+                  <asp:TextBox ID="nMsgAltX" runat="server"></asp:TextBox>
+                  <label for="QwkMessage">Msg:</label>
+                  <asp:DropDownList ID="QwkMessage" runat="server">
+                    <asp:ListItem Value="-1" Text="--Select--" />
+                  </asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="ReqQwkMessage" runat="server" ErrorMessage="Msg is required" ControlToValidate="QwkMessage" CssClass="ErrorMessage" Display="None" Text="*" InitialValue="-1"></asp:RequiredFieldValidator>
+                  <br />
                   <label for="to">Message:</label><br />
-                  <textarea id="message"></textarea>
+                  <asp:TextBox ID="Message" runat="server" TextMode="MultiLine"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="ReqMessage" runat="server" ErrorMessage="A Message is required" ControlToValidate="Message" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="notes">Operator_Notes:</label><br />
-                  <textarea id="notes"></textarea><br />
+                  <asp:TextBox ID="Notes" runat="server" TextMode="MultiLine"></asp:TextBox>
+                  <br />
                   <input type="checkbox" id="deliver" /><span class="left">Deliver Message</span>
                   <input type="checkbox" id="hold" /><span class="left">Hold Message</span>
                   <input type="checkbox" id="remove" /><span class="left">Remove Message</span>
-                  <input type="submit" id="submitMessage" name="submitMessage" value="Submit Message" />
+                  <asp:Button ID="submitMessage" runat="server" Text="Submit Message" />
                 </form>
               </div>
               <div class="right" id="clientInfo">
@@ -96,12 +110,14 @@
         </div>
         <div class="clearfix">&nbsp;</div>
       </div>
-      <div id="messageContainer" class="hide popup"><img src="images/exit.png" width="20" class="exit"/><ul id="allMessages"></ul></div>
+      <div id="messageContainer" class="hide popup">
+        <img src="images/exit.png" width="20" class="exit" /><ul id="allMessages"></ul>
+      </div>
     </div>
   </div>
   <div id="footer">
     <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
   </div>
-    <div id="containerBg"></div>
+  <div id="containerBg"></div>
 </body>
 </html>

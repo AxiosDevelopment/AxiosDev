@@ -34,7 +34,7 @@ $(function () {
         openWindow(window);
     });
     $('.exit').click(closeWindow);
-    $('#to').keyup(function () {
+    $('#MsgTo').keyup(function () {
         var searchStr = $(this).val();
         $('#searchAuto p').remove();
         if (searchStr === '') {
@@ -56,7 +56,7 @@ $(function () {
     })
     $(document).on('click', '#autoSearch li', function () {
         var result = $(this).text();
-        $('#to').val(result);
+        $('#MsgTo').val(result);
     });
     $(document).on('click', function (e) {
         if (!$(e.target).hasClass('stick')) {
