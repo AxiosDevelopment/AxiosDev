@@ -29,7 +29,7 @@ Public Class Main
     Dim rsData As SqlDataReader
 
     db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact FROM ClientUpdate WITH (NOLOCK) ORDER BY CustID ASC")
+        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact FROM CompanyInfo WITH (NOLOCK) ORDER BY CustID ASC")
 
     Dim row As HtmlTableRow
     Dim cell As HtmlTableCell

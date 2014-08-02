@@ -23,12 +23,12 @@
       </div>
       <div id="menu">
         <ul>
-          <li class="first"><a href="main.html" title="">Main Menu</a></li>
+          <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- CLEAR FORM CREATED NEW MESSAGE ID ON SUBMIT -->
           <li><a href="#" title="">New Message</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
-          <li><a href="#" title="">First Call</a></li>
+          <li><a href="FirstCall.aspx" title="">First Call</a></li>
           <li><a href="#" title="">Print Message</a></li>
         </ul>
       </div>

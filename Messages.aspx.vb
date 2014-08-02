@@ -71,7 +71,8 @@ Public Class Messages
     Dim rsData As SqlDataReader
 
     db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM ClientUpdate WITH (NOLOCK) WHERE CustID = " + clientId)
+        'rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM ClientUpdate WITH (NOLOCK) WHERE CustID = " + clientId)
+        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + clientId)
 
     Do While rsData.Read()
       clientMessageId.InnerHtml = rsData("CustID").ToString()

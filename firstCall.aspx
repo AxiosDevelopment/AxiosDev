@@ -22,7 +22,7 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="first"><a href="main.html" title="">Main Menu</a></li>
+				<li class="first"><a href="main.aspx" title="">Main Menu</a></li>
 				<li><a href="#" title="">Facility Messages</a></li>
 				<!-- POPUP WITH FORM TO FIND FIRST CALL -->
 				<li><a href="#" title="">Search First Calls</a></li>
