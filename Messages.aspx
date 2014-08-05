@@ -10,6 +10,7 @@
     @import "layout.css";
   </style>
   <!--jquery.min.js file is referenced in global.asax file and reference in this page thru ScriptManager below -->
+    <script type="text/javascript" src="Scripts/jquery.js"></script>
   <script type="text/javascript" src="Scripts/init.js"></script>
 </head>
 <body class="single">

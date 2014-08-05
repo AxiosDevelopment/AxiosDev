@@ -37,7 +37,7 @@
 						<h2>Main Menu</h2>
 					</div>
 					<div class="entry">
-						<div class="left" id="messages">
+						<div class="right" id="messages">
 						<table width="100%" id="MessageTable" runat="server">
 							<tr>
 								<th id="msgID"></th>
@@ -47,7 +47,7 @@
 							</tr>
 						</table>
 						</div>
-						<div class="right" id="clients">
+						<div class="left" id="clients">
 							<table width="100%" id="ClientTable" runat="server">
 							<tr>
 								<th id="clientID">Clt ID</th>
@@ -63,7 +63,7 @@
 			<div class="clearfix">&nbsp;</div>
 		</div>
 	</div>
-
+</div>
 <div id="footer">
 	<p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
 </div>
