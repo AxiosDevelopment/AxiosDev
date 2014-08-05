@@ -703,11 +703,34 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 }
 
 #messageContainer {
-    width: 300px;
+    width: 350px;
     height: 250px;
-    background: lightgray;
+    background: #fff;
+    border: 1px solid lightgray;
     position: absolute;
     z-index: 9999;
+}
+
+#messageContainer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messageContainer ul li {
+    padding: 5px 15px;
+}
+
+#messageContainer ul li:nth-child(even) {
+    background: #efefef;
+}
+
+#messageContainer ul li a {
+    text-decoration: none;
+}
+
+#messageContainer ul li span {
+    padding-left: 10px;
 }
 
 /** ERROR MESSAGES */

@@ -130,7 +130,18 @@
         <div class="clearfix">&nbsp;</div>
       </div>
       <div id="messageContainer" class="hide popup">
-        <img src="images/exit.png" width="20" class="exit" /><ul id="allMessages"></ul>
+        <img src="images/exit.png" width="20" class="exit" />
+         <ul id="allMessages">
+            <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+         </ul>
       </div>
     </div>
   </div>
