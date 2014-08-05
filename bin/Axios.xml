@@ -30,6 +30,14 @@ addMessage control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.Messages.MessageID">
+	<summary>
+MessageID control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.Messages.ValidationSummary1">
 	<summary>
 ValidationSummary1 control.
@@ -224,8 +232,7 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="M:Axios.Messages.GetMessage(System.Int32)">
 	<summary>
 	</summary>
-	<param name="msgId"></param>
-	<returns></returns>
+	<param name="id"></param>
 	<remarks></remarks>
 </member><member name="M:Axios.Messages.submitMessage_Click(System.Object,System.EventArgs)">
 	<summary>
@@ -234,7 +241,7 @@ To modify move field declaration from designer file to code-behind file.
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
-</member><member name="M:Axios.Messages.SaveMessage">
+</member><member name="M:Axios.Messages.InsertMessage">
 	<summary>
  Save New Message
  </summary>
