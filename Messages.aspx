@@ -11,6 +11,23 @@
   </style>
   <!--jquery.min.js file is referenced in global.asax file and reference in this page thru ScriptManager below -->
   <script type="text/javascript" src="Scripts/init.js"></script>
+  <script type="text/javascript">
+    function messagedSaved()
+    {
+      alert("Your message was saved successfully!");
+      window.location = "Main.aspx";
+    }
+
+    function messagedSavedError()
+    {
+      alert("There was an error inserting/updating your message. Please contact an administrator for assistance.");
+    }
+
+    function messageLoadError()
+    {
+      alert("There was an error loading the message page. Please contact an administrator for assistance.");
+    }
+  </script>
 </head>
 <body class="single">
   <div id="wrapper">
@@ -44,6 +61,7 @@
             <div class="entry">
               <div class="left" id="newMessage">
                 <form id="addMessage" method="post" action="#" runat="server">
+                  <asp:HiddenField ID="MessageID" runat="server" />
                   <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
                   <asp:ScriptManager ID="MsgScriptManager" runat="server">
                     <Scripts>

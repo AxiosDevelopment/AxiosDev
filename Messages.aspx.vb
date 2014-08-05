@@ -7,7 +7,6 @@ Public Class Messages
 
   Protected clientGreeting As String = ""
     Protected cid As String = ""
-    Public fromNames As String = ""
 
     ''' <summary>
     ''' 
@@ -17,28 +16,33 @@ Public Class Messages
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        Dim successed As Boolean
         Dim clientId As String
         Dim msgId As Integer
 
         If Not (Page.IsPostBack) Then
 
-            ' Get Lookup Data
-            GetMessageLookup()
+      Try
 
-            msgId = Convert.ToInt32(Request.QueryString.Get("MsgId"))
-            clientId = Request.QueryString.Get("ClientId").ToString()
+        ' Get Lookup Data
+        GetMessageLookup()
 
-            If Not String.IsNullOrEmpty(clientId) Then
-                cid = clientId
-                successed = GetClient(clientId)
+        msgId = Convert.ToInt32(Request.QueryString.Get("MsgId"))
+        clientId = Request.QueryString.Get("ClientId").ToString()
 
-                If msgId > 0 Then
-                    'Message Exists
+        If Not String.IsNullOrEmpty(clientId) Then
+          cid = clientId
+          MessageID.Value = msgId.ToString()
+          GetClient(clientId)
 
+          If msgId > 0 Then
+            'Message Exists
+            GetMessage(msgId)
+          End If
+        End If
 
-                End If
-            End If
+      Catch ex As Exception
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
+      End Try
 
         End If
 
@@ -67,7 +71,7 @@ Public Class Messages
     ''' 
     ''' </summary>
     ''' <remarks></remarks>
-    Private Function GetClient(id As String) As Boolean
+  Private Sub GetClient(id As String)
 
         Dim db As dbUtil 'access to db functions
         Dim rsData As SqlDataReader
@@ -83,31 +87,40 @@ Public Class Messages
             clientMainInfo.Value = db.ClearNull(rsData("ClientData"))
         Loop
 
-        Return True
 
-    End Function
+  End Sub
 
     ''' <summary>
     ''' 
     ''' </summary>
-    ''' <param name="msgId"></param>
-    ''' <returns></returns>
+  ''' <param name="id"></param>
     ''' <remarks></remarks>
-    Private Function GetMessage(msgId As Integer) As Boolean
+  Private Sub GetMessage(id As Integer)
 
         Dim db As dbUtil 'access to db functions
         Dim rsData As SqlDataReader
+    Dim SQL As New StringBuilder()
 
         db = New dbUtil()
-        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM ClientUpdate WITH (NOLOCK) WHERE CustID = " + clientId)
 
-        Do While rsData.Read()
+    SQL.Append("SELECT MsgID, MsgDateTime, MsgCustID, MsgDate, MsgTime, MsgTo, MsgFrom, MsgPhone, MsgExt, MsgAltPhone, MsgQwkMsgs, MsgMessage, MsgOperatorNotes, MsgHoldMsg, MsgDeliver ")
+    SQL.Append("FROM Msg WITH (NOLOCK) ")
+    SQL.Append("WHERE MsgID = " & id.ToString())
 
-        Loop
+    rsData = db.GetDataReader(SQL.ToString())
 
-        Return True
+    Do While rsData.Read()
+      MsgTo.Text = If(Not String.IsNullOrEmpty(rsData("MsgTo")), rsData("MsgTo"), String.Empty)
+      MsgFrom.Text = If(Not String.IsNullOrEmpty(rsData("MsgFrom")), rsData("MsgFrom"), String.Empty)
+      nMsgPhone.Text = If(Not String.IsNullOrEmpty(rsData("MsgPhone")), rsData("MsgPhone"), String.Empty)
+      nMsgPhoneX.Text = If(Not String.IsNullOrEmpty(rsData("MsgExt")), rsData("MsgExt"), String.Empty)
+      nMsgAlt.Text = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone")), rsData("MsgAltPhone"), String.Empty)
+      QwkMessage.SelectedValue = QwkMessage.Items.FindByText(rsData("MsgQwkMsgs")).Value
+      Message.Text = If(Not String.IsNullOrEmpty(rsData("MsgMessage")), rsData("MsgMessage"), String.Empty)
+      Notes.Text = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes")), rsData("MsgOperatorNotes"), String.Empty)
+    Loop
 
-    End Function
+  End Sub
 
     ''' <summary>
     ''' Event Handler on Submit Message button
@@ -116,6 +129,31 @@ Public Class Messages
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub submitMessage_Click(sender As Object, e As EventArgs) Handles submitMessage.Click
+
+    If Page.IsValid Then
+
+      Try
+
+        If MessageID.Value = "0" Then
+          InsertMessage()
+        Else
+          UpdateMessage()
+        End If
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopup", "messagedSaved()", True)
+
+      Catch ex As Exception
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopupError", "messagedSavedError()", True)
+
+      End Try
+    End If
+
+  End Sub
+
+  ''' <summary>
+  ''' Save New Message
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub InsertMessage()
 
         Dim returnedID As Integer
         Dim SQL As New StringBuilder()
@@ -145,17 +183,7 @@ Public Class Messages
         SQL.Append("NULL,") 'MsgOnCall
         SQL.Append("NULL)") 'MsgProcedure
 
-
         returnedID = db.GetID(SQL.ToString())
-        Response.Redirect("Main.aspx")
-
-    End Sub
-
-  ''' <summary>
-  ''' Save New Message
-  ''' </summary>
-  ''' <remarks></remarks>
-  Private Sub SaveMessage()
 
   End Sub
 
@@ -164,6 +192,29 @@ Public Class Messages
   ''' </summary>
   ''' <remarks></remarks>
   Private Sub UpdateMessage()
+
+    Dim returnedID As Integer
+    Dim SQL As New StringBuilder()
+    Dim test As String = ""
+    Dim db As dbUtil 'access to db functions
+    db = New dbUtil()
+
+    SQL.Append("UPDATE Msg SET ")
+    SQL.Append("MsgTo = '" & MsgTo.Text & "',")
+    SQL.Append("MsgFrom = '" & MsgFrom.Text & "',")
+    SQL.Append("MsgPhone = '" & nMsgPhone.Text & "',")
+    SQL.Append("MsgExt = '" & nMsgPhoneX.Text & "',")
+    SQL.Append("MsgAltPhone = '" & nMsgAlt.Text & "',")
+    SQL.Append("MsgQwkMsgs = '" & QwkMessage.SelectedItem.Text & "',")
+    SQL.Append("MsgMessage = '" & Message.Text & "',")
+    SQL.Append("MsgOperatorNotes = '" & Notes.Text & "',")
+    SQL.Append("MsgHoldMsg = 1,")
+    SQL.Append("MsgDelDate = NULL,")
+    SQL.Append("MsgDelTime = NULL,")
+    SQL.Append("MsgDeliver = 0 ")
+    SQL.Append("WHERE MsgID = " & MessageID.Value)
+
+    returnedID = db.GetID(SQL.ToString())
 
   End Sub
 
