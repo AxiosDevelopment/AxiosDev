@@ -206,7 +206,8 @@ hr {
 /** PAGE */
 
 #page {
-	padding: 0px 20px;
+	padding: 0 20px;
+    position: relative;
 }
 
 /** BANNER */
@@ -700,15 +701,15 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 }
 
 .popup {
+    border: 1px solid lightgray;
+    position: absolute;
+    z-index: 9999;
 }
 
 #messageContainer {
     width: 350px;
     height: 250px;
     background: #fff;
-    border: 1px solid lightgray;
-    position: absolute;
-    z-index: 9999;
 }
 
 #messageContainer ul {
@@ -731,6 +732,10 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 
 #messageContainer ul li span {
     padding-left: 10px;
+}
+
+#messagePop, #fCall, #axiosFcall {
+    background: lightgray;
 }
 
 /** ERROR MESSAGES */

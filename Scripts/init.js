@@ -20,6 +20,8 @@ function openWindow(popUp) {
     var popWidth = popUp.width() / 2;
     var hCenter = screenWidth - popWidth;
     var vCenter = wheight - popHeight;
+    console.log(wheight);
+    console.log(popHeight);
     popUp.css({ 'left': hCenter, 'top': vCenter });
     $('#containerBg').css('height', height);
     $('#containerBg').fadeIn(200); 	//brings up opaque black background
@@ -31,6 +33,21 @@ $(function () {
     $('#searchMessages').on('click', function (e) { 
         e.preventDefault();
         var window = $('#messageContainer');
+        openWindow(window);
+    });
+    $('#printMessage').on('click', function (e) {
+        e.preventDefault();
+        var window = $('#messagePop');
+        openWindow(window);
+    });
+    $('#pFCall').on('click', function (e) {
+        e.preventDefault();
+        var window = $('#fCall1');
+        openWindow(window);
+    });
+    $('#sci').on('click', function (e) {
+        e.preventDefault();
+        var window = $('#axiosFcall');
         openWindow(window);
     });
     $('.exit').click(closeWindow);

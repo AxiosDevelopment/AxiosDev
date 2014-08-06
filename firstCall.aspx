@@ -9,6 +9,8 @@
   <style type="text/css">
     @import "layout.css";
   </style>
+  <script type="text/javascript" src="Scripts/jquery.js"></script>
+  <script type="text/javascript" src="Scripts/init.js"></script>
 </head>
 <body class="single">
   <div id="wrapper">
@@ -23,11 +25,11 @@
       <div id="menu">
         <ul>
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
-          <li><a href="#" title="">Facility Messages</a></li>
           <!-- POPUP WITH FORM TO FIND FIRST CALL -->
           <li><a href="#" title="">Search First Calls</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-          <li><a href="#" title="">Fax First Call</a></li>
+          <li><a id="pFCall" href="#" title="">Print First Call</a></li>
+            <li><a id="sci" href="#" title="">Print SCI</a></li>
           <li><a href="#" title="">Doctors</a></li>
           <li><a href="#" title="">Facilities</a></li>
         </ul>
@@ -264,11 +266,14 @@
           </div>
         </div>
         <div class="clearfix">&nbsp;</div>
+         <div id="fCall1" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/fCallAxios.png"/></div>
+        <div id="axiosFcall" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png"/></div>
       </div>
     </div>
   </div>
   <div id="footer">
     <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
   </div>
+  <div id="containerBg"></div>
 </body>
 </html>
