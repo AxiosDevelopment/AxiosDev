@@ -10,6 +10,7 @@
     @import "layout.css";
   </style>
   <!--jquery.min.js file is referenced in global.asax file and reference in this page thru ScriptManager below -->
+  <script type="text/javascript" src="Scripts/jquery.js"></script>
   <script type="text/javascript" src="Scripts/init.js"></script>
   <script type="text/javascript">
     function messagedSaved()
@@ -46,7 +47,7 @@
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
           <li><a href="FirstCall.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
-          <li><a href="#" title="">Print Message</a></li>
+          <li><a id="printMessage" href="#" title="">Print Message</a></li>
         </ul>
       </div>
       <div id="page">
@@ -127,10 +128,22 @@
           </div>
         </div>
         <div class="clearfix">&nbsp;</div>
+        <div id="messagePop" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/message.png"/></div>
       </div>
       <div id="messageContainer" class="hide popup">
-        <img src="images/exit.png" width="20" class="exit" /><ul id="allMessages"></ul>
-      </div>
+        <img src="images/exit.png" width="20" class="exit" />
+         <ul id="allMessages">
+            <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+         </ul>
+       </div>
     </div>
   </div>
   <div id="footer">

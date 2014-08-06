@@ -206,7 +206,8 @@ hr {
 /** PAGE */
 
 #page {
-	padding: 0px 20px;
+	padding: 0 20px;
+    position: relative;
 }
 
 /** BANNER */
@@ -469,7 +470,6 @@ th, td {
 #clients {
 	border: 1px solid #606060;
 	width: 450px;
-	height: 300px; 
 }
 
 #clientID {
@@ -701,14 +701,41 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 }
 
 .popup {
+    border: 1px solid lightgray;
+    position: absolute;
+    z-index: 9999;
 }
 
 #messageContainer {
-    width: 300px;
+    width: 350px;
     height: 250px;
+    background: #fff;
+}
+
+#messageContainer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messageContainer ul li {
+    padding: 5px 15px;
+}
+
+#messageContainer ul li:nth-child(even) {
+    background: #efefef;
+}
+
+#messageContainer ul li a {
+    text-decoration: none;
+}
+
+#messageContainer ul li span {
+    padding-left: 10px;
+}
+
+#messagePop, #fCall, #axiosFcall {
     background: lightgray;
-    position: absolute;
-    z-index: 9999;
 }
 
 /** ERROR MESSAGES */
