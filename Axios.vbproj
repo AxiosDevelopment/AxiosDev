@@ -310,7 +310,7 @@
     </Compile>
     <Compile Include="Main.aspx.vb">
       <DependentUpon>Main.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Messages.aspx.designer.vb">
       <DependentUpon>Messages.aspx</DependentUpon>
