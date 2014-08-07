@@ -7,7 +7,7 @@ Public Class Global_asax
     ' Fires when the application is started
         ScriptManager.ScriptResourceMapping.AddDefinition("jquery",
                                                           New ScriptResourceDefinition With
-                                                          {.Path = "Scripts/jquery-2.1.1.min.js"})
+                                                          {.Path = "~/Scripts/jquery-2.1.1.min.js"})
     End Sub
 
     Sub Session_Start(ByVal sender As Object, ByVal e As EventArgs)

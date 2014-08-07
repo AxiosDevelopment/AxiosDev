@@ -65,7 +65,7 @@ Partial Public Class Messages
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents MsgScriptManager As Global.System.Web.UI.WebControls.ScriptManager
+    Protected WithEvents MsgScriptManager As Global.System.Web.UI.ScriptManager
 
     '''<summary>
     '''MsgTo control.

@@ -39,12 +39,12 @@ Public Class Main
             Do While rsData.Read()
                 row = New HtmlTableRow()
                 cell = New HtmlTableCell
-                a = New HtmlAnchor With {.HRef = "Messages.aspx?MsgId=0&ClientId=" + rsData("CustID").ToString()}
+                a = New HtmlAnchor With {.HRef = "~/Messages.aspx?MsgId=0&ClientId=" + rsData("CustID").ToString()}
                 a.InnerText = rsData("CustID")
                 cell.Controls.Add(a)
                 row.Controls.Add(cell)
                 cell = New HtmlTableCell
-                a = New HtmlAnchor With {.HRef = "Messages.aspx??MsgId=0&ClientId=" + rsData("CustID").ToString()}
+                a = New HtmlAnchor With {.HRef = "~/Messages.aspx??MsgId=0&ClientId=" + rsData("CustID").ToString()}
                 a.InnerText = rsData("CompanyName")
                 cell.Controls.Add(a)
                 row.Controls.Add(cell)
@@ -67,14 +67,14 @@ Public Class Main
 
     End Sub
 
-  ''' <summary>
-  ''' Gets the list of messages in Msg table
-  ''' </summary>
-  ''' <remarks></remarks>
-  Private Sub GetMessages()
+    ''' <summary>
+    ''' Gets the list of messages in Msg table
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub GetMessages()
 
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
+        Dim db As dbUtil 'access to db functions
+        Dim rsData As SqlDataReader
         Dim strSQL As New StringBuilder()
 
         strSQL.Append("SELECT m.MsgID AS MessageID, 'N/A' AS Status, 'No' AS FirstCall, m.MsgCustID AS CustId, ci.CompanyName AS CompanyName ")
@@ -102,9 +102,9 @@ Public Class Main
                 'Message ID
                 cell = New HtmlTableCell
                 If String.Format(rsData("FirstCall")).ToUpper() = "YES" Then
-                    a = New HtmlAnchor With {.HRef = "firstCall.aspx?FirstCallId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CustID").ToString()}
+                    a = New HtmlAnchor With {.HRef = "~/firstCall.aspx?FirstCallId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CustID").ToString()}
                 Else
-                    a = New HtmlAnchor With {.HRef = "Messages.aspx?MsgId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CustID").ToString()}
+                    a = New HtmlAnchor With {.HRef = "~/Messages.aspx?MsgId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CustID").ToString()}
                 End If
                 a.InnerText = rsData(0)
                 cell.Controls.Add(a)
@@ -133,6 +133,6 @@ Public Class Main
             MessageTable.Controls.Add(row)
         End If
 
-  End Sub
+    End Sub
 
 End Class
