@@ -51,7 +51,7 @@
                 <asp:ScriptManager ID="MsgScriptManager" runat="server">
                   <Scripts>
                     <asp:ScriptReference Name="jquery" />
-                    <asp:ScriptReference Path="~/Scripts/WebForms/WebUIValidation.js" />
+                    <asp:ScriptReference Path="Scripts/WebForms/WebUIValidation.js" />
                   </Scripts>
                 </asp:ScriptManager>
                 <div class="left" id="fCallForm">
