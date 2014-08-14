@@ -58,7 +58,7 @@ $(function () {
             $('#searchAuto').hide();
             return;
         }
-        $('#searchAuto').prepend('<p align="center"><img src="images/loading.gif" /></p>')
+        $('#searchAuto').prepend('<p align="center"><img src="images/loading.gif" width="60"/></p>')
         $('#searchAuto').show();
         delay(function () {
             $.ajax({
@@ -75,6 +75,19 @@ $(function () {
         var result = $(this).text();
         $('#MsgTo').val(result);
     });
+
+    /** THIS triggers a save for the various "update buttons" and their associated textareas **/
+    $('.update').on('click', function () {
+        var updateId = $(this).attr('id'); //gets the ID of the textarea
+        var dataFieldValue = $(this).next('textarea').val(); //Gets the value of the data field associated with the update
+        $.ajax({
+            url: "updateInfo.aspx?info=" + dataFieldValue + "&id=" + updateId,
+            cache: false
+        }).done(function (data) {
+            alert("Updated");
+        });
+    });
+
     $(document).on('click', function (e) {
         if (!$(e.target).hasClass('stick')) {
             $('#searchAuto').hide();
