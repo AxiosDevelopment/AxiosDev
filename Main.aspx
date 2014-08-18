@@ -40,7 +40,6 @@
 						<div class="right" id="messages">
 						<table width="100%" id="MessageTable" runat="server">
 							<tr>
-								<th id="msgID"></th>
 								<th id="status">Status</th>
 								<th id="fCall">FCall</th>
 								<th id="client">Client</th>
@@ -50,9 +49,9 @@
 						<div class="left" id="clients">
 							<table width="100%" id="ClientTable" runat="server">
 							<tr>
-								<th id="clientID">Clt ID</th>
 								<th id="clientName">Client Name</th>
 								<th id="onCall">On Call</th>
+                <th id="lastUpdated">Last Updated</th>
 							</tr>
 							</table>
 						</div>

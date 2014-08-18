@@ -43,7 +43,7 @@
         <ul>
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- CLEAR FORM CREATED NEW MESSAGE ID ON SUBMIT -->
-          <li><a href="#" title="">New Message</a></li>
+          <li><a href="Messages.aspx?ClientId=<%=cid%>&MsgId=0" title="">New Message</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
           <li><a href="FirstCall.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
@@ -111,7 +111,8 @@
                 <div id="onCall" class="left">
                   <label for="onCallInfo">Counselor On Call</label>
                   <button class="right">Update</button>
-                  <textarea id="onCallInfo"></textarea><br />
+                  <textarea id="onCallInfo"></textarea>
+                  <br />
                   <br />
                   <label for="onCallNotes">Additional Notes</label>
                   <button class="right">Update</button>
