@@ -1,75 +1,75 @@
 ﻿Imports System.Data.SqlClient
 Public Class firstCall
-  Inherits System.Web.UI.Page
+    Inherits System.Web.UI.Page
 
-  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-    Dim successed As Boolean
-    Dim clientId As String
-    Dim firstCallId As Integer
+        Dim successed As Boolean
+        Dim clientId As String
+        Dim firstCallId As Integer
 
-    If Not (Page.IsPostBack) Then
+        If Not (Page.IsPostBack) Then
 
-      ' Get Lookup Data
-      'GetFirstCallLookup()
+            ' Get Lookup Data
+            'GetFirstCallLookup()
 
-      firstCallId = Convert.ToInt32(Request.QueryString.Get("FirstCallId"))
-      clientId = Request.QueryString.Get("ClientId").ToString()
+            firstCallId = Convert.ToInt32(Request.QueryString.Get("FirstCallId"))
+            clientId = Request.QueryString.Get("ClientId").ToString()
 
-      If Not String.IsNullOrEmpty(clientId) Then
-        successed = GetClient(clientId)
+            If Not String.IsNullOrEmpty(clientId) Then
+                successed = GetClient(clientId)
 
-        If firstCallId > 0 Then
-          'Message Exists
+                If firstCallId > 0 Then
+                    'Message Exists
 
+
+                End If
+            End If
 
         End If
-      End If
+    End Sub
 
-    End If
-  End Sub
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Function GetClient(Id As String) As Boolean
 
-  ''' <summary>
-  ''' 
-  ''' </summary>
-  ''' <remarks></remarks>
-  Private Function GetClient(Id As String) As Boolean
+        Dim db As dbUtil 'access to db functions
+        Dim rsData As SqlDataReader
 
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
+        db = New dbUtil()
+        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + Id)
 
-    db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + Id)
+        Do While rsData.Read()
+            ClientHeader.Text = rsData("CompanyName")
+            clientId.Text = rsData("CustID").ToString()
+            clientName.Text = rsData("CompanyName")
+        Loop
 
-    Do While rsData.Read()
-      ClientHeader.Text = rsData("CompanyName")
-      clientId.Text = rsData("CustID").ToString()
-      clientName.Text = rsData("CompanyName")
-    Loop
+        Return True
 
-    Return True
+    End Function
 
-  End Function
+    Private Function GetFirstCall(id As String, fcId As Integer) As Boolean
+        Dim db As dbUtil 'access to db functions
+        Dim rsData As SqlDataReader
 
-  Private Function GetFirstCall(id As String, fcId As Integer) As Boolean
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
+        db = New dbUtil()
+        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
 
-    db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
+        Do While rsData.Read()
 
-    Do While rsData.Read()
+            If fcId = 0 Then
+                msgDate.Text = DateTime.Now()
+                msgTime.Text = FormatDateTime(DateTime.Now, DateFormat.LongTime)
+            Else
 
-      If fcId = 0 Then
-        msgDate.Text = DateTime.Now()
-        msgTime.Text = FormatDateTime(DateTime.Now, DateFormat.LongTime)
-      Else
+            End If
 
-      End If
+        Loop
 
-    Loop
-
-    Return True
-  End Function
+        Return True
+    End Function
 
 End Class
