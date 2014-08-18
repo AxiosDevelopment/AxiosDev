@@ -16,7 +16,6 @@ C:\Projects\Axios\obj\Debug\Axios.vbproj.GenerateResource.Cache
 C:\Projects\Axios\obj\Debug\Axios.dll
 C:\Projects\Axios\obj\Debug\Axios.xml
 C:\Projects\Axios\obj\Debug\Axios.pdb
-C:\Projects\Axios\obj\Debug\Axios.vbprojResolveAssemblyReference.cache
 C:\Users\David\Desktop\AxiosClone\AxiosDev\bin\Axios.dll.config
 C:\Users\David\Desktop\AxiosClone\AxiosDev\bin\Axios.dll
 C:\Users\David\Desktop\AxiosClone\AxiosDev\bin\Axios.pdb

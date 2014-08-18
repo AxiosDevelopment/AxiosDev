@@ -23,15 +23,6 @@ Partial Public Class Main
   Protected WithEvents MessageTable As Global.System.Web.UI.HtmlControls.HtmlTable
 
   '''<summary>
-  '''msgID control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents msgID As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
   '''status control.
   '''</summary>
   '''<remarks>
@@ -68,15 +59,6 @@ Partial Public Class Main
   Protected WithEvents ClientTable As Global.System.Web.UI.HtmlControls.HtmlTable
 
   '''<summary>
-  '''clientID control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents clientID As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
   '''clientName control.
   '''</summary>
   '''<remarks>
@@ -93,4 +75,13 @@ Partial Public Class Main
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents onCall As Global.System.Web.UI.HtmlControls.HtmlTableCell
+
+  '''<summary>
+  '''lastUpdated control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents lastUpdated As Global.System.Web.UI.HtmlControls.HtmlTableCell
 End Class

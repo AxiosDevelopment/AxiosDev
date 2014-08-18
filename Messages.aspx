@@ -43,7 +43,7 @@
         <ul>
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- CLEAR FORM CREATED NEW MESSAGE ID ON SUBMIT -->
-          <li><a href="#" title="">New Message</a></li>
+          <li><a href="Messages.aspx?ClientId=<%=cid%>&MsgId=0" title="">New Message</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
           <li><a href="FirstCall.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
@@ -110,16 +110,20 @@
               <div class="right" id="clientInfo">
                 <div id="onCall" class="left">
                   <label for="onCallInfo">Counselor On Call</label>
-                  <button class="right">Update</button>
+                  <button class="right update" id="updateMainCounselor">Update</button>
                   <textarea id="onCallInfo"></textarea><br />
                   <br />
+                  <label for="secondaryOnCallInfo">Secondary</label>
+                  <button class="right update" id="updateSecondaryCounselor">Update</button>
+                  <textarea id="secondaryOnCallInfo"></textarea><br /> 
+                  <br />
                   <label for="onCallNotes">Additional Notes</label>
-                  <button class="right">Update</button>
+                  <button class="right update" id="updateAdditionalNotes">Update</button>
                   <textarea id="onCallNotes"></textarea>
                 </div>
                 <div id="mainInfo" class="right">
                   <label for="clientMainInfo">Client Information</label>
-                  <button class="right">Update</button>
+                  <button class="right update" id="updateClientInfo">Update</button>
                   <textarea id="clientMainInfo" runat="server"></textarea><br />
                 </div>
               </div>
