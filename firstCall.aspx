@@ -30,8 +30,6 @@
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
           <li><a id="pFCall" href="#" title="">Print First Call</a></li>
             <li><a id="sci" href="#" title="">Print SCI</a></li>
-          <li><a href="#" title="">Doctors</a></li>
-          <li><a href="#" title="">Facilities</a></li>
         </ul>
       </div>
       <div id="page">

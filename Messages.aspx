@@ -110,17 +110,20 @@
               <div class="right" id="clientInfo">
                 <div id="onCall" class="left">
                   <label for="onCallInfo">Counselor On Call</label>
-                  <button class="right">Update</button>
-                  <textarea id="onCallInfo"></textarea>
+                  <button class="right update" id="updateMainCounselor">Update</button>
+                  <textarea id="onCallInfo"></textarea><br />
                   <br />
+                  <label for="secondaryOnCallInfo">Secondary</label>
+                  <button class="right update" id="updateSecondaryCounselor">Update</button>
+                  <textarea id="secondaryOnCallInfo"></textarea><br /> 
                   <br />
                   <label for="onCallNotes">Additional Notes</label>
-                  <button class="right">Update</button>
+                  <button class="right update" id="updateAdditionalNotes">Update</button>
                   <textarea id="onCallNotes"></textarea>
                 </div>
                 <div id="mainInfo" class="right">
                   <label for="clientMainInfo">Client Information</label>
-                  <button class="right">Update</button>
+                  <button class="right update" id="updateClientInfo">Update</button>
                   <textarea id="clientMainInfo" runat="server"></textarea><br />
                 </div>
               </div>

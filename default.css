@@ -542,16 +542,16 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 	width: 510px;
 }
 
-#onCallInfo, #onCallNotes {
+#onCallInfo, #onCallNotes, #secondaryOnCallInfo {
 	width: 180px;
 }
 
-#onCallInfo {
-	height: 200px;
+#onCallInfo, #secondaryOnCallInfo {
+	height: 100px;
 }
 
 #onCallNotes {
-	height: 272px;
+	height: 225px;
 }
 
 #clientMainInfo {
