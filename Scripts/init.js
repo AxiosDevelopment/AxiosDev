@@ -33,8 +33,16 @@ $(function () {
     $('#searchMessages').on('click', function (e) { 
         e.preventDefault();
         var window = $('#messageContainer');
-        openWindow(window);
+        $.ajax({
+            url: "retrieveAllMessagesForClient.aspx",
+            cache: false
+        })
+        .done(function (data) {
+            $('#allMessages').html(data);
+            openWindow(window);
+        });
     });
+
     $('#printMessage').on('click', function (e) {
         e.preventDefault();
         var window = $('#messagePop');
