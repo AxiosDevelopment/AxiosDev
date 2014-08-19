@@ -11,6 +11,20 @@
   </style>
   <script type="text/javascript" src="Scripts/jquery.js"></script>
   <script type="text/javascript" src="Scripts/init.js"></script>
+  <script type="text/javascript">
+    function messagedSaved() {
+      alert("Your first call message was saved successfully!");
+      window.location = "Main.aspx";
+    }
+
+    function messagedSavedError() {
+      alert("There was an error inserting/updating your first call message. Please contact an administrator for assistance.");
+    }
+
+    function messageLoadError() {
+      alert("There was an error loading the first call page. Please contact an administrator for assistance.");
+    }
+  </script>
 </head>
 <body class="single">
   <div id="wrapper">
@@ -29,13 +43,14 @@
           <li><a href="#" title="">Search First Calls</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
           <li><a id="pFCall" href="#" title="">Print First Call</a></li>
-            <li><a id="sci" href="#" title="">Print SCI</a></li>
+          <li><a id="sci" href="#" title="">Print SCI</a></li>
         </ul>
       </div>
       <div id="page">
         <div id="banner-empty">
           <div class="title">
-            <h2 align="center"><asp:Literal ID="ClientHeader" runat="server" /></h2>
+            <h2 align="center">
+              <asp:Literal ID="ClientHeader" runat="server" /></h2>
           </div>
         </div>
         <div id="content">
@@ -45,6 +60,7 @@
             </div>
             <div class="entry">
               <form id="addFirstCall" method="post" action="#" runat="server">
+                <asp:HiddenField ID="FirstCallID" runat="server" />
                 <asp:ValidationSummary ID="ValidationSummaryFirstCall" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
                 <asp:ScriptManager ID="MsgScriptManager" runat="server">
                   <Scripts>
@@ -264,8 +280,10 @@
           </div>
         </div>
         <div class="clearfix">&nbsp;</div>
-         <div id="fCall1" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/fCallAxios.png"/></div>
-        <div id="axiosFcall" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png"/></div>
+        <div id="fCall1" class="hide popup">
+          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCallAxios.png" /></div>
+        <div id="axiosFcall" class="hide popup">
+          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png" /></div>
       </div>
     </div>
   </div>

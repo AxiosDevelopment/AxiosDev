@@ -210,13 +210,4 @@ Partial Public Class Messages
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents submitMessage As Global.System.Web.UI.WebControls.Button
-
-  '''<summary>
-  '''clientMainInfo control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents clientMainInfo As Global.System.Web.UI.HtmlControls.HtmlTextArea
 End Class

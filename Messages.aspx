@@ -111,22 +111,22 @@
                 <div id="onCall" class="left">
                   <label for="onCallInfo">Counselor On Call</label>
                   <button class="right updateCounselor" id="updateMainCounselor">Update</button>
-                  <input type="text" id="primaryOnCall" name="onCallInfo" class="onCall"/>
-                  <input type="text" id="primaryContact" name="onCallInfo" class="onCall mTop5"/><br />
+                  <input type="text" id="primaryOnCall" name="onCallInfo" class="onCall" value="<%=PrimaryContactName%>" />
+                  <input type="text" id="primaryContact" name="onCallInfo" class="onCall mTop5" value="<%=PrimaryContactInfo%>" /><br />
                   <br />
                   <label for="secondaryOnCallInfo">Secondary</label>
                   <button class="right updateCounselor" id="updateSecondaryCounselor">Update</button>
-                  <input type="text" id="secondaryOnCall" name="secondaryOnCall" class="onCall"/>
-                  <input type="text" id="secondaryContact" name="secondaryContact" class="onCall mTop5"/><br />
+                  <input type="text" id="secondaryOnCall" name="secondaryOnCall" class="onCall" value="<%=SecondaryContactName%>" />
+                  <input type="text" id="secondaryContact" name="secondaryContact" class="onCall mTop5" value="<%=SecondaryContactInfo%>" /><br />
                   <br />
                   <label for="onCallNotes">Additional Notes</label>
                   <button class="right update" id="updateAdditionalNotes">Update</button>
-                  <textarea id="onCallNotes" class="onCall"></textarea>
+                  <textarea id="onCallNotes" class="onCall"><%=AdditionalNotes%></textarea>
                 </div>
                 <div id="mainInfo" class="right">
                   <label for="clientMainInfo">Client Information</label>
                   <button class="right update" id="updateClientInfo">Update</button>
-                  <textarea id="clientMainInfo" runat="server"></textarea><br />
+                  <textarea id="clientMainInfo"><%=ClientInformation%></textarea><br />
                 </div>
               </div>
             </div>

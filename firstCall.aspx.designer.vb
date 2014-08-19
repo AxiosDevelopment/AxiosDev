@@ -32,6 +32,15 @@ Partial Public Class firstCall
   Protected WithEvents addFirstCall As Global.System.Web.UI.HtmlControls.HtmlForm
 
   '''<summary>
+  '''FirstCallID control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents FirstCallID As Global.System.Web.UI.WebControls.HiddenField
+
+  '''<summary>
   '''ValidationSummaryFirstCall control.
   '''</summary>
   '''<remarks>

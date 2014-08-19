@@ -7,6 +7,12 @@ Public Class Messages
 
   Protected clientGreeting As String = ""
   Protected cid As String = ""
+  Protected PrimaryContactName As String = ""
+  Protected PrimaryContactInfo As String = ""
+  Protected SecondaryContactName As String = ""
+  Protected SecondaryContactInfo As String = ""
+  Protected AdditionalNotes As String = ""
+  Protected ClientInformation As String = ""
 
   ''' <summary>
   ''' 
@@ -33,6 +39,7 @@ Public Class Messages
           cid = clientId
           MessageID.Value = msgId.ToString()
           GetClient(clientId)
+          GetContact(clientId)
 
           If msgId > 0 Then
             'Message Exists
@@ -62,7 +69,6 @@ Public Class Messages
 
     Do While rsData.Read()
       QwkMessage.Items.Add(New ListItem(rsData("QwkMsg").ToString(), rsData("QwkMsgID").ToString()))
-      'quickMessage.Items.Add(New ListItem(rsData("QwkMsg").ToString(), rsData("QwkMsgID").ToString()))
     Loop
 
   End Sub
@@ -77,15 +83,15 @@ Public Class Messages
     Dim rsData As SqlDataReader
 
     db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
+    rsData = db.GetDataReader("SELECT CustID, CompanyName, ClientType, ClientAnswer, ClientData, AdditionalNotes FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
 
     Do While rsData.Read()
       clientMessageId.InnerHtml = rsData("CustID").ToString()
       clientName.InnerText = rsData("CompanyName")
       clientGreeting = rsData("ClientAnswer")
-      clientMainInfo.Value = db.ClearNull(rsData("ClientData"))
+      ClientInformation = db.ClearNull(rsData("ClientData"))
+      AdditionalNotes = db.ClearNull(rsData("AdditionalNotes"))
     Loop
-
 
   End Sub
 
@@ -98,19 +104,37 @@ Public Class Messages
 
     Dim db As dbUtil 'access to db functions
     Dim rsData As SqlDataReader
+    Dim strSQL As New StringBuilder()
+
+    strSQL.Append("SELECT t1.ContactID, t1.CustID, t1.ContactName, t1.ContactInfo, t1.ContactType ")
+    strSQL.Append("FROM CONTACT t1 WITH (NOLOCK) ")
+    strSQL.Append("WHERE t1.CREATEDATETIME = ")
+    strSQL.Append("(SELECT MAX(t2.CREATEDATETIME) ")
+    strSQL.Append("FROM CONTACT t2 WITH (NOLOCK) ")
+    strSQL.Append("WHERE t2.CustID = t1.CustID AND t2.ContactType = t1.ContactType) ")
+    strSQL.Append("AND t1.CustID = " & id + " ")
+    strSQL.Append("ORDER BY t1.ContactType ASC")
 
     db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
+    rsData = db.GetDataReader(strSQL.ToString())
+    If rsData.HasRows Then
+      Do While rsData.Read()
 
-    Do While rsData.Read()
-      clientMessageId.InnerHtml = rsData("CustID").ToString()
-      clientName.InnerText = rsData("CompanyName")
-      clientGreeting = rsData("ClientAnswer")
-      clientMainInfo.Value = db.ClearNull(rsData("ClientData"))
-    Loop
+        Select Case rsData("ContactType")
+          Case 1 'Primary Contact
+            PrimaryContactName = If(Not String.IsNullOrEmpty(rsData("ContactName").ToString()), rsData("ContactName"), "")
+            PrimaryContactInfo = If(Not String.IsNullOrEmpty(rsData("ContactInfo").ToString()), rsData("ContactInfo"), "")
+          Case 2 'Secondary Contact
+            SecondaryContactName = If(Not String.IsNullOrEmpty(rsData("ContactName").ToString()), rsData("ContactName"), "")
+            SecondaryContactInfo = If(Not String.IsNullOrEmpty(rsData("ContactInfo").ToString()), rsData("ContactInfo"), "")
 
+        End Select
+
+      Loop
+    End If
 
   End Sub
+
 
   ''' <summary>
   ''' 
@@ -217,7 +241,6 @@ Public Class Messages
 
     Dim returnedID As Integer
     Dim SQL As New StringBuilder()
-    Dim test As String = ""
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
