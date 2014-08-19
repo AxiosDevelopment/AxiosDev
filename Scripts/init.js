@@ -30,6 +30,7 @@ function openWindow(popUp) {
 }
 
 $(function () {
+    var clientId = $('#clientMessageId').text();
     $('#searchMessages').on('click', function (e) { 
         e.preventDefault();
         var window = $('#messageContainer');
@@ -89,13 +90,25 @@ $(function () {
         var updateId = $(this).attr('id'); //gets the ID of the textarea
         var dataFieldValue = $(this).next('textarea').val(); //Gets the value of the data field associated with the update
         $.ajax({
-            url: "updateInfo.aspx?info=" + dataFieldValue + "&id=" + updateId,
+            url: "updateInfo.aspx",
+            data: "info=" + dataFieldValue + "&id=" + updateId + "&clientId=" + clientId,
             cache: false
         }).done(function (data) {
             alert("Updated");
         });
     });
-
+    $('.updateCounselor').on('click', function () {
+        var updateId = $(this).attr('id');
+        var contactName = $(this).next('input').val();
+        var contactNumber = $(this).next().next('input').val();
+        $.ajax({
+            url: "updateInfo.aspx?",
+            data: "contactName=" + contactName + "&contactNumber=" + contactNumber + "&clientId=" + clientId + "&updateId=" + updateId,
+            cache: false
+        }).done(function (data) {
+            alert("Updated");
+        });
+    });
     $(document).on('click', function (e) {
         if (!$(e.target).hasClass('stick')) {
             $('#searchAuto').hide();
