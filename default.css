@@ -571,6 +571,7 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 	margin-bottom: 10px;
 	clear: both;
 	display: table;
+    position: relative;
 }
 
 #placeofD {
@@ -615,34 +616,34 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 
 /** SEARCH AUTO COMPLETE */
 
-#searchAuto {
+.searchAuto {
    background: none repeat scroll 0 0 #fff;
    border-bottom: 1px solid #3c3c3c;
    border-left: 1px solid #3c3c3c;
    border-right: 1px solid #3c3c3c;
    box-shadow: 0 8px 10px #3c3c3c;
-   left: 53px;
+   left: 0;
    position: absolute;
-   top: 32px;
+   top: 37px;
    width: 304px;
    z-index: 3;
 }
 
-#searchAuto p {
+.searchAuto p {
     text-align: center;
 }
 
-#searchAuto p img {
+.searchAuto p img {
     width: 60px;
     margin: 10px 0;
 }
 
-#autoSearch {
-    margin: 0;
+.autoSearch {
+    margin: 0 !important;
     padding: 0;
 }
 
-#autoSearch li {
+.autoSearch li {
     display: block;
     border-bottom: 1px dotted #c6c6c6;
     overflow: hidden;
@@ -657,22 +658,22 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
     border-bottom: none;
 }
 
-#autoSearch li:hover {
+.autoSearch li:hover {
     background: #FEBA37;
 }
 
-#autoSearch li a {
+.autoSearch li a {
     text-decoration: none;
     display: block;
     color: #3c3c3c;
     padding: 10px 15px 9px;
 }
 
-#autoSearch li:hover a, #autoSearch li:hover a p {
+.autoSearch li:hover a, .autoSearch li:hover a p {
     color: #fff;
 }
 
-#autoSearch li p {
+.autoSearch li p {
     color: #666;
     font-size: 11px;
     line-height: 1;

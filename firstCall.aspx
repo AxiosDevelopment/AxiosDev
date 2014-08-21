@@ -125,11 +125,16 @@
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="placeofD">Place of Death</label><br />
-                      <asp:DropDownList ID="placeofD" runat="server">
-                        <asp:ListItem Value="-1" Text="--Select--" />
-                        <asp:ListItem Value="1" Text="Kaiser Fontana CA" />
-                      </asp:DropDownList>
+                      <label for="placeOfDeath">Place of Death</label><br />
+                      <asp:TextBox ID="placeOfDeath" runat="server" Width="300"></asp:TextBox>
+                        <div class="searchAuto hide" id="podSearch">
+                            <ul class="autoSearch" id="podAuto">
+                                <li>
+                                    <input type="hidden" class="busId" value="businessId" />
+                                    Kaiser Hospital - City Name
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="left mr_10">
                       <label for="facilityAddr">Address</label><br />
@@ -204,7 +209,14 @@
                     <div class="left mr_10">
                       <label for="physicianName">Attending Physician</label><br />
                       <asp:TextBox ID="physicianName" runat="server" Width="250"></asp:TextBox>
-                      <!--AUTOCOMPLETE -->
+                      <div class="searchAuto hide" id="physicianSearch">
+                            <ul class="autoSearch" id="physicianAuto">
+                                <li>
+                                    <input type="hidden" class="docId" value="docId" />
+                                    Doctors Name 
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="left mr_10">
                       <label for="physicianPhone">Physician Phone</label><br />

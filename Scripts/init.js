@@ -60,29 +60,59 @@ $(function () {
     openWindow(window);
   });
   $('.exit').click(closeWindow);
-  $('#MsgTo').keyup(function () {
+
+    /** THIS IS THE AUTO COMPLETE FOR PLACE OF DEATH **/
+  $('#placeOfDeath').keyup(function () {
     var searchStr = $(this).val();
-    $('#searchAuto p').remove();
     if (searchStr === '') {
-      $('#searchAuto').hide();
+        $('#podSearch').hide();
       return;
     }
-    $('#searchAuto').prepend('<p align="center"><img src="images/loading.gif" width="60"/></p>')
-    $('#searchAuto').show();
     delay(function () {
-      $.ajax({
-        url: "FromAutoSearch.aspx?query=" + searchStr,
+     $.ajax({
+        url: "busSearch.aspx?query=" + searchStr,
         cache: false
       })
       .done(function (data) {
-        $('#searchAuto p').remove();
-        $('#autoSearch').html(data);
+         $('#podSearch').show();
+         $('#podAuto').html(data);
       });
-    }, 1000);
+    }, 300);
   })
-  $(document).on('click', '#autoSearch li', function () {
-    var result = $(this).text();
-    $('#MsgTo').val(result);
+
+    /** THIS IS THE AUTO COMPLETE FOR PHYSICIAN **/
+  $('#physicianName').keyup(function () {
+      var searchStr = $(this).val();
+      console.log(searchStr)
+      if (searchStr === '') {
+          $('#physicianSearch').hide();
+          return;
+      }
+      delay(function () {
+          $.ajax({
+             url: "docSearch.aspx?query=" + searchStr,
+             cache: false
+           })
+           .done(function (data) {
+              $('#physicianSearch').show();
+              $('#podAuto').html(data);
+          });
+      }, 300);
+  })
+
+    /** THIS WILL GET THE BUSINESS ID ONCE CLICKED AND SEND AJAX CALL TO RETRIEVE INFO **/
+    /* THIS FUNCTION WILL WORK FOR BOTH AUTO COMPLETES IN THE FIRST CALL PAGE. IT SENDS AN ID AND WILL SEND ANOTHER VARIABLE TO HELP DETERMINE WHICH QUERY TO RUN */
+  $(document).on('click', '.autoSearch li', function () {
+      var result = $(this).children('.busId').val();
+      var parent = $(this).parent().attr('id');
+      $.ajax({
+          url: "importData.aspx?busId=" + result + "&queryId=" + parent,
+          cache: false
+      })
+      .done(function (data) {
+          //process JSON
+
+      });
   });
 
   /** THIS triggers a save for the various "update buttons" and their associated textareas **/

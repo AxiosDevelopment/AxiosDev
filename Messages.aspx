@@ -72,9 +72,6 @@
                   </asp:ScriptManager>
                   <label for="to">To:</label>
                   <asp:TextBox ID="MsgTo" runat="server"></asp:TextBox>
-                  <div id="searchAuto" class="hide" hidden="hidden">
-                    <ul id="autoSearch"></ul>
-                  </div>
                   <asp:RequiredFieldValidator ID="ReqTo" runat="server" ErrorMessage="To: is required" ControlToValidate="MsgTo" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="from">From:</label>
                   <asp:TextBox ID="MsgFrom" runat="server"></asp:TextBox>
