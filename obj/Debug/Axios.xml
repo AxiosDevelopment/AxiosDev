@@ -6,168 +6,7 @@ Axios
 </name>
 </assembly>
 <members>
-<member name="F:Axios.Main.MessageTable">
-	<summary>
-MessageTable control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Main.status">
-	<summary>
-status control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Main.fCall">
-	<summary>
-fCall control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Main.client">
-	<summary>
-client control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Main.ClientTable">
-	<summary>
-ClientTable control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Main.clientName">
-	<summary>
-clientName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Main.onCall">
-	<summary>
-onCall control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.Main.lastUpdated">
-	<summary>
-lastUpdated control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="M:Axios.firstCall.Page_Load(System.Object,System.EventArgs)">
-	<summary>
-	</summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.firstCall.GetClient(System.String)">
-	<summary>
-	</summary>
-	<remarks></remarks>
-</member><member name="M:Axios.firstCall.GetFirstCall(System.String,System.Int32)">
-	<summary>
-	</summary>
-	<param name="id"></param>
-	<param name="fcId"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:Axios.firstCall.submitMessage_Click(System.Object,System.EventArgs)">
-	<summary>
-	</summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.firstCall.InsertMessage">
-	<summary>
-	</summary>
-	<remarks></remarks>
-</member><member name="M:Axios.firstCall.UpdateMessage">
-	<summary>
-	</summary>
-	<remarks></remarks>
-</member><member name="P:Axios.My.MyWebExtension.Computer">
-	<summary>
- Returns information about the host computer.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.User">
-	<summary>
- Returns information for the current Web user.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.Request">
-	<summary>
- Returns Request object.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.Response">
-	<summary>
- Returns Response object.
- </summary>
-</member><member name="P:Axios.My.MyWebExtension.Log">
-	<summary>
- Returns the Asp log object.
- </summary>
-</member><member name="T:Axios.My.MyWebExtension">
-	<summary>
- Module used to define the properties that are available in the My Namespace for Web projects.
- </summary>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.Page_Load(System.Object,System.EventArgs)">
-	<summary>
-	</summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetMessageLookup">
-	<summary>
-	</summary>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetClient(System.String)">
-	<summary>
-	</summary>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetContact(System.String)">
-	<summary>
-	</summary>
-	<param name="id"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetMessage(System.Int32)">
-	<summary>
-	</summary>
-	<param name="id"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.submitMessage_Click(System.Object,System.EventArgs)">
-	<summary>
- Event Handler on Submit Message button
- </summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.InsertMessage">
-	<summary>
- Save New Message
- </summary>
-	<remarks></remarks>
-</member><member name="M:Axios.Messages.UpdateMessage">
-	<summary>
- Update Existing Message
- </summary>
-	<remarks></remarks>
-</member><member name="F:Axios.Messages.clientMessageId">
+<member name="F:Axios.Messages.clientMessageId">
 	<summary>
 clientMessageId control.
 </summary>
@@ -343,21 +182,45 @@ submitMessage control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="M:Axios.Main.Page_Load(System.Object,System.EventArgs)">
+</member><member name="P:Axios.My.MyWebExtension.Computer">
 	<summary>
- Page_Load
+ Returns information about the host computer.
  </summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
-</member><member name="M:Axios.Main.GetClients">
+</member><member name="P:Axios.My.MyWebExtension.User">
 	<summary>
- Gets the list of clients in ClientUpdate table
+ Returns information for the current Web user.
+ </summary>
+</member><member name="P:Axios.My.MyWebExtension.Request">
+	<summary>
+ Returns Request object.
+ </summary>
+</member><member name="P:Axios.My.MyWebExtension.Response">
+	<summary>
+ Returns Response object.
+ </summary>
+</member><member name="P:Axios.My.MyWebExtension.Log">
+	<summary>
+ Returns the Asp log object.
+ </summary>
+</member><member name="T:Axios.My.MyWebExtension">
+	<summary>
+ Module used to define the properties that are available in the My Namespace for Web projects.
  </summary>
 	<remarks></remarks>
-</member><member name="M:Axios.Main.GetMessages">
+</member><member name="M:Axios.FromAutoSearch.GetPhysicians(System.String)">
 	<summary>
- Gets the list of messages in Msg table
+ This will return the doctors for the attending physician autocomplete
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.FromAutoSearch.GetBusinesses(System.String)">
+	<summary>
+ This will return the businesses for the place of dealth autocomplete textbox
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.FromAutoSearch.GetBusiness(System.String)">
+	<summary>
+ This will return the business information based on the business selected from the autocomplete
+ We need to return the other information (address) to fill in the other fields on the page
  </summary>
 	<remarks></remarks>
 </member><member name="M:Axios.updateInfo.Page_Load(System.Object,System.EventArgs)">
@@ -386,6 +249,159 @@ To modify move field declaration from designer file to code-behind file.
 	<param name="id"></param>
 	<param name="data"></param>
 	<remarks></remarks>
+</member><member name="M:Axios.Messages.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetMessageLookup">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetClient(System.String)">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetContact(System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.GetMessage(System.Int32)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.submitMessage_Click(System.Object,System.EventArgs)">
+	<summary>
+ Event Handler on Submit Message button
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.InsertMessage">
+	<summary>
+ Save New Message
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Messages.UpdateMessage">
+	<summary>
+ Update Existing Message
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.firstCall.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.firstCall.GetClient(System.String)">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.firstCall.GetFirstCall(System.String,System.Int32)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<param name="fcId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.firstCall.submitMessage_Click(System.Object,System.EventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.firstCall.InsertMessage">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.firstCall.UpdateMessage">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+ Page_Load
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.GetClients">
+	<summary>
+ Gets the list of clients in ClientUpdate table
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.Main.GetMessages">
+	<summary>
+ Gets the list of messages in Msg table
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Axios.Main.MessageTable">
+	<summary>
+MessageTable control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.status">
+	<summary>
+status control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.fCall">
+	<summary>
+fCall control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.client">
+	<summary>
+client control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.ClientTable">
+	<summary>
+ClientTable control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.clientName">
+	<summary>
+clientName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.onCall">
+	<summary>
+onCall control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.Main.lastUpdated">
+	<summary>
+lastUpdated control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.ClientHeader">
 	<summary>
 ClientHeader control.
@@ -546,9 +562,9 @@ weight control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.firstCall.placeofD">
+</member><member name="F:Axios.firstCall.placeOfDeath">
 	<summary>
-placeofD control.
+placeOfDeath control.
 </summary>
 	<remarks>
 Auto-generated field.

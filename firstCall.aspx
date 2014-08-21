@@ -127,14 +127,16 @@
                     <div class="left mr_10">
                       <label for="placeOfDeath">Place of Death</label><br />
                       <asp:TextBox ID="placeOfDeath" runat="server" Width="300"></asp:TextBox>
-                        <div class="searchAuto hide" id="podSearch">
-                            <ul class="autoSearch" id="podAuto">
-                                <li>
-                                    <input type="hidden" class="busId" value="businessId" />
-                                    Kaiser Hospital - City Name
-                                </li>
-                            </ul>
-                        </div>
+                      <!--autocomplete begin-->
+                      <div class="searchAuto hide" id="podSearch">
+                        <ul class="autoSearch" id="podAuto">
+                          <li>
+                            <input type="hidden" class="busId" value="businessId" />
+                            Kaiser Hospital - City Name
+                          </li>
+                        </ul>
+                      </div>
+                      <!--autocomplete end-->
                     </div>
                     <div class="left mr_10">
                       <label for="facilityAddr">Address</label><br />
@@ -209,14 +211,16 @@
                     <div class="left mr_10">
                       <label for="physicianName">Attending Physician</label><br />
                       <asp:TextBox ID="physicianName" runat="server" Width="250"></asp:TextBox>
+                      <!--autocomplete begin-->
                       <div class="searchAuto hide" id="physicianSearch">
-                            <ul class="autoSearch" id="physicianAuto">
-                                <li>
-                                    <input type="hidden" class="docId" value="docId" />
-                                    Doctors Name 
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="autoSearch" id="physicianAuto">
+                          <li>
+                            <input type="hidden" class="docId" value="docId" />
+                            Doctors Name 
+                          </li>
+                        </ul>
+                      </div>
+                      <!--autocomplete end-->
                     </div>
                     <div class="left mr_10">
                       <label for="physicianPhone">Physician Phone</label><br />
@@ -293,9 +297,11 @@
         </div>
         <div class="clearfix">&nbsp;</div>
         <div id="fCall1" class="hide popup">
-          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCallAxios.png" /></div>
+          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCallAxios.png" />
+        </div>
         <div id="axiosFcall" class="hide popup">
-          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png" /></div>
+          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png" />
+        </div>
       </div>
     </div>
   </div>

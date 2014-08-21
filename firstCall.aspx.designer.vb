@@ -194,13 +194,13 @@ Partial Public Class firstCall
   Protected WithEvents weight As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''placeofD control.
+  '''placeOfDeath control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents placeofD As Global.System.Web.UI.WebControls.DropDownList
+  Protected WithEvents placeOfDeath As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
   '''facilityAddr control.
