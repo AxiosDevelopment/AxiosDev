@@ -1,75 +1,187 @@
 ﻿Imports System.Data.SqlClient
 Public Class firstCall
-    Inherits System.Web.UI.Page
+  Inherits System.Web.UI.Page
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+  Protected cid As String = ""
 
-        Dim successed As Boolean
-        Dim clientId As String
-        Dim firstCallId As Integer
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="sender"></param>
+  ''' <param name="e"></param>
+  ''' <remarks></remarks>
+  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        If Not (Page.IsPostBack) Then
+    Dim clientId As String
+    Dim fcId As Integer
 
-            ' Get Lookup Data
-            'GetFirstCallLookup()
+    If Not (Page.IsPostBack) Then
 
-            firstCallId = Convert.ToInt32(Request.QueryString.Get("FirstCallId"))
-            clientId = Request.QueryString.Get("ClientId").ToString()
+      Try
 
-            If Not String.IsNullOrEmpty(clientId) Then
-                successed = GetClient(clientId)
+        ' Get Lookup Data
+        'GetFirstCallLookup()
 
-                If firstCallId > 0 Then
-                    'Message Exists
+        fcId = Convert.ToInt32(Request.QueryString.Get("FirstCallId"))
+        clientId = Request.QueryString.Get("ClientId").ToString()
+
+        If Not String.IsNullOrEmpty(clientId) Then
+          cid = clientId
+          FirstCallID.Value = fcId.ToString()
+          GetClient(clientId)
+
+          If fcId > 0 Then
+            'Message Exists
 
 
-                End If
-            End If
-
+          End If
         End If
-    End Sub
 
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    ''' <remarks></remarks>
-    Private Function GetClient(Id As String) As Boolean
+      Catch ex As Exception
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
+      End Try
 
-        Dim db As dbUtil 'access to db functions
-        Dim rsData As SqlDataReader
+    End If
+  End Sub
 
-        db = New dbUtil()
-        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + Id)
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetClient(Id As String)
 
-        Do While rsData.Read()
-            ClientHeader.Text = rsData("CompanyName")
-            clientId.Text = rsData("CustID").ToString()
-            clientName.Text = rsData("CompanyName")
-        Loop
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
 
-        Return True
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT CustID, CompanyName, ClientType, ClientAnswer, ClientData, AdditionalNotes FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + Id)
 
-    End Function
+    Do While rsData.Read()
+      ClientHeader.Text = rsData("CompanyName")
+      clientId.Text = rsData("CustID").ToString()
+      clientName.Text = rsData("CompanyName")
+    Loop
 
-    Private Function GetFirstCall(id As String, fcId As Integer) As Boolean
-        Dim db As dbUtil 'access to db functions
-        Dim rsData As SqlDataReader
+  End Sub
 
-        db = New dbUtil()
-        rsData = db.GetDataReader("SELECT CustID, CompanyName, Contact, ClientType, ClientAnswer, ClientData FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="id"></param>
+  ''' <param name="fcId"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
+  Private Function GetFirstCall(id As String, fcId As Integer) As Boolean
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
 
-        Do While rsData.Read()
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT CustID, CompanyName, ClientType, ClientAnswer, ClientData, AdditionalNotes FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
 
-            If fcId = 0 Then
-                msgDate.Text = DateTime.Now()
-                msgTime.Text = FormatDateTime(DateTime.Now, DateFormat.LongTime)
-            Else
+    Do While rsData.Read()
 
-            End If
+      If fcId = 0 Then
+        msgDate.Text = DateTime.Now()
+        msgTime.Text = FormatDateTime(DateTime.Now, DateFormat.LongTime)
+      Else
 
-        Loop
+      End If
 
-        Return True
-    End Function
+    Loop
 
+    Return True
+  End Function
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="sender"></param>
+  ''' <param name="e"></param>
+  ''' <remarks></remarks>
+  Protected Sub submitMessage_Click(sender As Object, e As EventArgs) Handles submitMessage.Click
+    If Page.IsValid Then
+
+      Try
+
+        If FirstCallID.Value = "0" Then
+          InsertMessage()
+        Else
+          UpdateMessage()
+        End If
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopup", "messagedSaved()", True)
+
+      Catch ex As Exception
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopupError", "messagedSavedError()", True)
+
+      End Try
+    End If
+  End Sub
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub InsertMessage()
+
+    'Dim returnedID As Integer
+    'Dim SQL As New StringBuilder()
+    'Dim test As String = ""
+    'Dim db As dbUtil 'access to db functions
+    'db = New dbUtil()
+
+    'SQL.Append("INSERT INTO [dbo].[FirstCall] ([MsgDateTime],[MsgCustID],[MsgDate],[MsgTime],[MsgTo],[MsgFrom],[MsgBusiness],[MsgPhone],[MsgExt],[MsgAltPhone],[MsgQwkMsgs],[MsgMessage],[MsgOperatorNotes],[MsgHoldMsg],[MsgDelDate],[MsgDelTime],[MsgDeliver],[MsgOnCall],[MsgProcedure])")
+    'SQL.Append(" VALUES ")
+    'SQL.Append("('" & DateTime.Now & "',") 'MsgDateTime
+    'SQL.Append("'" & Convert.ToInt32(clientMessageId.InnerHtml) & "',") 'MsgCustID
+    'SQL.Append("'" & Date.Now & "',") 'MsgDate
+    'SQL.Append("'" & FormatDateTime(DateTime.Now, DateFormat.LongTime) & "',") 'MsgTime
+    'SQL.Append("'" & MsgTo.Text & "',") 'MsgTo
+    'SQL.Append("'" & MsgFrom.Text & "',") 'MsgFrom
+    'SQL.Append("'" & String.Empty & "',") 'MsgBusiness
+    'SQL.Append("'" & nMsgPhone.Text & "',") 'MsgPhone
+    'SQL.Append("'" & nMsgPhoneX.Text & "',") 'MsgExt
+    'SQL.Append("'" & nMsgAlt.Text & "',") 'MsgAltPhone
+    'SQL.Append("'" & QwkMessage.SelectedItem.Text & "',") 'MsgQwkMsgs
+    'SQL.Append("'" & Message.Text & "',") 'MsgMessage
+    'SQL.Append("'" & Notes.Text & "',") 'MsgOperatorNotes
+    'SQL.Append("1,") 'MsgHoldMsg
+    'SQL.Append("NULL,") 'MsgDelDate
+    'SQL.Append("NULL,") 'MsgDelTime
+    'SQL.Append("0,") 'MsgDeliver
+    'SQL.Append("NULL,") 'MsgOnCall
+    'SQL.Append("NULL)") 'MsgProcedure
+
+    'returnedID = db.GetID(SQL.ToString())
+
+  End Sub
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub UpdateMessage()
+
+    'Dim returnedID As Integer
+    'Dim SQL As New StringBuilder()
+    'Dim db As dbUtil 'access to db functions
+    'db = New dbUtil()
+
+    'SQL.Append("UPDATE Msg SET ")
+    'SQL.Append("MsgTo = '" & MsgTo.Text & "',")
+    'SQL.Append("MsgFrom = '" & MsgFrom.Text & "',")
+    'SQL.Append("MsgPhone = '" & nMsgPhone.Text & "',")
+    'SQL.Append("MsgExt = '" & nMsgPhoneX.Text & "',")
+    'SQL.Append("MsgAltPhone = '" & nMsgAlt.Text & "',")
+    'SQL.Append("MsgQwkMsgs = '" & QwkMessage.SelectedItem.Text & "',")
+    'SQL.Append("MsgMessage = '" & Message.Text & "',")
+    'SQL.Append("MsgOperatorNotes = '" & Notes.Text & "',")
+    'SQL.Append("MsgHoldMsg = 1,")
+    'SQL.Append("MsgDelDate = NULL,")
+    'SQL.Append("MsgDelTime = NULL,")
+    'SQL.Append("MsgDeliver = 0 ")
+    'SQL.Append("WHERE MsgID = " & MessageID.Value)
+
+    'returnedID = db.GetID(SQL.ToString())
+
+  End Sub
 End Class

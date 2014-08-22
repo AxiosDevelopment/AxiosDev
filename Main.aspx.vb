@@ -29,7 +29,7 @@ Public Class Main
     Dim rsData As SqlDataReader
 
     db = New dbUtil()
-    rsData = db.GetDataReader("SELECT ci.CustID, ci.CompanyName, c.ContactName, MAX(c.CREATEDATETIME) AS CreatedDate FROM CompanyInfo ci WITH (NOLOCK) INNER JOIN CONTACT c ON c.CustID = ci.CustID GROUP BY ci.CustID, ci.CompanyName, c.ContactName ORDER BY CustID ASC")
+    rsData = db.GetDataReader("SELECT ci.CustID, ci.CompanyName, c.ContactName, MAX(c.CREATEDATETIME) AS CreatedDate FROM CompanyInfo ci WITH (NOLOCK) INNER JOIN CONTACT c ON c.CustID = ci.CustID WHERE ContactType = 1 GROUP BY ci.CustID, ci.CompanyName, c.ContactName ORDER BY CustID ASC")
 
     Dim row As HtmlTableRow
     Dim cell As HtmlTableCell

@@ -11,6 +11,20 @@
   </style>
   <script type="text/javascript" src="Scripts/jquery.js"></script>
   <script type="text/javascript" src="Scripts/init.js"></script>
+  <script type="text/javascript">
+    function messagedSaved() {
+      alert("Your first call message was saved successfully!");
+      window.location = "Main.aspx";
+    }
+
+    function messagedSavedError() {
+      alert("There was an error inserting/updating your first call message. Please contact an administrator for assistance.");
+    }
+
+    function messageLoadError() {
+      alert("There was an error loading the first call page. Please contact an administrator for assistance.");
+    }
+  </script>
 </head>
 <body class="single">
   <div id="wrapper">
@@ -29,13 +43,14 @@
           <li><a href="#" title="">Search First Calls</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
           <li><a id="pFCall" href="#" title="">Print First Call</a></li>
-            <li><a id="sci" href="#" title="">Print SCI</a></li>
+          <li><a id="sci" href="#" title="">Print SCI</a></li>
         </ul>
       </div>
       <div id="page">
         <div id="banner-empty">
           <div class="title">
-            <h2 align="center"><asp:Literal ID="ClientHeader" runat="server" /></h2>
+            <h2 align="center">
+              <asp:Literal ID="ClientHeader" runat="server" /></h2>
           </div>
         </div>
         <div id="content">
@@ -45,6 +60,7 @@
             </div>
             <div class="entry">
               <form id="addFirstCall" method="post" action="#" runat="server">
+                <asp:HiddenField ID="FirstCallID" runat="server" />
                 <asp:ValidationSummary ID="ValidationSummaryFirstCall" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
                 <asp:ScriptManager ID="MsgScriptManager" runat="server">
                   <Scripts>
@@ -109,57 +125,47 @@
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="placeofD">Place of Death</label><br />
-                      <asp:DropDownList ID="placeofD" runat="server">
-                        <asp:ListItem Value="-1" Text="--Select--" />
-                        <asp:ListItem Value="1" Text="Kaiser Fontana CA" />
-                      </asp:DropDownList>
+                      <label for="placeOfDeath">Place of Death</label><br />
+                      <asp:TextBox ID="placeOfDeath" runat="server" Width="300"></asp:TextBox>
+                      <!--autocomplete begin-->
+                      <div class="searchAuto hide" id="podSearch">
+                        <ul class="autoSearch" id="podAuto"></ul>
+                      </div>
+                      <!--autocomplete end-->
                     </div>
                     <div class="left mr_10">
                       <label for="facilityAddr">Address</label><br />
-                      <asp:TextBox ID="facilityAddr" runat="server" Width="300"></asp:TextBox>
+                      <asp:TextBox ID="facilityAddr" class="facility" runat="server" Width="300"></asp:TextBox>
                     </div>
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="facilityType">Facility Type</label><br />
-                      <asp:DropDownList ID="facilityType" runat="server">
-                        <asp:ListItem Value="-1" Text="--Select--" />
-                        <asp:ListItem Value="1" Text="Hospital" />
-                        <asp:ListItem Value="2" Text="Residence" />
-                      </asp:DropDownList>
+                      <label for="facType">Facility Type</label><br />
+                     <asp:TextBox ID="facType" class="facility" runat="server" Width="100"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
-                      <label for="facilityCity">City</label><br />
-                      <asp:DropDownList ID="facilityCity" runat="server">
-                        <asp:ListItem Value="-1" Text="--Select--" />
-                        <asp:ListItem Value="1" Text="Anaheim" />
-                        <asp:ListItem Value="2" Text="City of Industry" />
-                      </asp:DropDownList>
+                      <label for="facCity">City</label><br />
+                      <asp:TextBox ID="facCity" class="facility" runat="server" Width="200"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
-                      <label for="facilityState">State</label><br />
-                      <asp:DropDownList ID="facilityState" runat="server">
-                        <asp:ListItem Value="-1" Text="--" />
-                        <asp:ListItem Value="1" Text="AZ" />
-                        <asp:ListItem Value="2" Text="CA" />
-                      </asp:DropDownList>
+                      <label for="facState">State</label><br />
+                      <asp:TextBox ID="facState" class="facility" runat="server" Width="40"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="facilityCounty">County</label><br />
-                      <asp:TextBox ID="facilityCounty" runat="server" Width="100"></asp:TextBox>
+                      <asp:TextBox ID="facilityCounty" runat="server" class="facility" Width="100"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="facilityZip">Zip</label><br />
-                      <asp:TextBox ID="facilityZip" runat="server" Width="60"></asp:TextBox>
+                      <asp:TextBox ID="facilityZip" runat="server" class="facility" Width="60"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="facilityPhone">Phone Number</label><br />
-                      <asp:TextBox ID="facilityPhone" runat="server" Width="90"></asp:TextBox>
+                      <asp:TextBox ID="facilityPhone" runat="server" class="facility" Width="90"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="phoneExt">Ext.</label><br />
-                      <asp:TextBox ID="phoneExt" runat="server" Width="30"></asp:TextBox>
+                      <asp:TextBox ID="phoneExt" runat="server" class="facility" Width="30"></asp:TextBox>
                     </div>
                   </div>
                   <div class="row">
@@ -188,15 +194,24 @@
                     <div class="left mr_10">
                       <label for="physicianName">Attending Physician</label><br />
                       <asp:TextBox ID="physicianName" runat="server" Width="250"></asp:TextBox>
-                      <!--AUTOCOMPLETE -->
+                      <!--autocomplete begin-->
+                      <div class="searchAuto hide" id="physicianSearch">
+                        <ul class="autoSearch" id="physicianAuto">
+                          <li>
+                            <input type="hidden" class="docId" value="docId" />
+                            Doctors Name 
+                          </li>
+                        </ul>
+                      </div>
+                      <!--autocomplete end-->
                     </div>
                     <div class="left mr_10">
                       <label for="physicianPhone">Physician Phone</label><br />
-                      <asp:TextBox ID="physicianPhone" runat="server" Width="90"></asp:TextBox>
+                      <asp:TextBox ID="physicianPhone" runat="server" class="physician" Width="90"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="physicianPhoneExt">Ext.</label><br />
-                      <asp:TextBox ID="physicianPhoneExt" runat="server" Width="30"></asp:TextBox>
+                      <asp:TextBox ID="physicianPhoneExt" runat="server" class="physician" Width="30"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="physicianDate">Last Saw Patient</label><br />
@@ -264,8 +279,12 @@
           </div>
         </div>
         <div class="clearfix">&nbsp;</div>
-         <div id="fCall1" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/fCallAxios.png"/></div>
-        <div id="axiosFcall" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png"/></div>
+        <div id="fCall1" class="hide popup">
+          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCallAxios.png" />
+        </div>
+        <div id="axiosFcall" class="hide popup">
+          <img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png" />
+        </div>
       </div>
     </div>
   </div>
