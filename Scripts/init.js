@@ -90,18 +90,18 @@ $(function () {
       }
       delay(function () {
           $.ajax({
-             url: "docSearch.aspx?query=" + searchStr,
-             cache: false
-           })
+              url: "docSearch.aspx?query=" + searchStr,
+              cache: false
+          })
            .done(function (data) {
-              $('#physicianSearch').show();
-              $('#podAuto').html(data);
-          });
+               $('#physicianSearch').show();
+               //$('#podAuto').html(data); send JSON back 
+           });
       }, 300);
-  })
+  });
 
-    /** THIS WILL GET THE BUSINESS ID ONCE CLICKED AND SEND AJAX CALL TO RETRIEVE INFO **/
-    /* THIS FUNCTION WILL WORK FOR BOTH AUTO COMPLETES IN THE FIRST CALL PAGE. IT SENDS AN ID AND WILL SEND ANOTHER VARIABLE TO HELP DETERMINE WHICH QUERY TO RUN */
+  /** THIS WILL GET THE BUSINESS ID ONCE CLICKED AND SEND AJAX CALL TO RETRIEVE INFO **/
+  /* THIS FUNCTION WILL WORK FOR BOTH AUTO COMPLETES IN THE FIRST CALL PAGE. IT SENDS AN ID AND WILL SEND ANOTHER VARIABLE TO HELP DETERMINE WHICH QUERY TO RUN */
   $(document).on('click', '.autoSearch li', function () {
       var result = $(this).children('.busId').val();
       var parent = $(this).parent().attr('id');
