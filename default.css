@@ -627,6 +627,12 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
    top: 37px;
    width: 304px;
    z-index: 3;
+   max-height: 200px;
+   overflow: auto;
+}
+
+#physicianSearch {
+    width: 254px;
 }
 
 .searchAuto p {
