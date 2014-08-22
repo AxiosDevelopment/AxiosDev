@@ -52,10 +52,7 @@ Public Class Main
         End If
         row.Controls.Add(cell)
         'Create CreatedDate column
-        cell = New HtmlTableCell
-        a = New HtmlAnchor With {.HRef = "Messages.aspx?MsgId=0&ClientId=" + rsData("CustID").ToString()}
-        a.InnerText = rsData("CreatedDate")
-        cell.Controls.Add(a)
+        cell = New HtmlTableCell With {.InnerText = rsData("CreatedDate")}
         row.Controls.Add(cell)
         'Add row to table
         ClientTable.Controls.Add(row)

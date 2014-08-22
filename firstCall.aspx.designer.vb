@@ -95,6 +95,15 @@ Partial Public Class firstCall
   Protected WithEvents msgTime As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''msgDateTime control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents msgDateTime As Global.System.Web.UI.WebControls.HiddenField
+
+  '''<summary>
   '''reportingName control.
   '''</summary>
   '''<remarks>
@@ -149,6 +158,15 @@ Partial Public Class firstCall
   Protected WithEvents ReqDateOfDeath As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
+  '''DateOfDeathValidator control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents DateOfDeathValidator As Global.System.Web.UI.WebControls.CompareValidator
+
+  '''<summary>
   '''dTime control.
   '''</summary>
   '''<remarks>
@@ -176,6 +194,15 @@ Partial Public Class firstCall
   Protected WithEvents ssn As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''ReqSSN control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqSSN As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
   '''dob control.
   '''</summary>
   '''<remarks>
@@ -183,6 +210,24 @@ Partial Public Class firstCall
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents dob As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqDOB control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqDOB As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''DOBValidator control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents DOBValidator As Global.System.Web.UI.WebControls.CompareValidator
 
   '''<summary>
   '''weight control.
@@ -194,6 +239,15 @@ Partial Public Class firstCall
   Protected WithEvents weight As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''ReqWeight control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqWeight As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
   '''placeOfDeath control.
   '''</summary>
   '''<remarks>
@@ -201,6 +255,15 @@ Partial Public Class firstCall
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents placeOfDeath As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqPlaceOfDeath control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqPlaceOfDeath As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''facilityAddr control.
@@ -212,31 +275,58 @@ Partial Public Class firstCall
   Protected WithEvents facilityAddr As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''facilityType control.
+  '''ReqFacAddr control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents facilityType As Global.System.Web.UI.WebControls.DropDownList
+  Protected WithEvents ReqFacAddr As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''facilityCity control.
+  '''facType control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents facilityCity As Global.System.Web.UI.WebControls.DropDownList
+  Protected WithEvents facType As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''facilityState control.
+  '''facCity control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents facilityState As Global.System.Web.UI.WebControls.DropDownList
+  Protected WithEvents facCity As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqFacCity control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqFacCity As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''facState control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents facState As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqFacState control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqFacState As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''facilityCounty control.
@@ -248,6 +338,15 @@ Partial Public Class firstCall
   Protected WithEvents facilityCounty As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''ReqFacCounty control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqFacCounty As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
   '''facilityZip control.
   '''</summary>
   '''<remarks>
@@ -257,6 +356,15 @@ Partial Public Class firstCall
   Protected WithEvents facilityZip As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''ReqFacZip control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqFacZip As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
   '''facilityPhone control.
   '''</summary>
   '''<remarks>
@@ -264,6 +372,15 @@ Partial Public Class firstCall
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents facilityPhone As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqFacPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqFacPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''phoneExt control.
@@ -347,6 +464,15 @@ Partial Public Class firstCall
   Protected WithEvents physicianDate As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''LastSawValidator control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents LastSawValidator As Global.System.Web.UI.WebControls.CompareValidator
+
+  '''<summary>
   '''coronerName control.
   '''</summary>
   '''<remarks>
@@ -381,6 +507,15 @@ Partial Public Class firstCall
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents coronerDate As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''CoronerDateValidator control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents CoronerDateValidator As Global.System.Web.UI.WebControls.CompareValidator
 
   '''<summary>
   '''coronerTime control.

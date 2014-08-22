@@ -144,9 +144,10 @@ $(function () {
           cache: false
       })
       .done(function (data) {
-          //var docObj = JSON.parse(data);
+          var docObj = JSON.parse(data);
           console.log(data);
-         // $('#placeOfDeath').val(busObj.BusinessName);
+          $('#physicianName').val(docObj.DrName);
+          $('#physicianPhone').val(docObj.DrWorkPhone);
           $('.physician').prop('disabled', true);
           $('#physicianSearch').hide();
       }).fail(function (data) {

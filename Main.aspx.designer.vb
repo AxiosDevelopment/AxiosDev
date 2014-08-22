@@ -32,13 +32,13 @@ Partial Public Class Main
   Protected WithEvents status As Global.System.Web.UI.HtmlControls.HtmlTableCell
 
   '''<summary>
-  '''fCall control.
+  '''firstCall control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents fCall As Global.System.Web.UI.HtmlControls.HtmlTableCell
+  Protected WithEvents firstCall As Global.System.Web.UI.HtmlControls.HtmlTableCell
 
   '''<summary>
   '''client control.

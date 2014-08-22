@@ -86,6 +86,7 @@
                       <label for="msgTime">Time</label><br />
                       <asp:TextBox ID="msgTime" runat="server" Width="80" ReadOnly="true"></asp:TextBox>
                     </div>
+                    <asp:HiddenField ID="msgDateTime" runat="server" />
                   </div>
                   <div class="row">
                     <div class="left mr_10">
@@ -102,10 +103,11 @@
                       <label for="dDate">Date of Death</label><br />
                       <asp:TextBox ID="dDate" runat="server" Width="80"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqDateOfDeath" runat="server" ErrorMessage="Date of Death is required" ControlToValidate="dDate" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:CompareValidator ID="DateOfDeathValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="dDate" ErrorMessage="Please enter a valid Date of Death" Display="None"></asp:CompareValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="dTime">Time of Death</label><br />
-                      <asp:TextBox ID="dTime" runat="server" Width="80"></asp:TextBox>
+                      <asp:TextBox ID="dTime" runat="server" Width="80" TextMode="Time"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqTimeOfDeath" runat="server" ErrorMessage="Time of Death is required" ControlToValidate="dTime" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                   </div>
@@ -113,20 +115,25 @@
                     <div class="left mr_10">
                       <label for="ssn">SSN</label><br />
                       <asp:TextBox ID="ssn" runat="server" Width="100"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqSSN" runat="server" ErrorMessage="SSN is required" ControlToValidate="ssn" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="dob">Date of Birth</label><br />
                       <asp:TextBox ID="dob" runat="server" Width="80"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqDOB" runat="server" ErrorMessage="Date of Birth is required" ControlToValidate="dob" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:CompareValidator ID="DOBValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="dob" ErrorMessage="Please enter a valid Date of Birth" Display="None"></asp:CompareValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="weight">Weight</label><br />
-                      <asp:TextBox ID="weight" runat="server" Width="50"></asp:TextBox>
+                      <asp:TextBox ID="weight" runat="server" Width="50" TextMode="Number"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqWeight" runat="server" ErrorMessage="Weight is required" ControlToValidate="weight" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                   </div>
                   <div class="row">
                     <div class="left mr_10">
                       <label for="placeOfDeath">Place of Death</label><br />
                       <asp:TextBox ID="placeOfDeath" runat="server" Width="300"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqPlaceOfDeath" runat="server" ErrorMessage="Place of Death is required" ControlToValidate="placeOfDeath" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <!--autocomplete begin-->
                       <div class="searchAuto hide" id="podSearch">
                         <ul class="autoSearch" id="podAuto"></ul>
@@ -136,6 +143,7 @@
                     <div class="left mr_10">
                       <label for="facilityAddr">Address</label><br />
                       <asp:TextBox ID="facilityAddr" class="facility" runat="server" Width="300"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacAddr" runat="server" ErrorMessage="Place of Death Address is required" ControlToValidate="placeOfDeath" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                   </div>
                   <div class="row">
@@ -146,22 +154,27 @@
                     <div class="left mr_10">
                       <label for="facCity">City</label><br />
                       <asp:TextBox ID="facCity" class="facility" runat="server" Width="200"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacCity" runat="server" ErrorMessage="Facility City is required" ControlToValidate="facCity" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="facState">State</label><br />
                       <asp:TextBox ID="facState" class="facility" runat="server" Width="40"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacState" runat="server" ErrorMessage="Facility State is required" ControlToValidate="facState" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="facilityCounty">County</label><br />
                       <asp:TextBox ID="facilityCounty" runat="server" class="facility" Width="100"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacCounty" runat="server" ErrorMessage="Facility County is required" ControlToValidate="facilityCounty" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="facilityZip">Zip</label><br />
                       <asp:TextBox ID="facilityZip" runat="server" class="facility" Width="60"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacZip" runat="server" ErrorMessage="Facility Zip is required" ControlToValidate="facilityZip" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="facilityPhone">Phone Number</label><br />
                       <asp:TextBox ID="facilityPhone" runat="server" class="facility" Width="90"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacPhone" runat="server" ErrorMessage="Facility Phone is required" ControlToValidate="facilityPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="phoneExt">Ext.</label><br />
@@ -177,8 +190,6 @@
                       <label for="relationship">Relationship</label><br />
                       <asp:DropDownList ID="relationship" runat="server">
                         <asp:ListItem Value="-1" Text="--Select--" />
-                        <asp:ListItem Value="1" Text="None" />
-                        <asp:ListItem Value="2" Text="Brother" />
                       </asp:DropDownList>
                     </div>
                     <div class="left mr_10">
@@ -216,6 +227,7 @@
                     <div class="left mr_10">
                       <label for="physicianDate">Last Saw Patient</label><br />
                       <asp:TextBox ID="physicianDate" runat="server" Width="100"></asp:TextBox>
+                      <asp:CompareValidator ID="LastSawValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="physicianDate" ErrorMessage="Please enter a valid Date for Last Saw Patient" Display="None"></asp:CompareValidator>
                     </div>
                   </div>
                   <div class="row">
@@ -234,6 +246,7 @@
                     <div class="left mr_10">
                       <label for="coronerDate">Date</label><br />
                       <asp:TextBox ID="coronerDate" runat="server" Width="80"></asp:TextBox>
+                      <asp:CompareValidator ID="CoronerDateValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="coronerDate" ErrorMessage="Please enter a valid Date for Coroner" Display="None"></asp:CompareValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="coronerTime">Time</label><br />
