@@ -30,7 +30,7 @@ function openWindow(popUp) {
 }
 
 $(function () {
-  var clientId = $('#clientMessageId').text();
+  var clientId = $('#CompanyID').val();
   $('#searchMessages').on('click', function (e) {
     e.preventDefault();
     var window = $('#messageContainer');
@@ -66,6 +66,7 @@ $(function () {
     var searchStr = $(this).val();
     if (searchStr === '') {
       $('#podSearch').hide();
+      $('.facility').prop('disabled', false);
       return;
     }
     delay(function () {
@@ -76,6 +77,7 @@ $(function () {
        .done(function (data) {
          $('#podSearch').show();
          $('#podAuto').html(data);
+         $('.facility').prop('disabled', false);
        });
     }, 300);
   })

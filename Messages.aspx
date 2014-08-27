@@ -62,6 +62,7 @@
             <div class="entry">
               <div class="left" id="newMessage">
                 <form id="addMessage" method="post" action="#" runat="server">
+                  <asp:HiddenField ID="CompanyID" runat="server" />
                   <asp:HiddenField ID="MessageID" runat="server" />
                   <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
                   <asp:ScriptManager ID="MsgScriptManager" runat="server">

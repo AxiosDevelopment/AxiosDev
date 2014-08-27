@@ -30,6 +30,14 @@ addMessage control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.Messages.CompanyID">
+	<summary>
+CompanyID control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.Messages.MessageID">
 	<summary>
 MessageID control.
@@ -249,9 +257,9 @@ To modify move field declaration from designer file to code-behind file.
 	<param name="id"></param>
 	<param name="note"></param>
 	<remarks></remarks>
-</member><member name="M:Axios.updateInfo.UpdateClientData(System.String,System.String)">
+</member><member name="M:Axios.updateInfo.UpdateCompanyInformation(System.String,System.String)">
 	<summary>
- Updates the ClientData field that is assigned to the client (company)
+ Updates the CompanyInformation field that is assigned to the client (company) in COMPANY_INFO table
  </summary>
 	<param name="id"></param>
 	<param name="data"></param>
@@ -341,7 +349,7 @@ To modify move field declaration from designer file to code-behind file.
 	<remarks></remarks>
 </member><member name="M:Axios.Main.GetClients">
 	<summary>
- Gets the list of clients in ClientUpdate table
+ Gets the list of clients in COMPANY table
  </summary>
 	<remarks></remarks>
 </member><member name="M:Axios.Main.GetMessages">
@@ -424,6 +432,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Axios.firstCall.addFirstCall">
 	<summary>
 addFirstCall control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.CompanyID">
+	<summary>
+CompanyID control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -565,6 +581,14 @@ ReqTimeOfDeath control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.RegExValidatorTimeOfDeath">
+	<summary>
+RegExValidatorTimeOfDeath control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.ssn">
 	<summary>
 ssn control.
@@ -576,6 +600,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Axios.firstCall.ReqSSN">
 	<summary>
 ReqSSN control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.RegExValidatorSSN">
+	<summary>
+RegExValidatorSSN control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -693,6 +725,14 @@ ReqFacState control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqExFacState">
+	<summary>
+ReqExFacState control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.facilityCounty">
 	<summary>
 facilityCounty control.
@@ -725,6 +765,14 @@ ReqFacZip control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqExFacZip">
+	<summary>
+ReqExFacZip control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.facilityPhone">
 	<summary>
 facilityPhone control.
@@ -736,6 +784,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:Axios.firstCall.ReqFacPhone">
 	<summary>
 ReqFacPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.ReqExFacPhone">
+	<summary>
+ReqExFacPhone control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -757,6 +813,14 @@ partyName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqPartyName">
+	<summary>
+ReqPartyName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.relationship">
 	<summary>
 relationship control.
@@ -765,9 +829,33 @@ relationship control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqRelationship">
+	<summary>
+ReqRelationship control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.responsiblePhone">
 	<summary>
 responsiblePhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.ReqResponibleParty">
+	<summary>
+ReqResponibleParty control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.RegExResponsibleParty">
+	<summary>
+RegExResponsibleParty control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -789,9 +877,33 @@ physicianName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqPhysicianName">
+	<summary>
+ReqPhysicianName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.physicianPhone">
 	<summary>
 physicianPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.ReqPhysicianPhone">
+	<summary>
+ReqPhysicianPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.RegExPhysicianPhone">
+	<summary>
+RegExPhysicianPhone control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -813,6 +925,14 @@ physicianDate control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqPhysicianDate">
+	<summary>
+ReqPhysicianDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.LastSawValidator">
 	<summary>
 LastSawValidator control.
@@ -829,6 +949,14 @@ coronerName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqCoronerName">
+	<summary>
+ReqCoronerName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.caseNumber">
 	<summary>
 caseNumber control.
@@ -837,9 +965,25 @@ caseNumber control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqCaseNumber">
+	<summary>
+ReqCaseNumber control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.counselorName">
 	<summary>
 counselorName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.ReqCounselorName">
+	<summary>
+ReqCounselorName control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -861,9 +1005,33 @@ CoronerDateValidator control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.firstCall.ReqCoronerDate">
+	<summary>
+ReqCoronerDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.firstCall.coronerTime">
 	<summary>
 coronerTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.ReqCoronerTime">
+	<summary>
+ReqCoronerTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.firstCall.RegExCoronerTime">
+	<summary>
+RegExCoronerTime control.
 </summary>
 	<remarks>
 Auto-generated field.

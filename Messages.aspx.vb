@@ -83,14 +83,15 @@ Public Class Messages
     Dim rsData As SqlDataReader
 
     db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, ClientType, ClientAnswer, ClientData, AdditionalNotes FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
+    rsData = db.GetDataReader("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ClientType, c.CompanyPhoneAnswer, ci.CompanyInformation, c.CompanyAdditionalNotes FROM COMPANY c WITH (NOLOCK) INNER JOIN COMPANY_TYPE ct ON ct.ClientTypeID = c.CompanyTypeID INNER JOIN COMPANY_INFO ci ON ci.CompanyID = c.CompanyID WHERE c.CompanyID = " + id)
 
     Do While rsData.Read()
-      clientMessageId.InnerHtml = rsData("CustID").ToString()
+      CompanyID.Value = rsData("CompanyID").ToString()
+      clientMessageId.InnerHtml = rsData("CompanyNumber").ToString()
       clientName.InnerText = rsData("CompanyName")
-      clientGreeting = rsData("ClientAnswer")
-      ClientInformation = db.ClearNull(rsData("ClientData"))
-      AdditionalNotes = db.ClearNull(rsData("AdditionalNotes"))
+      clientGreeting = rsData("CompanyPhoneAnswer")
+      ClientInformation = db.ClearNull(rsData("CompanyInformation"))
+      AdditionalNotes = db.ClearNull(rsData("CompanyAdditionalNotes"))
     Loop
 
   End Sub
@@ -106,13 +107,13 @@ Public Class Messages
     Dim rsData As SqlDataReader
     Dim strSQL As New StringBuilder()
 
-    strSQL.Append("SELECT t1.ContactID, t1.CustID, t1.ContactName, t1.ContactInfo, t1.ContactType ")
+    strSQL.Append("SELECT t1.ContactID, t1.CompanyID, t1.ContactName, t1.ContactInfo, t1.ContactType ")
     strSQL.Append("FROM CONTACT t1 WITH (NOLOCK) ")
     strSQL.Append("WHERE t1.CREATEDATETIME = ")
     strSQL.Append("(SELECT MAX(t2.CREATEDATETIME) ")
     strSQL.Append("FROM CONTACT t2 WITH (NOLOCK) ")
-    strSQL.Append("WHERE t2.CustID = t1.CustID AND t2.ContactType = t1.ContactType) ")
-    strSQL.Append("AND t1.CustID = " & id + " ")
+    strSQL.Append("WHERE t2.CompanyID = t1.CompanyID AND t2.ContactType = t1.ContactType) ")
+    strSQL.Append("AND t1.CompanyID = " & id + " ")
     strSQL.Append("ORDER BY t1.ContactType ASC")
 
     db = New dbUtil()

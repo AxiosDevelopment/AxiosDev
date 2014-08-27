@@ -45,7 +45,7 @@ Public Class updateInfo
             Case "updateAdditionalNotes"
               UpdateAdditionalNotes(cid, dataInfo)
             Case "updateClientInfo"
-              UpdateClientData(cid, dataInfo)
+              UpdateCompanyInformation(cid, dataInfo)
             Case Else
 
           End Select
@@ -78,9 +78,9 @@ Public Class updateInfo
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
-    SQL.Append("INSERT INTO [dbo].[CONTACT] ([CustID],[ContactName],[ContactInfo],[ContactType],[CreateDateTIme])")
+    SQL.Append("INSERT INTO [dbo].[CONTACT] ([CompanyID],[ContactName],[ContactInfo],[ContactType],[CreateDateTIme])")
     SQL.Append(" VALUES ")
-    SQL.Append("(" & Convert.ToInt32(id) & ",") 'CustID
+    SQL.Append("(" & Convert.ToInt32(id) & ",") 'CompanyID
     SQL.Append("'" & cName & "',") 'ContactName
     SQL.Append(If(Not String.IsNullOrEmpty(cNumber), "'" & cNumber & "',", "NULL,")) 'ContactInfo
     SQL.Append(conType & ",") 'ContactType
@@ -103,21 +103,21 @@ Public Class updateInfo
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
-    SQL.Append("UPDATE CompanyInfo SET ")
-    SQL.Append("AdditionalNotes = " & If(Not String.IsNullOrEmpty(note), "'" & note & "' ", "NULL "))
-    SQL.Append("WHERE CustID = " & id)
+    SQL.Append("UPDATE COMPANY SET ")
+    SQL.Append("CompanyAdditionalNotes = " & If(Not String.IsNullOrEmpty(note), "'" & note & "' ", "NULL "))
+    SQL.Append("WHERE CompanyID = " & id)
 
     returnedID = db.GetID(SQL.ToString())
 
   End Sub
 
   ''' <summary>
-  ''' Updates the ClientData field that is assigned to the client (company)
+  ''' Updates the CompanyInformation field that is assigned to the client (company) in COMPANY_INFO table
   ''' </summary>
   ''' <param name="id"></param>
   ''' <param name="data"></param>
   ''' <remarks></remarks>
-  Private Sub UpdateClientData(id As String, data As String)
+  Private Sub UpdateCompanyInformation(id As String, data As String)
 
     Dim returnedID As Integer
     Dim SQL As New StringBuilder()
@@ -125,9 +125,9 @@ Public Class updateInfo
     db = New dbUtil()
 
     data = Replace(data, "'", "`")
-    SQL.Append("UPDATE CompanyInfo SET ")
-    SQL.Append("ClientData = " & If(Not String.IsNullOrEmpty(data), "'" & data & "' ", "NULL "))
-    SQL.Append("WHERE CustID = " & id)
+    SQL.Append("UPDATE COMPANY_INFO SET ")
+    SQL.Append("CompanyInformation = " & If(Not String.IsNullOrEmpty(data), "'" & data & "' ", "NULL "))
+    SQL.Append("WHERE CompanyID = " & id)
 
     returnedID = db.GetID(SQL.ToString())
 
