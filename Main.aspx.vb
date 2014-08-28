@@ -35,7 +35,7 @@ Public Class Main
     Try
 
       db = New dbUtil()
-      rsData = db.GetDataReader("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ContactName, MAX(ct.CREATEDATETIME) AS CreatedDate FROM COMPANY c WITH (NOLOCK) INNER JOIN CONTACT ct ON ct.CompanyID = c.CompanyID WHERE ContactType = 1 GROUP BY c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ContactName ORDER BY CompanyNumber ASC")
+      rsData = db.GetDataReader("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ContactName, ct.CREATEDATETIME AS CreatedDate FROM COMPANY c WITH (NOLOCK) INNER JOIN CONTACT ct ON ct.CompanyID = c.CompanyID INNER JOIN (SELECT CompanyID, MAX(CREATEDATETIME) AS MaxDateTime FROM CONTACT WHERE ContactType = 1 GROUP BY CompanyID) a ON ct.CompanyID = a.CompanyID AND ct.CREATEDATETIME = a.MaxDateTime ORDER BY c.CompanyNumber ASC")
 
       Dim row As HtmlTableRow
       Dim cell As HtmlTableCell

@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
-Public Class updateInfo
+
+Public Class UpdateInformation
   Inherits System.Web.UI.Page
 
   ''' <summary>
@@ -62,7 +63,6 @@ Public Class updateInfo
       End Try
 
     End If
-
   End Sub
 
   ''' <summary>

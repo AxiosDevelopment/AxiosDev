@@ -1,0 +1,1 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="SearchInformation.aspx.vb" Inherits="Axios.SearchInformation" %>

@@ -13,6 +13,7 @@ Public Class Messages
   Protected SecondaryContactInfo As String = ""
   Protected AdditionalNotes As String = ""
   Protected ClientInformation As String = ""
+  'Private _companyDA As ICompanyDA
 
   ''' <summary>
   ''' 
@@ -79,20 +80,16 @@ Public Class Messages
   ''' <remarks></remarks>
   Private Sub GetClient(id As String)
 
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
+    Dim cDA As New CompanyDA
+    Dim company As Company
+    company = cDA.GetCompany(id)
 
-    db = New dbUtil()
-    rsData = db.GetDataReader("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ClientType, c.CompanyPhoneAnswer, ci.CompanyInformation, c.CompanyAdditionalNotes FROM COMPANY c WITH (NOLOCK) INNER JOIN COMPANY_TYPE ct ON ct.ClientTypeID = c.CompanyTypeID INNER JOIN COMPANY_INFO ci ON ci.CompanyID = c.CompanyID WHERE c.CompanyID = " + id)
-
-    Do While rsData.Read()
-      CompanyID.Value = rsData("CompanyID").ToString()
-      clientMessageId.InnerHtml = rsData("CompanyNumber").ToString()
-      clientName.InnerText = rsData("CompanyName")
-      clientGreeting = rsData("CompanyPhoneAnswer")
-      ClientInformation = db.ClearNull(rsData("CompanyInformation"))
-      AdditionalNotes = db.ClearNull(rsData("CompanyAdditionalNotes"))
-    Loop
+    CompanyID.Value = company.CompanyID
+    clientMessageId.InnerHtml = company.Number
+    clientName.InnerText = company.Name
+    clientGreeting = company.PhoneAnswer
+    ClientInformation = company.ClientInfo
+    AdditionalNotes = company.AdditionalNotes
 
   End Sub
 
@@ -157,14 +154,18 @@ Public Class Messages
     rsData = db.GetDataReader(SQL.ToString())
 
     Do While rsData.Read()
-      MsgTo.Text = If(Not String.IsNullOrEmpty(rsData("MsgTo")), rsData("MsgTo"), String.Empty)
-      MsgFrom.Text = If(Not String.IsNullOrEmpty(rsData("MsgFrom")), rsData("MsgFrom"), String.Empty)
-      nMsgPhone.Text = If(Not String.IsNullOrEmpty(rsData("MsgPhone")), rsData("MsgPhone"), String.Empty)
-      nMsgPhoneX.Text = If(Not String.IsNullOrEmpty(rsData("MsgExt")), rsData("MsgExt"), String.Empty)
-      nMsgAlt.Text = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone")), rsData("MsgAltPhone"), String.Empty)
-      QwkMessage.SelectedValue = QwkMessage.Items.FindByText(rsData("MsgQwkMsgs")).Value
-      Message.Text = If(Not String.IsNullOrEmpty(rsData("MsgMessage")), rsData("MsgMessage"), String.Empty)
-      Notes.Text = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes")), rsData("MsgOperatorNotes"), String.Empty)
+      MsgTo.Text = If(Not String.IsNullOrEmpty(rsData("MsgTo").ToString()), rsData("MsgTo").ToString(), String.Empty)
+      MsgFrom.Text = If(Not String.IsNullOrEmpty(rsData("MsgFrom").ToString()), rsData("MsgFrom"), String.Empty)
+      nMsgPhone.Text = If(Not String.IsNullOrEmpty(rsData("MsgPhone").ToString()), rsData("MsgPhone"), String.Empty)
+      nMsgPhoneX.Text = If(Not String.IsNullOrEmpty(rsData("MsgExt").ToString()), rsData("MsgExt"), String.Empty)
+      nMsgAlt.Text = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone").ToString()), rsData("MsgAltPhone"), String.Empty)
+      If Not IsNothing(QwkMessage.Items.FindByText(rsData("MsgQwkMsgs").ToString())) Then
+        QwkMessage.Items.FindByText(rsData("MsgQwkMsgs").ToString()).Selected = True
+      Else
+        QwkMessage.SelectedValue = -1
+      End If
+      Message.Text = If(Not String.IsNullOrEmpty(rsData("MsgMessage").ToString()), rsData("MsgMessage"), String.Empty)
+      Notes.Text = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes").ToString()), rsData("MsgOperatorNotes"), String.Empty)
     Loop
 
   End Sub

@@ -1,13 +1,20 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Web.Script.Serialization
 
-Public Class FromAutoSearch
+Public Class SearchInformation
   Inherits System.Web.UI.Page
 
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="sender"></param>
+  ''' <param name="e"></param>
+  ''' <remarks></remarks>
   Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     Dim qId As String
     Dim searchString As String = ""
+    Dim companyNumber As Integer
 
     If Not (Page.IsPostBack) Then
 
@@ -35,6 +42,12 @@ Public Class FromAutoSearch
             Case "physicianAuto" 'When clicking an item on the Attending Physician autocomplete list
               searchString = Request.QueryString.Get("busId").ToString()
               GetPhysician(searchString)
+
+            Case "ALLMESSAGES"
+              searchString = Request.QueryString.Get("cid").ToString()
+              ''GET CompanyNumber with cid(CompanyID) until Msg table is changed
+              companyNumber = GetCompanyNumber(searchString)
+              GetMessages(companyNumber, searchString)
 
             Case Else
 
@@ -161,7 +174,51 @@ Public Class FromAutoSearch
       Context.ApplicationInstance.CompleteRequest()
     End If
 
+  End Sub
+
+  ''' <summary>
+  ''' This will return all messages for a client (company)
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetMessages(search As String, companyId As String)
+
+    Dim rsData As SqlDataReader
+    Dim db As dbUtil = New dbUtil()
+    'Dim strBusiness As String
+    Dim strHTML As New StringBuilder()
+
+    rsData = db.GetDataReader("SELECT MsgId, MsgCustID, MsgTo, MsgFrom, MsgDateTime FROM Msg WITH (NOLOCK) WHERE MsgCustID = " & search)
+    If rsData.HasRows Then
+      While rsData.Read
+        'strBusiness = ""
+        'strBusiness = If(Not String.IsNullOrEmpty(rsData("BusCity").ToString()), rsData("BusinessName") & " - " & rsData("BusCity"), rsData("BusinessName"))
+        'strHTML.Append("<li><input type=""hidden"" class=""busId"" value=" & rsData("BusID") & " />" & strBusiness & "</li>")
+        strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & rsData("MsgId").ToString() & "&ClientId=" & companyId & """><span class=""to"">To: " & rsData("MsgTo").ToString() & "</span><span class=""from"">From: " & rsData("MsgFrom").ToString() & "</span><span class=""date"">Date: " & FormatDateTime(rsData("MsgDateTime").ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(rsData("MsgDateTime").ToString(), DateFormat.ShortTime) & "</span></a></li>")
+      End While
+      rsData.Close()
+      Response.Write(strHTML.ToString())
+    End If
 
   End Sub
+
+  ''' <summary>
+  ''' ONLY NEEDED UNTIL MSG TABLE IS FIXED AND HAS COMPANYID FIELD
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Function GetCompanyNumber(id As String) As String
+
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
+
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT CompanyID, CompanyNumber FROM COMPANY WITH (NOLOCK) WHERE CompanyID = " + id)
+
+    Do While rsData.Read()
+      Return rsData("CompanyNumber").ToString()
+    Loop
+
+    Return ""
+
+  End Function
 
 End Class
