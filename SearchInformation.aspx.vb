@@ -70,21 +70,19 @@ Public Class SearchInformation
   ''' <remarks></remarks>
   Private Sub GetBusinesses(search As String)
 
-    Dim rsData As SqlDataReader
-    Dim db As dbUtil = New dbUtil()
-    Dim strBusiness As String
-    Dim strHTML As New StringBuilder()
+    Dim bDA As New BusinessDA
+    Dim businesses As List(Of Business)
+    Dim js As New JavaScriptSerializer()
 
-    rsData = db.GetDataReader("SELECT BusID, BusinessName, BusCity FROM BusinessNames where BusinessName like '%" & search & "%' ORDER BY BusinessName ASC")
-    If rsData.HasRows Then
-      While rsData.Read
-        strBusiness = ""
-        strBusiness = If(Not String.IsNullOrEmpty(rsData("BusCity").ToString()), rsData("BusinessName") & " - " & rsData("BusCity"), rsData("BusinessName"))
-        strHTML.Append("<li><input type=""hidden"" class=""busId"" value=" & rsData("BusID") & " />" & strBusiness & "</li>")
-      End While
-      rsData.Close()
-      Response.Write(strHTML.ToString())
-    End If
+    businesses = bDA.GetBusinesses(search)
+    Dim json = js.Serialize(businesses)
+
+    'Dim test = From b In businesses
+    '           Where b.BusinessID = 8
+    '           Select b
+
+    Response.Write(json)
+    Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
 
   End Sub
 
@@ -95,29 +93,15 @@ Public Class SearchInformation
   ''' <remarks></remarks>
   Private Sub GetBusiness(search As String)
 
-    Dim rsData As SqlDataReader
-    Dim db As dbUtil = New dbUtil()
-    Dim TheJson As New StringBuilder()
+    Dim bDA As New BusinessDA
+    Dim business As Business
+    Dim js As New JavaScriptSerializer()
 
-    rsData = db.GetDataReader("SELECT BusID, BusinessName, BusAddress, BusCity, BusState, BusZip, BusCounty, BusPhone, BusExt FROM BusinessNames WITH (NOLOCK) WHERE BusID = " + search)
-    If rsData.HasRows Then
-      Dim columnCount As Integer
-      columnCount = rsData.FieldCount
+    business = bDA.GetBusiness(search)
+    Dim json = js.Serialize(business)
 
-      TheJson.Append("{")
-      While rsData.Read
-        For x = 0 To columnCount - 1
-          TheJson.Append(String.Format("{0}{1}{0} : {0}{2}{0}", Chr(34), rsData.GetName(x), rsData(x)))
-          If x <> columnCount - 1 Then
-            TheJson.Append(",")
-          End If
-        Next
-      End While
-      TheJson.Append("}")
-      rsData.Close()
-      Response.Write(TheJson)
-      Context.ApplicationInstance.CompleteRequest()
-    End If
+    Response.Write(json)
+    Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
 
   End Sub
 
@@ -127,18 +111,15 @@ Public Class SearchInformation
   ''' <remarks></remarks>
   Private Sub GetPhysicians(search As String)
 
-    Dim rsData As SqlDataReader
-    Dim db As dbUtil = New dbUtil()
-    Dim strHTML As New StringBuilder()
+    Dim dDA As New DoctorDA
+    Dim doctors As List(Of Doctor)
+    Dim js As New JavaScriptSerializer()
 
-    rsData = db.GetDataReader("SELECT ID, DrName FROM DoctorListQ WHERE DrName LIKE '%" & search & "%' ORDER BY DrName ASC")
-    If rsData.HasRows Then
-      While rsData.Read
-        strHTML.Append("<li><input type=""hidden"" class=""docId"" value=" & rsData("ID") & " />" & rsData("DrName").ToString() & "</li>")
-      End While
-      rsData.Close()
-      Response.Write(strHTML.ToString())
-    End If
+    doctors = dDA.GetDoctors(search)
+    Dim json = js.Serialize(doctors)
+
+    Response.Write(json)
+    Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
 
   End Sub
 
@@ -150,49 +131,31 @@ Public Class SearchInformation
   ''' <remarks></remarks>
   Private Sub GetPhysician(search As String)
 
-    Dim rsData As SqlDataReader
-    Dim db As dbUtil = New dbUtil()
-    Dim TheJson As New StringBuilder()
+    Dim dDA As New DoctorDA
+    Dim doctor As Doctor
+    Dim js As New JavaScriptSerializer()
 
-    rsData = db.GetDataReader("SELECT ID, DrName, DrWorkPhone FROM DoctorListQ WHERE ID = " + search)
-    If rsData.HasRows Then
-      Dim columnCount As Integer
-      columnCount = rsData.FieldCount
+    doctor = dDA.GetDoctor(search)
+    Dim json = js.Serialize(doctor)
 
-      TheJson.Append("{")
-      While rsData.Read
-        For x = 0 To columnCount - 1
-          TheJson.Append(String.Format("{0}{1}{0} : {0}{2}{0}", Chr(34), rsData.GetName(x), rsData(x)))
-          If x <> columnCount - 1 Then
-            TheJson.Append(",")
-          End If
-        Next
-      End While
-      TheJson.Append("}")
-      rsData.Close()
-      Response.Write(TheJson)
-      Context.ApplicationInstance.CompleteRequest()
-    End If
+    Response.Write(json)
+    Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
 
   End Sub
 
   ''' <summary>
-  ''' This will return all messages for a client (company)
+  ''' This will return all messages for a client (company) when clicking on All Messages tab (Message page)
   ''' </summary>
   ''' <remarks></remarks>
   Private Sub GetMessages(search As String, companyId As String)
 
     Dim rsData As SqlDataReader
     Dim db As dbUtil = New dbUtil()
-    'Dim strBusiness As String
     Dim strHTML As New StringBuilder()
 
     rsData = db.GetDataReader("SELECT MsgId, MsgCustID, MsgTo, MsgFrom, MsgDateTime FROM Msg WITH (NOLOCK) WHERE MsgCustID = " & search)
     If rsData.HasRows Then
       While rsData.Read
-        'strBusiness = ""
-        'strBusiness = If(Not String.IsNullOrEmpty(rsData("BusCity").ToString()), rsData("BusinessName") & " - " & rsData("BusCity"), rsData("BusinessName"))
-        'strHTML.Append("<li><input type=""hidden"" class=""busId"" value=" & rsData("BusID") & " />" & strBusiness & "</li>")
         strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & rsData("MsgId").ToString() & "&ClientId=" & companyId & """><span class=""to"">To: " & rsData("MsgTo").ToString() & "</span><span class=""from"">From: " & rsData("MsgFrom").ToString() & "</span><span class=""date"">Date: " & FormatDateTime(rsData("MsgDateTime").ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(rsData("MsgDateTime").ToString(), DateFormat.ShortTime) & "</span></a></li>")
       End While
       rsData.Close()

@@ -81,7 +81,7 @@ Public Class UpdateInformation
     SQL.Append("INSERT INTO [dbo].[CONTACT] ([CompanyID],[ContactName],[ContactInfo],[ContactType],[CreateDateTIme])")
     SQL.Append(" VALUES ")
     SQL.Append("(" & Convert.ToInt32(id) & ",") 'CompanyID
-    SQL.Append("'" & cName & "',") 'ContactName
+    SQL.Append(If(Not String.IsNullOrEmpty(cName), "'" & cName & "',", "NULL,")) 'ContactName
     SQL.Append(If(Not String.IsNullOrEmpty(cNumber), "'" & cNumber & "',", "NULL,")) 'ContactInfo
     SQL.Append(conType & ",") 'ContactType
     SQL.Append("'" & DateTime.Now & "')") 'CreateDateTIme

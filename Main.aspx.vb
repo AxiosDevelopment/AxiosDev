@@ -130,7 +130,7 @@ Public Class Main
           If Not IsDBNull(rsData("CompanyName")) Then
             cell = New HtmlTableCell
             If String.Format(rsData("FirstCall")).ToUpper() = "YES" Then
-              a = New HtmlAnchor With {.HRef = "firstCall.aspx?FirstCallId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CompanyID").ToString()}
+              a = New HtmlAnchor With {.HRef = "FirstCalls.aspx?FirstCallId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CompanyID").ToString()}
             Else
               a = New HtmlAnchor With {.HRef = "Messages.aspx?MsgId=" + rsData("MessageID").ToString() + "&ClientId=" + rsData("CompanyID").ToString()}
             End If

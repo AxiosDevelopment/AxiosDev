@@ -150,8 +150,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="default.css" />
-    <Content Include="firstCall.aspx" />
     <Content Include="firstCall.html" />
+    <Content Include="FirstCalls.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\bg_01.gif" />
     <Content Include="images\bg_02.gif" />
@@ -288,20 +288,30 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\BusinessDA.vb" />
+    <Compile Include="DAL\DoctorDA.vb" />
+    <Compile Include="DAL\FirstCallDA.vb" />
+    <Compile Include="DataClasses\Business.vb" />
     <Compile Include="DataClasses\Company.vb" />
-    <Compile Include="DataClasses\CompanyDA.vb" />
+    <Compile Include="DAL\CompanyDA.vb" />
+    <Compile Include="DataClasses\Contact.vb" />
+    <Compile Include="DataClasses\Doctor.vb" />
+    <Compile Include="DataClasses\FirstCall.vb" />
     <Compile Include="dbUtil.vb" />
-    <Compile Include="firstCall.aspx.designer.vb">
-      <DependentUpon>firstCall.aspx</DependentUpon>
+    <Compile Include="FirstCalls.aspx.designer.vb">
+      <DependentUpon>FirstCalls.aspx</DependentUpon>
     </Compile>
-    <Compile Include="firstCall.aspx.vb">
-      <DependentUpon>firstCall.aspx</DependentUpon>
+    <Compile Include="FirstCalls.aspx.vb">
+      <DependentUpon>FirstCalls.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IBusinessDA.vb" />
     <Compile Include="Interfaces\ICompanyDA.vb" />
+    <Compile Include="Interfaces\IDoctorDA.vb" />
+    <Compile Include="Interfaces\IFirstCallDA.vb" />
     <Compile Include="Main.aspx.designer.vb">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>

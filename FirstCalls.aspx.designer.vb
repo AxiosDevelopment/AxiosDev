@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class firstCall
+Partial Public Class FirstCalls
 
   '''<summary>
   '''ClientHeader control.

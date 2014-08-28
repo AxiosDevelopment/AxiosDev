@@ -40,7 +40,6 @@
   Public Property ClientInfo As String
 
   Public Sub New()
-
   End Sub
 
 End Class

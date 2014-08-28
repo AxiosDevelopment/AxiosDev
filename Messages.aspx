@@ -46,7 +46,7 @@
           <li><a href="Messages.aspx?ClientId=<%=cid%>&MsgId=0" title="">New Message</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
-          <li><a href="FirstCall.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
+          <li><a href="FirstCalls.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
           <li><a id="printMessage" href="#" title="">Print Message</a></li>
         </ul>
       </div>

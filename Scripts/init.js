@@ -77,8 +77,19 @@ $(function () {
         cache: false
       })
        .done(function (data) {
+         var $podAuto = $('#podAuto');
+         $podAuto.html("");
+         $.each($.parseJSON(data), function (i, item) {
+           var busNameCity;
+           if (item.City === ""){
+             busNameCity = item.Name;
+           }else{
+             busNameCity = item.Name + " - " + item.City;
+           }
+           var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
+           $podAuto.append(html);
+         });
          $('#podSearch').show();
-         $('#podAuto').html(data);
          $('.facility').prop('disabled', false);
        });
     }, 300);
@@ -98,8 +109,13 @@ $(function () {
         cache: false
       })
        .done(function (data) {
+         var $physicianAuto = $('#physicianAuto');
+         $physicianAuto.html("");
+         $.each($.parseJSON(data), function (i, item) {
+           var html = '<li><input type="hidden" class="docId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
+           $physicianAuto.append(html);
+         });
          $('#physicianSearch').show();
-         $('#physicianAuto').html(data);
        });
     }, 300);
   });
@@ -116,16 +132,16 @@ $(function () {
     .done(function (data) {
       var busObj = JSON.parse(data);
       console.log(busObj);
-      $('#placeOfDeath').val(busObj.BusinessName);
+      $('#placeOfDeath').val(busObj.Name);
 
-      if (busObj.BusinessName.toUpperCase() != "RESIDENCE") { /*Need to test either name or id to validate if we leave rest of fields read-only*/
-        $('#facilityAddr').val(busObj.BusAddress);
-        $('#facilityCounty').val(busObj.BusCounty);
-        $('#facState').val(busObj.BusState);
-        $('#facCity').val(busObj.BusCity);
-        $('#facilityZip').val(busObj.BusZip);
-        $('#facilityPhone').val(busObj.BusPhone);
-        $('#phoneExt').val(busObj.BusExt);
+      if (busObj.Name.toUpperCase() != "RESIDENCE") { /*Need to test either name or id to validate if we leave rest of fields read-only*/
+        $('#facilityAddr').val(busObj.Address);
+        $('#facilityCounty').val(busObj.County);
+        $('#facState').val(busObj.State);
+        $('#facCity').val(busObj.City);
+        $('#facilityZip').val(busObj.Zip);
+        $('#facilityPhone').val(busObj.Phone);
+        $('#phoneExt').val(busObj.Ext);
         $('.facility').prop('disabled', true);
       }
       else {
@@ -149,8 +165,8 @@ $(function () {
     .done(function (data) {
       var docObj = JSON.parse(data);
       console.log(data);
-      $('#physicianName').val(docObj.DrName);
-      $('#physicianPhone').val(docObj.DrWorkPhone);
+      $('#physicianName').val(docObj.Name);
+      $('#physicianPhone').val(docObj.WorkPhone);
       $('.physician').prop('disabled', true);
       $('#physicianSearch').hide();
     }).fail(function (data) {
