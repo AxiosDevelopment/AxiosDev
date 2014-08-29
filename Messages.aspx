@@ -46,7 +46,7 @@
           <li><a href="Messages.aspx?ClientId=<%=cid%>&MsgId=0" title="">New Message</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
-          <li><a href="FirstCall.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
+          <li><a href="FirstCalls.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
           <li><a id="printMessage" href="#" title="">Print Message</a></li>
         </ul>
       </div>
@@ -62,6 +62,7 @@
             <div class="entry">
               <div class="left" id="newMessage">
                 <form id="addMessage" method="post" action="#" runat="server">
+                  <asp:HiddenField ID="CompanyID" runat="server" />
                   <asp:HiddenField ID="MessageID" runat="server" />
                   <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
                   <asp:ScriptManager ID="MsgScriptManager" runat="server">
@@ -113,6 +114,7 @@
                   <br />
                   <label for="secondaryOnCallInfo">Secondary</label>
                   <button class="right updateCounselor" id="updateSecondaryCounselor">Update</button>
+                  <button class="right clearCounselor" id="clearSecondaryCounselor" style="width:50px">Clear</button>
                   <input type="text" id="secondaryOnCall" name="secondaryOnCall" class="onCall" value="<%=SecondaryContactName%>" />
                   <input type="text" id="secondaryContact" name="secondaryContact" class="onCall mTop5" value="<%=SecondaryContactInfo%>" /><br />
                   <br />

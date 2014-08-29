@@ -30,18 +30,20 @@ function openWindow(popUp) {
 }
 
 $(function () {
-  var clientId = $('#clientMessageId').text();
+  var clientId = $('#CompanyID').val();
   $('#searchMessages').on('click', function (e) {
-    e.preventDefault();
     var window = $('#messageContainer');
     $.ajax({
-      url: "retrieveAllMessagesForClient.aspx",
+      url: "SearchInformation.aspx?cid=" + clientId + "&queryId=ALLMESSAGES",
       cache: false
     })
     .done(function (data) {
       $('#allMessages').html(data);
       openWindow(window);
+    }).fail(function (data) {
+      alert("Error retrieving Messages. Please try again.\n(Error: " + data.responseText);
     });
+    e.preventDefault();
   });
 
   $('#printMessage').on('click', function (e) {
@@ -66,16 +68,29 @@ $(function () {
     var searchStr = $(this).val();
     if (searchStr === '') {
       $('#podSearch').hide();
+      $('.facility').prop('disabled', false);
       return;
     }
     delay(function () {
       $.ajax({
-        url: "FromAutoSearch.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
+        url: "SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
         cache: false
       })
        .done(function (data) {
+         var $podAuto = $('#podAuto');
+         $podAuto.html("");
+         $.each($.parseJSON(data), function (i, item) {
+           var busNameCity;
+           if (item.City === ""){
+             busNameCity = item.Name;
+           }else{
+             busNameCity = item.Name + " - " + item.City;
+           }
+           var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
+           $podAuto.append(html);
+         });
          $('#podSearch').show();
-         $('#podAuto').html(data);
+         $('.facility').prop('disabled', false);
        });
     }, 300);
   })
@@ -90,12 +105,17 @@ $(function () {
     }
     delay(function () {
       $.ajax({
-        url: "FromAutoSearch.aspx?query=" + searchStr + "&queryId=DOCSEARCH",
+        url: "SearchInformation.aspx?query=" + searchStr + "&queryId=DOCSEARCH",
         cache: false
       })
        .done(function (data) {
+         var $physicianAuto = $('#physicianAuto');
+         $physicianAuto.html("");
+         $.each($.parseJSON(data), function (i, item) {
+           var html = '<li><input type="hidden" class="docId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
+           $physicianAuto.append(html);
+         });
          $('#physicianSearch').show();
-         $('#physicianAuto').html(data);
        });
     }, 300);
   });
@@ -106,27 +126,26 @@ $(function () {
     var result = $(this).children('.busId').val();
     var parent = $(this).parent().attr('id');
     $.ajax({
-      url: "FromAutoSearch.aspx?busId=" + result + "&queryId=" + parent,
+      url: "SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
       cache: false
     })
     .done(function (data) {
-        var busObj = JSON.parse(data);
-        console.log(busObj);
-      $('#placeOfDeath').val(busObj.BusinessName);
+      var busObj = JSON.parse(data);
+      console.log(busObj);
+      $('#placeOfDeath').val(busObj.Name);
 
-      if (busObj.BusinessName.toUpperCase() != "RESIDENCE") { /*Need to test either name or id to validate if we leave rest of fields read-only*/
-          $('#facilityAddr').val(busObj.BusAddress);
-          $('#facilityCounty').val(busObj.BusCounty);
-          $('#facState').val(busObj.BusState);
-          $('#facCity').val(busObj.BusCity);
-          $('#facilityZip').val(busObj.BusZip);
-          $('#facilityPhone').val(busObj.BusPhone);
-          $('#phoneExt').val(busObj.BusExt);
-          $('.facility').prop('disabled', true);
+      if (busObj.Name.toUpperCase() != "RESIDENCE") { /*Need to test either name or id to validate if we leave rest of fields read-only*/
+        $('#facilityAddr').val(busObj.Address);
+        $('#facilityCounty').val(busObj.County);
+        $('#facState').val(busObj.State);
+        $('#facCity').val(busObj.City);
+        $('#facilityZip').val(busObj.Zip);
+        $('#facilityPhone').val(busObj.Phone);
+        $('#phoneExt').val(busObj.Ext);
+        $('.facility').prop('disabled', true);
       }
-      else
-      {
-          $('.facility').prop('disabled', false);
+      else {
+        $('.facility').prop('disabled', false);
       }
       $('#podSearch').hide();
     }).fail(function (data) {
@@ -135,23 +154,24 @@ $(function () {
   });
 
 
-    /** FOR DOCID **/
+  /** FOR DOCID **/
   $(document).on('click', '#physicianAuto li', function () {
-      var result = $(this).children('.docId').val();
-      var parent = $(this).parent().attr('id');
-      $.ajax({
-          url: "FromAutoSearch.aspx?busId=" + result + "&queryId=" + parent,
-          cache: false
-      })
-      .done(function (data) {
-          //var docObj = JSON.parse(data);
-          console.log(data);
-         // $('#placeOfDeath').val(busObj.BusinessName);
-          $('.physician').prop('disabled', true);
-          $('#physicianSearch').hide();
-      }).fail(function (data) {
-          alert("Update has failed. Please try again.\n(Error: " + data.responseText);
-      });
+    var result = $(this).children('.docId').val();
+    var parent = $(this).parent().attr('id');
+    $.ajax({
+      url: "SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+      cache: false
+    })
+    .done(function (data) {
+      var docObj = JSON.parse(data);
+      console.log(data);
+      $('#physicianName').val(docObj.Name);
+      $('#physicianPhone').val(docObj.WorkPhone);
+      $('.physician').prop('disabled', true);
+      $('#physicianSearch').hide();
+    }).fail(function (data) {
+      alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+    });
   });
 
   /** THIS triggers a save for the various "update buttons" and their associated textareas **/
@@ -159,7 +179,7 @@ $(function () {
     var updateId = $(this).attr('id'); //gets the ID of the textarea
     var dataFieldValue = $(this).next('textarea').val(); //Gets the value of the data field associated with the update
     $.ajax({
-      url: "updateInfo.aspx",
+      url: "UpdateInformation.aspx",
       type: "POST",
       data: {
         info: dataFieldValue,
@@ -179,7 +199,7 @@ $(function () {
     var contactName = $(this).next('input').val();
     var contactNumber = $(this).next().next('input').val();
     $.ajax({
-      url: "updateInfo.aspx?",
+      url: "UpdateInformation.aspx?",
       data: "contactName=" + contactName + "&contactNumber=" + contactNumber + "&clientId=" + clientId + "&updateId=" + updateId,
       dataType: "text",
       cache: false
@@ -194,4 +214,47 @@ $(function () {
       $('.searchAuto').hide();
     }
   });
+
+  /** THIS IS FOR THE COUNSELOR ON CALL TO CONTROL THE BUTTON ONLY WHEN CHANGES **/
+  $('#updateMainCounselor').attr('disabled', true);
+  var priOnCall = $('#primaryOnCall');
+  var priContact = $('#primaryContact');
+
+  // on keyup of the first textbox for Counselor On Call - enable Update buttons
+  priOnCall.keyup(function () {
+    $('#updateMainCounselor').attr('disabled', false);
+  })
+  // on keyup of the second textbox for Counselor On Call - enable Update buttons
+  priContact.keyup(function () {
+    $('#updateMainCounselor').attr('disabled', false);
+  })
+
+
+  /** THIS IS FOR THE SECONDARY ON CALL TO CONTROL THE BUTTONS **/
+  $('#updateSecondaryCounselor').attr('disabled', true);
+  var secOnCall = $('#secondaryOnCall');
+  var secContact = $('#secondaryContact');
+
+  // if not values exist, disalbe the Clear button
+  if (secOnCall.val() != '' || secContact.val() != '') {
+    $('#clearSecondaryCounselor').attr('disabled', false);
+  }
+  // on keyup of the first textbox for Counselor On Call - enable Clear and Update buttons
+  secOnCall.keyup(function () {
+    $('#clearSecondaryCounselor').attr('disabled', false);
+    $('#updateSecondaryCounselor').attr('disabled', false);
+  })
+  // on keyup of the second textbox for Counselor On Call - enable Clear and Update buttons
+  secContact.keyup(function () {
+    $('#clearSecondaryCounselor').attr('disabled', false);
+    $('#updateSecondaryCounselor').attr('disabled', false);
+  })
+  // clicking the Clear button
+  $('#clearSecondaryCounselor').on('click', function () {
+    $('#secondaryOnCall').val("");
+    $('#secondaryContact').val("");
+    $('#updateSecondaryCounselor').attr('disabled', false);
+    $('#clearSecondaryCounselor').attr('disabled', true);
+  });
+
 });

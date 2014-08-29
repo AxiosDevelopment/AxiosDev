@@ -13,6 +13,7 @@ Public Class Messages
   Protected SecondaryContactInfo As String = ""
   Protected AdditionalNotes As String = ""
   Protected ClientInformation As String = ""
+  'Private _companyDA As ICompanyDA
 
   ''' <summary>
   ''' 
@@ -79,19 +80,16 @@ Public Class Messages
   ''' <remarks></remarks>
   Private Sub GetClient(id As String)
 
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
+    Dim cDA As New CompanyDA
+    Dim company As Company
+    company = cDA.GetCompany(id)
 
-    db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CustID, CompanyName, ClientType, ClientAnswer, ClientData, AdditionalNotes FROM CompanyInfo WITH (NOLOCK) WHERE CustID = " + id)
-
-    Do While rsData.Read()
-      clientMessageId.InnerHtml = rsData("CustID").ToString()
-      clientName.InnerText = rsData("CompanyName")
-      clientGreeting = rsData("ClientAnswer")
-      ClientInformation = db.ClearNull(rsData("ClientData"))
-      AdditionalNotes = db.ClearNull(rsData("AdditionalNotes"))
-    Loop
+    CompanyID.Value = company.CompanyID
+    clientMessageId.InnerHtml = company.Number
+    clientName.InnerText = company.Name
+    clientGreeting = company.PhoneAnswer
+    ClientInformation = company.ClientInfo
+    AdditionalNotes = company.AdditionalNotes
 
   End Sub
 
@@ -106,13 +104,13 @@ Public Class Messages
     Dim rsData As SqlDataReader
     Dim strSQL As New StringBuilder()
 
-    strSQL.Append("SELECT t1.ContactID, t1.CustID, t1.ContactName, t1.ContactInfo, t1.ContactType ")
+    strSQL.Append("SELECT t1.ContactID, t1.CompanyID, t1.ContactName, t1.ContactInfo, t1.ContactType ")
     strSQL.Append("FROM CONTACT t1 WITH (NOLOCK) ")
     strSQL.Append("WHERE t1.CREATEDATETIME = ")
     strSQL.Append("(SELECT MAX(t2.CREATEDATETIME) ")
     strSQL.Append("FROM CONTACT t2 WITH (NOLOCK) ")
-    strSQL.Append("WHERE t2.CustID = t1.CustID AND t2.ContactType = t1.ContactType) ")
-    strSQL.Append("AND t1.CustID = " & id + " ")
+    strSQL.Append("WHERE t2.CompanyID = t1.CompanyID AND t2.ContactType = t1.ContactType) ")
+    strSQL.Append("AND t1.CompanyID = " & id + " ")
     strSQL.Append("ORDER BY t1.ContactType ASC")
 
     db = New dbUtil()
@@ -156,14 +154,18 @@ Public Class Messages
     rsData = db.GetDataReader(SQL.ToString())
 
     Do While rsData.Read()
-      MsgTo.Text = If(Not String.IsNullOrEmpty(rsData("MsgTo")), rsData("MsgTo"), String.Empty)
-      MsgFrom.Text = If(Not String.IsNullOrEmpty(rsData("MsgFrom")), rsData("MsgFrom"), String.Empty)
-      nMsgPhone.Text = If(Not String.IsNullOrEmpty(rsData("MsgPhone")), rsData("MsgPhone"), String.Empty)
-      nMsgPhoneX.Text = If(Not String.IsNullOrEmpty(rsData("MsgExt")), rsData("MsgExt"), String.Empty)
-      nMsgAlt.Text = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone")), rsData("MsgAltPhone"), String.Empty)
-      QwkMessage.SelectedValue = QwkMessage.Items.FindByText(rsData("MsgQwkMsgs")).Value
-      Message.Text = If(Not String.IsNullOrEmpty(rsData("MsgMessage")), rsData("MsgMessage"), String.Empty)
-      Notes.Text = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes")), rsData("MsgOperatorNotes"), String.Empty)
+      MsgTo.Text = If(Not String.IsNullOrEmpty(rsData("MsgTo").ToString()), rsData("MsgTo").ToString(), String.Empty)
+      MsgFrom.Text = If(Not String.IsNullOrEmpty(rsData("MsgFrom").ToString()), rsData("MsgFrom"), String.Empty)
+      nMsgPhone.Text = If(Not String.IsNullOrEmpty(rsData("MsgPhone").ToString()), rsData("MsgPhone"), String.Empty)
+      nMsgPhoneX.Text = If(Not String.IsNullOrEmpty(rsData("MsgExt").ToString()), rsData("MsgExt"), String.Empty)
+      nMsgAlt.Text = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone").ToString()), rsData("MsgAltPhone"), String.Empty)
+      If Not IsNothing(QwkMessage.Items.FindByText(rsData("MsgQwkMsgs").ToString())) Then
+        QwkMessage.Items.FindByText(rsData("MsgQwkMsgs").ToString()).Selected = True
+      Else
+        QwkMessage.SelectedValue = -1
+      End If
+      Message.Text = If(Not String.IsNullOrEmpty(rsData("MsgMessage").ToString()), rsData("MsgMessage"), String.Empty)
+      Notes.Text = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes").ToString()), rsData("MsgOperatorNotes"), String.Empty)
     Loop
 
   End Sub

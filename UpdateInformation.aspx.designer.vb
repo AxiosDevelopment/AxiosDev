@@ -11,5 +11,5 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class FromAutoSearch
+Partial Public Class UpdateInformation
 End Class

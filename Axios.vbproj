@@ -150,9 +150,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="default.css" />
-    <Content Include="firstCall.aspx" />
     <Content Include="firstCall.html" />
-    <Content Include="FromAutoSearch.aspx" />
+    <Content Include="FirstCalls.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\bg_01.gif" />
     <Content Include="images\bg_02.gif" />
@@ -282,30 +281,37 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="updateInfo.aspx" />
+    <Content Include="SearchInformation.aspx" />
+    <Content Include="UpdateInformation.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\BusinessDA.vb" />
+    <Compile Include="DAL\DoctorDA.vb" />
+    <Compile Include="DAL\FirstCallDA.vb" />
+    <Compile Include="DataClasses\Business.vb" />
+    <Compile Include="DataClasses\Company.vb" />
+    <Compile Include="DAL\CompanyDA.vb" />
+    <Compile Include="DataClasses\Contact.vb" />
+    <Compile Include="DataClasses\Doctor.vb" />
+    <Compile Include="DataClasses\FirstCall.vb" />
     <Compile Include="dbUtil.vb" />
-    <Compile Include="firstCall.aspx.designer.vb">
-      <DependentUpon>firstCall.aspx</DependentUpon>
+    <Compile Include="FirstCalls.aspx.designer.vb">
+      <DependentUpon>FirstCalls.aspx</DependentUpon>
     </Compile>
-    <Compile Include="firstCall.aspx.vb">
-      <DependentUpon>firstCall.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="FromAutoSearch.aspx.designer.vb">
-      <DependentUpon>FromAutoSearch.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FromAutoSearch.aspx.vb">
-      <DependentUpon>FromAutoSearch.aspx</DependentUpon>
+    <Compile Include="FirstCalls.aspx.vb">
+      <DependentUpon>FirstCalls.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IBusinessDA.vb" />
+    <Compile Include="Interfaces\ICompanyDA.vb" />
+    <Compile Include="Interfaces\IDoctorDA.vb" />
+    <Compile Include="Interfaces\IFirstCallDA.vb" />
     <Compile Include="Main.aspx.designer.vb">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
@@ -339,11 +345,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="updateInfo.aspx.designer.vb">
-      <DependentUpon>updateInfo.aspx</DependentUpon>
+    <Compile Include="SearchInformation.aspx.designer.vb">
+      <DependentUpon>SearchInformation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="updateInfo.aspx.vb">
-      <DependentUpon>updateInfo.aspx</DependentUpon>
+    <Compile Include="SearchInformation.aspx.vb">
+      <DependentUpon>SearchInformation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UpdateInformation.aspx.designer.vb">
+      <DependentUpon>UpdateInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateInformation.aspx.vb">
+      <DependentUpon>UpdateInformation.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
@@ -375,6 +388,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
