@@ -142,10 +142,12 @@ $(function () {
         $('#facilityZip').val(busObj.Zip);
         $('#facilityPhone').val(busObj.Phone);
         $('#phoneExt').val(busObj.Ext);
-        $('.facility').prop('disabled', true);
+        //$('.facility').prop('disabled', true);
+        $('.facility').prop('readonly', true);
       }
       else {
-        $('.facility').prop('disabled', false);
+        //$('.facility').prop('disabled', false);
+        $('.facility').prop('readonly', false);
       }
       $('#podSearch').hide();
     }).fail(function (data) {
@@ -167,7 +169,8 @@ $(function () {
       console.log(data);
       $('#physicianName').val(docObj.Name);
       $('#physicianPhone').val(docObj.WorkPhone);
-      $('.physician').prop('disabled', true);
+      //$('.physician').prop('disabled', true);
+      $('.physician').prop('readonly', true);
       $('#physicianSearch').hide();
     }).fail(function (data) {
       alert("Update has failed. Please try again.\n(Error: " + data.responseText);
@@ -204,6 +207,11 @@ $(function () {
       dataType: "text",
       cache: false
     }).done(function (data) {
+      if (updateId === 'updateMainCounselor') {
+        $('#updateMainCounselor').attr('disabled', true);
+      }else{
+        $('#updateSecondaryCounselor').attr('disabled', true);
+      }
       alert("Updated Successfully");
     }).fail(function (data) {
       alert("Update has failed. Please try again.\n(Error: " + data.responseText);
@@ -232,10 +240,10 @@ $(function () {
 
   /** THIS IS FOR THE SECONDARY ON CALL TO CONTROL THE BUTTONS **/
   $('#updateSecondaryCounselor').attr('disabled', true);
+  $('#clearSecondaryCounselor').attr('disabled', true);
   var secOnCall = $('#secondaryOnCall');
   var secContact = $('#secondaryContact');
-
-  // if not values exist, disalbe the Clear button
+  // if no values exist, diable the Clear button
   if (secOnCall.val() != '' || secContact.val() != '') {
     $('#clearSecondaryCounselor').attr('disabled', false);
   }

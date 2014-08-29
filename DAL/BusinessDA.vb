@@ -3,6 +3,12 @@
 Public Class BusinessDA
   Implements IBusinessDA
 
+  ''' <summary>
+  ''' Gets a business (facility) by Business Id
+  ''' </summary>
+  ''' <param name="id"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetBusiness(id As String) As Business Implements IBusinessDA.GetBusiness
 
     Dim rsData As SqlDataReader
@@ -13,7 +19,7 @@ Public Class BusinessDA
 
     If rsData.HasRows Then
 
-      While rsData.Read
+      Do While rsData.Read
         business.BusinessID = rsData("BusID")
         business.Name = rsData("BusinessName")
         business.Address = db.ClearNull(rsData("BusAddress"))
@@ -23,7 +29,9 @@ Public Class BusinessDA
         business.County = db.ClearNull(rsData("BusCounty"))
         business.Phone = db.ClearNull(rsData("BusPhone"))
         business.PhoneExt = db.ClearNull(rsData("BusExt"))
-      End While
+      Loop
+
+      rsData.Close()
 
     End If
 
@@ -31,31 +39,30 @@ Public Class BusinessDA
 
   End Function
 
+  ''' <summary>
+  ''' Gets a list of businesses (facilities)
+  ''' </summary>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetBusinesses() As List(Of Business) Implements IBusinessDA.GetBusinesses
 
     Dim rsData As SqlDataReader
     Dim db As dbUtil = New dbUtil()
-    'Dim strBusiness As String
-    'Dim strHTML As New StringBuilder()
-
     Dim businesses As New List(Of Business)
 
     rsData = db.GetDataReader("SELECT BusID, BusinessName, BusCity FROM BusinessNames ORDER BY BusinessName ASC")
 
     If rsData.HasRows Then
 
-      While rsData.Read
+      Do While rsData.Read
         Dim business As New Business
         business.BusinessID = rsData("BusID")
         business.Name = db.ClearNull(rsData("BusinessName"))
         business.City = db.ClearNull(rsData("BusCity"))
         businesses.Add(business)
-        'strBusiness = If(Not String.IsNullOrEmpty(rsData("BusCity").ToString()), rsData("BusinessName") & " - " & rsData("BusCity"), rsData("BusinessName"))
-        'strHTML.Append("<li><input type=""hidden"" class=""busId"" value=" & rsData("BusID") & " />" & strBusiness & "</li>")
-      End While
+      Loop
 
       rsData.Close()
-      'Response.Write(strHTML.ToString())
 
     End If
 
@@ -63,6 +70,13 @@ Public Class BusinessDA
 
   End Function
 
+  ''' <summary>
+  ''' Gets a list of businesses (facilities)
+  ''' Used for autocomplete feature on FirstCalls page
+  ''' </summary>
+  ''' <param name="search"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetBusinesses(search As String) As List(Of Business) Implements IBusinessDA.GetBusinesses
 
     Dim rsData As SqlDataReader
@@ -73,13 +87,13 @@ Public Class BusinessDA
 
     If rsData.HasRows Then
 
-      While rsData.Read
+      Do While rsData.Read
         Dim business As New Business
         business.BusinessID = rsData("BusID")
         business.Name = db.ClearNull(rsData("BusinessName"))
         business.City = db.ClearNull(rsData("BusCity"))
         businesses.Add(business)
-      End While
+      Loop
 
       rsData.Close()
 

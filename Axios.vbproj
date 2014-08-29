@@ -289,6 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\BusinessDA.vb" />
+    <Compile Include="DAL\ContactDA.vb" />
     <Compile Include="DAL\DoctorDA.vb" />
     <Compile Include="DAL\FirstCallDA.vb" />
     <Compile Include="DataClasses\Business.vb" />
@@ -310,6 +311,7 @@
     </Compile>
     <Compile Include="Interfaces\IBusinessDA.vb" />
     <Compile Include="Interfaces\ICompanyDA.vb" />
+    <Compile Include="Interfaces\IContactDA.vb" />
     <Compile Include="Interfaces\IDoctorDA.vb" />
     <Compile Include="Interfaces\IFirstCallDA.vb" />
     <Compile Include="Main.aspx.designer.vb">

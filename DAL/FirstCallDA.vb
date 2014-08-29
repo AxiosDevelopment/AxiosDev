@@ -3,7 +3,12 @@
 Public Class FirstCallDA
   Implements IFirstCallDA
 
-
+  ''' <summary>
+  ''' Gets First Call based on call id
+  ''' </summary>
+  ''' <param name="id"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetFirstCall(id As String) As FirstCall Implements IFirstCallDA.GetFirstCall
 
     Dim db As dbUtil 'access to db functions
@@ -56,6 +61,8 @@ Public Class FirstCallDA
 
       Loop
 
+      rsData.Close()
+
     End If
 
     Return firstCall
@@ -70,6 +77,12 @@ Public Class FirstCallDA
 
   End Function
 
+  ''' <summary>
+  ''' Inserts new first call
+  ''' </summary>
+  ''' <param name="fc"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function InsertFirstCall(fc As FirstCall) As Integer Implements IFirstCallDA.InsertFirstCall
 
     Dim returnedID As Integer
@@ -129,6 +142,12 @@ Public Class FirstCallDA
 
   End Function
 
+  ''' <summary>
+  ''' Updates existing first call
+  ''' </summary>
+  ''' <param name="fc"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function UpdateFirstCall(fc As FirstCall) As Integer Implements IFirstCallDA.UpdateFirstCall
 
     Dim returnedID As Integer

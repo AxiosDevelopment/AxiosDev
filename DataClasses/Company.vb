@@ -39,6 +39,8 @@
   Public Property AdditionalNotes As String
   Public Property ClientInfo As String
 
+  Public Property Contacts As List(Of Contact)
+
   Public Sub New()
   End Sub
 

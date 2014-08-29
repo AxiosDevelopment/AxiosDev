@@ -3,6 +3,13 @@
 Public Class DoctorDA
   Implements IDoctorDA
 
+  ''' <summary>
+  ''' Gets a doctor (physician) based on doctor id
+  ''' Used for autocomplete feature on FirstCalls page when doctor is selected
+  ''' </summary>
+  ''' <param name="id"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetDoctor(id As String) As Doctor Implements IDoctorDA.GetDoctor
 
     Dim rsData As SqlDataReader
@@ -13,11 +20,13 @@ Public Class DoctorDA
 
     If rsData.HasRows Then
 
-      While rsData.Read
+      Do While rsData.Read
         doctor.DoctorID = rsData("ID")
         doctor.Name = rsData("DrName")
         doctor.WorkPhone = db.ClearNull(rsData("DrWorkPhone"))
-      End While
+      Loop
+
+      rsData.Close()
 
     End If
 
@@ -29,6 +38,13 @@ Public Class DoctorDA
 
   End Function
 
+  ''' <summary>
+  ''' Gets a list of doctors (physicians)
+  ''' Used for autocomplete feature on FirstCalls page
+  ''' </summary>
+  ''' <param name="search"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetDoctors(search As String) As List(Of Doctor) Implements IDoctorDA.GetDoctors
 
     Dim rsData As SqlDataReader
@@ -39,13 +55,13 @@ Public Class DoctorDA
 
     If rsData.HasRows Then
 
-      While rsData.Read
+      Do While rsData.Read
         Dim doctor As New Doctor
         doctor.DoctorID = rsData("ID")
         doctor.Name = rsData("DrName")
         doctor.WorkPhone = db.ClearNull(rsData("DrWorkPhone"))
         doctors.Add(doctor)
-      End While
+      Loop
 
       rsData.Close()
 

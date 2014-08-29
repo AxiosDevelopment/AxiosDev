@@ -40,7 +40,7 @@ Public Class Messages
           cid = clientId
           MessageID.Value = msgId.ToString()
           GetClient(clientId)
-          GetContact(clientId)
+          ' GetContact(clientId)
 
           If msgId > 0 Then
             'Message Exists
@@ -90,6 +90,18 @@ Public Class Messages
     clientGreeting = company.PhoneAnswer
     ClientInformation = company.ClientInfo
     AdditionalNotes = company.AdditionalNotes
+
+    For Each c As Contact In company.Contacts
+      Select Case c.Type
+        Case 1 'Primary Contact
+          PrimaryContactName = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
+          PrimaryContactInfo = If(Not String.IsNullOrEmpty(c.Information), c.Information, "")
+        Case 2 'Secondary Contact
+          SecondaryContactName = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
+          SecondaryContactInfo = If(Not String.IsNullOrEmpty(c.Information), c.Information, "")
+
+      End Select
+    Next
 
   End Sub
 

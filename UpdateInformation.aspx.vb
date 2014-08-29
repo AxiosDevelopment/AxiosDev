@@ -72,21 +72,16 @@ Public Class UpdateInformation
   ''' <remarks></remarks>
   Private Sub UpdateCounselors(id As String, cName As String, cNumber As String, conType As Integer)
 
-    Dim returnedID As Integer
-    Dim SQL As New StringBuilder()
+    Dim cDA As New ContactDA
+    Dim contact As New Contact
+    Dim result As Integer
 
-    Dim db As dbUtil 'access to db functions
-    db = New dbUtil()
+    contact.CompanyID = id
+    contact.Name = cName
+    contact.Information = cNumber
+    contact.Type = conType
 
-    SQL.Append("INSERT INTO [dbo].[CONTACT] ([CompanyID],[ContactName],[ContactInfo],[ContactType],[CreateDateTIme])")
-    SQL.Append(" VALUES ")
-    SQL.Append("(" & Convert.ToInt32(id) & ",") 'CompanyID
-    SQL.Append(If(Not String.IsNullOrEmpty(cName), "'" & cName & "',", "NULL,")) 'ContactName
-    SQL.Append(If(Not String.IsNullOrEmpty(cNumber), "'" & cNumber & "',", "NULL,")) 'ContactInfo
-    SQL.Append(conType & ",") 'ContactType
-    SQL.Append("'" & DateTime.Now & "')") 'CreateDateTIme
-
-    returnedID = db.GetID(SQL.ToString())
+    result = cDA.UpdateContact(contact)
 
   End Sub
 
@@ -98,16 +93,14 @@ Public Class UpdateInformation
   ''' <remarks></remarks>
   Private Sub UpdateAdditionalNotes(id As String, note As String)
 
-    Dim returnedID As Integer
-    Dim SQL As New StringBuilder()
-    Dim db As dbUtil 'access to db functions
-    db = New dbUtil()
+    Dim cDA As New CompanyDA
+    Dim company As New Company
+    Dim result As Integer
 
-    SQL.Append("UPDATE COMPANY SET ")
-    SQL.Append("CompanyAdditionalNotes = " & If(Not String.IsNullOrEmpty(note), "'" & note & "' ", "NULL "))
-    SQL.Append("WHERE CompanyID = " & id)
+    company.CompanyID = id
+    company.AdditionalNotes = note
 
-    returnedID = db.GetID(SQL.ToString())
+    result = cDA.UpdateCompanyAdditionalNotes(company)
 
   End Sub
 
@@ -119,17 +112,15 @@ Public Class UpdateInformation
   ''' <remarks></remarks>
   Private Sub UpdateCompanyInformation(id As String, data As String)
 
-    Dim returnedID As Integer
-    Dim SQL As New StringBuilder()
-    Dim db As dbUtil 'access to db functions
-    db = New dbUtil()
+    Dim cDA As New CompanyDA
+    Dim company As New Company
+    Dim result As Integer
 
+    company.CompanyID = id
     data = Replace(data, "'", "`")
-    SQL.Append("UPDATE COMPANY_INFO SET ")
-    SQL.Append("CompanyInformation = " & If(Not String.IsNullOrEmpty(data), "'" & data & "' ", "NULL "))
-    SQL.Append("WHERE CompanyID = " & id)
+    company.ClientInfo = data
 
-    returnedID = db.GetID(SQL.ToString())
+    result = cDA.UpdateCompanyInfo(company)
 
   End Sub
 
