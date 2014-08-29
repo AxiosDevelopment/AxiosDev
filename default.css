@@ -27,10 +27,11 @@ strong {
 
 a {
 	color: #4D80A3;
+  text-decoration: none;
 }
 
 a:hover {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 a.more1, p.more1 a {
