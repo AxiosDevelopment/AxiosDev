@@ -275,6 +275,15 @@ Partial Public Class FirstCalls
   Protected WithEvents ReqWeight As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
+  '''RegExWeight control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RegExWeight As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+  '''<summary>
   '''placeOfDeath control.
   '''</summary>
   '''<remarks>

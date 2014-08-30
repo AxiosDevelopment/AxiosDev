@@ -128,8 +128,9 @@
                     </div>
                     <div class="left mr_10">
                       <label for="weight">Weight</label><br />
-                      <asp:TextBox ID="weight" runat="server" Width="50" TextMode="Number"></asp:TextBox>
+                      <asp:TextBox ID="weight" runat="server" Width="50"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqWeight" runat="server" ErrorMessage="Weight is required" ControlToValidate="weight" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:RegularExpressionValidator ID="RegExWeight" ControlToValidate="weight" runat="server" ErrorMessage="Please enter a valid Weight (format: ###)" ValidationExpression="^([1-9]|[1-9]\d|700)$" Display="None"></asp:RegularExpressionValidator>
                     </div>
                   </div>
                   <div class="row">
