@@ -108,7 +108,7 @@
                     </div>
                     <div class="left mr_10">
                       <label for="dTime">Time of Death</label><br />
-                      <asp:TextBox ID="dTime" runat="server" Width="80" TextMode="Time"></asp:TextBox>
+                      <asp:TextBox ID="dTime" runat="server" Width="80"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqTimeOfDeath" runat="server" ErrorMessage="Time of Death is required" ControlToValidate="dTime" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:RegularExpressionValidator ID="RegExValidatorTimeOfDeath" ControlToValidate="dTime" runat="server" ErrorMessage="Please enter a valid time (format: HH:MM:SS PM)" ValidationExpression="^((([0]?[1-9]|1[0-2])(:|\.)[0-5][0-9]((:|\.)[0-5][0-9])?( )?(AM|am|aM|Am|PM|pm|pM|Pm))|(([0]?[0-9]|1[0-9]|2[0-3])(:|\.)[0-5][0-9]((:|\.)[0-5][0-9])?))$" Display="None"></asp:RegularExpressionValidator>
                     </div>
