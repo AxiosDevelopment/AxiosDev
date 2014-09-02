@@ -31,10 +31,12 @@ function openWindow(popUp) {
 
 $(function () {
   var clientId = $('#CompanyID').val();
-  $('#searchMessages').on('click', function (e) {
-    var window = $('#messageContainer');
+  $('#searchMessages, #searchFirstCalls').on('click', function (e) {
+      e.preventDefault();
+      var window = $('#messageContainer');
+      var messageSource = $(this).attr('id'); // use this ID to determine which messages need to be retrieved
     $.ajax({
-      url: "SearchInformation.aspx?cid=" + clientId + "&queryId=ALLMESSAGES",
+        url: "SearchInformation.aspx?cid=" + clientId + "&queryId=ALLMESSAGES&messageSource=" + messageSource,
       cache: false
     })
     .done(function (data) {
@@ -43,7 +45,6 @@ $(function () {
     }).fail(function (data) {
       alert("Error retrieving Messages. Please try again.\n(Error: " + data.responseText);
     });
-    e.preventDefault();
   });
 
   $('#printMessage').on('click', function (e) {

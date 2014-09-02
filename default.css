@@ -133,6 +133,7 @@ hr {
 	width: 980px;
 	margin: 0px auto;
 	background: #FFFFFF url(images/homepage_06.gif) repeat-y left top;
+    position: relative;
 }
 
 #wrapper-bgtop {
@@ -717,7 +718,7 @@ input[type=radio] {
 }
 
 #messageContainer {
-    width: 350px;
+    width: 500px;
     height: 250px;
     background: #fff;
 }

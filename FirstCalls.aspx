@@ -40,7 +40,7 @@
         <ul>
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- POPUP WITH FORM TO FIND FIRST CALL -->
-          <li><a href="#" title="">Search First Calls</a></li>
+          <li><a id="searchFirstCalls" title="">Search First Calls</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
           <li><a id="pFCall" href="#" title="">Print First Call</a></li>
           <li><a id="sci" href="#" title="">Print SCI</a></li>
@@ -320,6 +320,21 @@
           <img src="images/exit.png" width="20" class="exit" /><img src="images/fCall.png" />
         </div>
       </div>
+    </div>
+      <div id="messageContainer" class="hide popup">
+        <img src="images/exit.png" width="20" class="exit" />
+         <ul id="allMessages">
+            <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+            </a></li>
+         </ul>
+       </div>
     </div>
   </div>
   <div id="footer">
