@@ -509,9 +509,11 @@ label[for=nMsgPhoneX], label[for=nMsgAltX] {
 	margin: 3px 5px 0 10px !important;
 }
 
-#addMessage input[type=checkbox] {
-	width: 20px;
+input[type=radio] {
+	width: 20px !important;
 	clear: left;
+    float: left;
+    margin: 0 0 10px;
 }
 
 #addMessage textarea {

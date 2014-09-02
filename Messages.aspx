@@ -99,9 +99,9 @@
                   <label for="notes">Operator_Notes:</label><br />
                   <asp:TextBox ID="Notes" runat="server" TextMode="MultiLine"></asp:TextBox>
                   <br />
-                  <input type="checkbox" id="deliver" /><span class="left">Deliver Message</span>
-                  <input type="checkbox" id="hold" /><span class="left">Hold Message</span>
-                  <input type="checkbox" id="remove" /><span class="left">Remove Message</span>
+                  <div><input type="radio" id="deliver" name="messageSubmission"/><span class="left">Deliver Message</span></div>
+                  <div><input type="radio" id="hold" name="messageSubmission"/><span class="left">Hold Message</span></div>
+                  <div><input type="radio" id="remove" name="messageSubmission"/><span class="left">Remove Message</span></div>
                   <asp:Button ID="submitMessage" runat="server" Text="Submit Message" />
                 </form>
               </div>

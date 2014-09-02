@@ -285,13 +285,13 @@
                     </div>
                     <div class="left mr_10">
                       <div class="mTop20">
-                        <input type="checkbox" id="deliver" class="left" /><span class="lineH1_6">Deliver Message</span>
+                        <input type="radio" id="deliver" name="firstCallSubmission"/><span class="left">Deliver Message</span>
                       </div>
                       <div class="mTop5">
-                        <input type="checkbox" id="hold" class="left" /><span class="lineH1_6">Hold Message</span>
+                        <input type="radio" id="hold" name="firstCallSubmission"/><span class="left">Hold Message</span>
                       </div>
                       <div class="mTop5">
-                        <input type="checkbox" id="remove" class="left" /><span class="lineH1_6">Remove Message</span>
+                        <input type="radio" id="remove" name="firstCallSubmission"/><span class="left">Remove Message</span>
                       </div>
                       <div class="mTop5">
                         <asp:Button ID="submitMessage" runat="server" Text="Submit Message" />
