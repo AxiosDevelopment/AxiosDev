@@ -32,11 +32,11 @@ function openWindow(popUp) {
 $(function () {
   var clientId = $('#CompanyID').val();
   $('#searchMessages, #searchFirstCalls').on('click', function (e) {
-      e.preventDefault();
-      var window = $('#messageContainer');
-      var messageSource = $(this).attr('id'); // use this ID to determine which messages need to be retrieved
+    e.preventDefault();
+    var window = $('#messageContainer');
+    var messageSource = $(this).attr('id'); // use this ID to determine which messages need to be retrieved
     $.ajax({
-        url: "SearchInformation.aspx?cid=" + clientId + "&queryId=ALLMESSAGES&messageSource=" + messageSource,
+      url: "SearchInformation.aspx?cid=" + clientId + "&queryId=ALLMESSAGES&messageSource=" + messageSource,
       cache: false
     })
     .done(function (data) {
@@ -82,9 +82,9 @@ $(function () {
          $podAuto.html("");
          $.each($.parseJSON(data), function (i, item) {
            var busNameCity;
-           if (item.City === ""){
+           if (item.City === "") {
              busNameCity = item.Name;
-           }else{
+           } else {
              busNameCity = item.Name + " - " + item.City;
            }
            var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
@@ -210,7 +210,7 @@ $(function () {
     }).done(function (data) {
       if (updateId === 'updateMainCounselor') {
         $('#updateMainCounselor').attr('disabled', true);
-      }else{
+      } else {
         $('#updateSecondaryCounselor').attr('disabled', true);
       }
       alert("Updated Successfully");
@@ -266,4 +266,10 @@ $(function () {
     $('#clearSecondaryCounselor').attr('disabled', true);
   });
 
+  //Message Page / First Call Page - if msg = 0
+  var $msgID = $('#MessageID').val();
+  var $fcID = $('#FirstCallID').val();
+  if ($msgID == 0 || $fcID == 0) {
+    $('#RBMessageStatus input:radio[id^=RBMessageStatus]:last').attr('disabled', true);
+  }
 });

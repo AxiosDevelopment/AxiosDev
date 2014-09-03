@@ -178,6 +178,14 @@ Public Class Messages
       End If
       Message.Text = If(Not String.IsNullOrEmpty(rsData("MsgMessage").ToString()), rsData("MsgMessage"), String.Empty)
       Notes.Text = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes").ToString()), rsData("MsgOperatorNotes"), String.Empty)
+
+      If (rsData("MsgHoldMsg") = 1) Then
+        RBMessageStatus.SelectedValue = "Hold"
+      ElseIf (rsData("MsgDeliver") = 1) Then
+        RBMessageStatus.SelectedValue = "Deliver"
+      End If
+
+
     Loop
 
   End Sub
@@ -217,7 +225,6 @@ Public Class Messages
 
     Dim returnedID As Integer
     Dim SQL As New StringBuilder()
-    Dim test As String = ""
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
@@ -236,10 +243,10 @@ Public Class Messages
     SQL.Append("'" & QwkMessage.SelectedItem.Text & "',") 'MsgQwkMsgs
     SQL.Append("'" & Message.Text & "',") 'MsgMessage
     SQL.Append("'" & Notes.Text & "',") 'MsgOperatorNotes
-    SQL.Append("1,") 'MsgHoldMsg
-    SQL.Append("NULL,") 'MsgDelDate
-    SQL.Append("NULL,") 'MsgDelTime
-    SQL.Append("0,") 'MsgDeliver
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", "1,", "0,")) 'MsgHoldMsg
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "'" & FormatDateTime(DateTime.Now, DateFormat.ShortDate) & "',", "NULL,")) 'MsgDelDate
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "'" & FormatDateTime(DateTime.Now, DateFormat.LongTime) & "',", "NULL,")) 'MsgDelTime
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "1,", "0,")) 'MsgDeliver
     SQL.Append("NULL,") 'MsgOnCall
     SQL.Append("NULL)") 'MsgProcedure
 
@@ -267,10 +274,10 @@ Public Class Messages
     SQL.Append("MsgQwkMsgs = '" & QwkMessage.SelectedItem.Text & "',")
     SQL.Append("MsgMessage = '" & Message.Text & "',")
     SQL.Append("MsgOperatorNotes = '" & Notes.Text & "',")
-    SQL.Append("MsgHoldMsg = 1,")
-    SQL.Append("MsgDelDate = NULL,")
-    SQL.Append("MsgDelTime = NULL,")
-    SQL.Append("MsgDeliver = 0 ")
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", "MsgHoldMsg = 1,", "MsgHoldMsg = 0,")) 'MsgHoldMsg
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "MsgDelDate = '" & FormatDateTime(DateTime.Now, DateFormat.ShortDate) & "',", "MsgDelDate = NULL,")) 'MsgDelDate
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "MsgDelTime = '" & FormatDateTime(DateTime.Now, DateFormat.LongTime) & "',", "MsgDelTime = NULL,")) 'MsgDelTime
+    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "MsgDeliver = 1 ", "MsgDeliver = 0 ")) 'MsgDeliver
     SQL.Append("WHERE MsgID = " & MessageID.Value)
 
     returnedID = db.GetID(SQL.ToString())

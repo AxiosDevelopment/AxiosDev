@@ -754,3 +754,16 @@ input[type=radio] {
 {
   color: red;
 }
+
+/** RADIO BUTTON LIST CONTROL**/
+.RadioListControl
+{
+  width:  200px;
+  table-layout:auto;
+}
+
+.RadioListControl td
+{
+  border-bottom: none;
+}
+

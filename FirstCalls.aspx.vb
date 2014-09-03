@@ -74,6 +74,7 @@ Public Class FirstCalls
 
     Dim fcDA As New FirstCallDA
     Dim firstCall As FirstCall
+
     firstCall = fcDA.GetFirstCall(fcId)
 
     FirstCallID.Value = firstCall.FirstCallID.ToString()
@@ -108,6 +109,11 @@ Public Class FirstCalls
     counselorName.Text = If(Not String.IsNullOrEmpty(firstCall.CounselorContacted), firstCall.CounselorContacted, String.Empty)
     coronerDate.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.ShortDate)
     coronerTime.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.LongTime)
+    If (firstCall.Hold = 1) Then
+      RBMessageStatus.SelectedValue = "Hold"
+    ElseIf (firstCall.Delivered = 1) Then
+      RBMessageStatus.SelectedValue = "Deliver"
+    End If
 
   End Sub
 
@@ -184,11 +190,15 @@ Public Class FirstCalls
     firstCall.DateCounselorContacted = FormatDateTime(coronerDate.Text & " " & coronerTime.Text, DateFormat.GeneralDate)  '[FirstDateContacted]
     'SQL.Append("NULL,") '[FirstNotes] *****
     'SQL.Append("NULL,") '[FirstOperatorCallNotes] *****
-    firstCall.Delivered = 0 '[FirstDelivered] *****
-    'SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
+    If (RBMessageStatus.SelectedValue.ToUpper() = "DELIVER") Then
+      firstCall.Delivered = 1 '[FirstDelivered]
+      firstCall.DeliveredDateTime = FormatDateTime(DateTime.Now, DateFormat.GeneralDate) '[FirstDateTimeDelivered]
+    Else
+      firstCall.Delivered = 0 '[FirstDelivered]
+    End If
     'SQL.Append("NULL,") '[FirstMedNoteBox] *****
     'SQL.Append("NULL,") '[FirstCustCallInfo] *****
-    firstCall.Hold = 0 '[FirstHold] *****
+    firstCall.Hold = If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", 1, 0) '[FirstHold]
 
     id = fcDA.InsertFirstCall(firstCall)
 

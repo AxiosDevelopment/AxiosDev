@@ -13,21 +13,20 @@
   <script type="text/javascript" src="Scripts/jquery.js"></script>
   <script type="text/javascript" src="Scripts/init.js"></script>
   <script type="text/javascript">
-    function messagedSaved()
-    {
+    function messagedSaved() {
       alert("Your message was saved successfully!");
       window.location = "Main.aspx";
     }
 
-    function messagedSavedError()
-    {
+    function messagedSavedError() {
       alert("There was an error inserting/updating your message. Please contact an administrator for assistance.");
     }
 
-    function messageLoadError()
-    {
+    function messageLoadError() {
       alert("There was an error loading the message page. Please contact an administrator for assistance.");
     }
+
+    
   </script>
 </head>
 <body class="single">
@@ -99,9 +98,14 @@
                   <label for="notes">Operator_Notes:</label><br />
                   <asp:TextBox ID="Notes" runat="server" TextMode="MultiLine"></asp:TextBox>
                   <br />
-                  <div><input type="radio" id="deliver" name="messageSubmission"/><span class="left">Deliver Message</span></div>
-                  <div><input type="radio" id="hold" name="messageSubmission"/><span class="left">Hold Message</span></div>
-                  <div><input type="radio" id="remove" name="messageSubmission"/><span class="left">Remove Message</span></div>
+
+                  <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass ="RadioListControl">
+                    <asp:ListItem Value="Deliver">Deliver Message</asp:ListItem>
+                    <asp:ListItem Value="Hold">Hold Message</asp:ListItem>
+                    <asp:ListItem Value="Remove">Remove Message</asp:ListItem>
+                  </asp:RadioButtonList>
+                  <asp:RequiredFieldValidator runat="server" ID="ValidatorStatusRadio" ControlToValidate="RBMessageStatus" CssClass="ErrorMessage" Display="None" Text="*" ErrorMessage="Deliver, Hold or Remove Message is required"></asp:RequiredFieldValidator>
+                  <br />
                   <asp:Button ID="submitMessage" runat="server" Text="Submit Message" />
                 </form>
               </div>
@@ -113,7 +117,7 @@
                   <input type="text" id="primaryContact" name="onCallInfo" class="onCall mTop5" value="<%=PrimaryContactInfo%>" /><br />
                   <br />
                   <label for="secondaryOnCallInfo">Secondary&nbsp;&nbsp;</label>
-                  <button class="left clearCounselor" id="clearSecondaryCounselor" style="width:50px">Clear</button>
+                  <button class="left clearCounselor" id="clearSecondaryCounselor" style="width: 50px">Clear</button>
                   <button class="right updateCounselor" id="updateSecondaryCounselor">Update</button>
                   <input type="text" id="secondaryOnCall" name="secondaryOnCall" class="onCall" value="<%=SecondaryContactName%>" />
                   <input type="text" id="secondaryContact" name="secondaryContact" class="onCall mTop5" value="<%=SecondaryContactInfo%>" /><br />
@@ -133,22 +137,24 @@
           </div>
         </div>
         <div class="clearfix">&nbsp;</div>
-        <div id="messagePop" class="hide popup"><img src="images/exit.png" width="20" class="exit" /><img src="images/message.png"/></div>
+        <div id="messagePop" class="hide popup">
+          <img src="images/exit.png" width="20" class="exit" /><img src="images/message.png" />
+        </div>
       </div>
       <div id="messageContainer" class="hide popup">
         <img src="images/exit.png" width="20" class="exit" />
-         <ul id="allMessages">
-            <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
-                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
-            </a></li>
-              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
-                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
-            </a></li>
-              <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
-                <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
-            </a></li>
-         </ul>
-       </div>
+        <ul id="allMessages">
+          <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+            <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+          </a></li>
+          <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+            <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+          </a></li>
+          <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+            <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+          </a></li>
+        </ul>
+      </div>
     </div>
   </div>
   <div id="footer">

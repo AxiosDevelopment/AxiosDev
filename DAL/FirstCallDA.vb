@@ -58,7 +58,11 @@ Public Class FirstCallDA
         firstCall.CaseNumber = If(Not String.IsNullOrEmpty(rsData("FirstFileNumber")), rsData("FirstFileNumber"), String.Empty)
         firstCall.CounselorContacted = If(Not String.IsNullOrEmpty(rsData("FirstCounselorContacted")), rsData("FirstCounselorContacted"), String.Empty)
         firstCall.DateCounselorContacted = FormatDateTime(rsData("FirstDateContacted"), DateFormat.GeneralDate)
-
+        firstCall.Hold = Convert.ToByte(rsData("FirstHold"))
+        firstCall.Delivered = Convert.ToByte(rsData("FirstDelivered"))
+        If firstCall.Delivered = 1 Then
+          firstCall.DeliveredDateTime = FormatDateTime(rsData("FirstDateTimeDelivered"), DateFormat.GeneralDate)
+        End If
       Loop
 
       rsData.Close()
@@ -131,7 +135,11 @@ Public Class FirstCallDA
     SQL.Append("NULL,") '[FirstNotes] *****
     SQL.Append("NULL,") '[FirstOperatorCallNotes] *****
     SQL.Append(fc.Delivered & ",") '[FirstDelivered] *****
-    SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
+    If fc.Delivered = 1 Then
+      SQL.Append("'" & fc.DeliveredDateTime & "',") '[FirstDateTimeDelivered] *****
+    Else
+      SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
+    End If
     SQL.Append("NULL,") '[FirstMedNoteBox] *****
     SQL.Append("NULL,") '[FirstCustCallInfo] *****
     SQL.Append(fc.Hold & ")") '[FirstHold] *****

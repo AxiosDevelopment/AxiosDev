@@ -212,6 +212,24 @@ Partial Public Class Messages
   Protected WithEvents Notes As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''RBMessageStatus control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RBMessageStatus As Global.System.Web.UI.WebControls.RadioButtonList
+
+  '''<summary>
+  '''ValidatorStatusRadio control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ValidatorStatusRadio As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
   '''submitMessage control.
   '''</summary>
   '''<remarks>
