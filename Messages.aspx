@@ -93,8 +93,8 @@
                   <asp:RequiredFieldValidator ID="ReqQwkMessage" runat="server" ErrorMessage="Msg is required" ControlToValidate="QwkMessage" CssClass="ErrorMessage" Display="None" Text="*" InitialValue="-1"></asp:RequiredFieldValidator>
                   <br />
                   <label for="to">Message:</label><br />
-                  <asp:TextBox ID="Message" runat="server" TextMode="MultiLine"></asp:TextBox>
-                  <asp:RequiredFieldValidator ID="ReqMessage" runat="server" ErrorMessage="A Message is required" ControlToValidate="Message" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                  <asp:TextBox ID="MessageText" runat="server" TextMode="MultiLine"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="ReqMessage" runat="server" ErrorMessage="A Message is required" ControlToValidate="MessageText" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="notes">Operator_Notes:</label><br />
                   <asp:TextBox ID="Notes" runat="server" TextMode="MultiLine"></asp:TextBox>
                   <br />

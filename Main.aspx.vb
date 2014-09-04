@@ -92,6 +92,65 @@ Public Class Main
   ''' <remarks></remarks>
   Private Sub GetMessages()
 
+    Dim mfcDA As New MessageFirstCallBaseDA
+    'Dim message As Message
+    'Dim firstCall As FirstCall
+    Dim allMessageFirstCalls As List(Of MessageFirstCallBase)
+
+    allMessageFirstCalls = mfcDA.GetAllMessagesFirstCallsNotDelivered()
+
+    Dim row As HtmlTableRow
+    Dim cell As HtmlTableCell
+    Dim a As HtmlAnchor
+
+    If allMessageFirstCalls.Count > 0 Then
+
+      For Each m As MessageFirstCallBase In allMessageFirstCalls
+        'If TypeOf m Is Message Then
+
+        'ElseIf TypeOf m Is FirstCall Then
+
+        'End If
+        row = New HtmlTableRow()
+        'Status
+        cell = New HtmlTableCell With {.InnerText = m.Status}
+        row.Controls.Add(cell)
+        'First Call or Message
+        If m.MessageType.ToUpper() = "FIRSTCALL" Then
+          cell = New HtmlTableCell With {.InnerText = "Yes"}
+        Else
+          cell = New HtmlTableCell With {.InnerText = "No"}
+        End If
+        row.Controls.Add(cell)
+        'Company Name
+        If Not IsDBNull(m.CompanyName) Then
+          cell = New HtmlTableCell
+          If m.MessageType.ToUpper() = "FIRSTCALL" Then
+            a = New HtmlAnchor With {.HRef = "FirstCalls.aspx?FirstCallId=" + m.ID.ToString() + "&ClientId=" + m.CompanyID.ToString()}
+          Else
+            a = New HtmlAnchor With {.HRef = "Messages.aspx?MsgId=" + m.ID.ToString() + "&ClientId=" + m.CompanyID.ToString()}
+          End If
+          a.InnerText = m.CompanyName
+          cell.Controls.Add(a)
+        Else
+          cell = New HtmlTableCell With {.InnerText = "No Client Assigned"}
+        End If
+        row.Controls.Add(cell)
+        MessageTable.Controls.Add(row)
+      Next
+
+    Else
+      row = New HtmlTableRow()
+      cell = New HtmlTableCell With {.InnerText = "No Messages Found"}
+      cell.ColSpan = 3
+      row.Controls.Add(cell)
+      MessageTable.Controls.Add(row)
+    End If
+
+  End Sub
+
+  Private Sub GetMessagesOLD()
+
     Dim db As dbUtil 'access to db functions
     Dim rsData As SqlDataReader
     Dim strSQL As New StringBuilder()

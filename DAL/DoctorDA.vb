@@ -34,7 +34,34 @@ Public Class DoctorDA
 
   End Function
 
+  ''' <summary>
+  ''' Get All Doctors
+  ''' </summary>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetDoctors() As List(Of Doctor) Implements IDoctorDA.GetDoctors
+
+    Dim rsData As SqlDataReader
+    Dim db As dbUtil = New dbUtil()
+    Dim doctors As New List(Of Doctor)
+
+    rsData = db.GetDataReader("SELECT ID, DrName, DrWorkPhone FROM DoctorListQ WITH (NOLOCK) ORDER BY DrName ASC")
+
+    If rsData.HasRows Then
+
+      Do While rsData.Read
+        Dim doctor As New Doctor
+        doctor.DoctorID = rsData("ID")
+        doctor.Name = rsData("DrName")
+        doctor.WorkPhone = db.ClearNull(rsData("DrWorkPhone"))
+        doctors.Add(doctor)
+      Loop
+
+      rsData.Close()
+
+    End If
+
+    Return doctors
 
   End Function
 

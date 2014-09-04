@@ -6,34 +6,232 @@ Axios
 </name>
 </assembly>
 <members>
-<member name="M:Axios.FirstCalls.Page_Load(System.Object,System.EventArgs)">
+<member name="F:Axios.AddPhysician.PhysiciansTable">
+	<summary>
+PhysiciansTable control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.pName">
+	<summary>
+pName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.pPhone">
+	<summary>
+pPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.pExt">
+	<summary>
+pExt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.addNewPhysician">
+	<summary>
+addNewPhysician control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.physicianFname">
+	<summary>
+physicianFname control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.physicianLname">
+	<summary>
+physicianLname control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.physicianPhone">
+	<summary>
+physicianPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.physicianExt">
+	<summary>
+physicianExt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="M:Axios.AddPhysician.Page_Load(System.Object,System.EventArgs)">
 	<summary>
 	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.AddPhysician.GetPhysicians">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Axios.AddPhysician.GetPhysician(System.String)">
+	<summary>
+	</summary>
+	<param name="id"></param>
+	<remarks></remarks>
+</member><member name="F:Axios.AddFacility.addNewFacility">
+	<summary>
+addNewFacility control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityName">
+	<summary>
+facilityName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityType">
+	<summary>
+facilityType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityAddress">
+	<summary>
+facilityAddress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityCity">
+	<summary>
+facilityCity control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityState">
+	<summary>
+facilityState control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityZip">
+	<summary>
+facilityZip control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityPhone">
+	<summary>
+facilityPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddFacility.facilityExt">
+	<summary>
+facilityExt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="M:Axios.MessageDA.GetMessage(System.String)">
+	<summary>
+ Returns a Message based on Message ID
+ </summary>
+	<param name="id"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.MessageDA.GetMessages(System.String)">
+	<summary>
+ Returns a list of Messages by Company ID
+ </summary>
+	<param name="search"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.MessageDA.InsertMessage(Axios.Message)">
+	<summary>
+ Inserts a new Message
+ </summary>
+	<param name="m"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.MessageDA.UpdateMessage(Axios.Message)">
+	<summary>
+ Updates an existing Message
+ </summary>
+	<param name="m"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.FirstCalls.Page_Load(System.Object,System.EventArgs)">
+	<summary>
+ Page Load Event Handler
+ </summary>
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
 </member><member name="M:Axios.FirstCalls.GetClient(System.String)">
 	<summary>
-	</summary>
+ Get Client object
+ </summary>
 	<remarks></remarks>
 </member><member name="M:Axios.FirstCalls.GetFirstCall(System.Int32)">
 	<summary>
-	</summary>
+ Get FirstCall object
+ </summary>
 	<param name="fcId"></param>
 	<remarks></remarks>
 </member><member name="M:Axios.FirstCalls.submitMessage_Click(System.Object,System.EventArgs)">
 	<summary>
-	</summary>
+ Event Handler on Submit Message button click
+ </summary>
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
-</member><member name="M:Axios.FirstCalls.InsertFirstCall">
+</member><member name="M:Axios.FirstCalls.InsertFirstCall(Axios.FirstCall)">
 	<summary>
-	</summary>
+ Insert new First Call Message
+ </summary>
 	<remarks></remarks>
-</member><member name="M:Axios.FirstCalls.UpdateFirstCall(System.Int32)">
+</member><member name="M:Axios.FirstCalls.UpdateFirstCall(Axios.FirstCall)">
 	<summary>
-	</summary>
+ Update a First Call Message
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.FirstCalls.FillFirstCall(System.Int32)">
+	<summary>
+ Fill FirstCall object
+ </summary>
 	<remarks></remarks>
 </member><member name="M:Axios.FirstCalls.GetRelationshipsLookup">
 	<summary>
@@ -69,6 +267,12 @@ Axios
 	<param name="id"></param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:Axios.DoctorDA.GetDoctors">
+	<summary>
+ Get All Doctors
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
 </member><member name="M:Axios.DoctorDA.GetDoctors(System.String)">
 	<summary>
  Gets a list of doctors (physicians)
@@ -82,6 +286,13 @@ Axios
  Gets First Call based on call id
  </summary>
 	<param name="id"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.FirstCallDA.GetFirstCalls(System.String)">
+	<summary>
+ Returns a list of First Calls by Company ID
+ </summary>
+	<param name="search"></param>
 	<returns></returns>
 	<remarks></remarks>
 </member><member name="M:Axios.FirstCallDA.InsertFirstCall(Axios.FirstCall)">
@@ -250,9 +461,9 @@ ReqQwkMessage control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.Messages.Message">
+</member><member name="F:Axios.Messages.MessageText">
 	<summary>
-Message control.
+MessageText control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -337,11 +548,6 @@ To modify move field declaration from designer file to code-behind file.
 	<summary>
 	</summary>
 	<remarks></remarks>
-</member><member name="M:Axios.Messages.GetContact(System.String)">
-	<summary>
-	</summary>
-	<param name="id"></param>
-	<remarks></remarks>
 </member><member name="M:Axios.Messages.GetMessage(System.Int32)">
 	<summary>
 	</summary>
@@ -354,12 +560,12 @@ To modify move field declaration from designer file to code-behind file.
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
-</member><member name="M:Axios.Messages.InsertMessage">
+</member><member name="M:Axios.Messages.InsertMessage(Axios.Message)">
 	<summary>
  Save New Message
  </summary>
 	<remarks></remarks>
-</member><member name="M:Axios.Messages.UpdateMessage">
+</member><member name="M:Axios.Messages.UpdateMessage(Axios.Message)">
 	<summary>
  Update Existing Message
  </summary>
@@ -415,15 +621,16 @@ To modify move field declaration from designer file to code-behind file.
  </summary>
 	<param name="search"></param>
 	<remarks></remarks>
-</member><member name="M:Axios.SearchInformation.GetMessages(System.String,System.String)">
+</member><member name="M:Axios.SearchInformation.GetMessages(System.String)">
 	<summary>
  This will return all messages for a client (company) when clicking on All Messages tab (Message page)
  </summary>
 	<remarks></remarks>
-</member><member name="M:Axios.SearchInformation.GetCompanyNumber(System.String)">
+</member><member name="M:Axios.SearchInformation.GetFirstCalls(System.String)">
 	<summary>
- ONLY NEEDED UNTIL MSG TABLE IS FIXED AND HAS COMPANYID FIELD
+ This will return all First Calls for a client (company) when clicking on Search First Calls tab (First Calls page)
  </summary>
+	<param name="search"></param>
 	<remarks></remarks>
 </member><member name="M:Axios.Main.Page_Load(System.Object,System.EventArgs)">
 	<summary>

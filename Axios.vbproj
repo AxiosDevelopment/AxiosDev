@@ -84,6 +84,12 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="addClient.html" />
+    <Content Include="addFacility.html" />
+    <Content Include="addPhysician.html" />
+    <Content Include="Admin\AddClient.aspx" />
+    <Content Include="Admin\AddFacility.aspx" />
+    <Content Include="Admin\AddPhysician.aspx" />
     <Content Include="bin\Axios.dll" />
     <Content Include="bin\Axios.pdb" />
     <Content Include="bin\Axios.xml" />
@@ -288,16 +294,41 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AddClient.aspx.designer.vb">
+      <DependentUpon>AddClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddClient.aspx.vb">
+      <DependentUpon>AddClient.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddFacility.aspx.designer.vb">
+      <DependentUpon>AddFacility.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddFacility.aspx.vb">
+      <DependentUpon>AddFacility.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddPhysician.aspx.designer.vb">
+      <DependentUpon>AddPhysician.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddPhysician.aspx.vb">
+      <DependentUpon>AddPhysician.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="DAL\BusinessDA.vb" />
     <Compile Include="DAL\ContactDA.vb" />
     <Compile Include="DAL\DoctorDA.vb" />
     <Compile Include="DAL\FirstCallDA.vb" />
+    <Compile Include="DAL\MessageDA.vb" />
+    <Compile Include="DAL\MessageFirstCallBaseDA.vb" />
     <Compile Include="DataClasses\Business.vb" />
     <Compile Include="DataClasses\Company.vb" />
     <Compile Include="DAL\CompanyDA.vb" />
     <Compile Include="DataClasses\Contact.vb" />
     <Compile Include="DataClasses\Doctor.vb" />
     <Compile Include="DataClasses\FirstCall.vb" />
+    <Compile Include="DataClasses\Message.vb" />
+    <Compile Include="DataClasses\MessageFirstCallBase.vb" />
     <Compile Include="dbUtil.vb" />
     <Compile Include="FirstCalls.aspx.designer.vb">
       <DependentUpon>FirstCalls.aspx</DependentUpon>
@@ -314,6 +345,7 @@
     <Compile Include="Interfaces\IContactDA.vb" />
     <Compile Include="Interfaces\IDoctorDA.vb" />
     <Compile Include="Interfaces\IFirstCallDA.vb" />
+    <Compile Include="Interfaces\IMessage.vb" />
     <Compile Include="Main.aspx.designer.vb">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>

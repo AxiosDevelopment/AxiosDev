@@ -13,7 +13,6 @@ Public Class Messages
   Protected SecondaryContactInfo As String = ""
   Protected AdditionalNotes As String = ""
   Protected ClientInformation As String = ""
-  'Private _companyDA As ICompanyDA
 
   ''' <summary>
   ''' 
@@ -40,7 +39,6 @@ Public Class Messages
           cid = clientId
           MessageID.Value = msgId.ToString()
           GetClient(clientId)
-          ' GetContact(clientId)
 
           If msgId > 0 Then
             'Message Exists
@@ -82,6 +80,7 @@ Public Class Messages
 
     Dim cDA As New CompanyDA
     Dim company As Company
+
     company = cDA.GetCompany(id)
 
     CompanyID.Value = company.CompanyID
@@ -110,83 +109,31 @@ Public Class Messages
   ''' </summary>
   ''' <param name="id"></param>
   ''' <remarks></remarks>
-  Private Sub GetContact(id As String)
-
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
-    Dim strSQL As New StringBuilder()
-
-    strSQL.Append("SELECT t1.ContactID, t1.CompanyID, t1.ContactName, t1.ContactInfo, t1.ContactType ")
-    strSQL.Append("FROM CONTACT t1 WITH (NOLOCK) ")
-    strSQL.Append("WHERE t1.CREATEDATETIME = ")
-    strSQL.Append("(SELECT MAX(t2.CREATEDATETIME) ")
-    strSQL.Append("FROM CONTACT t2 WITH (NOLOCK) ")
-    strSQL.Append("WHERE t2.CompanyID = t1.CompanyID AND t2.ContactType = t1.ContactType) ")
-    strSQL.Append("AND t1.CompanyID = " & id + " ")
-    strSQL.Append("ORDER BY t1.ContactType ASC")
-
-    db = New dbUtil()
-    rsData = db.GetDataReader(strSQL.ToString())
-    If rsData.HasRows Then
-      Do While rsData.Read()
-
-        Select Case rsData("ContactType")
-          Case 1 'Primary Contact
-            PrimaryContactName = If(Not String.IsNullOrEmpty(rsData("ContactName").ToString()), rsData("ContactName"), "")
-            PrimaryContactInfo = If(Not String.IsNullOrEmpty(rsData("ContactInfo").ToString()), rsData("ContactInfo"), "")
-          Case 2 'Secondary Contact
-            SecondaryContactName = If(Not String.IsNullOrEmpty(rsData("ContactName").ToString()), rsData("ContactName"), "")
-            SecondaryContactInfo = If(Not String.IsNullOrEmpty(rsData("ContactInfo").ToString()), rsData("ContactInfo"), "")
-
-        End Select
-
-      Loop
-    End If
-
-  End Sub
-
-
-  ''' <summary>
-  ''' 
-  ''' </summary>
-  ''' <param name="id"></param>
-  ''' <remarks></remarks>
   Private Sub GetMessage(id As Integer)
 
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
-    Dim SQL As New StringBuilder()
+    Dim mDA As New MessageDA
+    Dim message As Message
 
-    db = New dbUtil()
+    message = mDA.GetMessage(id)
 
-    SQL.Append("SELECT MsgID, MsgDateTime, MsgCustID, MsgDate, MsgTime, MsgTo, MsgFrom, MsgPhone, MsgExt, MsgAltPhone, MsgQwkMsgs, MsgMessage, MsgOperatorNotes, MsgHoldMsg, MsgDeliver ")
-    SQL.Append("FROM Msg WITH (NOLOCK) ")
-    SQL.Append("WHERE MsgID = " & id.ToString())
-
-    rsData = db.GetDataReader(SQL.ToString())
-
-    Do While rsData.Read()
-      MsgTo.Text = If(Not String.IsNullOrEmpty(rsData("MsgTo").ToString()), rsData("MsgTo").ToString(), String.Empty)
-      MsgFrom.Text = If(Not String.IsNullOrEmpty(rsData("MsgFrom").ToString()), rsData("MsgFrom"), String.Empty)
-      nMsgPhone.Text = If(Not String.IsNullOrEmpty(rsData("MsgPhone").ToString()), rsData("MsgPhone"), String.Empty)
-      nMsgPhoneX.Text = If(Not String.IsNullOrEmpty(rsData("MsgExt").ToString()), rsData("MsgExt"), String.Empty)
-      nMsgAlt.Text = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone").ToString()), rsData("MsgAltPhone"), String.Empty)
-      If Not IsNothing(QwkMessage.Items.FindByText(rsData("MsgQwkMsgs").ToString())) Then
-        QwkMessage.Items.FindByText(rsData("MsgQwkMsgs").ToString()).Selected = True
-      Else
-        QwkMessage.SelectedValue = -1
-      End If
-      Message.Text = If(Not String.IsNullOrEmpty(rsData("MsgMessage").ToString()), rsData("MsgMessage"), String.Empty)
-      Notes.Text = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes").ToString()), rsData("MsgOperatorNotes"), String.Empty)
-
-      If (rsData("MsgHoldMsg") = 1) Then
-        RBMessageStatus.SelectedValue = "Hold"
-      ElseIf (rsData("MsgDeliver") = 1) Then
-        RBMessageStatus.SelectedValue = "Deliver"
-      End If
-
-
-    Loop
+    MessageID.Value = message.ID.ToString()
+    CompanyID.Value = message.CompanyID.ToString()
+    MsgTo.Text = If(Not String.IsNullOrEmpty(message.MsgTo), message.MsgTo, String.Empty)
+    MsgFrom.Text = If(Not String.IsNullOrEmpty(message.MsgFrom), message.MsgFrom, String.Empty)
+    nMsgPhone.Text = If(Not String.IsNullOrEmpty(message.Phone), message.Phone, String.Empty)
+    nMsgAlt.Text = If(Not String.IsNullOrEmpty(message.AltPhone), message.AltPhone, String.Empty)
+    If Not IsNothing(QwkMessage.Items.FindByText(message.QwkMsgs.ToString())) Then
+      QwkMessage.Items.FindByText(message.QwkMsgs.ToString()).Selected = True
+    Else
+      QwkMessage.SelectedValue = -1
+    End If
+    MessageText.Text = If(Not String.IsNullOrEmpty(message.MsgMessage), message.MsgMessage, String.Empty)
+    Notes.Text = If(Not String.IsNullOrEmpty(message.OperatorNotes), message.OperatorNotes, String.Empty)
+    If (message.Hold = 1) Then
+      RBMessageStatus.SelectedValue = "Hold"
+    ElseIf (message.Delivered = 1) Then
+      RBMessageStatus.SelectedValue = "Deliver"
+    End If
 
   End Sub
 
@@ -201,11 +148,12 @@ Public Class Messages
     If Page.IsValid Then
 
       Try
-
+        Dim message As New Message
+        message = FillMessage(MessageID.Value)
         If MessageID.Value = "0" Then
-          InsertMessage()
+          InsertMessage(message)
         Else
-          UpdateMessage()
+          UpdateMessage(message)
         End If
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopup", "messagedSaved()", True)
 
@@ -221,36 +169,12 @@ Public Class Messages
   ''' Save New Message
   ''' </summary>
   ''' <remarks></remarks>
-  Private Sub InsertMessage()
+  Private Sub InsertMessage(m As Message)
 
-    Dim returnedID As Integer
-    Dim SQL As New StringBuilder()
-    Dim db As dbUtil 'access to db functions
-    db = New dbUtil()
+    Dim mDA As New MessageDA
+    Dim id As Integer
 
-    SQL.Append("INSERT INTO [dbo].[Msg] ([MsgDateTime],[MsgCustID],[MsgDate],[MsgTime],[MsgTo],[MsgFrom],[MsgBusiness],[MsgPhone],[MsgExt],[MsgAltPhone],[MsgQwkMsgs],[MsgMessage],[MsgOperatorNotes],[MsgHoldMsg],[MsgDelDate],[MsgDelTime],[MsgDeliver],[MsgOnCall],[MsgProcedure])")
-    SQL.Append(" VALUES ")
-    SQL.Append("('" & DateTime.Now & "',") 'MsgDateTime
-    SQL.Append("'" & Convert.ToInt32(clientMessageId.InnerHtml) & "',") 'MsgCustID
-    SQL.Append("'" & Date.Now & "',") 'MsgDate
-    SQL.Append("'" & FormatDateTime(DateTime.Now, DateFormat.LongTime) & "',") 'MsgTime
-    SQL.Append("'" & MsgTo.Text & "',") 'MsgTo
-    SQL.Append("'" & MsgFrom.Text & "',") 'MsgFrom
-    SQL.Append("'" & String.Empty & "',") 'MsgBusiness
-    SQL.Append("'" & nMsgPhone.Text & "',") 'MsgPhone
-    SQL.Append("'" & nMsgPhoneX.Text & "',") 'MsgExt
-    SQL.Append("'" & nMsgAlt.Text & "',") 'MsgAltPhone
-    SQL.Append("'" & QwkMessage.SelectedItem.Text & "',") 'MsgQwkMsgs
-    SQL.Append("'" & Message.Text & "',") 'MsgMessage
-    SQL.Append("'" & Notes.Text & "',") 'MsgOperatorNotes
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", "1,", "0,")) 'MsgHoldMsg
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "'" & FormatDateTime(DateTime.Now, DateFormat.ShortDate) & "',", "NULL,")) 'MsgDelDate
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "'" & FormatDateTime(DateTime.Now, DateFormat.LongTime) & "',", "NULL,")) 'MsgDelTime
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "1,", "0,")) 'MsgDeliver
-    SQL.Append("NULL,") 'MsgOnCall
-    SQL.Append("NULL)") 'MsgProcedure
-
-    returnedID = db.GetID(SQL.ToString())
+    id = mDA.InsertMessage(m)
 
   End Sub
 
@@ -258,30 +182,39 @@ Public Class Messages
   ''' Update Existing Message
   ''' </summary>
   ''' <remarks></remarks>
-  Private Sub UpdateMessage()
+  Private Sub UpdateMessage(m As Message)
 
-    Dim returnedID As Integer
-    Dim SQL As New StringBuilder()
-    Dim db As dbUtil 'access to db functions
-    db = New dbUtil()
+    Dim mDA As New MessageDA
+    Dim id As Integer
 
-    SQL.Append("UPDATE Msg SET ")
-    SQL.Append("MsgTo = '" & MsgTo.Text & "',")
-    SQL.Append("MsgFrom = '" & MsgFrom.Text & "',")
-    SQL.Append("MsgPhone = '" & nMsgPhone.Text & "',")
-    SQL.Append("MsgExt = '" & nMsgPhoneX.Text & "',")
-    SQL.Append("MsgAltPhone = '" & nMsgAlt.Text & "',")
-    SQL.Append("MsgQwkMsgs = '" & QwkMessage.SelectedItem.Text & "',")
-    SQL.Append("MsgMessage = '" & Message.Text & "',")
-    SQL.Append("MsgOperatorNotes = '" & Notes.Text & "',")
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", "MsgHoldMsg = 1,", "MsgHoldMsg = 0,")) 'MsgHoldMsg
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "MsgDelDate = '" & FormatDateTime(DateTime.Now, DateFormat.ShortDate) & "',", "MsgDelDate = NULL,")) 'MsgDelDate
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "MsgDelTime = '" & FormatDateTime(DateTime.Now, DateFormat.LongTime) & "',", "MsgDelTime = NULL,")) 'MsgDelTime
-    SQL.Append(If(RBMessageStatus.SelectedValue.ToUpper() = "DELIVER", "MsgDeliver = 1 ", "MsgDeliver = 0 ")) 'MsgDeliver
-    SQL.Append("WHERE MsgID = " & MessageID.Value)
-
-    returnedID = db.GetID(SQL.ToString())
+    id = mDA.UpdateMessage(m)
 
   End Sub
+
+
+  Private Function FillMessage(mId As Integer) As Message
+
+    Dim message As New Message
+
+    message.ID = mId
+    message.CompanyID = CompanyID.Value
+    message.MsgTo = MsgTo.Text
+    message.MsgFrom = MsgFrom.Text
+    message.Phone = nMsgPhone.Text
+    message.AltPhone = nMsgAlt.Text
+    message.QwkMsgs = QwkMessage.SelectedItem.Text
+    message.MsgMessage = MessageText.Text
+    message.OperatorNotes = Notes.Text
+    message.Hold = (If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", "1", "0")) 'MsgHoldMsg
+    If (RBMessageStatus.SelectedValue.ToUpper() = "DELIVER") Then
+      message.Delivered = 1 '[MsgDelivered]
+      message.DelDateTime = FormatDateTime(DateTime.Now, DateFormat.GeneralDate) '[MsgDelDateTime]
+    Else
+      message.Delivered = 0 '[MsgDelivered]
+    End If
+
+    Return message
+
+  End Function
 
 End Class

@@ -40,7 +40,7 @@
         <ul>
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- POPUP WITH FORM TO FIND FIRST CALL -->
-          <li><a id="searchFirstCalls" title="">Search First Calls</a></li>
+          <li><a id="searchFirstCalls" href="#" title="">Search First Calls</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
           <li><a id="pFCall" href="#" title="">Print First Call</a></li>
           <li><a id="sci" href="#" title="">Print SCI</a></li>

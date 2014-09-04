@@ -24,9 +24,9 @@
 			<ul>
 				<li class="first active"><a href="#" title="">Main Menu</a></li>
 				<!-- POPUP WITH FORM TO ADD NEW FACILITY -->
-				<li><a href="#" title="">Add Facility</a></li>
+				<li><a href="/Admin/AddFacility.aspx" title="">Add Facility</a></li>
 				<!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-				<li><a href="#" title="">Add Doctor</a></li>
+				<li><a href="/Admin/AddPhysician.aspx" title="">Add Doctor</a></li>
 			</ul>
 		</div>
 		<div id="page">

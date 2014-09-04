@@ -14,7 +14,7 @@ Public Class SearchInformation
 
     Dim qId As String
     Dim searchString As String = ""
-    Dim companyNumber As Integer
+    Dim messageSource As String = ""
 
     If Not (Page.IsPostBack) Then
 
@@ -45,9 +45,12 @@ Public Class SearchInformation
 
             Case "ALLMESSAGES"
               searchString = Request.QueryString.Get("cid").ToString()
-              ''GET CompanyNumber with cid(CompanyID) until Msg table is changed
-              companyNumber = GetCompanyNumber(searchString)
-              GetMessages(companyNumber, searchString)
+              messageSource = Request.QueryString.Get("messageSource").ToString()
+              If messageSource.ToUpper() = "SEARCHFIRSTCALLS" Then ' First Calls
+                GetFirstCalls(searchString)
+              ElseIf messageSource.ToUpper() = "SEARCHMESSAGES" Then  'Messages
+                GetMessages(searchString)
+              End If
 
             Case Else
 
@@ -147,41 +150,42 @@ Public Class SearchInformation
   ''' This will return all messages for a client (company) when clicking on All Messages tab (Message page)
   ''' </summary>
   ''' <remarks></remarks>
-  Private Sub GetMessages(search As String, companyId As String)
+  Private Sub GetMessages(search As String)
 
-    Dim rsData As SqlDataReader
-    Dim db As dbUtil = New dbUtil()
+    Dim mDA As New MessageDA
+    Dim messages As List(Of Message)
     Dim strHTML As New StringBuilder()
 
-    rsData = db.GetDataReader("SELECT MsgId, MsgCustID, MsgTo, MsgFrom, MsgDateTime FROM Msg WITH (NOLOCK) WHERE MsgCustID = " & search)
-    If rsData.HasRows Then
-      While rsData.Read
-        strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & rsData("MsgId").ToString() & "&ClientId=" & companyId & """><span class=""to"">To: " & rsData("MsgTo").ToString() & "</span><span class=""from"">From: " & rsData("MsgFrom").ToString() & "</span><span class=""date"">Date: " & FormatDateTime(rsData("MsgDateTime").ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(rsData("MsgDateTime").ToString(), DateFormat.ShortTime) & "</span></a></li>")
-      End While
-      rsData.Close()
-      Response.Write(strHTML.ToString())
-    End If
+    messages = mDA.GetMessages(search)
+
+    For Each m As Message In messages
+      strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & m.ID.ToString() & "&ClientId=" & m.CompanyID.ToString() & """><span class=""to"">To: " & m.MsgTo.ToString() & "</span><span class=""from"">From: " & m.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
+    Next
+
+    Response.Write(strHTML.ToString())
 
   End Sub
 
   ''' <summary>
-  ''' ONLY NEEDED UNTIL MSG TABLE IS FIXED AND HAS COMPANYID FIELD
+  ''' This will return all First Calls for a client (company) when clicking on Search First Calls tab (First Calls page)
   ''' </summary>
+  ''' <param name="search"></param>
   ''' <remarks></remarks>
-  Private Function GetCompanyNumber(id As String) As String
+  Private Sub GetFirstCalls(search As String)
 
-    Dim db As dbUtil 'access to db functions
-    Dim rsData As SqlDataReader
+    Dim fcDA As New FirstCallDA
+    Dim firstCalls As List(Of FirstCall)
+    Dim strHTML As New StringBuilder()
 
-    db = New dbUtil()
-    rsData = db.GetDataReader("SELECT CompanyID, CompanyNumber FROM COMPANY WITH (NOLOCK) WHERE CompanyID = " + id)
+    firstCalls = fcDA.GetFirstCalls(search)
 
-    Do While rsData.Read()
-      Return rsData("CompanyNumber").ToString()
-    Loop
+    For Each fc As FirstCall In firstCalls
+      strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">To: Need Value</span><span class=""from"">From: Need Value Here</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
+      'strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">To: " & fc.MsgTo.ToString() & "</span><span class=""from"">From: " & fc.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
+    Next
 
-    Return ""
+    Response.Write(strHTML.ToString())
 
-  End Function
+  End Sub
 
 End Class
