@@ -123,6 +123,13 @@ hr {
 	padding-top: 5px;
 }
 
+caption {
+    border-bottom: 1px solid #3c3c3c;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+}
+
 .lineH1_6 {
 	line-height: 1.6em;
 }
@@ -445,12 +452,36 @@ th, td {
 	padding: 5px 3px ;
 }
 
+/** ADDING FACILITIES/DOCS/CLIENTS */
+
+#facilityTable, #clientTable, #physicianTable {
+    height: 400px;
+    overflow-y: auto;
+}
+
+#pName {
+    width: 50%;
+}
+
+#pPhone {
+    width: 40%;
+}
+
+#pExt {
+    width: 10%;
+}
+
 /** MESSAGES **/
 
 #messages {
 	border: 1px solid #606060;
 	width: 400px;
-	height: 300px; 
+	max-height: 682px; 
+    overflow: auto;
+}
+
+.leftCol {
+    width: 450px;
 }
 
 #msgID {
@@ -472,6 +503,12 @@ th, td {
 #clients {
 	border: 1px solid #606060;
 	width: 450px;
+    max-height: 682px; 
+    overflow: auto;
+}
+
+.rightCol {
+    width: 400px;
 }
 
 #clientID {
