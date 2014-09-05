@@ -37,108 +37,72 @@
               <h2>Add a Facility</h2>
             </div>
             <div class="entry">
+			  <div id="facilityTable">
+                <h4>Search for existing facility:</h4>
+				<input type="text" name="facilitySearch" id="facilitySearch" />
+                <!--autocomplete begin-->
+                <div class="searchAuto hide" id="podSearch">
+                  <ul class="autoSearch" id="podAuto"></ul>
+                </div>
+                <!--autocomplete end-->
+              </div>
               <div id="newFacility">
+                 <h4>Add or edit facility:</h4><br />
                 <form id="addNewFacility" action="#" method="post" runat="server">
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="facilityName">Name</label><br />
-                      <asp:TextBox ID="facilityName" runat="server" Width="100"></asp:TextBox>
+                      <label for="placeOfDeath">Place of Death</label><br />
+                      <asp:TextBox ID="placeOfDeath" runat="server" Width="300"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqPlaceOfDeath" runat="server" ErrorMessage="Place of Death is required" ControlToValidate="placeOfDeath" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
-                      <label for="facilityType">FacilityType</label><br />
-                      <asp:TextBox ID="facilityType" runat="server" Width="40"></asp:TextBox>
+                      <label for="facilityAddr">Address</label><br />
+                      <asp:TextBox ID="facilityAddr" class="facility" runat="server" Width="300"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacAddr" runat="server" ErrorMessage="Place of Death Address is required" ControlToValidate="placeOfDeath" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="left">
-                      <label for="facilityAddress">Address</label><br />
-                      <asp:TextBox ID="facilityAddress" runat="server" Width="100"></asp:TextBox>
+                    <div class="left mr_10">
+                      <label for="facType">Facility Type</label><br />
+                      <asp:TextBox ID="facType" class="facility" runat="server" Width="100"></asp:TextBox>
                     </div>
-                    <div class="left">
-                      <label for="facilityCity">City</label><br />
-                      <asp:TextBox ID="facilityCity" runat="server" Width="50"></asp:TextBox>
+                    <div class="left mr_10">
+                      <label for="facCity">City</label><br />
+                      <asp:TextBox ID="facCity" class="facility" runat="server" Width="180"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacCity" runat="server" ErrorMessage="Facility City is required" ControlToValidate="facCity" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="left">
-                      <label for="facilityState">State</label><br />
-                      <asp:TextBox ID="facilityState" runat="server" Width="10"></asp:TextBox>
+                    <div class="left mr_10">
+                      <label for="facState">State</label><br />
+                      <asp:TextBox ID="facState" class="facility" runat="server" Width="30"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacState" runat="server" ErrorMessage="Facility State is required" ControlToValidate="facState" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:RegularExpressionValidator ID="ReqExFacState" ControlToValidate="facState" runat="server" ErrorMessage="Please enter a State appreviation (format: CA)" ValidationExpression="^((AL)|(AK)|(AS)|(AZ)|(AR)|(CA)|(CO)|(CT)|(DE)|(DC)|(FM)|(FL)|(GA)|(GU)|(HI)|(ID)|(IL)|(IN)|(IA)|(KS)|(KY)|(LA)|(ME)|(MH)|(MD)|(MA)|(MI)|(MN)|(MS)|(MO)|(MT)|(NE)|(NV)|(NH)|(NJ)|(NM)|(NY)|(NC)|(ND)|(MP)|(OH)|(OK)|(OR)|(PW)|(PA)|(PR)|(RI)|(SC)|(SD)|(TN)|(TX)|(UT)|(VT)|(VI)|(VA)|(WA)|(WV)|(WI)|(WY))$" Display="None"></asp:RegularExpressionValidator>
                     </div>
-                    <div class="left">
+                    <div class="left mr_10">
+                      <label for="facilityCounty">County</label><br />
+                      <asp:TextBox ID="facilityCounty" runat="server" class="facility" Width="100"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacCounty" runat="server" ErrorMessage="Facility County is required" ControlToValidate="facilityCounty" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="left mr_10">
                       <label for="facilityZip">Zip</label><br />
-                      <asp:TextBox ID="facilityZip" runat="server" Width="20"></asp:TextBox>
+                      <asp:TextBox ID="facilityZip" runat="server" class="facility" Width="50"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacZip" runat="server" ErrorMessage="Facility Zip is required" ControlToValidate="facilityZip" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:RegularExpressionValidator ID="ReqExFacZip" ControlToValidate="facilityZip" runat="server" ErrorMessage="Please enter a valid Zip (format: #####)" ValidationExpression="^\d{5}$|^\d{5}-\d{4}$" Display="None"></asp:RegularExpressionValidator>
                     </div>
-                  </div>
-                  <div class="row">
                     <div class="left mr_10">
                       <label for="facilityPhone">Phone Number</label><br />
-                      <asp:TextBox ID="facilityPhone" runat="server" Width="40"></asp:TextBox>
+                      <asp:TextBox ID="facilityPhone" runat="server" class="facility" Width="100"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqFacPhone" runat="server" ErrorMessage="Facility Phone is required" ControlToValidate="facilityPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:RegularExpressionValidator ID="ReqExFacPhone" ControlToValidate="facilityPhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
                     </div>
                     <div class="left mr_10">
-                      <label for="facilityExt">Phone Ext.</label><br />
-                      <asp:TextBox ID="facilityExt" runat="server" Width="40"></asp:TextBox>
+                      <label for="phoneExt">Ext.</label><br />
+                      <asp:TextBox ID="phoneExt" runat="server" class="facility" Width="30"></asp:TextBox>
                     </div>
                   </div>
+				  <input type="hidden" name="facilityId" id="facilityId" value="0" />
+				  <input type="reset" id="clearform" value="Clear Form" />
                   <input type="submit" value="Submit Facility" />
                 </form>
-              </div>
-              <div id="facilityTable">
-                <table width="100%">
-                  <caption>All Facilities</caption>
-                  <tr>
-                    <th id="facility">Facility</th>
-                    <th id="fAddress">Address</th>
-                    <th id="fType">Type</th>
-                    <th id="fCity">City</th>
-                    <th id="fState">State</th>
-                    <th id="fCounty">County</th>
-                    <th id="fZip">Zip</th>
-                    <th id="fPhone">Phone</th>
-                    <th id="fExt">Ext</th>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Kaiser Permanente</a></td>
-                    <td>1234 Some New St.</td>
-                    <td>Hospital</td>
-                    <td>Fontana</td>
-                    <td>CA</td>
-                    <td>San Bernardino</td>
-                    <td>92336</td>
-                    <td>123-123-1234</td>
-                    <td>345</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Kaiser Permanente</a></td>
-                    <td>1234 Some New St.</td>
-                    <td>Hospital</td>
-                    <td>Fontana</td>
-                    <td>CA</td>
-                    <td>San Bernardino</td>
-                    <td>92336</td>
-                    <td>123-123-1234</td>
-                    <td>345</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Kaiser Permanente</a></td>
-                    <td>1234 Some New St.</td>
-                    <td>Hospital</td>
-                    <td>Fontana</td>
-                    <td>CA</td>
-                    <td>San Bernardino</td>
-                    <td>92336</td>
-                    <td>123-123-1234</td>
-                    <td>345</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Kaiser Permanente</a></td>
-                    <td>1234 Some New St.</td>
-                    <td>Hospital</td>
-                    <td>Fontana</td>
-                    <td>CA</td>
-                    <td>San Bernardino</td>
-                    <td>92336</td>
-                    <td>123-123-1234</td>
-                    <td>345</td>
-                  </tr>
-                </table>
               </div>
             </div>
             <div class="clearfix">&nbsp;</div>
@@ -151,6 +115,87 @@
   <div id="footer">
     <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
   </div>
+  <script type="text/javascript" src="../Scripts/jquery.js"></script>
+  <script>
+      var delay = (function () {
+          var timer = 0;
+          return function (callback, ms) {
+              clearTimeout(timer);
+              timer = setTimeout(callback, ms);
+          };
+      })();
+	  $('#facilitySearch').keyup(function () {
+		var searchStr = $(this).val();
+		if (searchStr === '') {
+		  $('#podSearch').hide();
+		  $('.facility').prop('disabled', false);
+		  return;
+		}
+		delay(function () {
+		  $.ajax({
+			url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
+			cache: false
+		  })
+		   .done(function (data) {
+			 var $podAuto = $('#podAuto');
+			 $podAuto.html("");
+			 $.each($.parseJSON(data), function (i, item) {
+			   var busNameCity;
+			   if (item.City === "") {
+				 busNameCity = item.Name;
+			   } else {
+				 busNameCity = item.Name + " - " + item.City;
+			   }
+			   var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
+			   $podAuto.append(html);
+			 });
+			 $('#podSearch').show();
+			 $('.facility').prop('disabled', false);
+		   });
+		}, 300);
+	  });
+	  $(document).on('click', '#podAuto li', function () {
+		var result = $(this).children('.busId').val();
+		var parent = $(this).parent().attr('id');
+		$.ajax({
+		  url: "../SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+		  cache: false
+		})
+		.done(function (data) {
+		  var busObj = JSON.parse(data);
+		  console.log(busObj);
+		  $('#placeOfDeath').val(busObj.Name);
+
+		  if (busObj.Name.toUpperCase() != "RESIDENCE") { /*Need to test either name or id to validate if we leave rest of fields read-only*/
+			$('#facilityAddr').val(busObj.Address);
+			$('#facilityCounty').val(busObj.County);
+			$('#facState').val(busObj.State);
+			$('#facCity').val(busObj.City);
+			$('#facilityZip').val(busObj.Zip);
+			$('#facilityPhone').val(busObj.Phone);
+			$('#phoneExt').val(busObj.Ext);
+			//$('.facility').prop('disabled', true);
+			$('.facility').prop('readonly', true);
+			$('#facilityId').val(result);
+		  }
+		  else {
+			//$('.facility').prop('disabled', false);
+			$('.facility').prop('readonly', false);
+		  }
+		  $('#podSearch').hide();
+		}).fail(function (data) {
+		  alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+		});
+	  });
+	  $('#clearform').on('click', function () {
+	      $('#facilityId').val(0);
+	  });
+	  $(document).on('click', function (e) {
+	      if (!$(e.target).hasClass('stick')) {
+	          $('.searchAuto').hide();
+	      }
+	  });
+	 </script>
 </body>
 </html>
 

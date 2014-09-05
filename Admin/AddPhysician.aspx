@@ -51,45 +51,50 @@
               <h2>Add a Physician</h2>
             </div>
             <div class="entry">
-              <div class="left leftCol">
-                <div id="physicianTable">
-                  <table width="100%" id="PhysiciansTable" runat="server">
-                    <caption>All Physicians</caption>
-                    <tr>
-                      <th id="pName">Name</th>
-                      <th id="pPhone">Phone</th>
-                      <th id="pExt">Ext.</th>
-                    </tr>
-                  </table>
+              <div class="left leftCol" id="physicianTable">
+                <h4>Search for existing physician:</h4>
+                <input type="text" name="searchPhysician" id="searchPhysician" />
+				<!--autocomplete begin-->
+                <div class="searchAuto hide" id="physicianSearch">
+                  <ul class="autoSearch" id="physicianAuto">
+                    <li>
+                      <input type="hidden" class="docId" value="docId" />
+                      Doctors Name 
+                    </li>
+                  </ul>
                 </div>
+                <!--autocomplete end-->
               </div>
               <div class="right rightCol">
+                <h4>Add or edit existing physician:</h4><br />
                 <form id="addNewPhysician" action="#" method="post" runat="server">
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="physicianFname">First Name</label><br />
-                      <asp:TextBox ID="physicianFname" runat="server" Width="100"></asp:TextBox>
+                      <label for="physicianName">Attending Physician</label><br />
+                      <asp:TextBox ID="physicianName" runat="server" Width="250"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqPhysicianName" runat="server" ErrorMessage="Attending Physician is required" ControlToValidate="physicianName" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="left">
-                      <label for="physicianLname">Last Name</label><br />
-                      <asp:TextBox ID="physicianLname" runat="server" Width="100"></asp:TextBox>
-                    </div>
-                  </div>
-                  <div class="row">
                     <div class="left mr_10">
                       <label for="physicianPhone">Physician Phone</label><br />
-                      <asp:TextBox ID="physicianPhone" runat="server" Width="100"></asp:TextBox>
+                      <asp:TextBox ID="physicianPhone" runat="server" class="physician" Width="100"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="ReqPhysicianPhone" runat="server" ErrorMessage="Physician Phone Number is required" ControlToValidate="physicianPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:RegularExpressionValidator ID="RegExPhysicianPhone" ControlToValidate="physicianPhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
                     </div>
-                    <div class="left">
-                      <label for="physicianExt">Phone Ext.</label><br />
-                      <asp:TextBox ID="physicianExt" runat="server" Width="50"></asp:TextBox>
+                    <div class="left mr_10">
+                      <label for="physicianPhoneExt">Ext.</label><br />
+                      <asp:TextBox ID="physicianPhoneExt" runat="server" class="physician" Width="30"></asp:TextBox>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="mTop10">
+				        <input type="hidden" name="physicianId" id="physicianId" value="0" />
+				        <input type="reset" id="clearform" value="Clear Form" />
+                        <input type="submit" value="Submit Physician" />
                     </div>
                   </div>
-                  <input type="submit" value="Submit Physician" />
                 </form>
               </div>
             </div>
-            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
           </div>
         </div>
         <div class="clearfix">&nbsp;</div>
@@ -99,6 +104,69 @@
   <div id="footer">
     <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
   </div>
+  <script type="text/javascript" src="../Scripts/jquery.js"></script>
+  <script>
+      var delay = (function () {
+          var timer = 0;
+          return function (callback, ms) {
+              clearTimeout(timer);
+              timer = setTimeout(callback, ms);
+          };
+      })();
+	 /** THIS IS THE AUTO COMPLETE FOR PHYSICIAN **/
+	  $('#searchPhysician').keyup(function () {
+		var searchStr = $(this).val();
+		console.log(searchStr)
+		if (searchStr === '') {
+		  $('#physicianSearch').hide();
+		  return;
+		}
+		delay(function () {
+		  $.ajax({
+			url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=DOCSEARCH",
+			cache: false
+		  })
+		   .done(function (data) {
+			 var $physicianAuto = $('#physicianAuto');
+			 $physicianAuto.html("");
+			 $.each($.parseJSON(data), function (i, item) {
+			   var html = '<li><input type="hidden" class="docId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
+			   $physicianAuto.append(html);
+			 });
+			 $('#physicianSearch').show();
+		   });
+		}, 300);
+	  });
+	/** FOR DOCID **/
+	  $(document).on('click', '#physicianAuto li', function () {
+		var result = $(this).children('.docId').val();
+		var parent = $(this).parent().attr('id');
+		$.ajax({
+		  url: "../SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+		  cache: false
+		})
+		.done(function (data) {
+		  var docObj = JSON.parse(data);
+		  console.log(data);
+		  $('#physicianName').val(docObj.Name);
+		  $('#physicianPhone').val(docObj.WorkPhone);
+		  //$('.physician').prop('disabled', true);
+		  $('.physician').prop('readonly', true);
+		  $('#physicianSearch').hide();
+		  $('#physicianId').val(result);
+		}).fail(function (data) {
+		  alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+		});
+	  });
+	  $('#clearform').on('click', function () {
+	      $('#physicianId').val(0);
+	  });
+	  $(document).on('click', function (e) {
+	      if (!$(e.target).hasClass('stick')) {
+	          $('.searchAuto').hide();
+	      }
+	  });
+	</script>
 </body>
 </html>
 

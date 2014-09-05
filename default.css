@@ -16,6 +16,10 @@ h1, h2, h3 {
 	font-weight: normal;
 }
 
+h4 {
+    margin: 0;
+}
+
 p, ol, ul {
 	margin-top: 0px;
 	text-align: justify;
@@ -455,8 +459,8 @@ th, td {
 /** ADDING FACILITIES/DOCS/CLIENTS */
 
 #facilityTable, #clientTable, #physicianTable {
-    height: 400px;
-    overflow-y: auto;
+    height: 100px;
+    position: relative;
 }
 
 #pName {
@@ -469,6 +473,10 @@ th, td {
 
 #pExt {
     width: 10%;
+}
+
+#facilitySearch, #searchPhysician {
+    width: 300px;
 }
 
 /** MESSAGES **/
@@ -526,6 +534,11 @@ th, td {
 	float: left;
 	margin: 3px 5px 0 0;
 	width: 39px;
+}
+
+#addMessage #RBMessageStatus label {
+    width: 100px;
+    margin-top: 0;
 }
 
 #addMessage input, #addMessage select{
