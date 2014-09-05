@@ -16,14 +16,15 @@ Public Class DoctorDA
     Dim db As dbUtil = New dbUtil()
     Dim doctor As New Doctor
 
-    rsData = db.GetDataReader("SELECT ID, DrName, DrWorkPhone FROM DoctorListQ WHERE ID = " + id)
+    rsData = db.GetDataReader("SELECT DoctorID, DoctorName, DoctorPhone, DoctorPhoneExt FROM DOCTOR WHERE DoctorID = " + id)
 
     If rsData.HasRows Then
 
       Do While rsData.Read
-        doctor.DoctorID = rsData("ID")
-        doctor.Name = rsData("DrName")
-        doctor.WorkPhone = db.ClearNull(rsData("DrWorkPhone"))
+        doctor.DoctorID = rsData("DoctorID")
+        doctor.Name = rsData("DoctorName")
+        doctor.Phone = db.ClearNull(rsData("DoctorPhone"))
+        doctor.PhoneExt = db.ClearNull(rsData("DoctorPhoneExt"))
       Loop
 
       rsData.Close()
@@ -45,15 +46,16 @@ Public Class DoctorDA
     Dim db As dbUtil = New dbUtil()
     Dim doctors As New List(Of Doctor)
 
-    rsData = db.GetDataReader("SELECT ID, DrName, DrWorkPhone FROM DoctorListQ WITH (NOLOCK) ORDER BY DrName ASC")
+    rsData = db.GetDataReader("SELECT DoctorID, DoctorName, DoctorPhone, DoctorPhoneExt FROM DOCTOR WITH (NOLOCK) ORDER BY DoctorName ASC")
 
     If rsData.HasRows Then
 
       Do While rsData.Read
         Dim doctor As New Doctor
-        doctor.DoctorID = rsData("ID")
-        doctor.Name = rsData("DrName")
-        doctor.WorkPhone = db.ClearNull(rsData("DrWorkPhone"))
+        doctor.DoctorID = rsData("DoctorID")
+        doctor.Name = rsData("DoctorName")
+        doctor.Phone = db.ClearNull(rsData("DoctorPhone"))
+        doctor.PhoneExt = db.ClearNull(rsData("DoctorPhoneExt"))
         doctors.Add(doctor)
       Loop
 
@@ -78,15 +80,16 @@ Public Class DoctorDA
     Dim db As dbUtil = New dbUtil()
     Dim doctors As New List(Of Doctor)
 
-    rsData = db.GetDataReader("SELECT ID, DrName, DrWorkPhone FROM DoctorListQ WHERE DrName LIKE '%" & search & "%' ORDER BY DrName ASC")
+    rsData = db.GetDataReader("SELECT DoctorID, DoctorName, DoctorPhone, DoctorPhoneExt FROM DOCTOR WHERE DoctorName LIKE '%" & search & "%' ORDER BY DoctorName ASC")
 
     If rsData.HasRows Then
 
       Do While rsData.Read
         Dim doctor As New Doctor
-        doctor.DoctorID = rsData("ID")
-        doctor.Name = rsData("DrName")
-        doctor.WorkPhone = db.ClearNull(rsData("DrWorkPhone"))
+        doctor.DoctorID = rsData("DoctorID")
+        doctor.Name = rsData("DoctorName")
+        doctor.Phone = db.ClearNull(rsData("DoctorPhone"))
+        doctor.PhoneExt = db.ClearNull(rsData("DoctorPhoneExt"))
         doctors.Add(doctor)
       Loop
 

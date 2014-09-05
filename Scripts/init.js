@@ -142,7 +142,7 @@ $(function () {
         $('#facCity').val(busObj.City);
         $('#facilityZip').val(busObj.Zip);
         $('#facilityPhone').val(busObj.Phone);
-        $('#phoneExt').val(busObj.Ext);
+        $('#phoneExt').val(busObj.PhoneExt);
         //$('.facility').prop('disabled', true);
         $('.facility').prop('readonly', true);
       }

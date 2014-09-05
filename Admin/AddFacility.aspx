@@ -9,6 +9,20 @@
   <style type="text/css">
     @import "../layout.css";
   </style>
+   <script type="text/javascript">
+     function messagedSaved() {
+       alert("The Facility was saved successfully!");
+       window.location = "AddFacility.aspx";
+     }
+
+     function messagedSavedError() {
+       alert("There was an error inserting/updating the Facility. Please contact an administrator for assistance.");
+     }
+
+     function messageLoadError() {
+       alert("There was an error loading the Facilities page. Please contact an administrator for assistance.");
+     }
+  </script>
 </head>
 <body class="single">
   <div id="wrapper">
@@ -37,9 +51,9 @@
               <h2>Add a Facility</h2>
             </div>
             <div class="entry">
-			  <div id="facilityTable">
+              <div id="facilityTable">
                 <h4>Search for existing facility:</h4>
-				<input type="text" name="facilitySearch" id="facilitySearch" />
+                <input type="text" name="facilitySearch" id="facilitySearch" />
                 <!--autocomplete begin-->
                 <div class="searchAuto hide" id="podSearch">
                   <ul class="autoSearch" id="podAuto"></ul>
@@ -47,7 +61,8 @@
                 <!--autocomplete end-->
               </div>
               <div id="newFacility">
-                 <h4>Add or edit facility:</h4><br />
+                <h4>Add or edit facility:</h4>
+                <br />
                 <form id="addNewFacility" action="#" method="post" runat="server">
                   <div class="row">
                     <div class="left mr_10">
@@ -99,9 +114,9 @@
                       <asp:TextBox ID="phoneExt" runat="server" class="facility" Width="30"></asp:TextBox>
                     </div>
                   </div>
-				  <input type="hidden" name="facilityId" id="facilityId" value="0" />
-				  <input type="reset" id="clearform" value="Clear Form" />
-                  <input type="submit" value="Submit Facility" />
+                  <input type="hidden" name="facilityId" id="facilityId" value="0" runat="server" />
+                  <input type="reset" id="clearform" value="Clear Form" />
+                  <asp:Button Text="Submit Facility" runat="server" id="SubmitFacility" />
                 </form>
               </div>
             </div>
@@ -117,85 +132,77 @@
   </div>
   <script type="text/javascript" src="../Scripts/jquery.js"></script>
   <script>
-      var delay = (function () {
-          var timer = 0;
-          return function (callback, ms) {
-              clearTimeout(timer);
-              timer = setTimeout(callback, ms);
-          };
-      })();
-	  $('#facilitySearch').keyup(function () {
-		var searchStr = $(this).val();
-		if (searchStr === '') {
-		  $('#podSearch').hide();
-		  $('.facility').prop('disabled', false);
-		  return;
-		}
-		delay(function () {
-		  $.ajax({
-			url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
-			cache: false
-		  })
-		   .done(function (data) {
-			 var $podAuto = $('#podAuto');
-			 $podAuto.html("");
-			 $.each($.parseJSON(data), function (i, item) {
-			   var busNameCity;
-			   if (item.City === "") {
-				 busNameCity = item.Name;
-			   } else {
-				 busNameCity = item.Name + " - " + item.City;
-			   }
-			   var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
-			   $podAuto.append(html);
-			 });
-			 $('#podSearch').show();
-			 $('.facility').prop('disabled', false);
-		   });
-		}, 300);
-	  });
-	  $(document).on('click', '#podAuto li', function () {
-		var result = $(this).children('.busId').val();
-		var parent = $(this).parent().attr('id');
-		$.ajax({
-		  url: "../SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
-		  cache: false
-		})
-		.done(function (data) {
-		  var busObj = JSON.parse(data);
-		  console.log(busObj);
-		  $('#placeOfDeath').val(busObj.Name);
-
-		  if (busObj.Name.toUpperCase() != "RESIDENCE") { /*Need to test either name or id to validate if we leave rest of fields read-only*/
-			$('#facilityAddr').val(busObj.Address);
-			$('#facilityCounty').val(busObj.County);
-			$('#facState').val(busObj.State);
-			$('#facCity').val(busObj.City);
-			$('#facilityZip').val(busObj.Zip);
-			$('#facilityPhone').val(busObj.Phone);
-			$('#phoneExt').val(busObj.Ext);
-			//$('.facility').prop('disabled', true);
-			$('.facility').prop('readonly', true);
-			$('#facilityId').val(result);
-		  }
-		  else {
-			//$('.facility').prop('disabled', false);
-			$('.facility').prop('readonly', false);
-		  }
-		  $('#podSearch').hide();
-		}).fail(function (data) {
-		  alert("Update has failed. Please try again.\n(Error: " + data.responseText);
-		});
-	  });
-	  $('#clearform').on('click', function () {
-	      $('#facilityId').val(0);
-	  });
-	  $(document).on('click', function (e) {
-	      if (!$(e.target).hasClass('stick')) {
-	          $('.searchAuto').hide();
-	      }
-	  });
-	 </script>
+    var delay = (function () {
+      var timer = 0;
+      return function (callback, ms) {
+        clearTimeout(timer);
+        timer = setTimeout(callback, ms);
+      };
+    })();
+    $('#facilitySearch').keyup(function () {
+      var searchStr = $(this).val();
+      if (searchStr === '') {
+        $('#podSearch').hide();
+        $('.facility').prop('disabled', false);
+        return;
+      }
+      delay(function () {
+        $.ajax({
+          url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
+          cache: false
+        })
+         .done(function (data) {
+           var $podAuto = $('#podAuto');
+           $podAuto.html("");
+           $.each($.parseJSON(data), function (i, item) {
+             var busNameCity;
+             if (item.City === "") {
+               busNameCity = item.Name;
+             } else {
+               busNameCity = item.Name + " - " + item.City;
+             }
+             var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
+             $podAuto.append(html);
+           });
+           $('#podSearch').show();
+           $('.facility').prop('disabled', false);
+         });
+      }, 300);
+    });
+    $(document).on('click', '#podAuto li', function () {
+      var result = $(this).children('.busId').val();
+      var parent = $(this).parent().attr('id');
+      $.ajax({
+        url: "../SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+        cache: false
+      })
+      .done(function (data) {
+        var busObj = JSON.parse(data);
+        console.log(busObj);
+        $('#placeOfDeath').val(busObj.Name);
+        $('#facilityAddr').val(busObj.Address);
+        $('#facilityCounty').val(busObj.County);
+        $('#facState').val(busObj.State);
+        $('#facCity').val(busObj.City);
+        $('#facilityZip').val(busObj.Zip);
+        $('#facilityPhone').val(busObj.Phone);
+        $('#phoneExt').val(busObj.PhoneExt);
+        $('#facilityId').val(result);
+        $('#podSearch').hide();
+      }).fail(function (data) {
+        alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+      });
+    });
+    $('#clearform').on('click', function () {
+      $('#facilityId').val(0);
+      $('#facilitySearch').val('').focus();
+    });
+    $(document).on('click', function (e) {
+      if (!$(e.target).hasClass('stick')) {
+        $('.searchAuto').hide();
+      }
+    });
+  </script>
 </body>
 </html>
 

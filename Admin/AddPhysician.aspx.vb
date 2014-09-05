@@ -44,54 +44,54 @@
   ''' <remarks></remarks>
   Private Sub GetPhysicians()
 
-    Dim dDA As New DoctorDA
-    Dim doctors As List(Of Doctor)
+    'Dim dDA As New DoctorDA
+    'Dim doctors As List(Of Doctor)
 
-    doctors = dDA.GetDoctors()
+    'doctors = dDA.GetDoctors()
 
-    Dim row As HtmlTableRow
-    Dim cell As HtmlTableCell
-    Dim a As HtmlAnchor
-    Dim counter As Integer = 0
+    'Dim row As HtmlTableRow
+    'Dim cell As HtmlTableCell
+    'Dim a As HtmlAnchor
+    'Dim counter As Integer = 0
 
-    If doctors.Count > 0 Then
+    'If doctors.Count > 0 Then
 
-      For Each d As Doctor In doctors
-       
-        row = New HtmlTableRow()
+    '  For Each d As Doctor In doctors
 
-        'Name
-        cell = New HtmlTableCell
-        a = New HtmlAnchor With {.HRef = "AddPhysician.aspx?docId=" + d.DoctorID.ToString()}
-        a.InnerText = d.Name
-        cell.Controls.Add(a)
-        row.Controls.Add(cell)
+    '    row = New HtmlTableRow()
 
-        'Phone
-        cell = New HtmlTableCell With {.InnerText = d.WorkPhone}
-        row.Controls.Add(cell)
+    '    'Name
+    '    cell = New HtmlTableCell
+    '    a = New HtmlAnchor With {.HRef = "AddPhysician.aspx?docId=" + d.DoctorID.ToString()}
+    '    a.InnerText = d.Name
+    '    cell.Controls.Add(a)
+    '    row.Controls.Add(cell)
 
-        'Phone Ext
-        cell = New HtmlTableCell With {.InnerText = "#345"}
-        row.Controls.Add(cell)
+    '    'Phone
+    '    cell = New HtmlTableCell With {.InnerText = d.Phone}
+    '    row.Controls.Add(cell)
 
-        PhysiciansTable.Controls.Add(row)
+    '    'Phone Ext
+    '    cell = New HtmlTableCell With {.InnerText = "#345"}
+    '    row.Controls.Add(cell)
 
-        counter += 1
+    '    PhysiciansTable.Controls.Add(row)
 
-        If counter > 1000 Then
-          Exit For
-        End If
+    '    counter += 1
 
-      Next
+    '    If counter > 1000 Then
+    '      Exit For
+    '    End If
 
-    Else
-      row = New HtmlTableRow()
-      cell = New HtmlTableCell With {.InnerText = "No Physicians Found"}
-      cell.ColSpan = 3
-      row.Controls.Add(cell)
-      PhysiciansTable.Controls.Add(row)
-    End If
+    '  Next
+
+    'Else
+    '  row = New HtmlTableRow()
+    '  cell = New HtmlTableCell With {.InnerText = "No Physicians Found"}
+    '  cell.ColSpan = 3
+    '  row.Controls.Add(cell)
+    '  PhysiciansTable.Controls.Add(row)
+    'End If
 
   End Sub
 
