@@ -14,42 +14,6 @@ Option Explicit On
 Partial Public Class AddPhysician
 
   '''<summary>
-  '''PhysiciansTable control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents PhysiciansTable As Global.System.Web.UI.HtmlControls.HtmlTable
-
-  '''<summary>
-  '''pName control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents pName As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
-  '''pPhone control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents pPhone As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
-  '''pExt control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents pExt As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
   '''addNewPhysician control.
   '''</summary>
   '''<remarks>
@@ -59,22 +23,31 @@ Partial Public Class AddPhysician
   Protected WithEvents addNewPhysician As Global.System.Web.UI.HtmlControls.HtmlForm
 
   '''<summary>
-  '''physicianFname control.
+  '''AddPhysicianValidationSummary control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents physicianFname As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents AddPhysicianValidationSummary As Global.System.Web.UI.WebControls.ValidationSummary
 
   '''<summary>
-  '''physicianLname control.
+  '''physicianName control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents physicianLname As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents physicianName As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqPhysicianName control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqPhysicianName As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''physicianPhone control.
@@ -86,11 +59,47 @@ Partial Public Class AddPhysician
   Protected WithEvents physicianPhone As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''physicianExt control.
+  '''ReqPhysicianPhone control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents physicianExt As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents ReqPhysicianPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''RegExPhysicianPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RegExPhysicianPhone As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+  '''<summary>
+  '''physicianPhoneExt control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents physicianPhoneExt As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''physicianId control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents physicianId As Global.System.Web.UI.HtmlControls.HtmlInputHidden
+
+  '''<summary>
+  '''SubmitPhysician control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents SubmitPhysician As Global.System.Web.UI.WebControls.Button
 End Class

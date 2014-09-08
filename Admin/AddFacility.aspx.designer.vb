@@ -23,6 +23,15 @@ Partial Public Class AddFacility
   Protected WithEvents addNewFacility As Global.System.Web.UI.HtmlControls.HtmlForm
 
   '''<summary>
+  '''AddFacilityValidationSummary control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents AddFacilityValidationSummary As Global.System.Web.UI.WebControls.ValidationSummary
+
+  '''<summary>
   '''placeOfDeath control.
   '''</summary>
   '''<remarks>

@@ -14,6 +14,14 @@ addNewFacility control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.AddFacility.AddFacilityValidationSummary">
+	<summary>
+AddFacilityValidationSummary control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.AddFacility.placeOfDeath">
 	<summary>
 placeOfDeath control.
@@ -756,38 +764,6 @@ lastUpdated control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddPhysician.PhysiciansTable">
-	<summary>
-PhysiciansTable control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.AddPhysician.pName">
-	<summary>
-pName control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.AddPhysician.pPhone">
-	<summary>
-pPhone control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:Axios.AddPhysician.pExt">
-	<summary>
-pExt control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:Axios.AddPhysician.addNewPhysician">
 	<summary>
 addNewPhysician control.
@@ -796,17 +772,25 @@ addNewPhysician control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddPhysician.physicianFname">
+</member><member name="F:Axios.AddPhysician.AddPhysicianValidationSummary">
 	<summary>
-physicianFname control.
+AddPhysicianValidationSummary control.
 </summary>
 	<remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddPhysician.physicianLname">
+</member><member name="F:Axios.AddPhysician.physicianName">
 	<summary>
-physicianLname control.
+physicianName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.ReqPhysicianName">
+	<summary>
+ReqPhysicianName control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -820,9 +804,41 @@ physicianPhone control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddPhysician.physicianExt">
+</member><member name="F:Axios.AddPhysician.ReqPhysicianPhone">
 	<summary>
-physicianExt control.
+ReqPhysicianPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.RegExPhysicianPhone">
+	<summary>
+RegExPhysicianPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.physicianPhoneExt">
+	<summary>
+physicianPhoneExt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.physicianId">
+	<summary>
+physicianId control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddPhysician.SubmitPhysician">
+	<summary>
+SubmitPhysician control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -880,20 +896,35 @@ To modify move field declaration from designer file to code-behind file.
  Update Existing Facility
  </summary>
 	<remarks></remarks>
-</member><member name="M:Axios.AddPhysician.Page_Load(System.Object,System.EventArgs)">
+</member><member name="M:Axios.AddFacility.FillFacility(System.Int32)">
+	<summary>
+ Fill Facility (Business) object
+ </summary>
+	<param name="fId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.AddPhysician.SubmitPhysician_Click(System.Object,System.EventArgs)">
 	<summary>
 	</summary>
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
-</member><member name="M:Axios.AddPhysician.GetPhysicians">
+</member><member name="M:Axios.AddPhysician.InsertPhysician(Axios.Doctor)">
 	<summary>
-	</summary>
+ Save New Physician
+ </summary>
 	<remarks></remarks>
-</member><member name="M:Axios.AddPhysician.GetPhysician(System.String)">
+</member><member name="M:Axios.AddPhysician.UpdatePhysician(Axios.Doctor)">
 	<summary>
-	</summary>
-	<param name="id"></param>
+ Update Existing Physician
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.AddPhysician.FillPhysician(System.Int32)">
+	<summary>
+ Fill Physician (Doctor) object
+ </summary>
+	<param name="dId"></param>
+	<returns></returns>
 	<remarks></remarks>
 </member><member name="F:Axios.FirstCalls.ClientHeader">
 	<summary>

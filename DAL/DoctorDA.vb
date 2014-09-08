@@ -101,11 +101,41 @@ Public Class DoctorDA
 
   End Function
 
-  Public Function InsertDoctor(c As Doctor) As Integer Implements IDoctorDA.InsertDoctor
+  Public Function InsertDoctor(d As Doctor) As Integer Implements IDoctorDA.InsertDoctor
+
+    Dim returnedID As Integer
+    Dim SQL As New StringBuilder()
+    Dim db As dbUtil 'access to db functions
+    db = New dbUtil()
+
+    SQL.Append("INSERT INTO [dbo].[DOCTOR]([DoctorName],[DoctorPhone],[DoctorPhoneExt])")
+    SQL.Append(" VALUES ")
+    SQL.Append("('" & d.Name & "',") 'DoctorName
+    SQL.Append("'" & d.Phone & "',") 'DoctorPhone
+    SQL.Append("'" & d.PhoneExt & "')") 'DoctorPhoneExt
+
+    returnedID = db.GetID(SQL.ToString())
+
+    Return returnedID
 
   End Function
 
-  Public Function UpdateDoctor(c As Doctor) As Integer Implements IDoctorDA.UpdateDoctor
+  Public Function UpdateDoctor(d As Doctor) As Integer Implements IDoctorDA.UpdateDoctor
+
+    Dim returnedID As Integer
+    Dim SQL As New StringBuilder()
+    Dim db As dbUtil 'access to db functions
+    db = New dbUtil()
+
+    SQL.Append("UPDATE DOCTOR SET ")
+    SQL.Append("DoctorName = '" & d.Name & "',") 'DoctorName
+    SQL.Append("DoctorPhone = '" & d.Phone & "',") 'DoctorPhone
+    SQL.Append("DoctorPhoneExt = '" & d.PhoneExt & "' ") 'DoctorPhoneExt
+    SQL.Append("WHERE DoctorID = " & d.DoctorID)
+
+    returnedID = db.GetID(SQL.ToString())
+
+    Return returnedID
 
   End Function
 

@@ -64,6 +64,7 @@
                 <h4>Add or edit facility:</h4>
                 <br />
                 <form id="addNewFacility" action="#" method="post" runat="server">
+                  <asp:ValidationSummary ID="AddFacilityValidationSummary" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
                   <div class="row">
                     <div class="left mr_10">
                       <label for="placeOfDeath">Place of Death</label><br />

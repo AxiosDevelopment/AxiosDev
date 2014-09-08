@@ -60,7 +60,12 @@
 
   End Sub
 
-
+  ''' <summary>
+  ''' Fill Facility (Business) object
+  ''' </summary>
+  ''' <param name="fId"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Private Function FillFacility(fId As Integer) As Business
 
     Dim business As New Business
