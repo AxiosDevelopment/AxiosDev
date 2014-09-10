@@ -121,6 +121,48 @@ $(function () {
     }, 300);
   });
 
+    /** CLIENT SEARCH */
+  $('#searchClient').keyup(function () {
+      var searchStr = $(this).val();
+      console.log(searchStr)
+      if (searchStr === '') {
+          $('#clientSearch').hide();
+          return;
+      }
+      delay(function () {
+          $.ajax({
+              url: "SearchInformation.aspx?query=" + searchStr + "&queryId=CLIENTSEARCH",
+              cache: false
+          })
+           .done(function (data) {
+               var $clientAuto = $('#clientAuto');
+               $physicianAuto.html("");
+               $.each($.parseJSON(data), function (i, item) {
+                   var html = '<li><input type="hidden" class="clientId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
+                   $clientAuto.append(html);
+               });
+               $('#clientSearch').show();
+           });
+      }, 300);
+  });
+
+  /** CLIENT ClICK */
+  $(document).on('click', '#clientAuto li', function () {
+      var result = $(this).children('.busId').val();
+      var parent = $(this).parent().attr('id');
+      $.ajax({
+          url: "SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+          cache: false
+      })
+      .done(function (data) {
+          var busObj = JSON.parse(data);
+          //JSON FOR CLIENT EDIT HERE
+          $('#clientSearch').hide();
+      }).fail(function (data) {
+          alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+      });
+  });
+
   /** THIS WILL GET THE BUSINESS ID ONCE CLICKED AND SEND AJAX CALL TO RETRIEVE INFO **/
   /* THIS FUNCTION WILL WORK FOR BOTH AUTO COMPLETES IN THE FIRST CALL PAGE. IT SENDS AN ID AND WILL SEND ANOTHER VARIABLE TO HELP DETERMINE WHICH QUERY TO RUN */
   $(document).on('click', '#podAuto li', function () {

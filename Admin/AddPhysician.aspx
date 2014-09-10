@@ -51,7 +51,7 @@
               <h2>Add a Physician</h2>
             </div>
             <div class="entry">
-              <div class="left leftCol" id="physicianTable">
+              <div id="physicianTable">
                 <h4>Search for existing physician:</h4>
                 <input type="text" name="searchPhysician" id="searchPhysician" />
 				<!--autocomplete begin-->
@@ -65,7 +65,7 @@
                 </div>
                 <!--autocomplete end-->
               </div>
-              <div class="right rightCol">
+              <div class="">
                 <h4>Add or edit existing physician:</h4><br />
                 <form id="addNewPhysician" action="#" method="post" runat="server">
                   <div class="row">
