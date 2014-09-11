@@ -121,46 +121,49 @@ $(function () {
     }, 300);
   });
 
-    /** CLIENT SEARCH */
+  /** CLIENT SEARCH */
   $('#searchClient').keyup(function () {
-      var searchStr = $(this).val();
-      console.log(searchStr)
-      if (searchStr === '') {
-          $('#clientSearch').hide();
-          return;
-      }
-      delay(function () {
-          $.ajax({
-              url: "SearchInformation.aspx?query=" + searchStr + "&queryId=CLIENTSEARCH",
-              cache: false
-          })
-           .done(function (data) {
-               var $clientAuto = $('#clientAuto');
-               $physicianAuto.html("");
-               $.each($.parseJSON(data), function (i, item) {
-                   var html = '<li><input type="hidden" class="clientId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
-                   $clientAuto.append(html);
-               });
-               $('#clientSearch').show();
-           });
-      }, 300);
+    var searchStr = $(this).val();
+    console.log(searchStr)
+    if (searchStr === '') {
+      $('#clientSearch').hide();
+      return;
+    }
+    delay(function () {
+      $.ajax({
+        url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=CLIENTSEARCH",
+        cache: false
+      })
+       .done(function (data) {
+         var $clientAuto = $('#clientAuto');
+         $clientAuto.html("");
+         $.each($.parseJSON(data), function (i, item) {
+           var html = '<li><input type="hidden" class="clientId" value="' + item.CompanyID + '" />' + item.Name + '</li>';
+           $clientAuto.append(html);
+         });
+         $('#clientSearch').show();
+       });
+    }, 300);
   });
 
-  /** CLIENT ClICK */
+  /** CLIENT CLICK */
   $(document).on('click', '#clientAuto li', function () {
-      var result = $(this).children('.busId').val();
-      var parent = $(this).parent().attr('id');
-      $.ajax({
-          url: "SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
-          cache: false
-      })
-      .done(function (data) {
-          var busObj = JSON.parse(data);
-          //JSON FOR CLIENT EDIT HERE
-          $('#clientSearch').hide();
-      }).fail(function (data) {
-          alert("Update has failed. Please try again.\n(Error: " + data.responseText);
-      });
+    var result = $(this).children('.busId').val();
+    var parent = $(this).parent().attr('id');
+    $.ajax({
+      url: "../SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+      cache: false
+    })
+    .done(function (data) {
+      var clientObj = JSON.parse(data);
+      //JSON FOR CLIENT EDIT HERE
+      console.log(clientObj);
+      $('#').val(clientObj.Name);
+
+      $('#clientSearch').hide();
+    }).fail(function (data) {
+      alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+    });
   });
 
   /** THIS WILL GET THE BUSINESS ID ONCE CLICKED AND SEND AJAX CALL TO RETRIEVE INFO **/

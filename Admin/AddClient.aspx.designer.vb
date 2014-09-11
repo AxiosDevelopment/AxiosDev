@@ -12,4 +12,31 @@ Option Explicit On
 
 
 Partial Public Class AddClient
+
+  '''<summary>
+  '''addNewClient control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents addNewClient As Global.System.Web.UI.HtmlControls.HtmlForm
+
+  '''<summary>
+  '''clientId control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents clientId As Global.System.Web.UI.HtmlControls.HtmlInputHidden
+
+  '''<summary>
+  '''SubmitClient control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents SubmitClient As Global.System.Web.UI.WebControls.Button
 End Class

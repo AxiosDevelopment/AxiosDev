@@ -234,6 +234,30 @@ To modify move field declaration from designer file to code-behind file.
 	<summary>
 	</summary>
 	<remarks></remarks>
+</member><member name="F:Axios.AddClient.addNewClient">
+	<summary>
+addNewClient control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.clientId">
+	<summary>
+clientId control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.SubmitClient">
+	<summary>
+SubmitClient control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="M:Axios.ContactDA.GetContactsByCompany(System.String)">
 	<summary>
  Gets list of contacts for a company
@@ -617,6 +641,20 @@ To modify move field declaration from designer file to code-behind file.
 	<param name="c"></param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:Axios.CompanyDA.GetCompanies(System.String)">
+	<summary>
+ Get All Companies base on search criteria on name
+ </summary>
+	<param name="search"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.CompanyDA.GetCompaniesForAutoComplete(System.String)">
+	<summary>
+ Get Companies for the autocomplete feature on the Add Client page
+ </summary>
+	<param name="search"></param>
+	<returns></returns>
+	<remarks></remarks>
 </member><member name="M:Axios.SearchInformation.Page_Load(System.Object,System.EventArgs)">
 	<summary>
 	</summary>
@@ -654,6 +692,12 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="M:Axios.SearchInformation.GetFirstCalls(System.String)">
 	<summary>
  This will return all First Calls for a client (company) when clicking on Search First Calls tab (First Calls page)
+ </summary>
+	<param name="search"></param>
+	<remarks></remarks>
+</member><member name="M:Axios.SearchInformation.GetClients(System.String)">
+	<summary>
+ This will return the clients for the autocomplete (Add Client page)
  </summary>
 	<param name="search"></param>
 	<remarks></remarks>
