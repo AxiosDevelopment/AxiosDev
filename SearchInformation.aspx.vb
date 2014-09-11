@@ -52,6 +52,13 @@ Public Class SearchInformation
                 GetMessages(searchString)
               End If
 
+            Case "CLIENTSEARCH" 'Typing in the Client Search Textbox
+              searchString = Request.QueryString.Get("query").ToString()
+              GetClients(searchString)
+
+            Case "clientAuto"
+
+
             Case Else
 
 
@@ -185,6 +192,31 @@ Public Class SearchInformation
     Next
 
     Response.Write(strHTML.ToString())
+
+  End Sub
+
+  ''' <summary>
+  ''' This will return the clients for the autocomplete (Add Client page)
+  ''' </summary>
+  ''' <param name="search"></param>
+  ''' <remarks></remarks>
+  Private Sub GetClients(search As String)
+
+    Dim cDA As New CompanyDA
+    Dim companies As List(Of Company)
+    Dim js As New JavaScriptSerializer()
+
+    companies = cDA.GetCompaniesForAutoComplete(search)
+
+    'LINQ statement to limit the information needed from the objects
+    'Anonymous Types used - more efficient
+    Dim comps = From c In companies
+                Select New With {c.CompanyID, c.Name}
+
+    Dim json = js.Serialize(comps)
+
+    Response.Write(json)
+    Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
 
   End Sub
 
