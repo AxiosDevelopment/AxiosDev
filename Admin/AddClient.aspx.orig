@@ -104,8 +104,9 @@
                 </div>
 
                 <div class="row">
+<<<<<<< HEAD
                     <label for="nClientFax">Client Fax</label><br />
-                  <input type="text" name="nClientFax" id="nClientFax" />
+                    <input type="text" name="nClientFax" id="nClientFax"/>
                 </div>
                 <div class="row">
                     <label for="nClientGreeting">Client Greeting</label><br />
@@ -117,34 +118,22 @@
                 </div>
                 <div class="row">
                     <label for="nClientPrimary">Client Primary Contact</label><br />
-                    <input type="text" name="nClientPrimary" id="nClientPrimary"/>
+                    <input type="text" name="nClientHours" id="nClientHours"/>
                 </div>
-                <div class="row">
-                    <label for="nClientPrimaryTitle">Client Primary Title</label><br />
-                    <input type="text" name="nClientPrimaryTitle" id="nClientPrimaryTitle"/>
+              </div>
+            </div>
+            <div class="entry">
+=======
+                  <label for="nClientFax">ClientFax</label><br />
+                  <input type="text" name="nClientFax" id="nClientFax" />
                 </div>
-                  <h2>Billing Info</h2>
-                <div class="row">
-                    <label for="nClientBillingContact">Client Billing Contact</label><br />
-                    <input type="text" name="nClientBillingContact" id="nClientBillingContact"/>
-                </div>
-                <div class="row">
-                    <label for="nClientBillingPhone">Client Billing Phone</label><br />
-                    <input type="text" name="nClientBillingPhone" id="nClientBillingPhone"/>
-                </div>
-                <div class="row">
-                    <label for="nClientBillingEmail">Client Billing Email</label><br />
-                    <input type="text" name="nClientBillingEmail" id="nClientBillingEmail"/>
-                </div>
-                <div class="row">
-                    <label for="nClientSpecialInstructions">Client Special Instructions</label><br />
-                    <input type="text" name="nClientSpecialInstructions" id="nClientSpecialInstructions"/>
-                </div>
+
                 <input type="hidden" name="clientId" id="clientId" value="0" runat="server" />
                 <input type="reset" id="clearform" value="Clear Form" />
                 <asp:Button Text="Submit Client" runat="server" ID="SubmitClient" />
 
               </form>
+>>>>>>> aed5ef6ccc863536e4386d73aa2e287d0fade913
             </div>
           </div>
           <div class="entry">
