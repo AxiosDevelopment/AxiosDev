@@ -92,8 +92,20 @@
                 </div>
                 
                 <div class="row">
-                    <label for="nClientFax">ClientFax</label><br />
+                    <label for="nClientFax">Client Fax</label><br />
                     <input type="text" name="nClientFax" id="nClientFax"/>
+                </div>
+                <div class="row">
+                    <label for="nClientGreeting">Client Greeting</label><br />
+                    <input type="text" name="nClientGreeting" id="nClientGreeting"/>
+                </div>
+                <div class="row">
+                    <label for="nClientHours">Client Hours of Operation</label><br />
+                    <input type="text" name="nClientHours" id="nClientHours"/>
+                </div>
+                <div class="row">
+                    <label for="nClientPrimary">Client Primary Contact</label><br />
+                    <input type="text" name="nClientHours" id="nClientHours"/>
                 </div>
               </div>
             </div>
