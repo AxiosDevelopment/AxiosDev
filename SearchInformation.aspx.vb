@@ -56,8 +56,8 @@ Public Class SearchInformation
               searchString = Request.QueryString.Get("query").ToString()
               GetClients(searchString)
 
-            Case "clientAuto"
-
+            Case "clientAuto" 'When clicking an item on the client autocomplete textbox
+              'NEED TO DO
 
             Case Else
 

@@ -23,6 +23,330 @@ Partial Public Class AddClient
   Protected WithEvents addNewClient As Global.System.Web.UI.HtmlControls.HtmlForm
 
   '''<summary>
+  '''nClientName control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientName As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientName control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientName As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientType control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientType As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientType control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientType As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientAddress control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientAddress As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientAddress control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientAddress As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientCity control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientCity As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientCity control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientCity As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientState control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientState As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientState control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientState As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientZip control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientZip As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientZip control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientZip As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientPhone As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientExt control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientExt As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientExt control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientExt As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientPhone2 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientPhone2 As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqPhone2 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqPhone2 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientFax control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientFax As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientFax control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientFax As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientGreeting control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientGreeting As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientGreeting control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientGreeting As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientHours control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientHours As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientHours control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientHours As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientPrimary control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientPrimary As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''RequiredFieldValidator1 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RequiredFieldValidator1 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientPrimaryTitle control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientPrimaryTitle As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientPrimaryTitle control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientPrimaryTitle As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientBillingContact control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientBillingContact As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''RequiredFieldValidator3 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RequiredFieldValidator3 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientBillingPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientBillingPhone As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''RequiredFieldValidator4 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RequiredFieldValidator4 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientBillingEmail control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientBillingEmail As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''RequiredFieldValidator5 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RequiredFieldValidator5 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientSpecialInstructions control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientSpecialInstructions As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''RequiredFieldValidator6 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RequiredFieldValidator6 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
   '''clientId control.
   '''</summary>
   '''<remarks>

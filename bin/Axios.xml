@@ -242,6 +242,294 @@ addNewClient control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.AddClient.nClientName">
+	<summary>
+nClientName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientName">
+	<summary>
+ReqClientName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientType">
+	<summary>
+nClientType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientType">
+	<summary>
+ReqClientType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientAddress">
+	<summary>
+nClientAddress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientAddress">
+	<summary>
+ReqClientAddress control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientCity">
+	<summary>
+nClientCity control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientCity">
+	<summary>
+ReqClientCity control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientState">
+	<summary>
+nClientState control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientState">
+	<summary>
+ReqClientState control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientZip">
+	<summary>
+nClientZip control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientZip">
+	<summary>
+ReqClientZip control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientPhone">
+	<summary>
+nClientPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientPhone">
+	<summary>
+ReqClientPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientExt">
+	<summary>
+nClientExt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientExt">
+	<summary>
+ReqClientExt control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientPhone2">
+	<summary>
+nClientPhone2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqPhone2">
+	<summary>
+ReqPhone2 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientFax">
+	<summary>
+nClientFax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientFax">
+	<summary>
+ReqClientFax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientGreeting">
+	<summary>
+nClientGreeting control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientGreeting">
+	<summary>
+ReqClientGreeting control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientHours">
+	<summary>
+nClientHours control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientHours">
+	<summary>
+ReqClientHours control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientPrimary">
+	<summary>
+nClientPrimary control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.RequiredFieldValidator1">
+	<summary>
+RequiredFieldValidator1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientPrimaryTitle">
+	<summary>
+nClientPrimaryTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientPrimaryTitle">
+	<summary>
+ReqClientPrimaryTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientBillingContact">
+	<summary>
+nClientBillingContact control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.RequiredFieldValidator3">
+	<summary>
+RequiredFieldValidator3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientBillingPhone">
+	<summary>
+nClientBillingPhone control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.RequiredFieldValidator4">
+	<summary>
+RequiredFieldValidator4 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientBillingEmail">
+	<summary>
+nClientBillingEmail control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.RequiredFieldValidator5">
+	<summary>
+RequiredFieldValidator5 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientSpecialInstructions">
+	<summary>
+nClientSpecialInstructions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.RequiredFieldValidator6">
+	<summary>
+RequiredFieldValidator6 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.AddClient.clientId">
 	<summary>
 clientId control.
@@ -982,6 +1270,23 @@ To modify move field declaration from designer file to code-behind file.
  Fill Physician (Doctor) object
  </summary>
 	<param name="dId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.AddClient.InsertClient(Axios.Company)">
+	<summary>
+ Save New Facility
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.AddClient.UpdateClient(Axios.Company)">
+	<summary>
+ Update Existing Facility
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Axios.AddClient.FillClient(System.Int32)">
+	<summary>
+ Fill Facility (Business) object
+ </summary>
+	<param name="fId"></param>
 	<returns></returns>
 	<remarks></remarks>
 </member><member name="F:Axios.FirstCalls.ClientHeader">
