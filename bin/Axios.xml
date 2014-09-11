@@ -627,6 +627,20 @@ To modify move field declaration from designer file to code-behind file.
 	<param name="id"></param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:Axios.CompanyDA.InsertCompany(Axios.Company)">
+	<summary>
+ Insert Company
+ </summary>
+	<param name="c"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.CompanyDA.UpdateCompany(Axios.Company)">
+	<summary>
+ Update Company
+ </summary>
+	<param name="c"></param>
+	<returns></returns>
+	<remarks></remarks>
 </member><member name="M:Axios.CompanyDA.UpdateCompanyAdditionalNotes(Axios.Company)">
 	<summary>
  Updates the Additional Notes for this Company
