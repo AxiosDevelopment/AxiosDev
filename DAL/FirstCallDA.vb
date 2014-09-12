@@ -30,35 +30,39 @@ Public Class FirstCallDA
     If rsData.HasRows Then
 
       Do While rsData.Read()
-        firstCall.FirstCallID = rsData("FirstCallID")
+        firstCall.ID = rsData("FirstCallID")
         firstCall.CompanyID = rsData("FirstCompanyID")
         firstCall.CreatedDateTime = FormatDateTime(rsData("FirstCallDateTime"), DateFormat.LongDate)
         firstCall.ReportingParty = If(Not String.IsNullOrEmpty(rsData("FirstReportingParty")), rsData("FirstReportingParty"), String.Empty)
         firstCall.DeceasedName = If(Not String.IsNullOrEmpty(rsData("FirstDeceasedName")), rsData("FirstDeceasedName"), String.Empty)
-        firstCall.DateTimeOfDeath = FormatDateTime(rsData("FirstDateTimeofDeath"), DateFormat.GeneralDate)
-        firstCall.SSN = If(Not String.IsNullOrEmpty(rsData("FirstSSN")), rsData("FirstSSN"), String.Empty)
-        firstCall.DateOfBirth = If(Not String.IsNullOrEmpty(rsData("FirstDOB")), rsData("FirstDOB"), String.Empty)
-        firstCall.Weight = If(Not String.IsNullOrEmpty(rsData("FirstWeight")), rsData("FirstWeight"), 0)
-        firstCall.PlaceOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstPlaceOfDeath")), rsData("FirstPlaceOfDeath"), String.Empty)
-        firstCall.Address = If(Not String.IsNullOrEmpty(rsData("FirstAddress")), rsData("FirstAddress"), String.Empty)
-        firstCall.City = If(Not String.IsNullOrEmpty(rsData("FirstCity")), rsData("FirstCity"), String.Empty)
-        firstCall.State = If(Not String.IsNullOrEmpty(rsData("FirstState")), rsData("FirstState"), String.Empty)
-        firstCall.County = If(Not String.IsNullOrEmpty(rsData("FirstCounty")), rsData("FirstCounty"), String.Empty)
-        firstCall.Zip = If(Not String.IsNullOrEmpty(rsData("FirstZip")), rsData("FirstZip"), String.Empty)
-        firstCall.Phone = If(Not String.IsNullOrEmpty(rsData("FirstPhone")), rsData("FirstPhone"), String.Empty)
-        firstCall.PhoneExt = If(Not String.IsNullOrEmpty(rsData("FirstExt")), rsData("FirstExt"), String.Empty)
-        firstCall.NextOfKinName = If(Not String.IsNullOrEmpty(rsData("FirstNextofKin")), rsData("FirstNextofKin"), String.Empty)
-        firstCall.NextOfKinRelationshipID = rsData("FirstRelationshipID")
-        firstCall.NextOfKinPhone = If(Not String.IsNullOrEmpty(rsData("FirstTelephoneofInforKin")), rsData("FirstTelephoneofInforKin"), String.Empty)
-        firstCall.NextOfKinWorkPhoneExt = If(Not String.IsNullOrEmpty(rsData("FirstWorkExt")), rsData("FirstWorkExt"), String.Empty)
-        firstCall.Doctor = If(Not String.IsNullOrEmpty(rsData("FirstDoctor")), rsData("FirstDoctor"), String.Empty)
-        firstCall.DoctorPhone = If(Not String.IsNullOrEmpty(rsData("FirstDoctorPhone")), rsData("FirstDoctorPhone"), String.Empty)
-        firstCall.DatePatientSeen = If(Not String.IsNullOrEmpty(rsData("FirstDatePatientSeen")), rsData("FirstDatePatientSeen"), String.Empty)
-        firstCall.Coroner = If(Not String.IsNullOrEmpty(rsData("FirstCoroner")), rsData("FirstCoroner"), String.Empty)
-        firstCall.CaseNumber = If(Not String.IsNullOrEmpty(rsData("FirstFileNumber")), rsData("FirstFileNumber"), String.Empty)
-        firstCall.CounselorContacted = If(Not String.IsNullOrEmpty(rsData("FirstCounselorContacted")), rsData("FirstCounselorContacted"), String.Empty)
-        firstCall.DateCounselorContacted = FormatDateTime(rsData("FirstDateContacted"), DateFormat.GeneralDate)
-
+        firstCall.DateTimeOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstDateTimeofDeath").ToString()), FormatDateTime(rsData("FirstDateTimeofDeath"), DateFormat.GeneralDate), Date.MinValue)
+        firstCall.SSN = If(Not String.IsNullOrEmpty(rsData("FirstSSN").ToString()), rsData("FirstSSN"), String.Empty)
+        firstCall.DateOfBirth = If(Not String.IsNullOrEmpty(rsData("FirstDOB").ToString()), FormatDateTime(rsData("FirstDOB"), DateFormat.GeneralDate), Date.MinValue)
+        firstCall.Weight = If(Not String.IsNullOrEmpty(rsData("FirstWeight").ToString()), rsData("FirstWeight"), 0)
+        firstCall.PlaceOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstPlaceOfDeath").ToString()), rsData("FirstPlaceOfDeath"), String.Empty)
+        firstCall.Address = If(Not String.IsNullOrEmpty(rsData("FirstAddress").ToString()), rsData("FirstAddress"), String.Empty)
+        firstCall.City = If(Not String.IsNullOrEmpty(rsData("FirstCity").ToString()), rsData("FirstCity"), String.Empty)
+        firstCall.State = If(Not String.IsNullOrEmpty(rsData("FirstState").ToString()), rsData("FirstState"), String.Empty)
+        firstCall.County = If(Not String.IsNullOrEmpty(rsData("FirstCounty").ToString()), rsData("FirstCounty"), String.Empty)
+        firstCall.Zip = If(Not String.IsNullOrEmpty(rsData("FirstZip").ToString()), rsData("FirstZip"), String.Empty)
+        firstCall.Phone = If(Not String.IsNullOrEmpty(rsData("FirstPhone").ToString()), rsData("FirstPhone"), String.Empty)
+        firstCall.PhoneExt = If(Not String.IsNullOrEmpty(rsData("FirstExt").ToString()), rsData("FirstExt"), String.Empty)
+        firstCall.NextOfKinName = If(Not String.IsNullOrEmpty(rsData("FirstNextofKin").ToString()), rsData("FirstNextofKin"), String.Empty)
+        firstCall.NextOfKinRelationshipID = If(Not String.IsNullOrEmpty(rsData("FirstRelationshipID").ToString()), rsData("FirstRelationshipID"), -1)
+        firstCall.NextOfKinPhone = If(Not String.IsNullOrEmpty(rsData("FirstTelephoneofInforKin").ToString()), rsData("FirstTelephoneofInforKin"), String.Empty)
+        firstCall.NextOfKinWorkPhoneExt = If(Not String.IsNullOrEmpty(rsData("FirstWorkExt").ToString()), rsData("FirstWorkExt"), String.Empty)
+        firstCall.Doctor = If(Not String.IsNullOrEmpty(rsData("FirstDoctor").ToString()), rsData("FirstDoctor"), String.Empty)
+        firstCall.DoctorPhone = If(Not String.IsNullOrEmpty(rsData("FirstDoctorPhone").ToString()), rsData("FirstDoctorPhone"), String.Empty)
+        firstCall.DatePatientSeen = If(Not String.IsNullOrEmpty(rsData("FirstDatePatientSeen").ToString()), rsData("FirstDatePatientSeen"), Date.MinValue)
+        firstCall.Coroner = If(Not String.IsNullOrEmpty(rsData("FirstCoroner").ToString()), rsData("FirstCoroner"), String.Empty)
+        firstCall.CaseNumber = If(Not String.IsNullOrEmpty(rsData("FirstFileNumber").ToString()), rsData("FirstFileNumber"), String.Empty)
+        firstCall.CounselorContacted = If(Not String.IsNullOrEmpty(rsData("FirstCounselorContacted").ToString()), rsData("FirstCounselorContacted"), String.Empty)
+        firstCall.DateCounselorContacted = If(Not String.IsNullOrEmpty(rsData("FirstDateContacted").ToString()), FormatDateTime(rsData("FirstDateContacted"), DateFormat.GeneralDate), Date.MinValue)
+        firstCall.Hold = Convert.ToByte(rsData("FirstHold"))
+        firstCall.Delivered = Convert.ToByte(rsData("FirstDelivered"))
+        If firstCall.Delivered = 1 Then
+          firstCall.DeliveredDateTime = FormatDateTime(rsData("FirstDateTimeDelivered"), DateFormat.GeneralDate)
+        End If
       Loop
 
       rsData.Close()
@@ -73,7 +77,77 @@ Public Class FirstCallDA
 
   End Function
 
+  ''' <summary>
+  ''' Returns a list of First Calls by Company ID
+  ''' </summary>
+  ''' <param name="search"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetFirstCalls(search As String) As List(Of FirstCall) Implements IFirstCallDA.GetFirstCalls
+
+    Dim rsData As SqlDataReader
+    Dim db As dbUtil = New dbUtil()
+    Dim SQL As New StringBuilder()
+    Dim firstCalls As New List(Of FirstCall)
+
+    SQL.Append("SELECT [FirstCallID],[FirstCompanyID],[FirstCallDateTime],[FirstReportingParty],[FirstRPRelationshipID],[FirstPersonAuthorizingRemoval],[FirstPARelationship],[FirstDeceasedName],[FirstPrefix],[FirstDateTimeofDeath]")
+    SQL.Append(",[FirstPlaceOfDeath],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
+    SQL.Append(",[FirstTelephoneofInforKin],[FirstWorkPhoneForKin],[FirstWorkExt],[FirstDoctor],[FirstDoctorPhone],[FirstDatePatientSeen],[FirstCoroner],[FirstFileNumber],[FirstCounselorContacted],[FirstDateContacted]")
+    SQL.Append(",[FirstNotes],[FirstOperatorCallNotes],[FirstDelivered],[FirstDateTimeDelivered],[FirstMedNoteBox],[FirstCustCallInfo],[FirstHold]")
+    SQL.Append("FROM [FIRST_CALL] WITH (NOLOCK) ")
+    SQL.Append("WHERE FirstCompanyID = " & search.ToString())
+
+    rsData = db.GetDataReader(SQL.ToString())
+
+    If rsData.HasRows Then
+
+      Do While rsData.Read
+
+        Dim firstCall As New FirstCall
+
+        firstCall.ID = rsData("FirstCallID")
+        firstCall.CompanyID = rsData("FirstCompanyID")
+        firstCall.CreatedDateTime = FormatDateTime(rsData("FirstCallDateTime"), DateFormat.LongDate)
+        firstCall.ReportingParty = If(Not String.IsNullOrEmpty(rsData("FirstReportingParty")), rsData("FirstReportingParty"), String.Empty)
+        firstCall.DeceasedName = If(Not String.IsNullOrEmpty(rsData("FirstDeceasedName")), rsData("FirstDeceasedName"), String.Empty)
+        firstCall.DateTimeOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstDateTimeofDeath").ToString()), FormatDateTime(rsData("FirstDateTimeofDeath"), DateFormat.GeneralDate), Date.MinValue)
+        firstCall.SSN = If(Not String.IsNullOrEmpty(rsData("FirstSSN").ToString()), rsData("FirstSSN"), String.Empty)
+        firstCall.DateOfBirth = If(Not String.IsNullOrEmpty(rsData("FirstDOB").ToString()), FormatDateTime(rsData("FirstDOB"), DateFormat.GeneralDate), Date.MinValue)
+        firstCall.Weight = If(Not String.IsNullOrEmpty(rsData("FirstWeight").ToString()), rsData("FirstWeight"), 0)
+        firstCall.PlaceOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstPlaceOfDeath").ToString()), rsData("FirstPlaceOfDeath"), String.Empty)
+        firstCall.Address = If(Not String.IsNullOrEmpty(rsData("FirstAddress").ToString()), rsData("FirstAddress"), String.Empty)
+        firstCall.City = If(Not String.IsNullOrEmpty(rsData("FirstCity").ToString()), rsData("FirstCity"), String.Empty)
+        firstCall.State = If(Not String.IsNullOrEmpty(rsData("FirstState").ToString()), rsData("FirstState"), String.Empty)
+        firstCall.County = If(Not String.IsNullOrEmpty(rsData("FirstCounty").ToString()), rsData("FirstCounty"), String.Empty)
+        firstCall.Zip = If(Not String.IsNullOrEmpty(rsData("FirstZip").ToString()), rsData("FirstZip"), String.Empty)
+        firstCall.Phone = If(Not String.IsNullOrEmpty(rsData("FirstPhone").ToString()), rsData("FirstPhone"), String.Empty)
+        firstCall.PhoneExt = If(Not String.IsNullOrEmpty(rsData("FirstExt").ToString()), rsData("FirstExt"), String.Empty)
+        firstCall.NextOfKinName = If(Not String.IsNullOrEmpty(rsData("FirstNextofKin").ToString()), rsData("FirstNextofKin"), String.Empty)
+        firstCall.NextOfKinRelationshipID = If(Not String.IsNullOrEmpty(rsData("FirstRelationshipID").ToString()), rsData("FirstRelationshipID"), -1)
+        firstCall.NextOfKinPhone = If(Not String.IsNullOrEmpty(rsData("FirstTelephoneofInforKin").ToString()), rsData("FirstTelephoneofInforKin"), String.Empty)
+        firstCall.NextOfKinWorkPhoneExt = If(Not String.IsNullOrEmpty(rsData("FirstWorkExt").ToString()), rsData("FirstWorkExt"), String.Empty)
+        firstCall.Doctor = If(Not String.IsNullOrEmpty(rsData("FirstDoctor").ToString()), rsData("FirstDoctor"), String.Empty)
+        firstCall.DoctorPhone = If(Not String.IsNullOrEmpty(rsData("FirstDoctorPhone").ToString()), rsData("FirstDoctorPhone"), String.Empty)
+        firstCall.DatePatientSeen = If(Not String.IsNullOrEmpty(rsData("FirstDatePatientSeen").ToString()), rsData("FirstDatePatientSeen"), Date.MinValue)
+        firstCall.Coroner = If(Not String.IsNullOrEmpty(rsData("FirstCoroner").ToString()), rsData("FirstCoroner"), String.Empty)
+        firstCall.CaseNumber = If(Not String.IsNullOrEmpty(rsData("FirstFileNumber").ToString()), rsData("FirstFileNumber"), String.Empty)
+        firstCall.CounselorContacted = If(Not String.IsNullOrEmpty(rsData("FirstCounselorContacted").ToString()), rsData("FirstCounselorContacted"), String.Empty)
+        firstCall.DateCounselorContacted = If(Not String.IsNullOrEmpty(rsData("FirstDateContacted").ToString()), FormatDateTime(rsData("FirstDateContacted"), DateFormat.GeneralDate), Date.MinValue)
+        firstCall.Hold = Convert.ToByte(rsData("FirstHold"))
+        firstCall.Delivered = Convert.ToByte(rsData("FirstDelivered"))
+        If firstCall.Delivered = 1 Then
+          firstCall.DeliveredDateTime = FormatDateTime(rsData("FirstDateTimeDelivered"), DateFormat.GeneralDate)
+        End If
+
+        firstCalls.Add(firstCall)
+
+      Loop
+
+      rsData.Close()
+
+    End If
+
+    Return firstCalls
 
   End Function
 
@@ -131,7 +205,11 @@ Public Class FirstCallDA
     SQL.Append("NULL,") '[FirstNotes] *****
     SQL.Append("NULL,") '[FirstOperatorCallNotes] *****
     SQL.Append(fc.Delivered & ",") '[FirstDelivered] *****
-    SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
+    If fc.Delivered = 1 Then
+      SQL.Append("'" & fc.DeliveredDateTime & "',") '[FirstDateTimeDelivered] *****
+    Else
+      SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
+    End If
     SQL.Append("NULL,") '[FirstMedNoteBox] *****
     SQL.Append("NULL,") '[FirstCustCallInfo] *****
     SQL.Append(fc.Hold & ")") '[FirstHold] *****
@@ -189,12 +267,16 @@ Public Class FirstCallDA
     SQL.Append("FirstDateContacted = '" & fc.DateCounselorContacted & "',") '[FirstDateContacted]
     SQL.Append("FirstNotes = NULL,") '[FirstNotes] *****
     SQL.Append("FirstOperatorCallNotes = NULL,") '[FirstOperatorCallNotes] *****
-    SQL.Append("FirstDelivered = " & fc.Delivered & ",") '[FirstDelivered] *****
-    SQL.Append("FirstDateTimeDelivered = NULL,") '[FirstDateTimeDelivered] *****
+    SQL.Append("FirstDelivered = " & fc.Delivered & ",") '[FirstDelivered] 
+    If fc.Delivered = 1 Then
+      SQL.Append("FirstDateTimeDelivered = '" & fc.DeliveredDateTime & "',") '[FirstDateTimeDelivered] 
+    Else
+      SQL.Append("FirstDateTimeDelivered = NULL,") '[FirstDateTimeDelivered] 
+    End If
     SQL.Append("FirstMedNoteBox = NULL,") '[FirstMedNoteBox] *****
     SQL.Append("FirstCustCallInfo = NULL,") '[FirstCustCallInfo] *****
-    SQL.Append("FirstHold = " & fc.Hold & " ") '[FirstHold] *****
-    SQL.Append("WHERE FirstCallID = " & fc.FirstCallID)
+    SQL.Append("FirstHold = " & fc.Hold & " ") '[FirstHold] 
+    SQL.Append("WHERE FirstCallID = " & fc.ID)
 
     returnedID = db.GetID(SQL.ToString())
 

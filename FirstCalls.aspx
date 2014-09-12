@@ -40,7 +40,7 @@
         <ul>
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- POPUP WITH FORM TO FIND FIRST CALL -->
-          <li><a href="#" title="">Search First Calls</a></li>
+          <li><a id="searchFirstCalls" href="#" title="">Search First Calls</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
           <li><a id="pFCall" href="#" title="">Print First Call</a></li>
           <li><a id="sci" href="#" title="">Print SCI</a></li>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="left mr_10">
                       <label for="dTime">Time of Death</label><br />
-                      <asp:TextBox ID="dTime" runat="server" Width="80" TextMode="Time"></asp:TextBox>
+                      <asp:TextBox ID="dTime" runat="server" Width="80"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqTimeOfDeath" runat="server" ErrorMessage="Time of Death is required" ControlToValidate="dTime" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:RegularExpressionValidator ID="RegExValidatorTimeOfDeath" ControlToValidate="dTime" runat="server" ErrorMessage="Please enter a valid time (format: HH:MM:SS PM)" ValidationExpression="^((([0]?[1-9]|1[0-2])(:|\.)[0-5][0-9]((:|\.)[0-5][0-9])?( )?(AM|am|aM|Am|PM|pm|pM|Pm))|(([0]?[0-9]|1[0-9]|2[0-3])(:|\.)[0-5][0-9]((:|\.)[0-5][0-9])?))$" Display="None"></asp:RegularExpressionValidator>
                     </div>
@@ -128,8 +128,9 @@
                     </div>
                     <div class="left mr_10">
                       <label for="weight">Weight</label><br />
-                      <asp:TextBox ID="weight" runat="server" Width="50" TextMode="Number"></asp:TextBox>
+                      <asp:TextBox ID="weight" runat="server" Width="50"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqWeight" runat="server" ErrorMessage="Weight is required" ControlToValidate="weight" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                      <asp:RegularExpressionValidator ID="RegExWeight" ControlToValidate="weight" runat="server" ErrorMessage="Please enter a valid Weight (format: ###)" ValidationExpression="^\d{1,3}$" Display="None"></asp:RegularExpressionValidator>
                     </div>
                   </div>
                   <div class="row">
@@ -152,7 +153,7 @@
                   <div class="row">
                     <div class="left mr_10">
                       <label for="facType">Facility Type</label><br />
-                     <asp:TextBox ID="facType" class="facility" runat="server" Width="100"></asp:TextBox>
+                      <asp:TextBox ID="facType" class="facility" runat="server" Width="100"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="facCity">City</label><br />
@@ -283,15 +284,12 @@
                       <asp:TextBox ID="specialInstructionsA" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
-                      <div class="mTop20">
-                        <input type="checkbox" id="deliver" class="left" /><span class="lineH1_6">Deliver Message</span>
-                      </div>
-                      <div class="mTop5">
-                        <input type="checkbox" id="hold" class="left" /><span class="lineH1_6">Hold Message</span>
-                      </div>
-                      <div class="mTop5">
-                        <input type="checkbox" id="remove" class="left" /><span class="lineH1_6">Remove Message</span>
-                      </div>
+                      <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass="RadioListControl mTop20">
+                        <asp:ListItem Value="Deliver">Deliver Message</asp:ListItem>
+                        <asp:ListItem Value="Hold">Hold Message</asp:ListItem>
+                        <asp:ListItem Value="Remove">Remove Message</asp:ListItem>
+                      </asp:RadioButtonList>
+                      <asp:RequiredFieldValidator runat="server" ID="ValidatorStatusRadio" ControlToValidate="RBMessageStatus" CssClass="ErrorMessage" Display="None" Text="*" ErrorMessage="Deliver, Hold or Remove Message is required"></asp:RequiredFieldValidator>
                       <div class="mTop5">
                         <asp:Button ID="submitMessage" runat="server" Text="Submit Message" />
                       </div>
@@ -320,6 +318,21 @@
         </div>
       </div>
     </div>
+    <div id="messageContainer" class="hide popup">
+      <img src="images/exit.png" width="20" class="exit" />
+      <ul id="allMessages">
+        <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+          <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+        </a></li>
+        <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+          <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+        </a></li>
+        <li><a href="Messages.aspx??MsgId=0&ClientId=2913">
+          <span class="to">To: David</span><span class="from">From: Harvey</span><span class="date">Date: 8-2-14</span><span class="time">Time: 1:02pm</span>
+        </a></li>
+      </ul>
+    </div>
+  </div>
   </div>
   <div id="footer">
     <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>

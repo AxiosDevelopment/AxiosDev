@@ -1,8 +1,9 @@
 ﻿Public Class FirstCall
+  Inherits MessageFirstCallBase
 
-  Public Property FirstCallID As Integer
-  Public Property CompanyID As Integer
-  Public Property CreatedDateTime As Date
+  'Public Property FirstCallID As Integer
+  'Public Property CompanyID As Integer
+  'Public Property CreatedDateTime As Date
   Public Property ReportingParty As String
   Public Property RPRelationshipID As Integer
   Public Property PersonAuthorizingRemoval As String

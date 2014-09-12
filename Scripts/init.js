@@ -31,10 +31,12 @@ function openWindow(popUp) {
 
 $(function () {
   var clientId = $('#CompanyID').val();
-  $('#searchMessages').on('click', function (e) {
+  $('#searchMessages, #searchFirstCalls').on('click', function (e) {
+    e.preventDefault();
     var window = $('#messageContainer');
+    var messageSource = $(this).attr('id'); // use this ID to determine which messages need to be retrieved
     $.ajax({
-      url: "SearchInformation.aspx?cid=" + clientId + "&queryId=ALLMESSAGES",
+      url: "SearchInformation.aspx?cid=" + clientId + "&queryId=ALLMESSAGES&messageSource=" + messageSource,
       cache: false
     })
     .done(function (data) {
@@ -43,7 +45,6 @@ $(function () {
     }).fail(function (data) {
       alert("Error retrieving Messages. Please try again.\n(Error: " + data.responseText);
     });
-    e.preventDefault();
   });
 
   $('#printMessage').on('click', function (e) {
@@ -81,9 +82,9 @@ $(function () {
          $podAuto.html("");
          $.each($.parseJSON(data), function (i, item) {
            var busNameCity;
-           if (item.City === ""){
+           if (item.City === "") {
              busNameCity = item.Name;
-           }else{
+           } else {
              busNameCity = item.Name + " - " + item.City;
            }
            var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
@@ -120,6 +121,51 @@ $(function () {
     }, 300);
   });
 
+  /** CLIENT SEARCH */
+  $('#searchClient').keyup(function () {
+    var searchStr = $(this).val();
+    console.log(searchStr)
+    if (searchStr === '') {
+      $('#clientSearch').hide();
+      return;
+    }
+    delay(function () {
+      $.ajax({
+        url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=CLIENTSEARCH",
+        cache: false
+      })
+       .done(function (data) {
+         var $clientAuto = $('#clientAuto');
+         $clientAuto.html("");
+         $.each($.parseJSON(data), function (i, item) {
+           var html = '<li><input type="hidden" class="clientId" value="' + item.CompanyID + '" />' + item.Name + '</li>';
+           $clientAuto.append(html);
+         });
+         $('#clientSearch').show();
+       });
+    }, 300);
+  });
+
+  /** CLIENT CLICK */
+  $(document).on('click', '#clientAuto li', function () {
+    var result = $(this).children('.busId').val();
+    var parent = $(this).parent().attr('id');
+    $.ajax({
+      url: "../SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+      cache: false
+    })
+    .done(function (data) {
+      var clientObj = JSON.parse(data);
+      //JSON FOR CLIENT EDIT HERE
+      console.log(clientObj);
+      $('#').val(clientObj.Name);
+
+      $('#clientSearch').hide();
+    }).fail(function (data) {
+      alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+    });
+  });
+
   /** THIS WILL GET THE BUSINESS ID ONCE CLICKED AND SEND AJAX CALL TO RETRIEVE INFO **/
   /* THIS FUNCTION WILL WORK FOR BOTH AUTO COMPLETES IN THE FIRST CALL PAGE. IT SENDS AN ID AND WILL SEND ANOTHER VARIABLE TO HELP DETERMINE WHICH QUERY TO RUN */
   $(document).on('click', '#podAuto li', function () {
@@ -141,7 +187,7 @@ $(function () {
         $('#facCity').val(busObj.City);
         $('#facilityZip').val(busObj.Zip);
         $('#facilityPhone').val(busObj.Phone);
-        $('#phoneExt').val(busObj.Ext);
+        $('#phoneExt').val(busObj.PhoneExt);
         //$('.facility').prop('disabled', true);
         $('.facility').prop('readonly', true);
       }
@@ -209,7 +255,7 @@ $(function () {
     }).done(function (data) {
       if (updateId === 'updateMainCounselor') {
         $('#updateMainCounselor').attr('disabled', true);
-      }else{
+      } else {
         $('#updateSecondaryCounselor').attr('disabled', true);
       }
       alert("Updated Successfully");
@@ -265,4 +311,10 @@ $(function () {
     $('#clearSecondaryCounselor').attr('disabled', true);
   });
 
+  //Message Page / First Call Page - if msg = 0
+  var $msgID = $('#MessageID').val();
+  var $fcID = $('#FirstCallID').val();
+  if ($msgID == 0 || $fcID == 0) {
+    $('#RBMessageStatus input:radio[id^=RBMessageStatus]:last').attr('disabled', true);
+  }
 });

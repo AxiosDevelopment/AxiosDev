@@ -6,7 +6,7 @@ Public Class FirstCalls
   Protected cid As String = ""
 
   ''' <summary>
-  ''' 
+  ''' Page Load Event Handler
   ''' </summary>
   ''' <param name="sender"></param>
   ''' <param name="e"></param>
@@ -49,7 +49,7 @@ Public Class FirstCalls
   End Sub
 
   ''' <summary>
-  ''' 
+  ''' Get Client object
   ''' </summary>
   ''' <remarks></remarks>
   Private Sub GetClient(Id As String)
@@ -66,7 +66,7 @@ Public Class FirstCalls
   End Sub
 
   ''' <summary>
-  ''' 
+  ''' Get FirstCall object
   ''' </summary>
   ''' <param name="fcId"></param>
   ''' <remarks></remarks>
@@ -74,9 +74,10 @@ Public Class FirstCalls
 
     Dim fcDA As New FirstCallDA
     Dim firstCall As FirstCall
+
     firstCall = fcDA.GetFirstCall(fcId)
 
-    FirstCallID.Value = firstCall.FirstCallID.ToString()
+    FirstCallID.Value = firstCall.ID.ToString()
     CompanyID.Value = firstCall.CompanyID.ToString()
     msgDate.Text = FormatDateTime(firstCall.CreatedDateTime, DateFormat.ShortDate)
     msgTime.Text = FormatDateTime(firstCall.CreatedDateTime, DateFormat.LongTime)
@@ -108,11 +109,16 @@ Public Class FirstCalls
     counselorName.Text = If(Not String.IsNullOrEmpty(firstCall.CounselorContacted), firstCall.CounselorContacted, String.Empty)
     coronerDate.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.ShortDate)
     coronerTime.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.LongTime)
+    If (firstCall.Hold = 1) Then
+      RBMessageStatus.SelectedValue = "Hold"
+    ElseIf (firstCall.Delivered = 1) Then
+      RBMessageStatus.SelectedValue = "Deliver"
+    End If
 
   End Sub
 
   ''' <summary>
-  ''' 
+  ''' Event Handler on Submit Message button click
   ''' </summary>
   ''' <param name="sender"></param>
   ''' <param name="e"></param>
@@ -122,11 +128,12 @@ Public Class FirstCalls
     If Page.IsValid Then
 
       Try
-
-        If FirstCallID.Value = "0" Then
-          InsertFirstCall()
+        Dim firstCall As New FirstCall
+        firstCall = FillFirstCall(FirstCallID.Value)
+        If firstCall.ID = "0" Then
+          InsertFirstCall(firstCall)
         Else
-          UpdateFirstCall(FirstCallID.Value)
+          UpdateFirstCall(firstCall)
         End If
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopup", "messagedSaved()", True)
 
@@ -140,71 +147,40 @@ Public Class FirstCalls
   End Sub
 
   ''' <summary>
-  ''' 
+  ''' Insert new First Call Message
   ''' </summary>
   ''' <remarks></remarks>
-  Private Sub InsertFirstCall()
+  Private Sub InsertFirstCall(firstCall As FirstCall)
 
     Dim fcDA As New FirstCallDA
-    Dim firstCall As New FirstCall
     Dim id As Integer
-
-    firstCall.CompanyID = CompanyID.Value '[FirstCompanyID]
-    firstCall.CreatedDateTime = FormatDateTime(msgDateTime.Value, DateFormat.GeneralDate) '[FirstCallDateTime]
-    firstCall.ReportingParty = reportingName.Text '[FirstReportingParty]
-    'SQL.Append("NULL,") '[FirstRPRelationshipID]
-    'SQL.Append("NULL,") '[FirstPersonAuthorizingRemoval] *****
-    'SQL.Append("NULL,") '[FirstPARelationship] *****
-    firstCall.DeceasedName = deceasedName.Text '[FirstDeceasedName]
-    'SQL.Append("NULL,") '[FirstPrefix] ******
-    firstCall.DateTimeOfDeath = FormatDateTime(dDate.Text & " " & dTime.Text, DateFormat.GeneralDate)  '[FirstDateTimeofDeath] *****
-    firstCall.PlaceOfDeath = placeOfDeath.Text '[FirstPlaceOfDeath]
-    firstCall.SSN = ssn.Text '[FirstSSN]
-    firstCall.Weight = weight.Text '[FirstWeight]
-    firstCall.DateOfBirth = dob.Text '[FirstDOB]
-    firstCall.Address = facilityAddr.Text  '[FirstAddress]
-    'SQL.Append("NULL,") '[FirstLocationType] *****
-    firstCall.City = facCity.Text '[FirstCity]
-    firstCall.State = facState.Text '[FirstState]
-    firstCall.County = facilityCounty.Text '[FirstCounty]
-    firstCall.Zip = facilityZip.Text  '[FirstZip]
-    firstCall.Phone = facilityPhone.Text '[FirstPhone]
-    firstCall.PhoneExt = phoneExt.Text '[FirstExt]
-    firstCall.NextOfKinName = partyName.Text '[FirstNextofKin]
-    firstCall.NextOfKinRelationshipID = relationship.SelectedValue '[FirstRelationshipID]
-    firstCall.NextOfKinPhone = responsiblePhone.Text '[FirstTelephoneofInforKin]
-    'SQL.Append("NULL,") '[FirstWorkPhoneForKin]
-    firstCall.NextOfKinWorkPhoneExt = responsiblePhoneExt.Text '[FirstWorkExt]
-    firstCall.Doctor = physicianName.Text '[FirstDoctor]
-    firstCall.DoctorPhone = physicianPhone.Text  '[FirstDoctorPhone]
-    firstCall.DatePatientSeen = physicianDate.Text '[FirstDatePatientSeen]
-    firstCall.Coroner = coronerName.Text '[FirstCoroner]
-    firstCall.CaseNumber = caseNumber.Text '[FirstFileNumber]
-    firstCall.CounselorContacted = counselorName.Text '[FirstCounselorContacted]
-    firstCall.DateCounselorContacted = FormatDateTime(coronerDate.Text & " " & coronerTime.Text, DateFormat.GeneralDate)  '[FirstDateContacted]
-    'SQL.Append("NULL,") '[FirstNotes] *****
-    'SQL.Append("NULL,") '[FirstOperatorCallNotes] *****
-    firstCall.Delivered = 0 '[FirstDelivered] *****
-    'SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
-    'SQL.Append("NULL,") '[FirstMedNoteBox] *****
-    'SQL.Append("NULL,") '[FirstCustCallInfo] *****
-    firstCall.Hold = 0 '[FirstHold] *****
 
     id = fcDA.InsertFirstCall(firstCall)
 
   End Sub
 
   ''' <summary>
-  ''' 
+  ''' Update a First Call Message
   ''' </summary>
   ''' <remarks></remarks>
-  Private Sub UpdateFirstCall(fcID As Integer)
+  Private Sub UpdateFirstCall(firstCall As FirstCall)
 
     Dim fcDA As New FirstCallDA
-    Dim firstCall As New FirstCall
     Dim id As Integer
 
-    firstCall.FirstCallID = fcID
+    id = fcDA.UpdateFirstCall(firstCall)
+
+  End Sub
+
+  ''' <summary>
+  ''' Fill FirstCall object
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Function FillFirstCall(fcID As Integer) As FirstCall
+
+    Dim firstCall As New FirstCall
+
+    firstCall.ID = fcID
     firstCall.CompanyID = CompanyID.Value '[FirstCompanyID]
     firstCall.CreatedDateTime = FormatDateTime(msgDateTime.Value, DateFormat.GeneralDate) '[FirstCallDateTime]
     firstCall.ReportingParty = reportingName.Text '[FirstReportingParty]
@@ -240,15 +216,19 @@ Public Class FirstCalls
     firstCall.DateCounselorContacted = FormatDateTime(coronerDate.Text & " " & coronerTime.Text, DateFormat.GeneralDate)  '[FirstDateContacted]
     'SQL.Append("NULL,") '[FirstNotes] *****
     'SQL.Append("NULL,") '[FirstOperatorCallNotes] *****
-    firstCall.Delivered = 0 '[FirstDelivered] *****
-    'SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
+    If (RBMessageStatus.SelectedValue.ToUpper() = "DELIVER") Then
+      firstCall.Delivered = 1 '[FirstDelivered]
+      firstCall.DeliveredDateTime = FormatDateTime(DateTime.Now, DateFormat.GeneralDate) '[FirstDateTimeDelivered]
+    Else
+      firstCall.Delivered = 0 '[FirstDelivered]
+    End If
     'SQL.Append("NULL,") '[FirstMedNoteBox] *****
     'SQL.Append("NULL,") '[FirstCustCallInfo] *****
-    firstCall.Hold = 0 '[FirstHold] *****
+    firstCall.Hold = If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", 1, 0) '[FirstHold]
 
-    id = fcDA.UpdateFirstCall(firstCall)
+    Return firstCall
 
-  End Sub
+  End Function
 
   ''' <summary>
   ''' 

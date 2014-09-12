@@ -275,6 +275,15 @@ Partial Public Class FirstCalls
   Protected WithEvents ReqWeight As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
+  '''RegExWeight control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RegExWeight As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+  '''<summary>
   '''placeOfDeath control.
   '''</summary>
   '''<remarks>
@@ -723,6 +732,24 @@ Partial Public Class FirstCalls
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents specialInstructionsA As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''RBMessageStatus control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents RBMessageStatus As Global.System.Web.UI.WebControls.RadioButtonList
+
+  '''<summary>
+  '''ValidatorStatusRadio control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ValidatorStatusRadio As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''submitMessage control.

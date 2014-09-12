@@ -11,230 +11,212 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Messages
+Partial Public Class AddFacility
 
   '''<summary>
-  '''clientMessageId control.
+  '''addNewFacility control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents clientMessageId As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+  Protected WithEvents addNewFacility As Global.System.Web.UI.HtmlControls.HtmlForm
 
   '''<summary>
-  '''clientName control.
+  '''AddFacilityValidationSummary control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents clientName As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+  Protected WithEvents AddFacilityValidationSummary As Global.System.Web.UI.WebControls.ValidationSummary
 
   '''<summary>
-  '''addMessage control.
+  '''placeOfDeath control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents addMessage As Global.System.Web.UI.HtmlControls.HtmlForm
+  Protected WithEvents placeOfDeath As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''CompanyID control.
+  '''ReqPlaceOfDeath control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents CompanyID As Global.System.Web.UI.WebControls.HiddenField
+  Protected WithEvents ReqPlaceOfDeath As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''MessageID control.
+  '''facilityAddr control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents MessageID As Global.System.Web.UI.WebControls.HiddenField
+  Protected WithEvents facilityAddr As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''ValidationSummary1 control.
+  '''ReqFacAddr control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
+  Protected WithEvents ReqFacAddr As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''MsgScriptManager control.
+  '''facType control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents MsgScriptManager As Global.System.Web.UI.ScriptManager
+  Protected WithEvents facType As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''MsgTo control.
+  '''facCity control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents MsgTo As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents facCity As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''ReqTo control.
+  '''ReqFacCity control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents ReqTo As Global.System.Web.UI.WebControls.RequiredFieldValidator
+  Protected WithEvents ReqFacCity As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''MsgFrom control.
+  '''facState control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents MsgFrom As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents facState As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''ReqFrom control.
+  '''ReqFacState control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents ReqFrom As Global.System.Web.UI.WebControls.RequiredFieldValidator
+  Protected WithEvents ReqFacState As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''nMsgPhone control.
+  '''ReqExFacState control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents nMsgPhone As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents ReqExFacState As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
   '''<summary>
-  '''ReqPhone control.
+  '''facilityCounty control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents ReqPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
+  Protected WithEvents facilityCounty As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''nMsgPhoneX control.
+  '''ReqFacCounty control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents nMsgPhoneX As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents ReqFacCounty As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''nMsgAlt control.
+  '''facilityZip control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents nMsgAlt As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents facilityZip As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''ReqAltPhone control.
+  '''ReqFacZip control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents ReqAltPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
+  Protected WithEvents ReqFacZip As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''nMsgAltX control.
+  '''ReqExFacZip control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents nMsgAltX As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents ReqExFacZip As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
   '''<summary>
-  '''QwkMessage control.
+  '''facilityPhone control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents QwkMessage As Global.System.Web.UI.WebControls.DropDownList
+  Protected WithEvents facilityPhone As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''ReqQwkMessage control.
+  '''ReqFacPhone control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents ReqQwkMessage As Global.System.Web.UI.WebControls.RequiredFieldValidator
+  Protected WithEvents ReqFacPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''MessageText control.
+  '''ReqExFacPhone control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents MessageText As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents ReqExFacPhone As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
   '''<summary>
-  '''ReqMessage control.
+  '''phoneExt control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents ReqMessage As Global.System.Web.UI.WebControls.RequiredFieldValidator
+  Protected WithEvents phoneExt As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''Notes control.
+  '''facilityId control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents Notes As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents facilityId As Global.System.Web.UI.HtmlControls.HtmlInputHidden
 
   '''<summary>
-  '''RBMessageStatus control.
+  '''SubmitFacility control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents RBMessageStatus As Global.System.Web.UI.WebControls.RadioButtonList
-
-  '''<summary>
-  '''ValidatorStatusRadio control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ValidatorStatusRadio As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
-  '''submitMessage control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents submitMessage As Global.System.Web.UI.WebControls.Button
+  Protected WithEvents SubmitFacility As Global.System.Web.UI.WebControls.Button
 End Class
