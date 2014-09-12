@@ -61,6 +61,8 @@
                 <!--autocomplete end-->
               </div>
               <form id="addNewClient" action="#" method="post" runat="server">
+                <asp:ValidationSummary ID="ValidationSummaryAddClient" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
+
                 <div id="">
                   <div class="row">
                     <label for="nClientName">Client Name</label><br />
@@ -69,9 +71,17 @@
                   </div>
 
                   <div class="row">
-                    <label for="nClientType">Client Type</label><br />
-                    <asp:TextBox ID="nClientType" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="ReqClientType" runat="server" ErrorMessage="Client Type is required" ControlToValidate="nClientType" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    <label for="nClientNumber">Client Number</label><br />
+                    <asp:TextBox ID="nClientNumber" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqClientNumber" runat="server" ErrorMessage="Client Number is required" ControlToValidate="nClientNumber" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                  </div>
+
+                  <div class="row">
+                    <label for="ClientType">Client Type</label><br />
+                    <asp:DropDownList ID="ClientType" runat="server">
+                      <asp:ListItem Value="-1" Text="--Select--" />
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="ReqClientType" runat="server" ErrorMessage="Client Type is required" ControlToValidate="ClientType" CssClass="ErrorMessage" Display="None" Text="*" InitialValue="-1"></asp:RequiredFieldValidator>
                   </div>
 
                   <div class="row">
@@ -135,6 +145,12 @@
                   </div>
 
                   <div class="row">
+                    <label for="nClientAdditionalInformation">Additional Information</label><br />
+                    <asp:TextBox ID="nClientAdditionalInformation" runat="server" TextMode="MultiLine"></asp:TextBox>
+                  </div>
+
+                  <h2>Contact Information</h2>
+                  <div class="row">
                     <label for="nClientPrimary">Client Primary Contact</label><br />
                     <asp:TextBox ID="nClientPrimary" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Client Primary Contact is required" ControlToValidate="nClientPrimary" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
@@ -146,29 +162,50 @@
                     <asp:RequiredFieldValidator ID="ReqClientPrimaryTitle" runat="server" ErrorMessage="Client Primary Contact Title is required" ControlToValidate="nClientPrimaryTitle" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   </div>
 
+                  <div class="row">
+                    <label for="nClientPrimaryInfo">Client Primary Information (Phone Number, etc...)</label><br />
+                    <asp:TextBox ID="nClientPrimaryInfo" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqClientPrimaryInfo" runat="server" ErrorMessage="Client Primary Contact Information is required" ControlToValidate="nClientPrimaryInfo" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                  </div>
+
+                  <div class="row">
+                    <label for="nClientSecondary">Client Secondary Contact</label><br />
+                    <asp:TextBox ID="nClientSecondary" runat="server"></asp:TextBox>
+                  </div>
+
+                  <div class="row">
+                    <label for="nClientSecondaryTitle">Client Secondary Title</label><br />
+                    <asp:TextBox ID="nClientSecondaryTitle" runat="server"></asp:TextBox>
+                  </div>
+
+                  <div class="row">
+                    <label for="nClientSecondaryInfo">Client Secondary Information (Phone Number, etc...)</label><br />
+                    <asp:TextBox ID="nClientSecondaryInfo" runat="server"></asp:TextBox>
+                  </div>
+
                   <h2>Billing Info</h2>
                   <div class="row">
                     <label for="nClientBillingContact">Client Billing Contact</label><br />
                     <asp:TextBox ID="nClientBillingContact" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Client Billing Contact is required" ControlToValidate="nClientBillingContact" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="ReqClientBillingContact" runat="server" ErrorMessage="Client Billing Contact is required" ControlToValidate="nClientBillingContact" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   </div>
 
                   <div class="row">
                     <label for="nClientBillingPhone">Client Billing Phone</label><br />
                     <asp:TextBox ID="nClientBillingPhone" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Client Billing Phone is required" ControlToValidate="nClientBillingPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="ReqClientBillingPhone" runat="server" ErrorMessage="Client Billing Phone is required" ControlToValidate="nClientBillingPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   </div>
 
                   <div class="row">
                     <label for="nClientBillingEmail">Client Billing Email</label><br />
                     <asp:TextBox ID="nClientBillingEmail" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Client Billing Email is required" ControlToValidate="nClientBillingEmail" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="ReqClientBillingEmail" runat="server" ErrorMessage="Client Billing Email is required" ControlToValidate="nClientBillingEmail" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   </div>
 
                   <div class="row">
                     <label for="nClientSpecialInstructions">Client Special Instructions</label><br />
-                    <asp:TextBox ID="nClientSpecialInstructions" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Client Special Instructions is required" ControlToValidate="nClientSpecialInstructions" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="nClientSpecialInstructions" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqClientSpecialInstructions" runat="server" ErrorMessage="Client Special Instructions is required" ControlToValidate="nClientSpecialInstructions" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   </div>
 
                   <input type="hidden" name="clientId" id="clientId" value="0" runat="server" />

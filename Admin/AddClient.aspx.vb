@@ -1,15 +1,31 @@
-﻿Public Class AddClient
-    Inherits System.Web.UI.Page
+﻿Imports System.Data.SqlClient
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+Public Class AddClient
+  Inherits System.Web.UI.Page
 
-    End Sub
+  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+    If Not (Page.IsPostBack) Then
+
+      Try
+
+        'Get Lookup Data
+        GetClientTypeLookup()
+
+      Catch ex As Exception
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
+      End Try
+
+    End If
+
+  End Sub
 
   Protected Sub SubmitClient_Click(sender As Object, e As EventArgs) Handles SubmitClient.Click
 
     If Page.IsValid Then
 
       Try
+
         Dim company As New Company
         company = FillClient(clientId.Value)
         If clientId.Value = "0" Then
@@ -65,7 +81,7 @@
 
     company.CompanyID = fId
     company.Name = nClientName.Text
-    company.TypeID = nClientType.Text 'NEED TO FIX
+    company.TypeID = ClientType.SelectedItem.Value
     company.MailingAddress = nClientAddress.Text
     company.MailingCity = nClientCity.Text
     company.MailingState = nClientState.Text
@@ -92,5 +108,23 @@
     Return company
 
   End Function
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetClientTypeLookup()
+
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
+
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT ClientTypeID, ClientType FROM COMPANY_TYPE WITH (NOLOCK) ORDER BY ClientType ASC")
+
+    Do While rsData.Read()
+      ClientType.Items.Add(New ListItem(rsData("ClientType").ToString(), rsData("ClientTypeID").ToString()))
+    Loop
+
+  End Sub
 
 End Class

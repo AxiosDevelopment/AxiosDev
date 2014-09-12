@@ -242,6 +242,14 @@ addNewClient control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.AddClient.ValidationSummaryAddClient">
+	<summary>
+ValidationSummaryAddClient control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.AddClient.nClientName">
 	<summary>
 nClientName control.
@@ -258,9 +266,25 @@ ReqClientName control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddClient.nClientType">
+</member><member name="F:Axios.AddClient.nClientNumber">
 	<summary>
-nClientType control.
+nClientNumber control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientNumber">
+	<summary>
+ReqClientNumber control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ClientType">
+	<summary>
+ClientType control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -434,6 +458,14 @@ ReqClientHours control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.AddClient.nClientAdditionalInformation">
+	<summary>
+nClientAdditionalInformation control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.AddClient.nClientPrimary">
 	<summary>
 nClientPrimary control.
@@ -466,6 +498,46 @@ ReqClientPrimaryTitle control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:Axios.AddClient.nClientPrimaryInfo">
+	<summary>
+nClientPrimaryInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.ReqClientPrimaryInfo">
+	<summary>
+ReqClientPrimaryInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientSecondary">
+	<summary>
+nClientSecondary control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientSecondaryTitle">
+	<summary>
+nClientSecondaryTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Axios.AddClient.nClientSecondaryInfo">
+	<summary>
+nClientSecondaryInfo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:Axios.AddClient.nClientBillingContact">
 	<summary>
 nClientBillingContact control.
@@ -474,9 +546,9 @@ nClientBillingContact control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddClient.RequiredFieldValidator3">
+</member><member name="F:Axios.AddClient.ReqClientBillingContact">
 	<summary>
-RequiredFieldValidator3 control.
+ReqClientBillingContact control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -490,9 +562,9 @@ nClientBillingPhone control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddClient.RequiredFieldValidator4">
+</member><member name="F:Axios.AddClient.ReqClientBillingPhone">
 	<summary>
-RequiredFieldValidator4 control.
+ReqClientBillingPhone control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -506,9 +578,9 @@ nClientBillingEmail control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddClient.RequiredFieldValidator5">
+</member><member name="F:Axios.AddClient.ReqClientBillingEmail">
 	<summary>
-RequiredFieldValidator5 control.
+ReqClientBillingEmail control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -522,9 +594,9 @@ nClientSpecialInstructions control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:Axios.AddClient.RequiredFieldValidator6">
+</member><member name="F:Axios.AddClient.ReqClientSpecialInstructions">
 	<summary>
-RequiredFieldValidator6 control.
+ReqClientSpecialInstructions control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -1288,6 +1360,10 @@ To modify move field declaration from designer file to code-behind file.
  </summary>
 	<param name="fId"></param>
 	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Axios.AddClient.GetClientTypeLookup">
+	<summary>
+	</summary>
 	<remarks></remarks>
 </member><member name="F:Axios.FirstCalls.ClientHeader">
 	<summary>
