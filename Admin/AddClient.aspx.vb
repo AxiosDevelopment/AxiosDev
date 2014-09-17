@@ -22,10 +22,22 @@ Public Class AddClient
         'Get Lookup Data
         GetClientTypeLookup()
         GetContactTypeLookup()
+        Session.Remove("Contacts")
+
+        'If Session("ClientID") IsNot Nothing Then
+        '  'If Session("ClientID") <> "0" Then
+        '  Dim contacts As New List(Of Contact)
+        '  If Session("Contacts") IsNot Nothing Then
+        '    contacts = CType(Session("Contacts"), List(Of Contact))
+        '  End If
+        '  Session("Contacts") = contacts
+        '  BindContacts(contacts)
+        '  'End If
+        'End If
 
       Catch ex As Exception
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
-      End Try
+      ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
+    End Try
 
     End If
 
@@ -44,12 +56,13 @@ Public Class AddClient
       Try
 
         Dim company As New Company
-        company = FillClient(clientId.Value)
-        If clientId.Value = "0" Then
+        company = FillClient(ClientIDText.Text)
+        If ClientIDText.Text = "0" Then
           InsertClient(company)
         Else
           UpdateClient(company)
         End If
+        'Session.Remove("ClientID")
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopup", "messagedSaved()", True)
 
       Catch ex As Exception
@@ -68,8 +81,15 @@ Public Class AddClient
 
     Dim cDA As New CompanyDA
     Dim id As Integer
+    Dim contacts As New List(Of Contact)
 
-    'id = cDA.InsertCompany(c)
+    If Session("Contacts") IsNot Nothing Then
+      contacts = CType(Session("Contacts"), List(Of Contact))
+    End If
+
+    c.Contacts = contacts
+
+    id = cDA.InsertCompany(c)
 
   End Sub
 
@@ -82,7 +102,7 @@ Public Class AddClient
     Dim cDA As New CompanyDA
     Dim id As Integer
 
-    'id = cDA.UpdateCompany(c)
+    id = cDA.UpdateCompany(c)
 
   End Sub
 
@@ -98,6 +118,7 @@ Public Class AddClient
 
     company.CompanyID = fId
     company.Name = nClientName.Text
+    company.Number = nClientNumber.Text
     company.TypeID = ClientType.SelectedItem.Value
     company.Address = nClientAddress.Text
     company.City = nClientCity.Text
@@ -108,6 +129,7 @@ Public Class AddClient
     company.Fax = nClientFax.Text
     company.PhoneAnswer = nClientGreeting.Text
     company.HoursOfOperation = nClientHours.Text
+    company.AdditionalNotes = nClientAdditionalInformation.Text
     company.InstructionSheet = nClientSpecialInstructions.Text
 
     Return company
@@ -163,7 +185,10 @@ Public Class AddClient
 
     company = cDA.GetCompany(ClientIDText.Text)
     Session("Contacts") = company.Contacts
+
     BindContacts(company.Contacts)
+
+    'Session("ClientID") = ClientIDText.Text
 
   End Sub
 
@@ -269,11 +294,11 @@ Public Class AddClient
                                Where p.TypeID = 1
                                Select p).Count()
 
-      If numberOfPrimaries = 1 Then
-        isThisThePrimary = (From pc In contacts
+      isThisThePrimary = (From pc In contacts
                                Where pc.ContactID = row.Cells(2).Text
                                Select pc).SingleOrDefault()
 
+      If numberOfPrimaries = 1 Then
         If isThisThePrimary IsNot Nothing Then
           If isThisThePrimary.TypeID = "1" Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "NoPrimaryContact", "NoPrimaryContact()", True)
@@ -282,12 +307,15 @@ Public Class AddClient
             Dim resultID = cDA.DeleteContact(isThisThePrimary.ContactID)
             contacts.Remove(isThisThePrimary)
             Session("Contacts") = contacts
-
             BindContacts(contacts)
-
           End If
         End If
-
+      Else
+        'DELETE CONTACT HERE
+        Dim resultID = cDA.DeleteContact(isThisThePrimary.ContactID)
+        contacts.Remove(isThisThePrimary)
+        Session("Contacts") = contacts
+        BindContacts(contacts)
       End If
     Else
 
@@ -303,6 +331,12 @@ Public Class AddClient
   Protected Sub ClearContact_Click(sender As Object, e As EventArgs) Handles ClearContact.Click
 
     ClearContactControls()
+    If resetContactSession.Value = "1" Then
+      Session.Remove("Contacts")
+      resetContactSession.Value = "0"
+      grvContacts.DataSource = Nothing
+      grvContacts.DataBind()
+    End If
 
   End Sub
 
@@ -367,8 +401,6 @@ Public Class AddClient
     grvContacts.DataSource = contacts
     grvContacts.DataBind()
 
-    'ContactUpdatePanel.Update()
-
     grvContacts.Columns(2).Visible = False 'Contact ID
     grvContacts.Columns(3).Visible = False 'Company ID
     grvContacts.Columns(4).Visible = False 'Contact Type ID
@@ -379,6 +411,19 @@ Public Class AddClient
 
     ClearContactControls()
 
+  End Sub
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="sender"></param>
+  ''' <param name="e"></param>
+  ''' <remarks></remarks>
+  Protected Sub resetForm_Click(sender As Object, e As EventArgs)
+    Session.Remove("Contacts")
+    grvContacts.DataSource = Nothing
+    grvContacts.DataBind()
+    resetContactSession.Value = "1"
   End Sub
 
 End Class

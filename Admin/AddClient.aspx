@@ -42,12 +42,34 @@
     function MustSaveClientToSaveContacts() {
       alert("You will be required to save the client to permanently save the contacts you are adding to this new client.\nClick the Submit Client button to save the Client and Contacts.")
     }
+
+    function resetForms() {
+      for (i = 0; i < document.forms.length; i++) {
+        document.forms[i].reset();
+      }
+    }
+
   </script>
   <script>
     $(function () {
-      $('#clearform').on('click', function () {
-        $('#grvContacts').empty();
+      $('#resetForm').on('click', function () {
+        resetForms();
       });
+
+      /*
+      //$('#clearform').on('click', function () {
+      //  $('#resetContactSession').val('1');
+      //  $('#grvContacts').empty();
+      //});
+  
+      $("body").keydown(function (e) {
+        if (e.which == 116) {
+          //__doPostBack("btnTriggerUpdatePanel", "");
+          alert($('#ClientIDText').val());
+          alert($('#clientId').val());
+        }
+      });*/
+      
     });
   </script>
 </head>
@@ -249,14 +271,13 @@
                         <label for="nContactAdditionalInformation">Contact Additional Information</label><br />
                         <asp:TextBox ID="nContactAdditionalInformation" runat="server" CssClass="contacts"></asp:TextBox>
                       </div>
-
+                      <input type="hidden" name="resetContactSession" id="resetContactSession" value="0" runat="server" />
                       <asp:Button ID="ClearContact" runat="server" Text="Clear Contact" CausesValidation="false" />
                       <asp:Button ID="SubmitContact" ValidationGroup="ContactGroup" runat="server" Text="Add/Edit Contact" CausesValidation="true" />
                     </ContentTemplate>
                   </asp:UpdatePanel>
-
                   <input type="hidden" name="clientId" id="clientId" value="0" runat="server" />
-                  <input type="reset" id="clearform" value="Clear Form" />
+                  <asp:Button ID="resetForm" runat="server" Text="Clear Form" OnClick="resetForm_Click" />
                   <asp:Button Text="Submit Client" ValidationGroup="ClientGroup" runat="server" ID="SubmitClient" CausesValidation="true" />
                 </div>
               </form>

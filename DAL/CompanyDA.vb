@@ -24,9 +24,9 @@ Public Class CompanyDA
 
     db = New dbUtil()
 
-    SQL.Append("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ClientType, c.CompanyPhoneAnswer, c.CompanyAddress, c.CompanyCity, c.CompanyState, c.CompanyZip, c.CompanyMainTelephone")
+    SQL.Append("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, c.CompanyTypeID, ct.ClientType AS CompanyType, c.CompanyPhoneAnswer, c.CompanyAddress, c.CompanyCity, c.CompanyState, c.CompanyZip, c.CompanyMainTelephone")
     SQL.Append(", c.CompanyMainTelephone2nd, c.CompanyFax, c.CompanyEmail, c.CompanyInstructionSheet, c.CompanyHoursOfOperation, ci.CompanyInformation, c.CompanyAdditionalNotes ")
-    SQL.Append("FROM COMPANY c WITH (NOLOCK) INNER JOIN COMPANY_TYPE ct ON ct.ClientTypeID = c.CompanyTypeID INNER JOIN COMPANY_INFO ci ON ci.CompanyID = c.CompanyID WHERE c.CompanyID = " + id)
+    SQL.Append("FROM COMPANY c WITH (NOLOCK) INNER JOIN COMPANY_TYPE ct ON ct.ClientTypeID = c.CompanyTypeID LEFT JOIN COMPANY_INFO ci ON ci.CompanyID = c.CompanyID WHERE c.CompanyID = " + id)
 
     rsData = db.GetDataReader(SQL.ToString())
 
@@ -36,6 +36,7 @@ Public Class CompanyDA
         company.CompanyID = Convert.ToInt32(rsData("CompanyID"))
         company.Number = rsData("CompanyNumber").ToString()
         company.Name = rsData("CompanyName")
+        company.TypeID = rsData("CompanyTypeID")
         company.PhoneAnswer = db.ClearNull(rsData("CompanyPhoneAnswer"))
         company.Address = db.ClearNull(rsData("CompanyAddress"))
         company.City = db.ClearNull(rsData("CompanyCity"))
@@ -74,8 +75,9 @@ Public Class CompanyDA
   Public Function InsertCompany(c As Company) As Integer Implements ICompanyDA.InsertCompany
 
     Dim SQL As New StringBuilder()
-    Dim db As dbUtil 'access to db functions
-    db = New dbUtil()
+    'Dim db As dbUtil 'access to db functions
+    'db = New dbUtil()
+    Dim newId As Integer
 
     SQL.Append("INSERT INTO [dbo].[COMPANY]([CompanyNumber],[CompanyName],[CompanyTypeID],[CompanyPhoneAnswer],[CompanyAddress],[CompanyCity],[CompanyState],[CompanyZip]")
     SQL.Append(",[CompanyMainTelephone],[CompanyMainTelephone2nd],[CompanyFax],[CompanyEmail],[CompanyInstructionSheet],[CompanyHoursOfOperation],[CompanyAdditionalNotes])")
@@ -95,8 +97,37 @@ Public Class CompanyDA
     SQL.Append("'" & c.InstructionSheet & "',")
     SQL.Append("'" & c.HoursOfOperation & "',")
     SQL.Append("'" & c.AdditionalNotes & "')")
+    SQL.Append(" SELECT SCOPE_IDENTITY()")
+    'Return db.GetID(SQL.ToString())
 
-    Return db.GetID(SQL.ToString())
+    Dim m_ConStr As String = ""
+    m_ConStr = ConfigurationManager.ConnectionStrings("ConnectionString").ToString()
+    Dim iRet As Integer = 0
+    Dim conn As SqlConnection = New SqlConnection(m_ConStr)
+    Try
+      conn.Open()
+      Dim cmd As SqlCommand = New SqlCommand(SQL.ToString(), conn)
+      newId = CInt(cmd.ExecuteScalar())
+
+      'NEED TO LOOP THRU CONTACTS AND SAVE CONTACTS FOR NEW CLIENT
+      Dim cDA As New ContactDA
+      Dim contacts As New List(Of Contact)
+      contacts = c.Contacts
+      Dim resultId As Integer
+      For Each contact As Contact In contacts
+        contact.CompanyID = newId
+        resultId = cDA.InsertContact(contact)
+      Next
+
+    Catch ex As Exception
+      conn.Close()
+
+    Finally
+      conn.Close()
+
+    End Try
+
+    Return newId
 
   End Function
 
@@ -113,7 +144,7 @@ Public Class CompanyDA
     db = New dbUtil()
 
     SQL.Append("UPDATE COMPANY SET ")
-    SQL.Append("[CompanyNumber] = " & c.CompanyID & ",")
+    SQL.Append("[CompanyNumber] = " & c.Number & ",")
     SQL.Append("[CompanyName] = '" & c.Name & "',")
     SQL.Append("[CompanyTypeID] = " & c.TypeID & ",")
     SQL.Append("[CompanyPhoneAnswer] = '" & c.PhoneAnswer & "',")
@@ -127,7 +158,7 @@ Public Class CompanyDA
     SQL.Append("[CompanyEmail] = '" & c.Email & "',")
     SQL.Append("[CompanyInstructionSheet] = '" & c.InstructionSheet & "',")
     SQL.Append("[CompanyHoursOfOperation] = '" & c.HoursOfOperation & "',")
-    SQL.Append("[CompanyAdditionalNotes] = '" & c.AdditionalNotes & "'")
+    SQL.Append("[CompanyAdditionalNotes] = '" & c.AdditionalNotes & "' ")
     SQL.Append("WHERE CompanyID = " & c.CompanyID)
 
     Return db.GetID(SQL.ToString())

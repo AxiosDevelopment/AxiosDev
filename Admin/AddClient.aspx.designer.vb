@@ -428,6 +428,15 @@ Partial Public Class AddClient
   Protected WithEvents nContactAdditionalInformation As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
+  '''resetContactSession control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents resetContactSession As Global.System.Web.UI.HtmlControls.HtmlInputHidden
+
+  '''<summary>
   '''ClearContact control.
   '''</summary>
   '''<remarks>
@@ -453,6 +462,15 @@ Partial Public Class AddClient
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents clientId As Global.System.Web.UI.HtmlControls.HtmlInputHidden
+
+  '''<summary>
+  '''resetForm control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents resetForm As Global.System.Web.UI.WebControls.Button
 
   '''<summary>
   '''SubmitClient control.
