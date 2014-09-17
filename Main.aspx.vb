@@ -35,7 +35,7 @@ Public Class Main
     Try
 
       db = New dbUtil()
-      rsData = db.GetDataReader("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ContactName, ct.CREATEDATETIME AS CreatedDate FROM COMPANY c WITH (NOLOCK) INNER JOIN CONTACT ct ON ct.CompanyID = c.CompanyID INNER JOIN (SELECT CompanyID, MAX(CREATEDATETIME) AS MaxDateTime FROM CONTACT WHERE ContactType = 1 GROUP BY CompanyID) a ON ct.CompanyID = a.CompanyID AND ct.CREATEDATETIME = a.MaxDateTime ORDER BY c.CompanyNumber ASC")
+      rsData = db.GetDataReader("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, ct.ContactName, ct.UpdatedDateTime AS UpdatedDate FROM COMPANY c WITH (NOLOCK) LEFT JOIN CONTACT ct ON ct.CompanyID = c.CompanyID AND ct.IsActive = 1 AND ct.ContactType = 1 ORDER BY c.CompanyNumber ASC")
 
       Dim row As HtmlTableRow
       Dim cell As HtmlTableCell
@@ -58,7 +58,11 @@ Public Class Main
           End If
           row.Controls.Add(cell)
           'Create CreatedDate column
-          cell = New HtmlTableCell With {.InnerText = rsData("CreatedDate")}
+          If Not IsDBNull(rsData("ContactName")) Then
+            cell = New HtmlTableCell With {.InnerText = rsData("UpdatedDate")}
+          Else
+            cell = New HtmlTableCell With {.InnerText = ""}
+          End If
           row.Controls.Add(cell)
           'Add row to table
           ClientTable.Controls.Add(row)

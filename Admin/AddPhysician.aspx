@@ -48,7 +48,7 @@
         <div id="content">
           <div class="box-style4">
             <div class="title">
-              <h2>Add a Physician</h2>
+              <h2>Add/Edit a Physician</h2>
             </div>
             <div class="entry">
               <div id="physicianTable">

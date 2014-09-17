@@ -115,12 +115,14 @@
                   <button class="right updateCounselor" id="updateMainCounselor">Update</button>
                   <input type="text" id="primaryOnCall" name="onCallInfo" class="onCall" value="<%=PrimaryContactName%>" />
                   <input type="text" id="primaryContact" name="onCallInfo" class="onCall mTop5" value="<%=PrimaryContactInfo%>" /><br />
+                  <input type="hidden" name="primaryContactId" id="primaryContactId" value="0" runat="server" />
                   <br />
                   <label for="secondaryOnCallInfo">Secondary&nbsp;&nbsp;</label>
                   <button class="left clearCounselor" id="clearSecondaryCounselor" style="width: 50px">Clear</button>
                   <button class="right updateCounselor" id="updateSecondaryCounselor">Update</button>
                   <input type="text" id="secondaryOnCall" name="secondaryOnCall" class="onCall" value="<%=SecondaryContactName%>" />
                   <input type="text" id="secondaryContact" name="secondaryContact" class="onCall mTop5" value="<%=SecondaryContactInfo%>" /><br />
+                  <input type="hidden" name="secondaryContactId" id="secondaryContactId" value="0" runat="server" />
                   <br />
                   <label for="onCallNotes">Additional Notes</label>
                   <button class="right update" id="updateAdditionalNotes">Update</button>

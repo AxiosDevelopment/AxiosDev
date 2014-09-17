@@ -148,17 +148,55 @@ $(function () {
 
   /** CLIENT CLICK */
   $(document).on('click', '#clientAuto li', function () {
-    var result = $(this).children('.busId').val();
+    var result = $(this).children('.clientId').val();
     var parent = $(this).parent().attr('id');
     $.ajax({
-      url: "../SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+      url: "../SearchInformation.aspx?clientId=" + result + "&queryId=" + parent,
+      //url: "AddClient.aspx?clientId=" + result + "&queryId=" + parent,
       cache: false
     })
     .done(function (data) {
       var clientObj = JSON.parse(data);
       //JSON FOR CLIENT EDIT HERE
       console.log(clientObj);
-      $('#').val(clientObj.Name);
+      $('#nClientName').val(clientObj.Name);
+      $('#nClientNumber').val(clientObj.Number);
+      //$('#ClientType').val(clientObj.Name);
+      $('#nClientAddress').val(clientObj.Address);
+      $('#nClientCity').val(clientObj.City);
+      $('#nClientState').val(clientObj.State);
+      $('#nClientZip').val(clientObj.Zip);
+      $('#nClientPhone').val(clientObj.MainTelephone);
+      $('#nClientPhone2').val(clientObj.MainTelephone2nd);
+      $('#nClientFax').val(clientObj.Fax);
+      $('#nClientGreeting').val(clientObj.PhoneAnswer);
+      $('#nClientHours').val(clientObj.HoursOfOperation);
+      $('#nClientAdditionalInformation').val(clientObj.AdditionalNotes);
+
+      /*CONTACT INFORMATION */
+      //var $grvContacts = $("#grvContacts");
+      //$grvContacts.empty();
+      //$grvContacts.append("<tr><td>Contact Type</td><td>Name</td><td>Title</td><td>Phone</td><td>Email</td>");
+      //$.each(clientObj.Contacts, function (i, item) {
+      //  //alert(item.ContactID);
+      //  $grvContacts.append("<tr><td style='display:none;'>" + 
+      //    item.ContactID + "</td><td style='display:none;'>" +
+      //    item.CompanyID + "</td><td style='display:none;'>" +
+      //    item.TypeID + "</td><td>" +
+      //    item.Type + "</td><td>" +
+      //    item.Name + "</td><td>" +
+      //    item.Title + "</td><td>" +
+      //    item.Phone + "</td><td>" +
+      //    item.Email + "</td><td style='display:none;'>" +
+      //    item.AdditionalInformation + "</td><td style='display:none;'>" +
+      //    item.IsActive + "</td><td style='display:none;'>" +
+      //    item.UpdatedDateTime + "</td><td style='display:none;'>" +
+      //    item.CreatedDateTime + "</td></tr>");
+      //});
+      $('#ClientIDText').val(result);
+      //var $ClientIDText = 
+      //$ClientIDText.val(result);
+      __doPostBack("btnTriggerUpdatePanel", "");
 
       $('#clientSearch').hide();
     }).fail(function (data) {
@@ -247,9 +285,10 @@ $(function () {
     var updateId = $(this).attr('id');
     var contactName = $(this).next('input').val();
     var contactNumber = $(this).next().next('input').val();
+    var contactId = $(this).next().next().next('input').val();
     $.ajax({
       url: "UpdateInformation.aspx?",
-      data: "contactName=" + contactName + "&contactNumber=" + contactNumber + "&clientId=" + clientId + "&updateId=" + updateId,
+      data: "contactId=" + contactId + "&contactName=" + contactName + "&contactNumber=" + contactNumber + "&clientId=" + clientId + "&updateId=" + updateId,
       dataType: "text",
       cache: false
     }).done(function (data) {
@@ -317,4 +356,5 @@ $(function () {
   if ($msgID == 0 || $fcID == 0) {
     $('#RBMessageStatus input:radio[id^=RBMessageStatus]:last').attr('disabled', true);
   }
+
 });

@@ -86,7 +86,7 @@ Public Class MessageDA
         message.Business = If(Not String.IsNullOrEmpty(rsData("MsgBusiness").ToString()), rsData("MsgBusiness"), String.Empty)
         message.Phone = If(Not String.IsNullOrEmpty(rsData("MsgPhone").ToString()), rsData("MsgPhone"), String.Empty)
         message.AltPhone = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone").ToString()), rsData("MsgAltPhone"), String.Empty)
-        message.QwkMsgs = rsData("MsgQwkMsgs")
+        message.QwkMsgs = If(Not String.IsNullOrEmpty(rsData("MsgQwkMsgs").ToString()), rsData("MsgQwkMsgs"), String.Empty)
         message.MsgMessage = If(Not String.IsNullOrEmpty(rsData("MsgMessage").ToString()), rsData("MsgMessage"), String.Empty)
         message.OperatorNotes = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes").ToString()), rsData("MsgOperatorNotes"), String.Empty)
         message.Hold = rsData("MsgHoldMsg")

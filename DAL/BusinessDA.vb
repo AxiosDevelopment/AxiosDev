@@ -86,7 +86,7 @@ Public Class BusinessDA
     Dim db As dbUtil = New dbUtil()
     Dim businesses As New List(Of Business)
 
-    rsData = db.GetDataReader("SELECT BusinessID, BusinessName, BusinessCity FROM BUSINESS WHERE BusinessName LIKE '%" & search & "%' ORDER BY BusinessName ASC")
+    rsData = db.GetDataReader("SELECT BusinessID, BusinessName, BusinessCity FROM BUSINESS WHERE BusinessName LIKE '" & search & "%' ORDER BY BusinessName ASC")
 
     If rsData.HasRows Then
 

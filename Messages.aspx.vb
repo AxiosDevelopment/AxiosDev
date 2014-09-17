@@ -94,10 +94,13 @@ Public Class Messages
       Select Case c.Type
         Case 1 'Primary Contact
           PrimaryContactName = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
-          PrimaryContactInfo = If(Not String.IsNullOrEmpty(c.Information), c.Information, "")
+          PrimaryContactInfo = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
+          primaryContactId.Value = If(Not String.IsNullOrEmpty(c.ContactID), c.ContactID, "0")
+
         Case 2 'Secondary Contact
           SecondaryContactName = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
-          SecondaryContactInfo = If(Not String.IsNullOrEmpty(c.Information), c.Information, "")
+          SecondaryContactInfo = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
+          secondaryContactId.Value = If(Not String.IsNullOrEmpty(c.ContactID), c.ContactID, "0")
 
       End Select
     Next

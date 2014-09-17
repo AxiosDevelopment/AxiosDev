@@ -57,7 +57,8 @@ Public Class SearchInformation
               GetClients(searchString)
 
             Case "clientAuto" 'When clicking an item on the client autocomplete textbox
-              'NEED TO DO
+              searchString = Request.QueryString.Get("clientId").ToString()
+              GetClient(searchString)
 
             Case Else
 
@@ -214,6 +215,24 @@ Public Class SearchInformation
                 Select New With {c.CompanyID, c.Name}
 
     Dim json = js.Serialize(comps)
+
+    Response.Write(json)
+    Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
+
+  End Sub
+
+  ''' <summary>
+  ''' This will return the client information based on the client selected from the autocomplete
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetClient(search As String)
+
+    Dim cDA As New CompanyDA
+    Dim company As Company
+    Dim js As New JavaScriptSerializer()
+
+    company = cDA.GetCompany(search)
+    Dim json = js.Serialize(company)
 
     Response.Write(json)
     Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
