@@ -65,85 +65,269 @@ $(function () {
   $('.exit').click(closeWindow);
 
   /** THIS IS THE AUTO COMPLETE FOR PLACE OF DEATH **/
-  $('#placeOfDeath').keyup(function () {
+  $('#placeOfDeath').bind("keyup keypress", function (e) {
+    var keycode = (e.which);
     var searchStr = $(this).val();
     if (searchStr === '') {
       $('#podSearch').hide();
       $('.facility').prop('disabled', false);
       return;
     }
+    if (keycode == "13") {
+        e.preventDefault();
+        if ($('#podAuto li').hasClass('active')) {
+            var result = $('#podAuto li.active').children('.busId').val();
+            $.ajax({
+                url: "SearchInformation.aspx?busId=" + result + "&queryId=podAuto",
+                cache: false
+            })
+            .done(function (data) {
+                var busObj = JSON.parse(data);
+                $('#placeOfDeath').val(busObj.Name);
+                if (busObj.Name.toUpperCase() != "RESIDENCE") { /*Need to test either name or id to validate if we leave rest of fields read-only*/
+                    $('#facilityAddr').val(busObj.Address);
+                    $('#facilityCounty').val(busObj.County);
+                    $('#facState').val(busObj.State);
+                    $('#facCity').val(busObj.City);
+                    $('#facilityZip').val(busObj.Zip);
+                    $('#facilityPhone').val(busObj.Phone);
+                    $('#phoneExt').val(busObj.PhoneExt);
+                    $('.facility').prop('readonly', true);
+                }
+                else {
+                    $('.facility').prop('readonly', false);
+                }
+                $('#podSearch').hide();
+            }).fail(function (data) {
+                alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+            });
+            return false;
+        }
+        else return;
+    }
     delay(function () {
-      $.ajax({
-        url: "SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
-        cache: false
-      })
-       .done(function (data) {
-         var $podAuto = $('#podAuto');
-         $podAuto.html("");
-         $.each($.parseJSON(data), function (i, item) {
-           var busNameCity;
-           if (item.City === "") {
-             busNameCity = item.Name;
-           } else {
-             busNameCity = item.Name + " - " + item.City;
-           }
-           var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
-           $podAuto.append(html);
-         });
-         $('#podSearch').show();
-         $('.facility').prop('disabled', false);
-       });
+        if (keycode != "40" && keycode != "38") {
+            $.ajax({
+                url: "SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
+                cache: false
+            })
+             .done(function (data) {
+                 var $podAuto = $('#podAuto');
+                 $podAuto.html("");
+                 $.each($.parseJSON(data), function (i, item) {
+                     var busNameCity;
+                     if (item.City === "") {
+                         busNameCity = item.Name;
+                     } else {
+                         busNameCity = item.Name + " - " + item.City;
+                     }
+                     var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
+                     $podAuto.append(html);
+                 });
+                 $('#podSearch').show();
+                 $('.facility').prop('disabled', false);
+             });
+        }
     }, 300);
+    if ($('#podSearch').is(':visible') && ($('#podAuto li').length > 0)) {
+        var text = "";
+        var active = $('#podAuto li.active');
+        if (keycode == "40") {
+            console.log('40')
+            if ((active.next('li').length === 0)) {
+                $('#podAuto li').removeClass('active');
+                $('#podAuto li').first().addClass('active');
+                text = $('#podAuto li').first().text();
+            }
+            else {
+                active.removeClass('active').next('li').addClass('active');
+                text = active.removeClass('active').next('li').text();
+            }
+            $('#placeOfDeath').val(text);
+        }
+        if (keycode == "38") {
+            console.log('38')
+            if ((active.prev('li').length === 0)) {
+                $('#podAuto li').removeClass('active');
+                $('#podAuto li').last().addClass('active');
+                text = $('#podAuto li').last().text();
+            }
+            else {
+                active.removeClass('active').prev('li').addClass('active');
+                text = active.removeClass('active').prev('li').text();
+            }
+            $('#placeOfDeath').val(text);
+        }
+    }
   })
 
   /** THIS IS THE AUTO COMPLETE FOR PHYSICIAN **/
-  $('#physicianName').keyup(function () {
+  $('#physicianName').bind("keyup keypress",function (e) {
+    var keycode = (e.which);
     var searchStr = $(this).val();
-    console.log(searchStr)
     if (searchStr === '') {
       $('#physicianSearch').hide();
       return;
     }
+    if (keycode == "13") {
+        e.preventDefault();
+        if ($('#physicianAuto li').hasClass('active')) {
+            var result = $('#physicianAuto li.active').children('.docId').val();
+            $.ajax({
+                url: "SearchInformation.aspx?busId=" + result + "&queryId=physicianAuto",
+                cache: false
+            })
+            .done(function (data) {
+                var docObj = JSON.parse(data);
+                $('#physicianName').val(docObj.Name);
+                $('#physicianPhone').val(docObj.Phone);
+                $('.physician').prop('readonly', true);
+                $('#physicianSearch').hide();
+            }).fail(function (data) {
+                alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+            });
+            return false;
+        }
+        else return;
+    }
     delay(function () {
-      $.ajax({
-        url: "SearchInformation.aspx?query=" + searchStr + "&queryId=DOCSEARCH",
-        cache: false
-      })
-       .done(function (data) {
-         var $physicianAuto = $('#physicianAuto');
-         $physicianAuto.html("");
-         $.each($.parseJSON(data), function (i, item) {
-           var html = '<li><input type="hidden" class="docId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
-           $physicianAuto.append(html);
-         });
-         $('#physicianSearch').show();
-       });
+        if (keycode != "40" && keycode != "38") {
+            $.ajax({
+                url: "SearchInformation.aspx?query=" + searchStr + "&queryId=DOCSEARCH",
+                cache: false
+            })
+             .done(function (data) {
+                 var $physicianAuto = $('#physicianAuto');
+                 $physicianAuto.html("");
+                 $.each($.parseJSON(data), function (i, item) {
+                     var html = '<li><input type="hidden" class="docId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
+                     $physicianAuto.append(html);
+                 });
+                 $('#physicianSearch').show();
+             });
+        }
     }, 300);
+    if ($('#physicianSearch').is(':visible') && ($('#physicianAuto li').length > 0)) {
+        var text = "";
+        var active = $('#physicianAuto li.active');
+        if (keycode == "40") {
+            if ((active.next('li').length === 0)) {
+                $('#physicianAuto li').removeClass('active')
+                $('#physicianAuto li').first().addClass('active');
+                text = $('#physicianAuto li').first().text();
+            }
+            else {
+                active.removeClass('active').next('li').addClass('active');
+                text = active.removeClass('active').next('li').text();
+            }
+            $('#physicianName').val(text);
+        }
+        if (keycode == "38") {
+            if ((active.prev('li').length === 0)) {
+                $('#physicianAuto li').removeClass('active')
+                $('#physicianAuto li').last().addClass('active');
+                text = $('#physicianAuto li').last().text();
+            }
+            else {
+                active.removeClass('active').prev('li').addClass('active');
+                text = active.removeClass('active').prev('li').text();
+            }
+            $('#physicianName').val(text);
+        }
+    }
   });
 
   /** CLIENT SEARCH */
-  $('#searchClient').keyup(function () {
+  $('#searchClient').bind("keyup keypress",function (e) {
+      var keycode = (e.which);
     var searchStr = $(this).val();
     console.log(searchStr)
     if (searchStr === '') {
       $('#clientSearch').hide();
       return;
     }
+    if (keycode == "13") {
+        e.preventDefault();
+        if ($('#clientAuto li').hasClass('active')) {
+            var result = $('#clientAuto li.active').children('.clientId').val();
+            $.ajax({
+                url: "../SearchInformation.aspx?clientId=" + result + "&queryId=clientAuto",
+                cache: false
+            })
+            .done(function (data) {
+                var clientObj = JSON.parse(data);
+                //JSON FOR CLIENT EDIT HERE
+                $('#nClientName').val(clientObj.Name);
+                $('#nClientNumber').val(clientObj.Number);
+                $('#ClientType').val(clientObj.TypeID);
+                $('#nClientAddress').val(clientObj.Address);
+                $('#nClientCity').val(clientObj.City);
+                $('#nClientState').val(clientObj.State);
+                $('#nClientZip').val(clientObj.Zip);
+                $('#nClientPhone').val(clientObj.MainTelephone);
+                $('#nClientPhone2').val(clientObj.MainTelephone2nd);
+                $('#nClientFax').val(clientObj.Fax);
+                $('#nClientGreeting').val(clientObj.PhoneAnswer);
+                $('#nClientHours').val(clientObj.HoursOfOperation);
+                $('#nClientAdditionalInformation').val(clientObj.AdditionalNotes);
+                $('#nClientSpecialInstructions').val(clientObj.InstructionSheet);
+                $('#ClientIDText').val(result);
+
+                __doPostBack("btnTriggerUpdatePanel", "");
+
+                $('#clientSearch').hide();
+            }).fail(function (data) {
+                alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+            });
+            return false;
+        }
+        else return;
+    }
     delay(function () {
-      $.ajax({
-        url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=CLIENTSEARCH",
-        cache: false
-      })
-       .done(function (data) {
-         var $clientAuto = $('#clientAuto');
-         $clientAuto.html("");
-         $.each($.parseJSON(data), function (i, item) {
-           var html = '<li><input type="hidden" class="clientId" value="' + item.CompanyID + '" />' + item.Name + '</li>';
-           $clientAuto.append(html);
-         });
-         $('#clientSearch').show();
-       });
+        if (keycode != "40" && keycode != "38") {
+            $.ajax({
+                url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=CLIENTSEARCH",
+                cache: false
+            })
+             .done(function (data) {
+                 var $clientAuto = $('#clientAuto');
+                 $clientAuto.html("");
+                 $.each($.parseJSON(data), function (i, item) {
+                     var html = '<li><input type="hidden" class="clientId" value="' + item.CompanyID + '" />' + item.Name + '</li>';
+                     $clientAuto.append(html);
+                 });
+                 $('#clientSearch').show();
+             });
+        }
     }, 300);
+    if ($('#clientSearch').is(':visible') && ($('#clientAuto li').length > 0)) {
+        var text = "";
+        var active = $('#clientAuto li.active');
+        if (keycode == "40") {
+            if ((active.next('li').length === 0)) {
+                $('#clientAuto li').removeClass('active');
+                $('#clientAuto li').first().addClass('active');
+                text = $('#clientAuto li').first().text();
+            }
+            else {
+                active.removeClass('active').next('li').addClass('active');
+                text = active.removeClass('active').next('li').text();
+            }
+            $('#searchClient').val(text);
+        }
+        if (keycode == "38") {
+            if ((active.prev('li').length === 0)) {
+                $('#clientAuto li').removeClass('active');
+                $('#clientAuto li').last().addClass('active');
+                text = $('#clientAuto li').last().text();
+            }
+            else {
+                active.removeClass('active').prev('li').addClass('active');
+                text = active.removeClass('active').prev('li').text();
+            }
+            $('#searchClient').val(text);
+        }
+    }
   });
 
   /** CLIENT CLICK */
@@ -188,7 +372,7 @@ $(function () {
     var result = $(this).children('.busId').val();
     var parent = $(this).parent().attr('id');
     $.ajax({
-      url: "SearchInformation.aspx?busId=" + result + "&queryId=" + parent,
+      url: "SearchInformation.aspx?busId=" + result + "&queryId=podAuto",
       cache: false
     })
     .done(function (data) {

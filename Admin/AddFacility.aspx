@@ -140,35 +140,94 @@
         timer = setTimeout(callback, ms);
       };
     })();
-    $('#facilitySearch').keyup(function () {
+    $('#facilitySearch').keyup(function (e) {
+      var keycode = (e.which);
       var searchStr = $(this).val();
       if (searchStr === '') {
         $('#podSearch').hide();
         $('.facility').prop('disabled', false);
         return;
       }
+      if (keycode == "13") {
+          e.preventDefault();
+          if ($('#podAuto li').hasClass('active')) {
+              var result = $('#podAuto li.active').children('.busId').val();
+              $.ajax({
+                  url: "../SearchInformation.aspx?busId=" + result + "&queryId=podAuto",
+                  cache: false
+              })
+              .done(function (data) {
+                  var busObj = JSON.parse(data);
+                  $('#placeOfDeath').val(busObj.Name);
+                  $('#facilityAddr').val(busObj.Address);
+                  $('#facilityCounty').val(busObj.County);
+                  $('#facState').val(busObj.State);
+                  $('#facCity').val(busObj.City);
+                  $('#facilityZip').val(busObj.Zip);
+                  $('#facilityPhone').val(busObj.Phone);
+                  $('#phoneExt').val(busObj.PhoneExt);
+                  $('#facilityId').val(result);
+                  $('#podSearch').hide();
+              }).fail(function (data) {
+                  alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+              });
+              return false;
+          }
+          else return;
+      }
       delay(function () {
-        $.ajax({
-          url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
-          cache: false
-        })
-         .done(function (data) {
-           var $podAuto = $('#podAuto');
-           $podAuto.html("");
-           $.each($.parseJSON(data), function (i, item) {
-             var busNameCity;
-             if (item.City === "") {
-               busNameCity = item.Name;
-             } else {
-               busNameCity = item.Name + " - " + item.City;
-             }
-             var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
-             $podAuto.append(html);
-           });
-           $('#podSearch').show();
-           $('.facility').prop('disabled', false);
-         });
+          if (keycode != "40" && keycode != "38") {
+              $.ajax({
+                  url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
+                  cache: false
+              })
+              .done(function (data) {
+                  var $podAuto = $('#podAuto');
+                  $podAuto.html("");
+                  $.each($.parseJSON(data), function (i, item) {
+                      var busNameCity;
+                      if (item.City === "") {
+                          busNameCity = item.Name;
+                      } else {
+                          busNameCity = item.Name + " - " + item.City;
+                      }
+                      var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
+                      $podAuto.append(html);
+                  });
+                  $('#podSearch').show();
+                  $('.facility').prop('disabled', false);
+              });
+          }
       }, 300);
+      if ($('#podSearch').is(':visible') && ($('#podAuto li').length > 0)) {
+          var text = "";
+          var active = $('#podAuto li.active');
+          if (keycode == "40") {
+              if ((active.next('li').length === 0)) {
+                  $('#podAuto li').removeClass('active');
+                  $('#podAuto li').first().addClass('active');
+                  text = $('#podAuto li').first().text();
+              }
+              else {
+                  active.removeClass('active').next('li').addClass('active');
+                  text = active.removeClass('active').next('li').text();
+              }
+              $('#facilitySearch').val(text);
+          }
+          if (keycode == "38") {
+              console.log('38')
+              if ((active.prev('li').length === 0)) {
+                  $('#podAuto li').removeClass('active');
+                  $('#podAuto li').last().addClass('active');
+                  text = $('#podAuto li').last().text();
+              }
+              else {
+                  active.removeClass('active').prev('li').addClass('active');
+                  text = active.removeClass('active').prev('li').text();
+              }
+              $('#facilitySearch').val(text);
+          }
+      }
     });
     $(document).on('click', '#podAuto li', function () {
       var result = $(this).children('.busId').val();
@@ -179,7 +238,6 @@
       })
       .done(function (data) {
         var busObj = JSON.parse(data);
-        console.log(busObj);
         $('#placeOfDeath').val(busObj.Name);
         $('#facilityAddr').val(busObj.Address);
         $('#facilityCounty').val(busObj.County);

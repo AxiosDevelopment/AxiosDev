@@ -718,6 +718,10 @@ input[type=radio] {
     border-bottom: none;
 }
 
+.autoSearch li.active {
+    background: #FEBA37;
+}
+
 .autoSearch li:hover {
     background: #FEBA37;
 }
@@ -817,3 +821,11 @@ input[type=radio] {
   border-bottom: none;
 }
 
+/** ADD CLIENT */
+
+.med {
+    width: 300px;
+}
+.sm {
+    width: 100px;
+}

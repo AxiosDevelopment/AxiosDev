@@ -127,28 +127,81 @@
       };
     })();
     /** THIS IS THE AUTO COMPLETE FOR PHYSICIAN **/
-    $('#searchPhysician').keyup(function () {
+    $('#searchPhysician').keyup(function (e) {
+      var keycode = (e.which);
       var searchStr = $(this).val();
       console.log(searchStr)
       if (searchStr === '') {
         $('#physicianSearch').hide();
         return;
       }
+      if (keycode == "13") {
+          e.preventDefault();
+          if ($('#physicianAuto li').hasClass('active')) {
+              var result = $('#physicianAuto li.active').children('.docId').val();
+              $.ajax({
+                  url: "../SearchInformation.aspx?busId=" + result + "&queryId=physicianAuto",
+                  cache: false
+              })
+              .done(function (data) {
+                  var docObj = JSON.parse(data);
+                  $('#physicianName').val(docObj.Name);
+                  $('#physicianPhone').val(docObj.Phone);
+                  $('#physicianPhoneExt').val(docObj.PhoneExt);
+                  $('#physicianSearch').hide();
+                  $('#physicianId').val(result);
+              }).fail(function (data) {
+                  alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+              });
+              return false;
+          }
+          else return;
+      }
       delay(function () {
-        $.ajax({
-          url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=DOCSEARCH",
-          cache: false
-        })
-         .done(function (data) {
-           var $physicianAuto = $('#physicianAuto');
-           $physicianAuto.html("");
-           $.each($.parseJSON(data), function (i, item) {
-             var html = '<li><input type="hidden" class="docId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
-             $physicianAuto.append(html);
-           });
-           $('#physicianSearch').show();
-         });
+          if (keycode != "40" && keycode != "38") {
+              $.ajax({
+                  url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=DOCSEARCH",
+                  cache: false
+              })
+               .done(function (data) {
+                   var $physicianAuto = $('#physicianAuto');
+                   $physicianAuto.html("");
+                   $.each($.parseJSON(data), function (i, item) {
+                       var html = '<li><input type="hidden" class="docId" value="' + item.DoctorID + '" />' + item.Name + '</li>';
+                       $physicianAuto.append(html);
+                   });
+                   $('#physicianSearch').show();
+               });
+          }
       }, 300);
+      if ($('#physicianSearch').is(':visible') && ($('#physicianAuto li').length > 0)) {
+          var text = "";
+          var active = $('#physicianAuto li.active');
+          if (keycode == "40") {
+              if ((active.next('li').length === 0)) {
+                  $('#physicianAuto li').removeClass('active')
+                  $('#physicianAuto li').first().addClass('active');
+                  text = $('#physicianAuto li').first().text();
+              }
+              else {
+                  active.removeClass('active').next('li').addClass('active');
+                  text = active.removeClass('active').next('li').text();
+              }
+              $('#searchPhysician').val(text);
+          }
+          if (keycode == "38") {
+              if ((active.prev('li').length === 0)) {
+                  $('#physicianAuto li').removeClass('active')
+                  $('#physicianAuto li').last().addClass('active');
+                  text = $('#physicianAuto li').last().text();
+              }
+              else {
+                  active.removeClass('active').prev('li').addClass('active');
+                  text = active.removeClass('active').prev('li').text();
+              }
+              $('#searchPhysician').val(text);
+          }
+      }
     });
     /** FOR DOCID **/
     $(document).on('click', '#physicianAuto li', function () {

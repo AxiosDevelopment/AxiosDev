@@ -59,7 +59,7 @@
               <h2>First Call</h2>
             </div>
             <div class="entry">
-              <form id="addFirstCall" method="post" action="#" runat="server">
+              <form id="addFirstCall" method="post" action="#" runat="server" autocomplete="off">
                 <asp:HiddenField ID="CompanyID" runat="server" />
                 <asp:HiddenField ID="FirstCallID" runat="server" />
                 <asp:ValidationSummary ID="ValidationSummaryFirstCall" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
@@ -102,7 +102,7 @@
                     </div>
                     <div class="left mr_10">
                       <label for="dDate">Date of Death</label><br />
-                      <asp:TextBox ID="dDate" runat="server" Width="80"></asp:TextBox>
+                      <asp:TextBox ID="dDate" runat="server" Width="80" autocomplete="off"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqDateOfDeath" runat="server" ErrorMessage="Date of Death is required" ControlToValidate="dDate" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:CompareValidator ID="DateOfDeathValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="dDate" ErrorMessage="Please enter a valid Date of Death" Display="None"></asp:CompareValidator>
                     </div>
