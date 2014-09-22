@@ -59,24 +59,6 @@ Partial Public Class AddClient
   Protected WithEvents ReqClientName As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''nClientNumber control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents nClientNumber As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''ReqClientNumber control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ReqClientNumber As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
   '''ClientType control.
   '''</summary>
   '''<remarks>
@@ -93,6 +75,24 @@ Partial Public Class AddClient
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents ReqClientType As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nClientNumber control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nClientNumber As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqClientNumber control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqClientNumber As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''nClientAddress control.

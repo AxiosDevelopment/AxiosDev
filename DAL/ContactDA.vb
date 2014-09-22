@@ -76,8 +76,8 @@ Public Class ContactDA
     SQL.Append("(" & Convert.ToInt32(c.CompanyID) & ",") 'CompanyID
     SQL.Append(c.TypeID & ",") 'ContactType
     SQL.Append(If(Not String.IsNullOrEmpty(c.Name), "'" & c.Name & "',", "NULL,")) 'ContactName
-    SQL.Append(If(Not String.IsNullOrEmpty(c.Phone), "'" & c.Phone & "',", "NULL,")) 'ContactPhone
     SQL.Append(If(Not String.IsNullOrEmpty(c.Title), "'" & c.Title & "',", "NULL,")) 'Title
+    SQL.Append(If(Not String.IsNullOrEmpty(c.Phone), "'" & c.Phone & "',", "NULL,")) 'ContactPhone
     SQL.Append(If(Not String.IsNullOrEmpty(c.Email), "'" & c.Email & "',", "NULL,")) 'Email
     SQL.Append(If(Not String.IsNullOrEmpty(c.AdditionalInformation), "'" & c.AdditionalInformation & "',", "NULL,")) 'AdditionalInformation
     SQL.Append("1,") 'IsActive

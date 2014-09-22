@@ -128,11 +128,11 @@
                      </div>
                   </div>
 
-                  <!--<div class="row">
+                  <div class="row">
                     <label for="nClientNumber">Client Number</label><br />
                     <asp:TextBox ID="nClientNumber" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ValidationGroup="ClientGroup" ID="ReqClientNumber" runat="server" ErrorMessage="Client Number is required" ControlToValidate="nClientNumber" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
-                  </div>-->
+                  </div>
 
                   <div class="row">
 

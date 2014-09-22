@@ -7,12 +7,3 @@ C:\Projects\Axios\obj\Debug\Axios.vbproj.GenerateResource.Cache
 C:\Projects\Axios\obj\Debug\Axios.dll
 C:\Projects\Axios\obj\Debug\Axios.xml
 C:\Projects\Axios\obj\Debug\Axios.pdb
-C:\Users\David\Desktop\AxiosClone\AxiosDev\bin\Axios.dll.config
-C:\Users\David\Desktop\AxiosClone\AxiosDev\bin\Axios.dll
-C:\Users\David\Desktop\AxiosClone\AxiosDev\bin\Axios.pdb
-C:\Users\David\Desktop\AxiosClone\AxiosDev\bin\Axios.xml
-C:\Users\David\Desktop\AxiosClone\AxiosDev\obj\Debug\Axios.Resources.resources
-C:\Users\David\Desktop\AxiosClone\AxiosDev\obj\Debug\Axios.vbproj.GenerateResource.Cache
-C:\Users\David\Desktop\AxiosClone\AxiosDev\obj\Debug\Axios.dll
-C:\Users\David\Desktop\AxiosClone\AxiosDev\obj\Debug\Axios.xml
-C:\Users\David\Desktop\AxiosClone\AxiosDev\obj\Debug\Axios.pdb

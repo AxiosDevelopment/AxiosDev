@@ -36,8 +36,8 @@ Public Class AddClient
         'End If
 
       Catch ex As Exception
-      ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
-    End Try
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
+      End Try
 
     End If
 
@@ -58,11 +58,13 @@ Public Class AddClient
         Dim company As New Company
         company = FillClient(ClientIDText.Text)
         If ClientIDText.Text = "0" Then
-          InsertClient(company)
+          If Not InsertClient(company) Then
+            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "NoPrimaryContact", "NoPrimaryContact()", True)
+            Exit Sub
+          End If
         Else
           UpdateClient(company)
         End If
-        'Session.Remove("ClientID")
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopup", "messagedSaved()", True)
 
       Catch ex As Exception
@@ -77,7 +79,7 @@ Public Class AddClient
   ''' Save New Facility
   ''' </summary>
   ''' <remarks></remarks>
-  Private Sub InsertClient(c As Company)
+  Private Function InsertClient(c As Company) As Boolean
 
     Dim cDA As New CompanyDA
     Dim id As Integer
@@ -87,11 +89,22 @@ Public Class AddClient
       contacts = CType(Session("Contacts"), List(Of Contact))
     End If
 
+    'Need to check if one Primary Contact is added before Inserting New Client
+    Dim Primaries = (From p In contacts
+                    Where p.TypeID = 1
+                    Select p).Count()
+
+    If Primaries < 1 Then
+      Return False
+    End If
+
     c.Contacts = contacts
 
     id = cDA.InsertCompany(c)
 
-  End Sub
+    Return True
+
+  End Function
 
   ''' <summary>
   ''' Update Existing Facility
@@ -188,8 +201,6 @@ Public Class AddClient
 
     BindContacts(company.Contacts)
 
-    'Session("ClientID") = ClientIDText.Text
-
   End Sub
 
   ''' <summary>
@@ -203,25 +214,51 @@ Public Class AddClient
     Dim contacts As New List(Of Contact)
     Dim ctDA As New ContactDA
     Dim resultId As New Integer
+    Dim contact As Contact
+
+    If Session("Contacts") IsNot Nothing Then
+      contacts = CType(Session("Contacts"), List(Of Contact))
+    End If
 
     If ClientIDText.Text = "0" Then
 
-      'We will only cache the contacts if the Client is a new cient (hasn't been saved and doesn't have an ID yet)
-      If Session("Contacts") IsNot Nothing Then
-        contacts = CType(Session("Contacts"), List(Of Contact))
+      ''We will only cache the contacts if the Client is a new cient (hasn't been saved and doesn't have an ID yet)
+      'If Session("Contacts") IsNot Nothing Then
+      '  contacts = CType(Session("Contacts"), List(Of Contact))
+      'End If
+
+      'Check if Contact Id exists
+      If hContactID.Value = "0" Then
+        contact = FillContact(contacts.Count + 1, ClientIDText.Text)
+      Else
+        contact = FillContact(hContactID.Value, ClientIDText.Text)
       End If
-      Dim contact = FillContact(contacts.Count + 1, ClientIDText.Text)
+
+      'Check if at least one primary and that it hasn't been changed
+      If Not CheckPrimaryContact(contact, contacts) Then
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "NoPrimaryContact", "NoPrimaryContact()", True)
+        Exit Sub
+      End If
+
       contacts.Add(contact)
 
+      'Reset flag so if Clear Contact button is clicked, it will only clear the controls
+      'and not the grid.
+      'resetContactSession.Value = "0"
     Else
       'Insert or Update new Contact for existing client
       If hContactID.Value = "0" Then
         'Insert New Contact
-        Dim contact = FillContact(0, ClientIDText.Text)
+        contact = FillContact(0, ClientIDText.Text)
         resultId = ctDA.InsertContact(contact)
       Else
         'Update Existing Contact
-        Dim contact = FillContact(hContactID.Value, ClientIDText.Text)
+        contact = FillContact(hContactID.Value, ClientIDText.Text)
+        'Check if at least one primary and that it hasn't been changed
+        If Not CheckPrimaryContact(contact, contacts) Then
+          ScriptManager.RegisterStartupScript(Me, Me.GetType(), "NoPrimaryContact", "NoPrimaryContact()", True)
+          Exit Sub
+        End If
         resultId = ctDA.UpdateContact(contact)
       End If
 
@@ -235,6 +272,8 @@ Public Class AddClient
 
     'Bind contacts to gridview
     BindContacts(contacts)
+
+    hContactID.Value = "0"
 
     If ClientIDText.Text = "0" And contacts.Count = 1 Then
       ScriptManager.RegisterStartupScript(Me, Me.GetType(), "MustSaveClientToSaveContacts", "MustSaveClientToSaveContacts()", True)
@@ -330,13 +369,14 @@ Public Class AddClient
   ''' <remarks></remarks>
   Protected Sub ClearContact_Click(sender As Object, e As EventArgs) Handles ClearContact.Click
 
+    'Clear controls on form for Contacts
     ClearContactControls()
-    If resetContactSession.Value = "1" Then
-      Session.Remove("Contacts")
-      resetContactSession.Value = "0"
-      grvContacts.DataSource = Nothing
-      grvContacts.DataBind()
-    End If
+    'If resetContactSession.Value = "1" Then
+    '  Session.Remove("Contacts")
+    '  resetContactSession.Value = "0"
+    '  grvContacts.DataSource = Nothing
+    '  grvContacts.DataBind()
+    'End If
 
   End Sub
 
@@ -423,7 +463,37 @@ Public Class AddClient
     Session.Remove("Contacts")
     grvContacts.DataSource = Nothing
     grvContacts.DataBind()
-    resetContactSession.Value = "1"
+    'resetContactSession.Value = "1"
   End Sub
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <param name="contact"></param>
+  ''' <param name="contacts"></param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
+  Private Function CheckPrimaryContact(contact As Contact, contacts As List(Of Contact)) As Boolean
+
+    Dim numberOfPrimaries = (From np In contacts
+                             Where np.TypeID = 1
+                             Select np).Count()
+
+
+    If numberOfPrimaries = 1 Then
+
+      Dim Primary = (From p In contacts
+                    Where p.TypeID = 1
+                    Select p).SingleOrDefault()
+
+      If Primary.ContactID = contact.ContactID And contact.TypeID <> 1 Then
+        Return False
+      End If
+
+    End If
+
+    Return True
+
+  End Function
 
 End Class
