@@ -163,7 +163,7 @@ Public Class MessageDA
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
-    SQL.Append("UPDATE Msg SET ")
+    SQL.Append("UPDATE MESSAGE SET ")
     SQL.Append("MsgTo = '" & m.MsgTo & "',")
     SQL.Append("MsgFrom = '" & m.MsgFrom & "',")
     SQL.Append("MsgPhone = '" & m.Phone & "',")

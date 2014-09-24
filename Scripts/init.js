@@ -439,15 +439,15 @@ $(function () {
       cache: false
     }).done(function (data) {
       alert("Updated Successfully");
-    }).fail(function (data) {
-      alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+    }).fail(function (data, status, error) {
+      alert(error);
     });
   });
   $('.updateCounselor').on('click', function () {
     var updateId = $(this).attr('id');
     var contactName = $(this).next('input').val();
     var contactNumber = $(this).next().next('input').val();
-    var contactId = $(this).next().next().next('input').val();
+    var contactId = $(this).next().next().next().next('input').val();
     $.ajax({
       url: "UpdateInformation.aspx?",
       data: "contactId=" + contactId + "&contactName=" + contactName + "&contactNumber=" + contactNumber + "&clientId=" + clientId + "&updateId=" + updateId,
@@ -460,8 +460,8 @@ $(function () {
         $('#updateSecondaryCounselor').attr('disabled', true);
       }
       alert("Updated Successfully");
-    }).fail(function (data) {
-      alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+    }).fail(function (data, status, error) {
+      alert(error);
     });
   });
   $(document).on('click', function (e) {

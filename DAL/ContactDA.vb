@@ -148,7 +148,7 @@ Public Class ContactDA
     db = New dbUtil()
 
     SQL.Append("UPDATE CONTACT SET ")
-    SQL.Append("[ContactName] = " & c.Name & ",")
+    SQL.Append("[ContactName] = '" & c.Name & "',")
     SQL.Append("[ContactPhone] = '" & c.Phone & "',")
     SQL.Append("[UpdatedDateTime] = '" & Date.Now & "' ")
     SQL.Append("WHERE ContactID = " & c.ContactID)

@@ -91,7 +91,7 @@ Public Class Messages
     AdditionalNotes = company.AdditionalNotes
 
     For Each c As Contact In company.Contacts
-      Select Case c.Type
+      Select Case c.TypeID
         Case 1 'Primary Contact
           PrimaryContactName = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
           PrimaryContactInfo = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")

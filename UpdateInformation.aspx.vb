@@ -57,11 +57,9 @@ Public Class UpdateInformation
 
         End If
 
-        Response.Write("Updated Successfully")
-
       Catch ex As Exception
         Response.StatusCode = 500 'Set STATUSCODE to trigger error on ajax call
-        Response.Write(ex.Message)
+        Response.StatusDescription = "Update has failed. Please try again."
         Response.End()
       End Try
 
@@ -83,12 +81,31 @@ Public Class UpdateInformation
     contact.CompanyID = id
     contact.Name = cName
     contact.Phone = cNumber
-    contact.Type = conType
+    contact.TypeID = conType
 
     If cId = 0 Then
+
+      If contact.TypeID = 2 Then
+        If contact.Name = "" And contact.Phone = "" Then
+          Exit Sub
+        End If
+      End If
       result = cDA.InsertContact(contact)
+
     Else
-      result = cDA.UpdateContactSimple(contact)
+
+      If contact.Name = "" And contact.Phone = "" Then
+        If contact.TypeID = 1 Then
+          Response.StatusCode = 500 'Set STATUSCODE to trigger error on ajax call
+          Response.StatusDescription = "Primary Contact (Counselor On Call) is required."
+          Response.End()
+        ElseIf contact.TypeID = 2 Then
+          result = cDA.DeleteContact(contact.ContactID)
+        End If
+      Else
+        result = cDA.UpdateContactSimple(contact)
+      End If
+
     End If
 
   End Sub
