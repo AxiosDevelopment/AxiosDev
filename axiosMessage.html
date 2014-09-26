@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+	<style>
+		@media print {
+			button {
+				display: none;
+			}
+		}
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		#while p {
+			font-family: 'Satisfy', cursive;
+		}
+		.left {
+			float: left;
+		}
+		.right {
+			float: right;
+		}
+		.clearfix {
+			clear:both;
+		}
+		
+		.mTB10 {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		.border {
+			border: 1px solid #000;
+		}
+		#message {
+			width: 410px;
+			margin: 0 auto;
+		}
+		#messagebody {
+			width: 400px;
+			margin: 20px auto;
+			padding: 5px;
+			min-height: 410px;
+			position: relative;
+		}
+		.row {
+			width: 100%;
+		}
+		#companyTitle {
+			margin: 0 0 5px;
+			text-align: center;
+			font-size: 1.5em;
+		}
+		#to {
+			width: 240px;
+		}
+		#date {
+			width: 80px;
+		}
+		#time {
+			width: 80px;
+		}
+		#while {
+			font-size: 2em;
+			text-align: center;
+			width: 100%;
+			margin: 5px 0;
+		}
+		
+		.phone {
+			width: 30%;
+			text-align: center;
+		}
+		.ext {
+			width: 30%;
+			text-align: center;
+		}
+		#footer {
+			position: absolute;
+			bottom: 0;
+		}
+		
+		#footer p:last-of-type {
+			margin-right: 8px;
+		}
+		
+		#delivered {
+			margin-right: 34px;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="message">
+		<div id="messagebody" class="border">
+			<div id="row">
+				<div id="companyTitle" class="border">
+					<p><strong>Axios Services Inc</strong></p>
+				</div>
+			</div>
+			<div id="row">
+				<div id="to" class="left">
+					<p><strong>To:</strong></p>
+					<p>Some Guy</p>
+				</div>
+				<div id="date" class="left">
+					<p><strong>Date:</strong></p>
+					<p >8/23/14</p>
+				</div>
+				<div id="time" class="left">
+					<p><strong>Time:</strong></p>
+					<p>12:00 pm</p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div id="while">
+				<p>While You Were Away</p>
+			</div>
+			<div class="row mTB10">
+				<div id="from">
+					<p><strong>From:</strong></p>
+					<p>Some Random Dude</p>
+				</div>
+			</div>
+			<div class="row">
+				<div id="phone" class="left phone">
+					<p><strong>Phone:</strong></p>
+					<p>951-234-2345</p>
+				</div>
+				<div id="ext" class="left ext">
+					<p><strong>Ext. #:</strong></p>
+					<p>12345</p>
+				</div>
+				<div id="altPhone" class="left phone">
+					<p><strong>Alt Phone:</strong></p>
+					<p>951-123-4532</p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row mTB10"> 
+				<div id="newMessage">
+					<p><strong>Message:</strong></p>
+					<p>This is a test Message fr new messages</p>
+				</div>
+			</div>
+			<div class="row" id="footer">
+				<p id="delivered" class="left">Delivered by</p>
+				<p class="left"><strong>Axios Communications</strong></p>
+				<p class="right">951-234-0214</p>
+			</div>
+		</div>
+		<button id="print" onclick="window.print()">Print</button>
+	</div>
+</body>
+</html>

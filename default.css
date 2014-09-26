@@ -127,6 +127,10 @@ hr {
 	padding-top: 5px;
 }
 
+.ml_10 {
+    margin-left: 10px;
+}
+
 caption {
     border-bottom: 1px solid #3c3c3c;
     font-size: 1.5em;
@@ -454,6 +458,7 @@ table {
 th, td {
 	border-bottom: 1px solid #606060;
 	padding: 5px 3px ;
+    vertical-align: top;
 }
 
 /** ADDING FACILITIES/DOCS/CLIENTS */

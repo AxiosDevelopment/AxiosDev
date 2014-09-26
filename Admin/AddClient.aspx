@@ -87,9 +87,9 @@
         <ul>
           <li class="first"><a href="../Main.aspx" title="">Main Menu</a></li>
           <!-- POPUP WITH FORM TO ADD NEW FACILITY -->
-          <li><a href="AddFacility.aspx" title="">Add Facility</a></li>
+          <li><a href="AddFacility.aspx" title="">Manage Facilities</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-          <li><a href="AddPhysician.aspx" title="">Add Doctor</a></li>
+          <li><a href="AddPhysician.aspx" title="">Manage Doctors</a></li>
         </ul>
       </div>
       <div id="page">

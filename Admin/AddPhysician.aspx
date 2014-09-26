@@ -38,9 +38,9 @@
         <ul>
           <li class="first"><a href="../Main.aspx" title="">Main Menu</a></li>
           <!-- POPUP WITH FORM TO ADD NEW FACILITY -->
-          <li><a href="AddFacility.aspx" title="">Add Facility</a></li>
+          <li><a href="AddFacility.aspx" title="">Manage Facilities</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-          <li><a href="AddClient.aspx" title="">Add Client</a></li>
+          <li><a href="AddClient.aspx" title="">Manage Clients</a></li>
         </ul>
       </div>
       <div id="page">
@@ -77,10 +77,7 @@
                       <asp:RequiredFieldValidator ID="ReqPhysicianPhone" runat="server" ErrorMessage="Physician Phone Number is required" ControlToValidate="physicianPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:RegularExpressionValidator ID="RegExPhysicianPhone" ControlToValidate="physicianPhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
                     </div>
-                    <div class="left mr_10">
-                      <label for="physicianPhoneExt">Ext.</label><br />
-                      <asp:TextBox ID="physicianPhoneExt" runat="server" class="physician" Width="30"></asp:TextBox>
-                    </div>
+                   
                     <div class="clearfix"></div>
                     <div class="mTop10">
                       <input type="hidden" name="physicianId" id="physicianId" value="0" runat="server" />

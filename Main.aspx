@@ -23,10 +23,11 @@
 		<div id="menu">
 			<ul>
 				<li class="first active"><a href="#" title="">Main Menu</a></li>
+                <li><a href="/Admin/AddClient.aspx" title="">Manage Cients</a></li>
 				<!-- POPUP WITH FORM TO ADD NEW FACILITY -->
-				<li><a href="/Admin/AddFacility.aspx" title="">Add Facility</a></li>
+				<li><a href="/Admin/AddFacility.aspx" title="">Manage Facilities</a></li>
 				<!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-				<li><a href="/Admin/AddPhysician.aspx" title="">Add Doctor</a></li>
+				<li><a href="/Admin/AddPhysician.aspx" title="">Manage Doctors</a></li>
 			</ul>
 		</div>
 		<div id="page">
@@ -38,6 +39,7 @@
 					</div>
 					<div class="entry">
 						<div class="right" id="messages">
+                        <h2 class="mTop10 ml_10">Messages on hold</h2>
 						<table width="100%" id="MessageTable" runat="server">
 							<tr>
 								<th id="status">Status</th>
@@ -47,6 +49,7 @@
 						</table>
 						</div>
 						<div class="left" id="clients">
+                            <h2 class="mTop10 ml_10">Client List</h2>
 							<table width="100%" id="ClientTable" runat="server">
 							<tr>
 								<th id="clientName">Client Name</th>
