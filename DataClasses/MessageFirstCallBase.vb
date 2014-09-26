@@ -4,7 +4,6 @@
   Public Property CreatedDateTime As Date
   Public Property CompanyID As Integer
   Public Property CompanyName As String
-  Public Property Status As String
   Public Property MessageType As String
 
 

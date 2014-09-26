@@ -127,37 +127,9 @@
                 </div>
                 <div id="mainInfo" class="right">
                     <h2>Client Information</h2>
-                    <table width="100%">
-                        <tr>
-                            <td><strong>Address:</strong></td>
-                            <td>1234 Some Company Address</td>
-                        </tr>
-                        <tr>
-                            <td><strong>City:</strong></td>
-                            <td>Some Big City</td>
-                        </tr>
-                        <tr>
-                            <td><strong>State:</strong></td>
-                            <td>CA</td>
-                        </tr>
-                         <tr>
-                            <td><strong>Phone 1:</strong></td>
-                            <td>(909)345-3456</td>
-                        </tr>
-                         <tr>
-                            <td><strong>Phone 2:</strong></td>
-                            <td>(909)343-3456</td>
-                        </tr>
-                         <tr>
-                            <td><strong>Hours:</strong></td>
-                            <td>Monday-Friday 8:00am - 9:00pm</td>
-                        </tr>
+                    <table id="cInformation" width="100%" runat="server">
                     </table>
-                    <table width="100%">
-                        <tr>
-                            <td><strong>Client Instructions:</strong></td>
-                            <td>Some random instructions that describe special instructions the client has specified. They will not exist at time, which will leave this field blank. However, the client may have a bunch of instructions. Who knows.</td>
-                        </tr>
+                    <table id="cInstructions" width="100%" runat="server">
                     </table>
                 </div>
               </div>

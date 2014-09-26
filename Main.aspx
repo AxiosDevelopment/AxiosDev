@@ -42,8 +42,7 @@
                         <h2 class="mTop10 ml_10">Messages on hold</h2>
 						<table width="100%" id="MessageTable" runat="server">
 							<tr>
-								<th id="status">Status</th>
-								<th id="firstCall">FCall</th>
+								<th id="firstCall">First Call</th>
 								<th id="client">Client</th>
 							</tr>
 						</table>

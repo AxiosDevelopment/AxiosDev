@@ -163,11 +163,13 @@ Public Class SearchInformation
     Dim mDA As New MessageDA
     Dim messages As List(Of Message)
     Dim strHTML As New StringBuilder()
+    Dim isDelivered As String
 
     messages = mDA.GetMessages(search)
 
     For Each m As Message In messages
-      strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & m.ID.ToString() & "&ClientId=" & m.CompanyID.ToString() & """><span class=""to"">To: " & m.MsgTo.ToString() & "</span><span class=""from"">From: " & m.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
+      isDelivered = If(m.Delivered = 0, "On Hold", "Delivered")
+      strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & m.ID.ToString() & "&ClientId=" & m.CompanyID.ToString() & """><span class=""to"">Status: " & isDelivered & "</span><span class=""to"">To: " & m.MsgTo.ToString() & "</span><span class=""from"">From: " & m.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
     Next
 
     Response.Write(strHTML.ToString())
@@ -184,12 +186,13 @@ Public Class SearchInformation
     Dim fcDA As New FirstCallDA
     Dim firstCalls As List(Of FirstCall)
     Dim strHTML As New StringBuilder()
+    Dim isDelivered As String
 
     firstCalls = fcDA.GetFirstCalls(search)
 
     For Each fc As FirstCall In firstCalls
-      strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">To: Need Value</span><span class=""from"">From: Need Value Here</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
-      'strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">To: " & fc.MsgTo.ToString() & "</span><span class=""from"">From: " & fc.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
+      isDelivered = If(fc.Delivered = 0, "On Hold", "Delivered")
+      strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">Status: " & isDelivered & "</span><span class=""from"">Place Of Death: " & fc.PlaceOfDeath & "</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
     Next
 
     Response.Write(strHTML.ToString())

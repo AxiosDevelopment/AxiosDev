@@ -95,7 +95,7 @@ Public Class FirstCallDA
     SQL.Append(",[FirstTelephoneofInforKin],[FirstWorkPhoneForKin],[FirstWorkExt],[FirstDoctor],[FirstDoctorPhone],[FirstDatePatientSeen],[FirstCoroner],[FirstFileNumber],[FirstCounselorContacted],[FirstDateContacted]")
     SQL.Append(",[FirstNotes],[FirstOperatorCallNotes],[FirstDelivered],[FirstDateTimeDelivered],[FirstMedNoteBox],[FirstCustCallInfo],[FirstHold]")
     SQL.Append("FROM [FIRST_CALL] WITH (NOLOCK) ")
-    SQL.Append("WHERE FirstCompanyID = " & search.ToString())
+    SQL.Append("WHERE FirstCompanyID = " & search.ToString() & " ORDER BY FirstCallDateTime DESC")
 
     rsData = db.GetDataReader(SQL.ToString())
 

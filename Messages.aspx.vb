@@ -105,6 +105,94 @@ Public Class Messages
       End Select
     Next
 
+    Dim row As HtmlTableRow
+    Dim cell As HtmlTableCell
+
+    row = New HtmlTableRow()
+    cell = New HtmlTableCell With {.InnerText = "Address:"}
+    cell.Style.Add("font-weight", "bold")
+    row.Controls.Add(cell)
+    cell = New HtmlTableCell With {.InnerText = company.Address}
+    row.Controls.Add(cell)
+    cInformation.Controls.Add(row)
+
+    row = New HtmlTableRow()
+    cell = New HtmlTableCell With {.InnerText = "City:"}
+    cell.Style.Add("font-weight", "bold")
+    row.Controls.Add(cell)
+    cell = New HtmlTableCell With {.InnerText = company.City}
+    row.Controls.Add(cell)
+    cInformation.Controls.Add(row)
+
+    row = New HtmlTableRow()
+    cell = New HtmlTableCell With {.InnerText = "State:"}
+    cell.Style.Add("font-weight", "bold")
+    row.Controls.Add(cell)
+    cell = New HtmlTableCell With {.InnerText = company.State}
+    row.Controls.Add(cell)
+    cInformation.Controls.Add(row)
+
+    row = New HtmlTableRow()
+    cell = New HtmlTableCell With {.InnerText = "Phone 1:"}
+    cell.Style.Add("font-weight", "bold")
+    row.Controls.Add(cell)
+    cell = New HtmlTableCell With {.InnerText = company.MainTelephone}
+    row.Controls.Add(cell)
+    cInformation.Controls.Add(row)
+
+    row = New HtmlTableRow()
+    cell = New HtmlTableCell With {.InnerText = "Phone 2:"}
+    cell.Style.Add("font-weight", "bold")
+    row.Controls.Add(cell)
+    cell = New HtmlTableCell With {.InnerText = company.MainTelephone2nd}
+    row.Controls.Add(cell)
+    cInformation.Controls.Add(row)
+
+    row = New HtmlTableRow()
+    cell = New HtmlTableCell With {.InnerText = "Hours:"}
+    cell.Style.Add("font-weight", "bold")
+    row.Controls.Add(cell)
+    cell = New HtmlTableCell With {.InnerText = company.HoursOfOperation}
+    row.Controls.Add(cell)
+    cInformation.Controls.Add(row)
+
+
+    row = New HtmlTableRow()
+    cell = New HtmlTableCell With {.InnerText = "Client Instructions:"}
+    cell.Style.Add("font-weight", "bold")
+    row.Controls.Add(cell)
+    cell = New HtmlTableCell With {.InnerText = company.InstructionSheet}
+    row.Controls.Add(cell)
+    cInstructions.Controls.Add(row)
+
+    ' <tr>
+    '    <td><strong>Address:</strong></td>
+    '    <td>1234 Some Company Address</td>
+    '</tr>
+    '<tr>
+    '    <td><strong>City:</strong></td>
+    '    <td>Some Big City</td>
+    '</tr>
+    '<tr>
+    '    <td><strong>State:</strong></td>
+    '    <td>CA</td>
+    '</tr>
+    '  <tr>
+    '    <td><strong>Phone 1:</strong></td>
+    '    <td>(909)345-3456</td>
+    '</tr>
+    '  <tr>
+    '    <td><strong>Phone 2:</strong></td>
+    '    <td>(909)343-3456</td>
+    '</tr>
+    '  <tr>
+    '    <td><strong>Hours:</strong></td>
+    '    <td>Monday-Friday 8:00am - 9:00pm</td>
+    '</tr>
+
+
+
+
   End Sub
 
   ''' <summary>

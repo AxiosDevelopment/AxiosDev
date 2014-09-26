@@ -71,7 +71,7 @@ Public Class MessageDA
     Dim db As dbUtil = New dbUtil()
     Dim messages As New List(Of Message)
 
-    rsData = db.GetDataReader("SELECT MsgID, MsgDateTime, MsgCompanyID, MsgTo, MsgFrom, MsgBusiness, MsgPhone, MsgAltPhone, MsgQwkMsgs, MsgMessage, MsgOperatorNotes, MsgHoldMsg, MsgDelDateTime, MsgDeliver, MsgOnCall, MsgProcedure FROM MESSAGE WITH (NOLOCK) WHERE MsgCompanyID = " & search)
+    rsData = db.GetDataReader("SELECT MsgID, MsgDateTime, MsgCompanyID, MsgTo, MsgFrom, MsgBusiness, MsgPhone, MsgAltPhone, MsgQwkMsgs, MsgMessage, MsgOperatorNotes, MsgHoldMsg, MsgDelDateTime, MsgDeliver, MsgOnCall, MsgProcedure FROM MESSAGE WITH (NOLOCK) WHERE MsgCompanyID = " & search & " ORDER BY MsgDateTime DESC")
     If rsData.HasRows Then
 
       Do While rsData.Read

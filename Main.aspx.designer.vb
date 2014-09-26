@@ -23,15 +23,6 @@ Partial Public Class Main
   Protected WithEvents MessageTable As Global.System.Web.UI.HtmlControls.HtmlTable
 
   '''<summary>
-  '''status control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents status As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
   '''firstCall control.
   '''</summary>
   '''<remarks>

@@ -116,9 +116,9 @@ Public Class Main
 
         'End If
         row = New HtmlTableRow()
-        'Status
-        cell = New HtmlTableCell With {.InnerText = m.Status}
-        row.Controls.Add(cell)
+        ''Status
+        'cell = New HtmlTableCell With {.InnerText = m.Status}
+        'row.Controls.Add(cell)
         'First Call or Message
         If m.MessageType.ToUpper() = "FIRSTCALL" Then
           cell = New HtmlTableCell With {.InnerText = "Yes"}
@@ -146,7 +146,7 @@ Public Class Main
     Else
       row = New HtmlTableRow()
       cell = New HtmlTableCell With {.InnerText = "No Messages Found"}
-      cell.ColSpan = 3
+      cell.ColSpan = 2
       row.Controls.Add(cell)
       MessageTable.Controls.Add(row)
     End If
