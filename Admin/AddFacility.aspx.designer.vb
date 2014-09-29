@@ -68,13 +68,22 @@ Partial Public Class AddFacility
   Protected WithEvents ReqFacAddr As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''facType control.
+  '''FacilityType control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents facType As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents FacilityType As Global.System.Web.UI.WebControls.DropDownList
+
+  '''<summary>
+  '''ReqFacType control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqFacType As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''facCity control.
@@ -201,6 +210,15 @@ Partial Public Class AddFacility
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents phoneExt As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''facilityNotesA control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents facilityNotesA As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
   '''facilityId control.

@@ -153,7 +153,9 @@
                   <div class="row">
                     <div class="left mr_10">
                       <label for="facTypes">Facility Type</label><br />
-                      <asp:dropdownlist ID="facTypes" class="facility" runat="server" Width="100"></asp:dropdownlist>
+                      <asp:DropDownList ID="facTypes" runat="server" class="facility" Width="100">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                      </asp:DropDownList>
                     </div>
                     <div class="left mr_10">
                       <label for="facCity">City</label><br />
@@ -297,7 +299,7 @@
                   <label for="facilityNotes" class="left pTop5">Facility Notes</label>
                   <asp:Button ID="FacilityNotesUpdate" CssClass="right" runat="server" Text="Update" />
                   <asp:TextBox ID="facilityNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
-                  
+
                 </div>
               </form>
             </div>

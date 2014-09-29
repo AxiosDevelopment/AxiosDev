@@ -320,13 +320,13 @@ Partial Public Class FirstCalls
   Protected WithEvents ReqFacAddr As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
-  '''facType control.
+  '''facTypes control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents facType As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents facTypes As Global.System.Web.UI.WebControls.DropDownList
 
   '''<summary>
   '''facCity control.
@@ -572,15 +572,6 @@ Partial Public Class FirstCalls
   Protected WithEvents RegExPhysicianPhone As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
   '''<summary>
-  '''physicianPhoneExt control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents physicianPhoneExt As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
   '''physicianDate control.
   '''</summary>
   '''<remarks>
@@ -725,13 +716,13 @@ Partial Public Class FirstCalls
   Protected WithEvents specialInstructionsR As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''specialInstructionsA control.
+  '''operatorNotes control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents specialInstructionsA As Global.System.Web.UI.WebControls.TextBox
+  Protected WithEvents operatorNotes As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
   '''RBMessageStatus control.
@@ -777,22 +768,4 @@ Partial Public Class FirstCalls
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents facilityNotes As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''Button1 control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
-
-  '''<summary>
-  '''operatorNotes control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents operatorNotes As Global.System.Web.UI.WebControls.TextBox
 End Class

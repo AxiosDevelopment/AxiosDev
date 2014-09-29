@@ -1,8 +1,22 @@
-﻿Public Class AddFacility
+﻿Imports System.Data.SqlClient
+
+Public Class AddFacility
   Inherits System.Web.UI.Page
 
   Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+    If Not (Page.IsPostBack) Then
+
+      Try
+
+        'Get Lookup Data
+        GetFacilityTypeLookup()
+
+      Catch ex As Exception
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
+      End Try
+
+    End If
 
   End Sub
 
@@ -71,6 +85,7 @@
     Dim business As New Business
 
     business.BusinessID = fId
+    business.TypeID = FacilityType.SelectedItem.Value
     business.Name = placeOfDeath.Text
     business.Address = facilityAddr.Text
     business.City = facCity.Text
@@ -79,9 +94,27 @@
     business.Zip = facilityZip.Text
     business.Phone = facilityPhone.Text
     business.PhoneExt = phoneExt.Text
+    business.Notes = facilityNotesA.Text
 
     Return business
 
   End Function
 
+  ''' <summary>
+  ''' Get Client Types for Dropdown control
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetFacilityTypeLookup()
+
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
+
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT BusinessTypeID, BusinessType FROM LK_BUSINESS_TYPE WITH (NOLOCK) ORDER BY BusinessType ASC")
+
+    Do While rsData.Read()
+      FacilityType.Items.Add(New ListItem(rsData("BusinessType").ToString(), rsData("BusinessTypeID").ToString()))
+    Loop
+
+  End Sub
 End Class

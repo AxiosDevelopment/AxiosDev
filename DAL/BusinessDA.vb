@@ -15,12 +15,13 @@ Public Class BusinessDA
     Dim db As dbUtil = New dbUtil()
     Dim business As New Business
 
-    rsData = db.GetDataReader("SELECT BusinessID, BusinessName, BusinessAddress, BusinessCity, BusinessState, BusinessZip, BusinessCounty, BusinessPhone, BusinessExt, BusinessAltPhone, BusinessOwnerSupVis, BusinessNotes FROM BUSINESS WITH (NOLOCK) WHERE BusinessID = " + id)
+    rsData = db.GetDataReader("SELECT BusinessID, BusinessTypeID, BusinessName, BusinessAddress, BusinessCity, BusinessState, BusinessZip, BusinessCounty, BusinessPhone, BusinessExt, BusinessAltPhone, BusinessOwnerSupVis, BusinessNotes FROM BUSINESS WITH (NOLOCK) WHERE BusinessID = " + id)
 
     If rsData.HasRows Then
 
       Do While rsData.Read
         business.BusinessID = rsData("BusinessID")
+        business.TypeID = rsData("BusinessTypeID")
         business.Name = rsData("BusinessName")
         business.Address = db.ClearNull(rsData("BusinessAddress"))
         business.City = db.ClearNull(rsData("BusinessCity"))
@@ -119,9 +120,10 @@ Public Class BusinessDA
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
-    SQL.Append("INSERT INTO [dbo].[BUSINESS]([BusinessName],[BusinessAddress],[BusinessCity],[BusinessState],[BusinessZip],[BusinessCounty],[BusinessPhone],[BusinessExt],[BusinessAltPhone],[BusinessOwnerSupVis],[BusinessNotes])")
+    SQL.Append("INSERT INTO [dbo].[BUSINESS]([BusinessTypeID],[BusinessName],[BusinessAddress],[BusinessCity],[BusinessState],[BusinessZip],[BusinessCounty],[BusinessPhone],[BusinessExt],[BusinessAltPhone],[BusinessOwnerSupVis],[BusinessNotes])")
     SQL.Append(" VALUES ")
-    SQL.Append("('" & b.Name & "',") 'BusinessName
+    SQL.Append("(" & b.TypeID & ",") 'BusinessTypeID
+    SQL.Append("'" & b.Name & "',") 'BusinessName
     SQL.Append("'" & b.Address & "',") 'BusinessAddress
     SQL.Append("'" & b.City & "',") 'BusinessCity
     SQL.Append("'" & b.State & "',") 'BusinessState
@@ -153,6 +155,7 @@ Public Class BusinessDA
     db = New dbUtil()
 
     SQL.Append("UPDATE BUSINESS SET ")
+    SQL.Append("BusinessTypeID = '" & b.TypeID & "',") 'BusinessTypeID
     SQL.Append("BusinessName = '" & b.Name & "',") 'BusinessName
     SQL.Append("BusinessAddress = '" & b.Address & "',") 'BusinessAddress
     SQL.Append("BusinessCity = '" & b.City & "',") 'BusinessCity
