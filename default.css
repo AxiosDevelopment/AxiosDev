@@ -851,9 +851,9 @@ input[type=radio] {
 	width: 7em;
 }
 
-.login input{
+.login input[type="text"] {
 	float: left;
-	width: 150px;
+	width: 209px;
 	margin-bottom: 10px;
 }
 
