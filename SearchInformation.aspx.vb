@@ -57,7 +57,8 @@ Public Class SearchInformation
               GetClients(searchString)
 
             Case "clientAuto" 'When clicking an item on the client autocomplete textbox
-              'NEED TO DO
+              searchString = Request.QueryString.Get("clientId").ToString()
+              GetClient(searchString)
 
             Case Else
 
@@ -162,11 +163,13 @@ Public Class SearchInformation
     Dim mDA As New MessageDA
     Dim messages As List(Of Message)
     Dim strHTML As New StringBuilder()
+    Dim isDelivered As String
 
     messages = mDA.GetMessages(search)
 
     For Each m As Message In messages
-      strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & m.ID.ToString() & "&ClientId=" & m.CompanyID.ToString() & """><span class=""to"">To: " & m.MsgTo.ToString() & "</span><span class=""from"">From: " & m.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
+      isDelivered = If(m.Delivered = 0, "On Hold", "Delivered")
+      strHTML.Append("<li><a href=""Messages.aspx?MsgId=" & m.ID.ToString() & "&ClientId=" & m.CompanyID.ToString() & """><span class=""to"">Status: " & isDelivered & "</span><span class=""to"">To: " & m.MsgTo.ToString() & "</span><span class=""from"">From: " & m.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(m.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
     Next
 
     Response.Write(strHTML.ToString())
@@ -183,12 +186,13 @@ Public Class SearchInformation
     Dim fcDA As New FirstCallDA
     Dim firstCalls As List(Of FirstCall)
     Dim strHTML As New StringBuilder()
+    Dim isDelivered As String
 
     firstCalls = fcDA.GetFirstCalls(search)
 
     For Each fc As FirstCall In firstCalls
-      strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">To: Need Value</span><span class=""from"">From: Need Value Here</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
-      'strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">To: " & fc.MsgTo.ToString() & "</span><span class=""from"">From: " & fc.MsgFrom.ToString() & "</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
+      isDelivered = If(fc.Delivered = 0, "On Hold", "Delivered")
+      strHTML.Append("<li><a href=""FirstCalls.aspx?FirstCallId=" & fc.ID.ToString() & "&ClientId=" & fc.CompanyID.ToString() & """><span class=""to"">Status: " & isDelivered & "</span><span class=""from"">Place Of Death: " & fc.PlaceOfDeath & "</span><span class=""date"">Date: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortDate) & "</span><span class=""time"">Time: " & FormatDateTime(fc.CreatedDateTime.ToString(), DateFormat.ShortTime) & "</span></a></li>")
     Next
 
     Response.Write(strHTML.ToString())
@@ -214,6 +218,24 @@ Public Class SearchInformation
                 Select New With {c.CompanyID, c.Name}
 
     Dim json = js.Serialize(comps)
+
+    Response.Write(json)
+    Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well
+
+  End Sub
+
+  ''' <summary>
+  ''' This will return the client information based on the client selected from the autocomplete
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetClient(search As String)
+
+    Dim cDA As New CompanyDA
+    Dim company As Company
+    Dim js As New JavaScriptSerializer()
+
+    company = cDA.GetCompany(search)
+    Dim json = js.Serialize(company)
 
     Response.Write(json)
     Context.ApplicationInstance.CompleteRequest() 'need this or the whole page will be sent back as well

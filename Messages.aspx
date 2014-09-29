@@ -43,10 +43,11 @@
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- CLEAR FORM CREATED NEW MESSAGE ID ON SUBMIT -->
           <li><a href="Messages.aspx?ClientId=<%=cid%>&MsgId=0" title="">New Message</a></li>
+          <li><a href="admin/AddClient.aspx" title="">Manage Clients</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
           <li><a href="FirstCalls.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
-          <li><a id="printMessage" href="#" title="">Print Message</a></li>
+          <li><a id="printMessage" href="axiosMessage.html" target="_blank" title="">Print Message</a></li>
         </ul>
       </div>
       <div id="page">
@@ -71,21 +72,21 @@
                     </Scripts>
                   </asp:ScriptManager>
                   <label for="to">To:</label>
-                  <asp:TextBox ID="MsgTo" runat="server"></asp:TextBox>
+                  <asp:TextBox ID="MsgTo" runat="server" CssClass="fields"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="ReqTo" runat="server" ErrorMessage="To: is required" ControlToValidate="MsgTo" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="from">From:</label>
-                  <asp:TextBox ID="MsgFrom" runat="server"></asp:TextBox>
+                  <asp:TextBox ID="MsgFrom" runat="server" CssClass="fields"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="ReqFrom" runat="server" ErrorMessage="From: is required" ControlToValidate="MsgFrom" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="nMsgPhone">Phone:</label>
-                  <asp:TextBox ID="nMsgPhone" runat="server"></asp:TextBox>
+                  <asp:TextBox ID="nMsgPhone" runat="server" CssClass="fields"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="ReqPhone" runat="server" ErrorMessage="Phone: is required" ControlToValidate="nMsgPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="nMsgPhoneX">Ext:</label>
-                  <asp:TextBox ID="nMsgPhoneX" runat="server"></asp:TextBox>
+                  <asp:TextBox ID="nMsgPhoneX" runat="server" CssClass="fields"></asp:TextBox>
                   <label for="nMsgAlt">Alt:</label>
-                  <asp:TextBox ID="nMsgAlt" runat="server"></asp:TextBox>
+                  <asp:TextBox ID="nMsgAlt" runat="server" CssClass="fields"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="ReqAltPhone" runat="server" ErrorMessage="Alt: is required" ControlToValidate="nMsgAlt" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="nMsgAltX">Ext:</label>
-                  <asp:TextBox ID="nMsgAltX" runat="server"></asp:TextBox>
+                  <asp:TextBox ID="nMsgAltX" runat="server" CssClass="fields"></asp:TextBox>
                   <label for="QwkMessage">Msg:</label>
                   <asp:DropDownList ID="QwkMessage" runat="server">
                     <asp:ListItem Value="-1" Text="--Select--" />
@@ -93,10 +94,10 @@
                   <asp:RequiredFieldValidator ID="ReqQwkMessage" runat="server" ErrorMessage="Msg is required" ControlToValidate="QwkMessage" CssClass="ErrorMessage" Display="None" Text="*" InitialValue="-1"></asp:RequiredFieldValidator>
                   <br />
                   <label for="to">Message:</label><br />
-                  <asp:TextBox ID="MessageText" runat="server" TextMode="MultiLine"></asp:TextBox>
+                  <asp:TextBox ID="MessageText" runat="server" TextMode="MultiLine" CssClass="fields"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="ReqMessage" runat="server" ErrorMessage="A Message is required" ControlToValidate="MessageText" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="notes">Operator_Notes:</label><br />
-                  <asp:TextBox ID="Notes" runat="server" TextMode="MultiLine"></asp:TextBox>
+                  <asp:TextBox ID="Notes" runat="server" TextMode="MultiLine" CssClass="fields"></asp:TextBox>
                   <br />
 
                   <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass ="RadioListControl">
@@ -112,24 +113,24 @@
               <div class="right" id="clientInfo">
                 <div id="onCall" class="left">
                   <label for="onCallInfo">Counselor On Call</label>
-                  <button class="right updateCounselor" id="updateMainCounselor">Update</button>
                   <input type="text" id="primaryOnCall" name="onCallInfo" class="onCall" value="<%=PrimaryContactName%>" />
                   <input type="text" id="primaryContact" name="onCallInfo" class="onCall mTop5" value="<%=PrimaryContactInfo%>" /><br />
+                  <input type="hidden" name="primaryContactId" id="primaryContactId" value="0" runat="server" />
                   <br />
                   <label for="secondaryOnCallInfo">Secondary&nbsp;&nbsp;</label>
-                  <button class="left clearCounselor" id="clearSecondaryCounselor" style="width: 50px">Clear</button>
-                  <button class="right updateCounselor" id="updateSecondaryCounselor">Update</button>
                   <input type="text" id="secondaryOnCall" name="secondaryOnCall" class="onCall" value="<%=SecondaryContactName%>" />
                   <input type="text" id="secondaryContact" name="secondaryContact" class="onCall mTop5" value="<%=SecondaryContactInfo%>" /><br />
+                  <input type="hidden" name="secondaryContactId" id="secondaryContactId" value="0" runat="server" />
                   <br />
                   <label for="onCallNotes">Additional Notes</label>
-                  <button class="right update" id="updateAdditionalNotes">Update</button>
                   <textarea id="onCallNotes" class="onCall"><%=AdditionalNotes%></textarea>
                 </div>
                 <div id="mainInfo" class="right">
-                  <label for="clientMainInfo">Client Information</label>
-                  <button class="right update" id="updateClientInfo">Update</button>
-                  <textarea id="clientMainInfo"><%=ClientInformation%></textarea><br />
+                    <h2>Client Information</h2>
+                    <table id="cInformation" width="100%" runat="server">
+                    </table>
+                    <table id="cInstructions" width="100%" runat="server">
+                    </table>
                 </div>
               </div>
             </div>
@@ -161,5 +162,21 @@
     <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
   </div>
   <div id="containerBg"></div>
+    <script>
+        $('#menu ul li').on('click', function(e) {
+            var url = $(this).children('a').attr('href');
+            var urlID = $(this).children('a').attr('id');
+            var fields = $.trim($('.fields').val());
+            if (urlID != 'printMessage') {
+                if ((window.location.search.indexOf("MsgId=0") == -1) || (window.location.search.indexOf("MsgId=0") >= 0 && fields.length > 0)) {
+                    e.preventDefault();
+                    if (confirm("Before leaving this page, if you have made any changes to this message you will want to Submit Message before leaving. Do you want to Continue to the next page or Cancel to Save your changes?")) {
+                        window.location = url;
+                    }
+                }
+            }
+        });
+        $('#clientInfo input, #clientInfo textarea').prop('disabled', true)
+    </script>
 </body>
 </html>

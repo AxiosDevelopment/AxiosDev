@@ -127,6 +127,10 @@ hr {
 	padding-top: 5px;
 }
 
+.ml_10 {
+    margin-left: 10px;
+}
+
 caption {
     border-bottom: 1px solid #3c3c3c;
     font-size: 1.5em;
@@ -435,6 +439,7 @@ caption {
 
 .box-style4 .entry {
 	padding-top: 25px;
+	min-height: 322px;
 }
 
 .box-style4 .entry .title {
@@ -454,6 +459,7 @@ table {
 th, td {
 	border-bottom: 1px solid #606060;
 	padding: 5px 3px ;
+    vertical-align: top;
 }
 
 /** ADDING FACILITIES/DOCS/CLIENTS */
@@ -653,7 +659,7 @@ input[type=radio] {
 	height: 100px;
 }
 
-#specialInstructionsA {
+#operatorNotes  {
 	width: 400px;
 	height: 100px;
 }
@@ -662,7 +668,7 @@ input[type=radio] {
 	width: 200px;
 }
 
-#facilityNotes, #operatorNotes {
+#facilityNotes {
 	width: 195px;
 	height: 292px;
 }
@@ -716,6 +722,10 @@ input[type=radio] {
 }
 #autoSearch li:last-child {
     border-bottom: none;
+}
+
+.autoSearch li.active {
+    background: #FEBA37;
 }
 
 .autoSearch li:hover {
@@ -817,3 +827,36 @@ input[type=radio] {
   border-bottom: none;
 }
 
+/** ADD CLIENT */
+
+.med {
+    width: 300px;
+}
+.sm {
+    width: 100px;
+}
+
+/** LOGIN **/
+.login {
+	width: 300px;
+	margin: 60px auto;
+	border: 1px solid lightgray;
+	clear:both;
+	display: table;
+	padding: 30px;
+}
+
+.login label {
+	float: left;
+	width: 7em;
+}
+
+.login input[type="text"] {
+	float: left;
+	width: 209px;
+	margin-bottom: 10px;
+}
+
+.login .error .red {
+	color: red;
+}

@@ -1,12 +1,3 @@
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\bin\Axios.dll.config
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\bin\Axios.dll
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\bin\Axios.pdb
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\bin\Axios.xml
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\obj\Debug\Axios.Resources.resources
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\obj\Debug\Axios.vbproj.GenerateResource.Cache
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\obj\Debug\Axios.dll
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\obj\Debug\Axios.xml
-C:\CGC\Projects\DavesGuy\Axios\Axios\Axios\obj\Debug\Axios.pdb
 C:\Projects\Axios\bin\Axios.dll.config
 C:\Projects\Axios\bin\Axios.dll
 C:\Projects\Axios\bin\Axios.pdb

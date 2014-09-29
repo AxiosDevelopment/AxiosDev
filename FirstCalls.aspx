@@ -59,7 +59,7 @@
               <h2>First Call</h2>
             </div>
             <div class="entry">
-              <form id="addFirstCall" method="post" action="#" runat="server">
+              <form id="addFirstCall" method="post" action="#" runat="server" autocomplete="off">
                 <asp:HiddenField ID="CompanyID" runat="server" />
                 <asp:HiddenField ID="FirstCallID" runat="server" />
                 <asp:ValidationSummary ID="ValidationSummaryFirstCall" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
@@ -102,7 +102,7 @@
                     </div>
                     <div class="left mr_10">
                       <label for="dDate">Date of Death</label><br />
-                      <asp:TextBox ID="dDate" runat="server" Width="80"></asp:TextBox>
+                      <asp:TextBox ID="dDate" runat="server" Width="80" autocomplete="off"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqDateOfDeath" runat="server" ErrorMessage="Date of Death is required" ControlToValidate="dDate" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:CompareValidator ID="DateOfDeathValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="dDate" ErrorMessage="Please enter a valid Date of Death" Display="None"></asp:CompareValidator>
                     </div>
@@ -152,8 +152,10 @@
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="facType">Facility Type</label><br />
-                      <asp:TextBox ID="facType" class="facility" runat="server" Width="100"></asp:TextBox>
+                      <label for="facTypes">Facility Type</label><br />
+                      <asp:DropDownList ID="facTypes" runat="server" class="facility" Width="100">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                      </asp:DropDownList>
                     </div>
                     <div class="left mr_10">
                       <label for="facCity">City</label><br />
@@ -235,10 +237,6 @@
                       <asp:RegularExpressionValidator ID="RegExPhysicianPhone" ControlToValidate="physicianPhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
                     </div>
                     <div class="left mr_10">
-                      <label for="physicianPhoneExt">Ext.</label><br />
-                      <asp:TextBox ID="physicianPhoneExt" runat="server" class="physician" Width="30"></asp:TextBox>
-                    </div>
-                    <div class="left mr_10">
                       <label for="physicianDate">Last Saw Patient</label><br />
                       <asp:TextBox ID="physicianDate" runat="server" Width="100"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqPhysicianDate" runat="server" ErrorMessage="Last Saw Patient is required" ControlToValidate="physicianDate" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
@@ -275,13 +273,14 @@
                     </div>
                   </div>
                   <div class="row">
-                    <label for="specialInstructionsR">Special Instructions - Reporting Party</label><br />
+                    <label for="specialInstructionsR">Special Instructions</label><br />
                     <asp:TextBox ID="specialInstructionsR" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="specialInstructionsA">Special Instructions - This Account</label><br />
-                      <asp:TextBox ID="specialInstructionsA" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
+                      <label for="operatorNotes" class="mTop20 left">Operator Notes</label><br />
+                      <asp:TextBox ID="operatorNotes" runat="server" idth="400" TextMode="MultiLine"></asp:TextBox>
+
                     </div>
                     <div class="left mr_10">
                       <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass="RadioListControl mTop20">
@@ -300,9 +299,7 @@
                   <label for="facilityNotes" class="left pTop5">Facility Notes</label>
                   <asp:Button ID="FacilityNotesUpdate" CssClass="right" runat="server" Text="Update" />
                   <asp:TextBox ID="facilityNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
-                  <label for="operatorNotes" class="mTop20 left">Operator Notes</label>
-                  <asp:Button ID="Button1" runat="server" Text="Update" CssClass="right mTop15" />
-                  <asp:TextBox ID="operatorNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
+
                 </div>
               </form>
             </div>

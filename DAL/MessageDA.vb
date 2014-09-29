@@ -71,7 +71,7 @@ Public Class MessageDA
     Dim db As dbUtil = New dbUtil()
     Dim messages As New List(Of Message)
 
-    rsData = db.GetDataReader("SELECT MsgID, MsgDateTime, MsgCompanyID, MsgTo, MsgFrom, MsgBusiness, MsgPhone, MsgAltPhone, MsgQwkMsgs, MsgMessage, MsgOperatorNotes, MsgHoldMsg, MsgDelDateTime, MsgDeliver, MsgOnCall, MsgProcedure FROM MESSAGE WITH (NOLOCK) WHERE MsgCompanyID = " & search)
+    rsData = db.GetDataReader("SELECT MsgID, MsgDateTime, MsgCompanyID, MsgTo, MsgFrom, MsgBusiness, MsgPhone, MsgAltPhone, MsgQwkMsgs, MsgMessage, MsgOperatorNotes, MsgHoldMsg, MsgDelDateTime, MsgDeliver, MsgOnCall, MsgProcedure FROM MESSAGE WITH (NOLOCK) WHERE MsgCompanyID = " & search & " ORDER BY MsgDateTime DESC")
     If rsData.HasRows Then
 
       Do While rsData.Read
@@ -86,7 +86,7 @@ Public Class MessageDA
         message.Business = If(Not String.IsNullOrEmpty(rsData("MsgBusiness").ToString()), rsData("MsgBusiness"), String.Empty)
         message.Phone = If(Not String.IsNullOrEmpty(rsData("MsgPhone").ToString()), rsData("MsgPhone"), String.Empty)
         message.AltPhone = If(Not String.IsNullOrEmpty(rsData("MsgAltPhone").ToString()), rsData("MsgAltPhone"), String.Empty)
-        message.QwkMsgs = rsData("MsgQwkMsgs")
+        message.QwkMsgs = If(Not String.IsNullOrEmpty(rsData("MsgQwkMsgs").ToString()), rsData("MsgQwkMsgs"), String.Empty)
         message.MsgMessage = If(Not String.IsNullOrEmpty(rsData("MsgMessage").ToString()), rsData("MsgMessage"), String.Empty)
         message.OperatorNotes = If(Not String.IsNullOrEmpty(rsData("MsgOperatorNotes").ToString()), rsData("MsgOperatorNotes"), String.Empty)
         message.Hold = rsData("MsgHoldMsg")
@@ -163,7 +163,7 @@ Public Class MessageDA
     Dim db As dbUtil 'access to db functions
     db = New dbUtil()
 
-    SQL.Append("UPDATE Msg SET ")
+    SQL.Append("UPDATE MESSAGE SET ")
     SQL.Append("MsgTo = '" & m.MsgTo & "',")
     SQL.Append("MsgFrom = '" & m.MsgFrom & "',")
     SQL.Append("MsgPhone = '" & m.Phone & "',")

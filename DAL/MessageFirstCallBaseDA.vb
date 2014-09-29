@@ -11,12 +11,12 @@ Public Class MessageFirstCallBaseDA
     Dim strSQL As New StringBuilder()
 
 
-    strSQL.Append("SELECT m.MsgID AS MessageID, 'N/A' AS Status, 'No' AS FirstCall, c.CompanyID AS CompanyID, c.CompanyName AS CompanyName, m.MsgDateTime as CreatedDateTime ")
+    strSQL.Append("SELECT m.MsgID AS MessageID, 'No' AS FirstCall, c.CompanyID AS CompanyID, c.CompanyName AS CompanyName, m.MsgDateTime as CreatedDateTime ")
     strSQL.Append("FROM MESSAGE m WITH (NOLOCK) ")
     strSQL.Append("LEFT JOIN COMPANY c ON m.MsgCompanyID = c.CompanyID ")
     strSQL.Append("WHERE m.MsgDeliver = 0 ")
     strSQL.Append("UNION ")
-    strSQL.Append("SELECT fc.FirstCallID as MessageID, 'N/A' AS Status, 'Yes' AS FirstCall, fc.FirstCompanyID AS CompanyID, CompanyName AS CompanyName, fc.FirstCallDateTime as CreatedDateTime ")
+    strSQL.Append("SELECT fc.FirstCallID as MessageID, 'Yes' AS FirstCall, fc.FirstCompanyID AS CompanyID, CompanyName AS CompanyName, fc.FirstCallDateTime as CreatedDateTime ")
     strSQL.Append("FROM FIRST_CALL fc WITH (NOLOCK) ")
     strSQL.Append("LEFT JOIN COMPANY c ON fc.FirstCompanyID = c.CompanyID ")
     strSQL.Append("WHERE fc.FirstDelivered = 0 ")
@@ -34,7 +34,6 @@ Public Class MessageFirstCallBaseDA
 
           Dim fc As New FirstCall
           fc.ID = rsData("MessageID")
-          fc.Status = "N/A"
           fc.MessageType = "FirstCall"
           fc.CompanyID = If(Not IsDBNull(rsData("CompanyID")), rsData("CompanyID"), 0)
           fc.CreatedDateTime = FormatDateTime(rsData("CreatedDateTime"), DateFormat.LongDate)
@@ -46,7 +45,6 @@ Public Class MessageFirstCallBaseDA
 
           Dim m As New Message
           m.ID = rsData("MessageID")
-          m.Status = "N/A"
           m.MessageType = "Message"
           m.CompanyID = If(Not IsDBNull(rsData("CompanyID")), rsData("CompanyID"), 0)
           m.CreatedDateTime = FormatDateTime(rsData("CreatedDateTime"), DateFormat.LongDate)

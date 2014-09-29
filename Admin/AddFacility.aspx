@@ -38,9 +38,9 @@
         <ul>
           <li class="first"><a href="../Main.aspx" title="">Main Menu</a></li>
           <!-- POPUP WITH FORM TO ADD NEW FACILITY -->
-          <li><a href="AddClient.aspx" title="">Add Client</a></li>
+          <li><a href="AddClient.aspx" title="">Manage Clients</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-          <li><a href="AddPhysician.aspx" title="">Add Doctor</a></li>
+          <li><a href="AddPhysician.aspx" title="">Manage Doctors</a></li>
         </ul>
       </div>
       <div id="page">
@@ -48,7 +48,7 @@
         <div id="content">
           <div class="box-style4">
             <div class="title">
-              <h2>Add a Facility</h2>
+              <h2>Add/Edit a Facility</h2>
             </div>
             <div class="entry">
               <div id="facilityTable">
@@ -80,7 +80,10 @@
                   <div class="row">
                     <div class="left mr_10">
                       <label for="facType">Facility Type</label><br />
-                      <asp:TextBox ID="facType" class="facility" runat="server" Width="100"></asp:TextBox>
+                      <asp:DropDownList ID="FacilityType" runat="server" class="facility">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                      </asp:DropDownList>
+                      <asp:RequiredFieldValidator ID="ReqFacType" runat="server" ErrorMessage="Facility Type is required" ControlToValidate="FacilityType" CssClass="ErrorMessage" Display="None" Text="*" InitialValue="-1"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="facCity">City</label><br />
@@ -115,6 +118,12 @@
                       <asp:TextBox ID="phoneExt" runat="server" class="facility" Width="30"></asp:TextBox>
                     </div>
                   </div>
+                  <div class="row">
+                   <div class="left mr_10">
+                      <label for="facilityNotesA">Notes</label><br />
+                      <asp:TextBox ID="facilityNotesA" runat="server" class="facility" Width="300" Height="100" TextMode="MultiLine"></asp:TextBox>
+                    </div>
+                  </div>
                   <input type="hidden" name="facilityId" id="facilityId" value="0" runat="server" />
                   <input type="reset" id="clearform" value="Clear Form" />
                   <asp:Button Text="Submit Facility" runat="server" id="SubmitFacility" />
@@ -140,35 +149,96 @@
         timer = setTimeout(callback, ms);
       };
     })();
-    $('#facilitySearch').keyup(function () {
+    $('#facilitySearch').keyup(function (e) {
+      var keycode = (e.which);
       var searchStr = $(this).val();
       if (searchStr === '') {
         $('#podSearch').hide();
         $('.facility').prop('disabled', false);
         return;
       }
+      if (keycode == "13") {
+          e.preventDefault();
+          if ($('#podAuto li').hasClass('active')) {
+              var result = $('#podAuto li.active').children('.busId').val();
+              $.ajax({
+                  url: "../SearchInformation.aspx?busId=" + result + "&queryId=podAuto",
+                  cache: false
+              })
+              .done(function (data) {
+                  var busObj = JSON.parse(data);
+                  $('#placeOfDeath').val(busObj.Name);
+                  $('#facilityAddr').val(busObj.Address);
+                  $('#FacilityType').val(busObj.TypeID);
+                  $('#facilityCounty').val(busObj.County);
+                  $('#facState').val(busObj.State);
+                  $('#facCity').val(busObj.City);
+                  $('#facilityZip').val(busObj.Zip);
+                  $('#facilityPhone').val(busObj.Phone);
+                  $('#phoneExt').val(busObj.PhoneExt);
+                  $('#facilityNotesA').val(busObj.Notes);
+                  $('#facilityId').val(result);
+                  $('#podSearch').hide();
+              }).fail(function (data) {
+                  alert("Update has failed. Please try again.\n(Error: " + data.responseText);
+              });
+              return false;
+          }
+          else return;
+      }
       delay(function () {
-        $.ajax({
-          url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
-          cache: false
-        })
-         .done(function (data) {
-           var $podAuto = $('#podAuto');
-           $podAuto.html("");
-           $.each($.parseJSON(data), function (i, item) {
-             var busNameCity;
-             if (item.City === "") {
-               busNameCity = item.Name;
-             } else {
-               busNameCity = item.Name + " - " + item.City;
-             }
-             var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
-             $podAuto.append(html);
-           });
-           $('#podSearch').show();
-           $('.facility').prop('disabled', false);
-         });
+          if (keycode != "40" && keycode != "38") {
+              $.ajax({
+                  url: "../SearchInformation.aspx?query=" + searchStr + "&queryId=BUSSEARCH",
+                  cache: false
+              })
+              .done(function (data) {
+                  var $podAuto = $('#podAuto');
+                  $podAuto.html("");
+                  $.each($.parseJSON(data), function (i, item) {
+                      var busNameCity;
+                      if (item.City === "") {
+                          busNameCity = item.Name;
+                      } else {
+                          busNameCity = item.Name + " - " + item.City;
+                      }
+                      var html = '<li><input type="hidden" class="busId" value="' + item.BusinessID + '" />' + busNameCity + '</li>';
+                      $podAuto.append(html);
+                  });
+                  $('#podSearch').show();
+                  $('.facility').prop('disabled', false);
+              });
+          }
       }, 300);
+      if ($('#podSearch').is(':visible') && ($('#podAuto li').length > 0)) {
+          var text = "";
+          var active = $('#podAuto li.active');
+          if (keycode == "40") {
+              if ((active.next('li').length === 0)) {
+                  $('#podAuto li').removeClass('active');
+                  $('#podAuto li').first().addClass('active');
+                  text = $('#podAuto li').first().text();
+              }
+              else {
+                  active.removeClass('active').next('li').addClass('active');
+                  text = active.removeClass('active').next('li').text();
+              }
+              $('#facilitySearch').val(text);
+          }
+          if (keycode == "38") {
+              console.log('38')
+              if ((active.prev('li').length === 0)) {
+                  $('#podAuto li').removeClass('active');
+                  $('#podAuto li').last().addClass('active');
+                  text = $('#podAuto li').last().text();
+              }
+              else {
+                  active.removeClass('active').prev('li').addClass('active');
+                  text = active.removeClass('active').prev('li').text();
+              }
+              $('#facilitySearch').val(text);
+          }
+      }
     });
     $(document).on('click', '#podAuto li', function () {
       var result = $(this).children('.busId').val();
@@ -179,15 +249,16 @@
       })
       .done(function (data) {
         var busObj = JSON.parse(data);
-        console.log(busObj);
         $('#placeOfDeath').val(busObj.Name);
         $('#facilityAddr').val(busObj.Address);
+        $('#FacilityType').val(busObj.TypeID);
         $('#facilityCounty').val(busObj.County);
         $('#facState').val(busObj.State);
         $('#facCity').val(busObj.City);
         $('#facilityZip').val(busObj.Zip);
         $('#facilityPhone').val(busObj.Phone);
         $('#phoneExt').val(busObj.PhoneExt);
+        $('#facilityNotesA').val(busObj.Notes);
         $('#facilityId').val(result);
         $('#podSearch').hide();
       }).fail(function (data) {

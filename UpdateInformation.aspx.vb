@@ -14,6 +14,7 @@ Public Class UpdateInformation
     Dim updateId As String
     Dim contactName As String = ""
     Dim contactNumber As String = ""
+    Dim contactId As String = ""
     Dim cid As String = ""
     Dim dataInfo As String = ""
 
@@ -34,15 +35,17 @@ Public Class UpdateInformation
           'GET VARIABLES FOR COUNSELOR ON CALL AND SECONDARY ON CALL
           contactName = Request.QueryString.Get("contactName").ToString()
           contactNumber = Request.QueryString.Get("contactNumber").ToString()
+          contactId = Request.QueryString.Get("contactId").ToString()
+
           cid = Request.QueryString.Get("clientId").ToString()
         End If
 
         If Not String.IsNullOrEmpty(updateId) Then
           Select Case updateId
             Case "updateMainCounselor"
-              UpdateCounselors(cid, contactName, contactNumber, 1)
+              UpdateCounselors(cid, contactId, contactName, contactNumber, 1)
             Case "updateSecondaryCounselor"
-              UpdateCounselors(cid, contactName, contactNumber, 2)
+              UpdateCounselors(cid, contactId, contactName, contactNumber, 2)
             Case "updateAdditionalNotes"
               UpdateAdditionalNotes(cid, dataInfo)
             Case "updateClientInfo"
@@ -54,11 +57,9 @@ Public Class UpdateInformation
 
         End If
 
-        Response.Write("Updated Successfully")
-
       Catch ex As Exception
         Response.StatusCode = 500 'Set STATUSCODE to trigger error on ajax call
-        Response.Write(ex.Message)
+        Response.StatusDescription = "Update has failed. Please try again."
         Response.End()
       End Try
 
@@ -70,18 +71,42 @@ Public Class UpdateInformation
   ''' Can be primary, secondary, etc... (conType)
   ''' </summary>
   ''' <remarks></remarks>
-  Private Sub UpdateCounselors(id As String, cName As String, cNumber As String, conType As Integer)
+  Private Sub UpdateCounselors(id As String, cId As String, cName As String, cNumber As String, conType As Integer)
 
     Dim cDA As New ContactDA
     Dim contact As New Contact
     Dim result As Integer
 
+    contact.ContactID = cId
     contact.CompanyID = id
     contact.Name = cName
-    contact.Information = cNumber
-    contact.Type = conType
+    contact.Phone = cNumber
+    contact.TypeID = conType
 
-    result = cDA.UpdateContact(contact)
+    If cId = 0 Then
+
+      If contact.TypeID = 2 Then
+        If contact.Name = "" And contact.Phone = "" Then
+          Exit Sub
+        End If
+      End If
+      result = cDA.InsertContact(contact)
+
+    Else
+
+      If contact.Name = "" And contact.Phone = "" Then
+        If contact.TypeID = 1 Then
+          Response.StatusCode = 500 'Set STATUSCODE to trigger error on ajax call
+          Response.StatusDescription = "Primary Contact (Counselor On Call) is required."
+          Response.End()
+        ElseIf contact.TypeID = 2 Then
+          result = cDA.DeleteContact(contact.ContactID)
+        End If
+      Else
+        result = cDA.UpdateContactSimple(contact)
+      End If
+
+    End If
 
   End Sub
 

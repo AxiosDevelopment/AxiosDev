@@ -22,6 +22,7 @@ Public Class FirstCalls
 
         ' Get Lookup Data
         GetRelationshipsLookup()
+        GetFacilityTypesLookup()
 
         fcId = Convert.ToInt32(Request.QueryString.Get("FirstCallId"))
         clientId = Request.QueryString.Get("ClientId").ToString()
@@ -90,6 +91,7 @@ Public Class FirstCalls
     dob.Text = If(Not String.IsNullOrEmpty(firstCall.DateOfBirth), firstCall.DateOfBirth, String.Empty)
     weight.Text = If(Not String.IsNullOrEmpty(firstCall.Weight), firstCall.Weight, String.Empty)
     placeOfDeath.Text = If(Not String.IsNullOrEmpty(firstCall.PlaceOfDeath), firstCall.PlaceOfDeath, String.Empty)
+    facTypes.SelectedValue = relationship.Items.FindByValue(firstCall.FacilityTypeID).Value
     facilityAddr.Text = If(Not String.IsNullOrEmpty(firstCall.Address), firstCall.Address, String.Empty)
     facCity.Text = If(Not String.IsNullOrEmpty(firstCall.City), firstCall.City, String.Empty)
     facState.Text = If(Not String.IsNullOrEmpty(firstCall.State), firstCall.State, String.Empty)
@@ -109,6 +111,8 @@ Public Class FirstCalls
     counselorName.Text = If(Not String.IsNullOrEmpty(firstCall.CounselorContacted), firstCall.CounselorContacted, String.Empty)
     coronerDate.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.ShortDate)
     coronerTime.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.LongTime)
+    specialInstructionsR.Text = If(Not String.IsNullOrEmpty(firstCall.CustCallInfo), firstCall.CustCallInfo, String.Empty)
+    operatorNotes.Text = If(Not String.IsNullOrEmpty(firstCall.OperatorCallNotes), firstCall.OperatorCallNotes, String.Empty)
     If (firstCall.Hold = 1) Then
       RBMessageStatus.SelectedValue = "Hold"
     ElseIf (firstCall.Delivered = 1) Then
@@ -191,6 +195,7 @@ Public Class FirstCalls
     'SQL.Append("NULL,") '[FirstPrefix] ******
     firstCall.DateTimeOfDeath = FormatDateTime(dDate.Text & " " & dTime.Text, DateFormat.GeneralDate)  '[FirstDateTimeofDeath] *****
     firstCall.PlaceOfDeath = placeOfDeath.Text '[FirstPlaceOfDeath]
+    firstCall.FacilityTypeID = facTypes.SelectedValue '[BusinessTypeID]
     firstCall.SSN = ssn.Text '[FirstSSN]
     firstCall.Weight = weight.Text '[FirstWeight]
     firstCall.DateOfBirth = dob.Text '[FirstDOB]
@@ -215,7 +220,7 @@ Public Class FirstCalls
     firstCall.CounselorContacted = counselorName.Text '[FirstCounselorContacted]
     firstCall.DateCounselorContacted = FormatDateTime(coronerDate.Text & " " & coronerTime.Text, DateFormat.GeneralDate)  '[FirstDateContacted]
     'SQL.Append("NULL,") '[FirstNotes] *****
-    'SQL.Append("NULL,") '[FirstOperatorCallNotes] *****
+    firstCall.OperatorCallNotes = operatorNotes.Text '[FirstOperatorCallNotes]
     If (RBMessageStatus.SelectedValue.ToUpper() = "DELIVER") Then
       firstCall.Delivered = 1 '[FirstDelivered]
       firstCall.DeliveredDateTime = FormatDateTime(DateTime.Now, DateFormat.GeneralDate) '[FirstDateTimeDelivered]
@@ -223,7 +228,7 @@ Public Class FirstCalls
       firstCall.Delivered = 0 '[FirstDelivered]
     End If
     'SQL.Append("NULL,") '[FirstMedNoteBox] *****
-    'SQL.Append("NULL,") '[FirstCustCallInfo] *****
+    firstCall.CustCallInfo = specialInstructionsR.Text '[FirstCustCallInfo]
     firstCall.Hold = If(RBMessageStatus.SelectedValue.ToUpper() = "HOLD", 1, 0) '[FirstHold]
 
     Return firstCall
@@ -244,6 +249,24 @@ Public Class FirstCalls
 
     Do While rsData.Read()
       relationship.Items.Add(New ListItem(rsData("Relationship").ToString(), rsData("RelationshipID").ToString()))
+    Loop
+
+  End Sub
+
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetFacilityTypesLookup()
+
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
+
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT BusinessTypeID, BusinessType FROM LK_BUSINESS_TYPE WITH (NOLOCK) ORDER BY BusinessType ASC")
+
+    Do While rsData.Read()
+      facTypes.Items.Add(New ListItem(rsData("BusinessType").ToString(), rsData("BusinessTypeID").ToString()))
     Loop
 
   End Sub

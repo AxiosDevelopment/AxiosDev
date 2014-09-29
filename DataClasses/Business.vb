@@ -1,6 +1,7 @@
 ﻿Public Class Business
 
   Public Property BusinessID As Integer
+  Public Property TypeID As Integer
   Public Property Name As String
   Public Property Address As String
   Public Property City As String

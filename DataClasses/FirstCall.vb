@@ -12,6 +12,7 @@
   Public Property Prefix As Integer
   Public Property DateTimeOfDeath As Date
   Public Property PlaceOfDeath As String
+  Public Property FacilityTypeID As Integer
   Public Property SSN As String
   Public Property Weight As String
   Public Property DateOfBirth As Date

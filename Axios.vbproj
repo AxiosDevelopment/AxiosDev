@@ -175,6 +175,7 @@
     <Content Include="images\spacer.gif" />
     <Content Include="images\subpage1_01.jpg" />
     <Content Include="layout.css" />
+    <Content Include="login.html" />
     <Content Include="Main.aspx" />
     <Content Include="main.html" />
     <Content Include="Messages.aspx" />

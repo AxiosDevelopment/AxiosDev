@@ -237,4 +237,40 @@ Partial Public Class Messages
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents submitMessage As Global.System.Web.UI.WebControls.Button
+
+  '''<summary>
+  '''primaryContactId control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents primaryContactId As Global.System.Web.UI.HtmlControls.HtmlInputHidden
+
+  '''<summary>
+  '''secondaryContactId control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents secondaryContactId As Global.System.Web.UI.HtmlControls.HtmlInputHidden
+
+  '''<summary>
+  '''cInformation control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents cInformation As Global.System.Web.UI.HtmlControls.HtmlTable
+
+  '''<summary>
+  '''cInstructions control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents cInstructions As Global.System.Web.UI.HtmlControls.HtmlTable
 End Class
