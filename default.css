@@ -658,7 +658,7 @@ input[type=radio] {
 	height: 100px;
 }
 
-#specialInstructionsA {
+#operatorNotes  {
 	width: 400px;
 	height: 100px;
 }
@@ -667,7 +667,7 @@ input[type=radio] {
 	width: 200px;
 }
 
-#facilityNotes, #operatorNotes {
+#facilityNotes {
 	width: 195px;
 	height: 292px;
 }

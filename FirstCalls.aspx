@@ -271,17 +271,13 @@
                     </div>
                   </div>
                   <div class="row">
-                    <label for="specialInstructionsR">Special Instructions - Reporting Party</label><br />
+                    <label for="specialInstructionsR">Special Instructions</label><br />
                     <asp:TextBox ID="specialInstructionsR" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="specialInstructionsA">Special Instructions - This Account</label><br />
-                      <asp:TextBox ID="specialInstructionsA" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
-
-                      <label for="operatorNotes" class="mTop20 left">Operator Notes</label>
-                      <asp:Button ID="Button1" runat="server" Text="Update" CssClass="right mTop15" />
-                      <asp:TextBox ID="operatorNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
+                      <label for="operatorNotes" class="mTop20 left">Operator Notes</label><br />
+                      <asp:TextBox ID="operatorNotes" runat="server" idth="400" TextMode="MultiLine"></asp:TextBox>
 
                     </div>
                     <div class="left mr_10">
