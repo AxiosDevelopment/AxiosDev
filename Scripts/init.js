@@ -424,7 +424,8 @@ $(function () {
   });
 
   /** THIS triggers a save for the various "update buttons" and their associated textareas **/
-  $('.update').on('click', function () {
+  /* NOT NEEDED ANYMORE - UPDATE BUTTONS WERE REMOVED */
+ /* $('.update').on('click', function () {
     var updateId = $(this).attr('id'); //gets the ID of the textarea
     var dataFieldValue = $(this).next('textarea').val(); //Gets the value of the data field associated with the update
     $.ajax({
@@ -443,6 +444,11 @@ $(function () {
       alert(error);
     });
   });
+  */
+
+  /* NOT NEEDED ANYMORE - UPDATE BUTTONS WERE REMOVED */
+  //*************************************************************************************/
+  /*
   $('.updateCounselor').on('click', function () {
     var updateId = $(this).attr('id');
     var contactName = $(this).next('input').val();
@@ -469,48 +475,51 @@ $(function () {
       $('.searchAuto').hide();
     }
   });
+  */
 
+  /* NOT NEEDED ANYMORE - UPDATE BUTTONS WERE REMOVED */
   /** THIS IS FOR THE COUNSELOR ON CALL TO CONTROL THE BUTTON ONLY WHEN CHANGES **/
-  $('#updateMainCounselor').attr('disabled', true);
-  var priOnCall = $('#primaryOnCall');
-  var priContact = $('#primaryContact');
+  //$('#updateMainCounselor').attr('disabled', true);
+  //var priOnCall = $('#primaryOnCall');
+  //var priContact = $('#primaryContact');
 
   // on keyup of the first textbox for Counselor On Call - enable Update buttons
-  priOnCall.keyup(function () {
-    $('#updateMainCounselor').attr('disabled', false);
-  })
+  //priOnCall.keyup(function () {
+  //  $('#updateMainCounselor').attr('disabled', false);
+  //})
   // on keyup of the second textbox for Counselor On Call - enable Update buttons
-  priContact.keyup(function () {
-    $('#updateMainCounselor').attr('disabled', false);
-  })
+  //priContact.keyup(function () {
+  //  $('#updateMainCounselor').attr('disabled', false);
+  //})
 
 
   /** THIS IS FOR THE SECONDARY ON CALL TO CONTROL THE BUTTONS **/
-  $('#updateSecondaryCounselor').attr('disabled', true);
-  $('#clearSecondaryCounselor').attr('disabled', true);
-  var secOnCall = $('#secondaryOnCall');
-  var secContact = $('#secondaryContact');
-  // if no values exist, diable the Clear button
-  if (secOnCall.val() != '' || secContact.val() != '') {
-    $('#clearSecondaryCounselor').attr('disabled', false);
-  }
+  //$('#updateSecondaryCounselor').attr('disabled', true);
+  //$('#clearSecondaryCounselor').attr('disabled', true);
+  //var secOnCall = $('#secondaryOnCall');
+  //var secContact = $('#secondaryContact');
+  //// if no values exist, diable the Clear button
+  //if (secOnCall.val() != '' || secContact.val() != '') {
+  //  $('#clearSecondaryCounselor').attr('disabled', false);
+  //}
   // on keyup of the first textbox for Counselor On Call - enable Clear and Update buttons
-  secOnCall.keyup(function () {
-    $('#clearSecondaryCounselor').attr('disabled', false);
-    $('#updateSecondaryCounselor').attr('disabled', false);
-  })
+  //secOnCall.keyup(function () {
+  //  $('#clearSecondaryCounselor').attr('disabled', false);
+  //  $('#updateSecondaryCounselor').attr('disabled', false);
+  //})
   // on keyup of the second textbox for Counselor On Call - enable Clear and Update buttons
-  secContact.keyup(function () {
-    $('#clearSecondaryCounselor').attr('disabled', false);
-    $('#updateSecondaryCounselor').attr('disabled', false);
-  })
+  //secContact.keyup(function () {
+  //  $('#clearSecondaryCounselor').attr('disabled', false);
+  //  $('#updateSecondaryCounselor').attr('disabled', false);
+  //})
   // clicking the Clear button
-  $('#clearSecondaryCounselor').on('click', function () {
-    $('#secondaryOnCall').val("");
-    $('#secondaryContact').val("");
-    $('#updateSecondaryCounselor').attr('disabled', false);
-    $('#clearSecondaryCounselor').attr('disabled', true);
-  });
+  //$('#clearSecondaryCounselor').on('click', function () {
+  //  $('#secondaryOnCall').val("");
+  //  $('#secondaryContact').val("");
+  //  $('#updateSecondaryCounselor').attr('disabled', false);
+  //  $('#clearSecondaryCounselor').attr('disabled', true);
+  //});
+  //*************************************************************************************/
 
   //Message Page / First Call Page - if msg = 0
   var $msgID = $('#MessageID').val();

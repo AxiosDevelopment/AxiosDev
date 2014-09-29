@@ -19,7 +19,7 @@ Public Class FirstCallDA
     db = New dbUtil()
 
     SQL.Append("SELECT [FirstCallID],[FirstCompanyID],[FirstCallDateTime],[FirstReportingParty],[FirstRPRelationshipID],[FirstPersonAuthorizingRemoval],[FirstPARelationship],[FirstDeceasedName],[FirstPrefix],[FirstDateTimeofDeath]")
-    SQL.Append(",[FirstPlaceOfDeath],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
+    SQL.Append(",[FirstPlaceOfDeath],[FirstBusinessTypeID],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
     SQL.Append(",[FirstTelephoneofInforKin],[FirstWorkPhoneForKin],[FirstWorkExt],[FirstDoctor],[FirstDoctorPhone],[FirstDatePatientSeen],[FirstCoroner],[FirstFileNumber],[FirstCounselorContacted],[FirstDateContacted]")
     SQL.Append(",[FirstNotes],[FirstOperatorCallNotes],[FirstDelivered],[FirstDateTimeDelivered],[FirstMedNoteBox],[FirstCustCallInfo],[FirstHold]")
     SQL.Append("FROM [FIRST_CALL] WITH (NOLOCK) ")
@@ -40,6 +40,7 @@ Public Class FirstCallDA
         firstCall.DateOfBirth = If(Not String.IsNullOrEmpty(rsData("FirstDOB").ToString()), FormatDateTime(rsData("FirstDOB"), DateFormat.GeneralDate), Date.MinValue)
         firstCall.Weight = If(Not String.IsNullOrEmpty(rsData("FirstWeight").ToString()), rsData("FirstWeight"), 0)
         firstCall.PlaceOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstPlaceOfDeath").ToString()), rsData("FirstPlaceOfDeath"), String.Empty)
+        firstCall.FacilityTypeID = If(Not String.IsNullOrEmpty(rsData("FirstBusinessTypeID").ToString()), rsData("FirstBusinessTypeID"), -1)
         firstCall.Address = If(Not String.IsNullOrEmpty(rsData("FirstAddress").ToString()), rsData("FirstAddress"), String.Empty)
         firstCall.City = If(Not String.IsNullOrEmpty(rsData("FirstCity").ToString()), rsData("FirstCity"), String.Empty)
         firstCall.State = If(Not String.IsNullOrEmpty(rsData("FirstState").ToString()), rsData("FirstState"), String.Empty)
@@ -63,6 +64,8 @@ Public Class FirstCallDA
         If firstCall.Delivered = 1 Then
           firstCall.DeliveredDateTime = FormatDateTime(rsData("FirstDateTimeDelivered"), DateFormat.GeneralDate)
         End If
+        firstCall.OperatorCallNotes = If(Not String.IsNullOrEmpty(rsData("FirstOperatorCallNotes").ToString()), rsData("FirstOperatorCallNotes"), String.Empty)
+        firstCall.CustCallInfo = If(Not String.IsNullOrEmpty(rsData("FirstCustCallInfo").ToString()), rsData("FirstCustCallInfo"), String.Empty)
       Loop
 
       rsData.Close()
@@ -91,7 +94,7 @@ Public Class FirstCallDA
     Dim firstCalls As New List(Of FirstCall)
 
     SQL.Append("SELECT [FirstCallID],[FirstCompanyID],[FirstCallDateTime],[FirstReportingParty],[FirstRPRelationshipID],[FirstPersonAuthorizingRemoval],[FirstPARelationship],[FirstDeceasedName],[FirstPrefix],[FirstDateTimeofDeath]")
-    SQL.Append(",[FirstPlaceOfDeath],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
+    SQL.Append(",[FirstPlaceOfDeath],[FirstBusinessTypeID],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
     SQL.Append(",[FirstTelephoneofInforKin],[FirstWorkPhoneForKin],[FirstWorkExt],[FirstDoctor],[FirstDoctorPhone],[FirstDatePatientSeen],[FirstCoroner],[FirstFileNumber],[FirstCounselorContacted],[FirstDateContacted]")
     SQL.Append(",[FirstNotes],[FirstOperatorCallNotes],[FirstDelivered],[FirstDateTimeDelivered],[FirstMedNoteBox],[FirstCustCallInfo],[FirstHold]")
     SQL.Append("FROM [FIRST_CALL] WITH (NOLOCK) ")
@@ -115,6 +118,7 @@ Public Class FirstCallDA
         firstCall.DateOfBirth = If(Not String.IsNullOrEmpty(rsData("FirstDOB").ToString()), FormatDateTime(rsData("FirstDOB"), DateFormat.GeneralDate), Date.MinValue)
         firstCall.Weight = If(Not String.IsNullOrEmpty(rsData("FirstWeight").ToString()), rsData("FirstWeight"), 0)
         firstCall.PlaceOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstPlaceOfDeath").ToString()), rsData("FirstPlaceOfDeath"), String.Empty)
+        firstCall.FacilityTypeID = If(Not String.IsNullOrEmpty(rsData("FirstBusinessTypeID").ToString()), rsData("FirstBusinessTypeID"), -1)
         firstCall.Address = If(Not String.IsNullOrEmpty(rsData("FirstAddress").ToString()), rsData("FirstAddress"), String.Empty)
         firstCall.City = If(Not String.IsNullOrEmpty(rsData("FirstCity").ToString()), rsData("FirstCity"), String.Empty)
         firstCall.State = If(Not String.IsNullOrEmpty(rsData("FirstState").ToString()), rsData("FirstState"), String.Empty)
@@ -138,6 +142,8 @@ Public Class FirstCallDA
         If firstCall.Delivered = 1 Then
           firstCall.DeliveredDateTime = FormatDateTime(rsData("FirstDateTimeDelivered"), DateFormat.GeneralDate)
         End If
+        firstCall.OperatorCallNotes = If(Not String.IsNullOrEmpty(rsData("FirstOperatorCallNotes").ToString()), rsData("FirstOperatorCallNotes"), String.Empty)
+        firstCall.CustCallInfo = If(Not String.IsNullOrEmpty(rsData("FirstCustCallInfo").ToString()), rsData("FirstCustCallInfo"), String.Empty)
 
         firstCalls.Add(firstCall)
 
@@ -165,7 +171,7 @@ Public Class FirstCallDA
     db = New dbUtil()
 
     SQL.Append("INSERT INTO [dbo].[FIRST_CALL]([FirstCompanyID],[FirstCallDateTime],[FirstReportingParty],[FirstRPRelationshipID],[FirstPersonAuthorizingRemoval],[FirstPARelationship],[FirstDeceasedName],[FirstPrefix],[FirstDateTimeofDeath]")
-    SQL.Append(",[FirstPlaceOfDeath],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
+    SQL.Append(",[FirstPlaceOfDeath],[FirstFacilityTypeID],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
     SQL.Append(",[FirstTelephoneofInforKin],[FirstWorkPhoneForKin],[FirstWorkExt],[FirstDoctor],[FirstDoctorPhone],[FirstDatePatientSeen],[FirstCoroner],[FirstFileNumber],[FirstCounselorContacted],[FirstDateContacted]")
     SQL.Append(",[FirstNotes],[FirstOperatorCallNotes],[FirstDelivered],[FirstDateTimeDelivered],[FirstMedNoteBox],[FirstCustCallInfo],[FirstHold])")
     SQL.Append(" VALUES ")
@@ -179,6 +185,7 @@ Public Class FirstCallDA
     SQL.Append("NULL,") '[FirstPrefix] ******
     SQL.Append("'" & fc.DateTimeOfDeath & "',") '[FirstDateTimeofDeath] *****
     SQL.Append("'" & fc.PlaceOfDeath & "',") '[FirstPlaceOfDeath]
+    SQL.Append("" & fc.FacilityTypeID & ",") '[FirstFacilityTypeID]
     SQL.Append("'" & fc.SSN & "',") '[FirstSSN]
     SQL.Append("'" & fc.Weight & "',") '[FirstWeight]
     SQL.Append("'" & fc.DateOfBirth & "',") '[FirstDOB]
@@ -203,7 +210,7 @@ Public Class FirstCallDA
     SQL.Append("'" & fc.CounselorContacted & "',") '[FirstCounselorContacted]
     SQL.Append("'" & fc.DateCounselorContacted & "',") '[FirstDateContacted]
     SQL.Append("NULL,") '[FirstNotes] *****
-    SQL.Append("NULL,") '[FirstOperatorCallNotes] *****
+    SQL.Append("'" & fc.OperatorCallNotes & "',") '[FirstOperatorCallNotes] *****
     SQL.Append(fc.Delivered & ",") '[FirstDelivered] *****
     If fc.Delivered = 1 Then
       SQL.Append("'" & fc.DeliveredDateTime & "',") '[FirstDateTimeDelivered] *****
@@ -211,7 +218,7 @@ Public Class FirstCallDA
       SQL.Append("NULL,") '[FirstDateTimeDelivered] *****
     End If
     SQL.Append("NULL,") '[FirstMedNoteBox] *****
-    SQL.Append("NULL,") '[FirstCustCallInfo] *****
+    SQL.Append("'" & fc.CustCallInfo & "',") '[FirstCustCallInfo] *****
     SQL.Append(fc.Hold & ")") '[FirstHold] *****
 
     returnedID = db.GetID(SQL.ToString())
@@ -242,6 +249,7 @@ Public Class FirstCallDA
     SQL.Append("FirstPrefix = NULL,") '[FirstPrefix] ******
     SQL.Append("FirstDateTimeofDeath = '" & fc.DateTimeOfDeath & "',") '[FirstDateTimeofDeath] *****
     SQL.Append("FirstPlaceOfDeath = '" & fc.PlaceOfDeath & "',") '[FirstPlaceOfDeath]
+    SQL.Append("FirstBusinessTypeID = " & fc.FacilityTypeID & ",") '[FirstBusinessTypeID]
     SQL.Append("FirstSSN = '" & fc.SSN & "',") '[FirstSSN]
     SQL.Append("FirstWeight = '" & fc.Weight & "',") '[FirstWeight]
     SQL.Append("FirstDOB = '" & fc.DateOfBirth & "',") '[FirstDOB]
@@ -266,7 +274,7 @@ Public Class FirstCallDA
     SQL.Append("FirstCounselorContacted = '" & fc.CounselorContacted & "',") '[FirstCounselorContacted]
     SQL.Append("FirstDateContacted = '" & fc.DateCounselorContacted & "',") '[FirstDateContacted]
     SQL.Append("FirstNotes = NULL,") '[FirstNotes] *****
-    SQL.Append("FirstOperatorCallNotes = NULL,") '[FirstOperatorCallNotes] *****
+    SQL.Append("FirstOperatorCallNotes = '" & fc.OperatorCallNotes & "',") '[FirstOperatorCallNotes] *****
     SQL.Append("FirstDelivered = " & fc.Delivered & ",") '[FirstDelivered] 
     If fc.Delivered = 1 Then
       SQL.Append("FirstDateTimeDelivered = '" & fc.DeliveredDateTime & "',") '[FirstDateTimeDelivered] 
@@ -274,7 +282,7 @@ Public Class FirstCallDA
       SQL.Append("FirstDateTimeDelivered = NULL,") '[FirstDateTimeDelivered] 
     End If
     SQL.Append("FirstMedNoteBox = NULL,") '[FirstMedNoteBox] *****
-    SQL.Append("FirstCustCallInfo = NULL,") '[FirstCustCallInfo] *****
+    SQL.Append("FirstCustCallInfo = '" & fc.CustCallInfo & "',") '[FirstCustCallInfo] *****
     SQL.Append("FirstHold = " & fc.Hold & " ") '[FirstHold] 
     SQL.Append("WHERE FirstCallID = " & fc.ID)
 

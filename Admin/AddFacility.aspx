@@ -80,7 +80,10 @@
                   <div class="row">
                     <div class="left mr_10">
                       <label for="facType">Facility Type</label><br />
-                      <asp:TextBox ID="facType" class="facility" runat="server" Width="100"></asp:TextBox>
+                      <asp:DropDownList ID="FacilityType" runat="server" class="facility">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                      </asp:DropDownList>
+                      <asp:RequiredFieldValidator ID="ReqFacType" runat="server" ErrorMessage="Facility Type is required" ControlToValidate="FacilityType" CssClass="ErrorMessage" Display="None" Text="*" InitialValue="-1"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
                       <label for="facCity">City</label><br />
@@ -113,6 +116,12 @@
                     <div class="left mr_10">
                       <label for="phoneExt">Ext.</label><br />
                       <asp:TextBox ID="phoneExt" runat="server" class="facility" Width="30"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                   <div class="left mr_10">
+                      <label for="facilityNotesA">Notes</label><br />
+                      <asp:TextBox ID="facilityNotesA" runat="server" class="facility" Width="300" Height="100" TextMode="MultiLine"></asp:TextBox>
                     </div>
                   </div>
                   <input type="hidden" name="facilityId" id="facilityId" value="0" runat="server" />
@@ -160,12 +169,14 @@
                   var busObj = JSON.parse(data);
                   $('#placeOfDeath').val(busObj.Name);
                   $('#facilityAddr').val(busObj.Address);
+                  $('#FacilityType').val(busObj.TypeID);
                   $('#facilityCounty').val(busObj.County);
                   $('#facState').val(busObj.State);
                   $('#facCity').val(busObj.City);
                   $('#facilityZip').val(busObj.Zip);
                   $('#facilityPhone').val(busObj.Phone);
                   $('#phoneExt').val(busObj.PhoneExt);
+                  $('#facilityNotesA').val(busObj.Notes);
                   $('#facilityId').val(result);
                   $('#podSearch').hide();
               }).fail(function (data) {
@@ -240,12 +251,14 @@
         var busObj = JSON.parse(data);
         $('#placeOfDeath').val(busObj.Name);
         $('#facilityAddr').val(busObj.Address);
+        $('#FacilityType').val(busObj.TypeID);
         $('#facilityCounty').val(busObj.County);
         $('#facState').val(busObj.State);
         $('#facCity').val(busObj.City);
         $('#facilityZip').val(busObj.Zip);
         $('#facilityPhone').val(busObj.Phone);
         $('#phoneExt').val(busObj.PhoneExt);
+        $('#facilityNotesA').val(busObj.Notes);
         $('#facilityId').val(result);
         $('#podSearch').hide();
       }).fail(function (data) {
