@@ -439,6 +439,7 @@ caption {
 
 .box-style4 .entry {
 	padding-top: 25px;
+	min-height: 322px;
 }
 
 .box-style4 .entry .title {
@@ -833,4 +834,29 @@ input[type=radio] {
 }
 .sm {
     width: 100px;
+}
+
+/** LOGIN **/
+.login {
+	width: 300px;
+	margin: 60px auto;
+	border: 1px solid lightgray;
+	clear:both;
+	display: table;
+	padding: 30px;
+}
+
+.login label {
+	float: left;
+	width: 7em;
+}
+
+.login input{
+	float: left;
+	width: 150px;
+	margin-bottom: 10px;
+}
+
+.login .error .red {
+	color: red;
 }
