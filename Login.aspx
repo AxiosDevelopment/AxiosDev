@@ -36,7 +36,7 @@
 					<div class="entry">
 						<div class="login">
                             <form id="loginForm" action="login.aspx" method="post">
-							    <div class="error red"></div>
+							    <div class="error red"><%=strMessage%></div>
 							    <label for="username">Username</label>
 							    <input type="text" id="username" name="username" />
 							    <label for="password">Password</label>

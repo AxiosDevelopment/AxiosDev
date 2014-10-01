@@ -29,7 +29,7 @@ Public Class Login
                 Session("AxiosUser") = "XX"
                 Response.Redirect("Main.aspx")
             Else
-
+                strMessage = "NOT A VALID LOGIN"
             End If
         End If
     End Sub
