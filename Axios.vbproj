@@ -175,6 +175,7 @@
     <Content Include="images\spacer.gif" />
     <Content Include="images\subpage1_01.jpg" />
     <Content Include="layout.css" />
+    <Content Include="Login.aspx" />
     <Content Include="login.html" />
     <Content Include="Main.aspx" />
     <Content Include="main.html" />
@@ -347,6 +348,13 @@
     <Compile Include="Interfaces\IDoctorDA.vb" />
     <Compile Include="Interfaces\IFirstCallDA.vb" />
     <Compile Include="Interfaces\IMessage.vb" />
+    <Compile Include="Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Main.aspx.designer.vb">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>

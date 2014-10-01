@@ -24,7 +24,10 @@ Public Class Messages
 
     Dim clientId As String
     Dim msgId As Integer
-
+        If Session("AxiosUser") Is Nothing Then
+            Session.Contents.RemoveAll() 'Release any previous session data ...
+            Response.Redirect("Login.aspx")
+        End If
     If Not (Page.IsPostBack) Then
 
       Try

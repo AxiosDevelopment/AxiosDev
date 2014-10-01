@@ -11,7 +11,10 @@ Public Class Main
   ''' <param name="e"></param>
   ''' <remarks></remarks>
   Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        If Session("AxiosUser") Is Nothing Then
+            Session.Contents.RemoveAll() 'Release any previous session data ...
+            Response.Redirect("Login.aspx")
+        End If
     If Not (Page.IsPostBack) Then
 
       'Gets list of clients
