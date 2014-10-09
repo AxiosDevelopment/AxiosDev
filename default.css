@@ -778,9 +778,13 @@ input[type=radio] {
 }
 
 #messageContainer {
-    width: 500px;
-    height: 250px;
+    width: 700px;
     background: #fff;
+}
+
+.fmessages {
+    height: 400px;
+    overflow-y: scroll;
 }
 
 #messageContainer ul {
