@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Login.aspx.vb" Inherits="Axios.Login" %>
+
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -33,11 +36,11 @@
 					<div class="entry">
 						<div class="login">
                             <form id="loginForm" action="login.aspx" method="post">
-							    <div class="error red"></div>
+							    <div class="error red"><%=strMessage%></div>
 							    <label for="username">Username</label>
 							    <input type="text" id="username" name="username" />
 							    <label for="password">Password</label>
-							    <input type="text" id="password" name="password" />
+							    <input type="password" id="password" name="password" />
                                 <input type="submit" value="Submit" class="right"/>
                             </form>
 						</div>
@@ -54,3 +57,4 @@
 </div>
 </body>
 </html>
+
