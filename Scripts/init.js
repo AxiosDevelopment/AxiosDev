@@ -92,7 +92,7 @@ $(function () {
                     $('#facilityZip').val(busObj.Zip);
                     $('#facilityPhone').val(busObj.Phone);
                     $('#phoneExt').val(busObj.PhoneExt);
-                    //$('#facilityNotes').val(busObj.notes); //This is for "Facility Notes" 
+                    $('#facilityNotes').val(busObj.Notes); //This is for "Facility Notes" 
                     $('.facility').prop('readonly', true);
                 }
                 else {
