@@ -185,10 +185,10 @@
                       <asp:RequiredFieldValidator ID="ReqFacPhone" runat="server" ErrorMessage="Facility Phone is required" ControlToValidate="facilityPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:RegularExpressionValidator ID="ReqExFacPhone" ControlToValidate="facilityPhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
                     </div>
-                    <div class="left mr_10">
+                    <!--<div class="left mr_10">
                       <label for="phoneExt">Ext.</label><br />
                       <asp:TextBox ID="phoneExt" runat="server" class="facility" Width="30"></asp:TextBox>
-                    </div>
+                    </div>-->
                   </div>
                   <div class="row">
                     <div class="left mr_10">
@@ -209,10 +209,10 @@
                       <asp:RequiredFieldValidator ID="ReqResponibleParty" runat="server" ErrorMessage="Responsible Party Phone Number is required" ControlToValidate="responsiblePhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:RegularExpressionValidator ID="RegExResponsibleParty" ControlToValidate="responsiblePhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
                     </div>
-                    <div class="left mr_10">
+                   <!-- <div class="left mr_10">
                       <label for="responsiblePhoneExt">Ext.</label><br />
                       <asp:TextBox ID="responsiblePhoneExt" runat="server" Width="30"></asp:TextBox>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="row">
                     <div class="left mr_10">
@@ -297,7 +297,6 @@
                 </div>
                 <div class="right" id="fCallNotes">
                   <label for="facilityNotes" class="left pTop5">Facility Notes</label>
-                  <asp:Button ID="FacilityNotesUpdate" CssClass="right" runat="server" Text="Update" />
                   <asp:TextBox ID="facilityNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
 
                 </div>
