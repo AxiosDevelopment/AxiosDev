@@ -4,9 +4,6 @@ Imports System.Web.Script.Serialization
 Public Class AddClient
   Inherits System.Web.UI.Page
 
-  Dim qId As String
-  Dim searchString As String = ""
-
   ''' <summary>
   ''' Event Handler - Page_Load
   ''' </summary>
@@ -24,16 +21,13 @@ Public Class AddClient
         GetContactTypeLookup()
         Session.Remove("Contacts")
 
-        'If Session("ClientID") IsNot Nothing Then
-        '  'If Session("ClientID") <> "0" Then
-        '  Dim contacts As New List(Of Contact)
-        '  If Session("Contacts") IsNot Nothing Then
-        '    contacts = CType(Session("Contacts"), List(Of Contact))
-        '  End If
-        '  Session("Contacts") = contacts
-        '  BindContacts(contacts)
-        '  'End If
-        'End If
+        Dim cID = ""
+        cID = Request.QueryString.Get("ClientId")
+        If Not String.IsNullOrEmpty(cID) Then
+          ClientIDText.Text = cID.ToString()
+          GetClient(cID.ToString())
+          btnTriggerUpdatePanel_Click(sender, e)
+        End If
 
       Catch ex As Exception
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "LoadingMessagePagePopupError", "messageLoadError()", True)
@@ -495,5 +489,34 @@ Public Class AddClient
     Return True
 
   End Function
+
+  ''' <summary>
+  ''' This will return the client information based on the client selected from the autocomplete
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetClient(search As String)
+
+    Dim cDA As New CompanyDA
+    Dim company As Company
+
+    company = cDA.GetCompany(search)
+
+    nClientName.Text = company.Name
+    nClientNumber.Text = company.Number
+    ClientType.SelectedValue = ClientType.Items.FindByValue(company.TypeID).Value
+    'ClientType.SelectedItem.Value = company.TypeID
+    nClientAddress.Text = company.Address
+    nClientCity.Text = company.City
+    nClientState.Text = company.State
+    nClientZip.Text = company.Zip
+    nClientPhone.Text = company.MainTelephone
+    nClientPhone2.Text = company.MainTelephone2nd
+    nClientFax.Text = company.Fax
+    nClientGreeting.Text = company.PhoneAnswer
+    nClientHours.Text = company.HoursOfOperation
+    nClientAdditionalInformation.Text = company.AdditionalNotes
+    nClientSpecialInstructions.Text = company.InstructionSheet
+
+  End Sub
 
 End Class

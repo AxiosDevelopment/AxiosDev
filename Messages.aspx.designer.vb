@@ -149,15 +149,6 @@ Partial Public Class Messages
   Protected WithEvents nMsgAlt As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''ReqAltPhone control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ReqAltPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
   '''nMsgAltX control.
   '''</summary>
   '''<remarks>
@@ -210,6 +201,15 @@ Partial Public Class Messages
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents Notes As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqNotes control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqNotes As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
   '''RBMessageStatus control.

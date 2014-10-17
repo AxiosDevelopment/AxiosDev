@@ -43,7 +43,7 @@
           <li class="first"><a href="main.aspx" title="">Main Menu</a></li>
           <!-- CLEAR FORM CREATED NEW MESSAGE ID ON SUBMIT -->
           <li><a href="Messages.aspx?ClientId=<%=cid%>&MsgId=0" title="">New Message</a></li>
-          <li><a href="admin/AddClient.aspx" title="">Manage Clients</a></li>
+          <li><a href="admin/AddClient.aspx?ClientId=<%=cid%>" title="">Manage Clients</a></li>
           <!-- POP UP WITH LINKS FOR ALL MESSAGES ASSOCIATED WITH THIS CLIENT -->
           <li><a id="searchMessages" href="#" title="">All Messages</a></li>
           <li><a href="FirstCalls.aspx?ClientId=<%=cid%>&FirstCallId=0" title="">First Call</a></li>
@@ -84,7 +84,6 @@
                   <asp:TextBox ID="nMsgPhoneX" runat="server" CssClass="fields"></asp:TextBox>
                   <label for="nMsgAlt">Alt:</label>
                   <asp:TextBox ID="nMsgAlt" runat="server" CssClass="fields"></asp:TextBox>
-                  <asp:RequiredFieldValidator ID="ReqAltPhone" runat="server" ErrorMessage="Alt: is required" ControlToValidate="nMsgAlt" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="nMsgAltX">Ext:</label>
                   <asp:TextBox ID="nMsgAltX" runat="server" CssClass="fields"></asp:TextBox>
                   <label for="QwkMessage">Msg:</label>
@@ -98,6 +97,7 @@
                   <asp:RequiredFieldValidator ID="ReqMessage" runat="server" ErrorMessage="A Message is required" ControlToValidate="MessageText" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <label for="notes">Operator_Notes:</label><br />
                   <asp:TextBox ID="Notes" runat="server" TextMode="MultiLine" CssClass="fields"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="ReqNotes" runat="server" ErrorMessage="Operator Notes is required" ControlToValidate="Notes" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                   <br />
 
                   <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass ="RadioListControl">
