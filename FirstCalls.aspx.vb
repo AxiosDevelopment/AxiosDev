@@ -94,7 +94,7 @@ Public Class FirstCalls
     dob.Text = If(Not String.IsNullOrEmpty(firstCall.DateOfBirth), firstCall.DateOfBirth, String.Empty)
     weight.Text = If(Not String.IsNullOrEmpty(firstCall.Weight), firstCall.Weight, String.Empty)
     placeOfDeath.Text = If(Not String.IsNullOrEmpty(firstCall.PlaceOfDeath), firstCall.PlaceOfDeath, String.Empty)
-    facTypes.SelectedValue = relationship.Items.FindByValue(firstCall.FacilityTypeID).Value
+    facTypes.SelectedValue = facTypes.Items.FindByValue(firstCall.FacilityTypeID).Value
     facilityAddr.Text = If(Not String.IsNullOrEmpty(firstCall.Address), firstCall.Address, String.Empty)
     facCity.Text = If(Not String.IsNullOrEmpty(firstCall.City), firstCall.City, String.Empty)
     facState.Text = If(Not String.IsNullOrEmpty(firstCall.State), firstCall.State, String.Empty)
