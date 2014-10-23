@@ -1,97 +1,44 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Axios Main Menu</title>
-    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-    <style type="text/css">
-        @import "layout.css";
-    </style>
-</head>
-<body class="single">
-    <div id="wrapper">
-        <div id="wrapper-bgtop">
-            <div id="header">
-                <div id="logo">
-                    <h1><a href="#">Axios Online</a></h1>
-                    <p></p>
-                </div>
+﻿David.
+First, I apologize for the late return on this email, but this past weekend was me and Kayla's birthdays (I'm on the 11th, she's the 12th).  Unfortunately, we couldn't enjoy it because she was sick and I was having some severe back issues.  However, I did have one of my employees run the database through some paces, and I have now had a good chance to look it over as well, and here are my notes.  I will categorize them as "Problems" (needs to be corrected for functionality), "Issues" (important but not essential), and "Notes" (Things I would like updated or changed when possible).  So, here's what we've found.
+Problems:
+1) The first issue is with the print Messages/First Call functions.  Clicking on Print ONLY prints the generic example.  It is not posting the actual messages or First Calls taken.
+2) The Message for is REQUIRING an alternate phone number.  We always try to get one, but some people will not have one, and there are even times when we cannot get a primary number from them, where the caller will say, "She already has my number." We need to either have a way to "submit anyway" or remove the requirement on the Alt #.
+3) Related to Problem 2, I would like "Operator Notes" to be required before submitting a message, because it ensures the operator at least places their initials into the call, thus "Signing" that they took the call.
+4) It is not possible, at least with Firefox, to select any of the "Counselor On Call" information.  Very soon I plan on using a new Softphone software that allows me to click on a phone number within a webpage and it automatically dials the number.  This is not possible if that information is not clickable.
+5) For First Calls, the required fields to fill out need to be "Reporting Party, Relation / Title, Contact Number, and Name of Deceased.  All other information will be needed before dispatching, but we often get calls from family members or friends who do not have all the information on our First Call Sheet. Often we will hear from the family first, then a hospice or facility nurse to give us the rest of the information.
+6) In the First Calls Form, under teh Facility Notes there should be another box for Client Notes.  This is where I tell the operators how to handle these calls, such as if the counselor needs to be contacted, if we should send patients to the morgue if possible, and if or when to contact the care center after hours.
+7) Hitting Enter in either Messages or First Calls attempts to submit the information instead of proceeding to the next field.  Can this be changed?
+8) In Messages, the Additional Notes box is there to be quickly and immediately updated for temporary changes to procedures, such as a director going in with a familiy or a driver heading on a long haul.  This box needs to be updated with minimum fuss, and the text needs to be selectable. which in firefox it is not.
+9) In the First call form, I need the SSN, DOB, and Weight moved to the bottom of the form.  Generally speaking, these are the last questions we ask before completing the call.  Als, it's a small thing, but I'd like to swap the SSN and DOB fields so that DOB comes before the SSN.
+X) Finally, updating the on call list, as it stands, is a bit time consuming.  From 4:50-5:30 we can take as many as 100 calls, and many of those are our clients checking out and telling us who is on call.  We need to be able to update that information within 5-7 seconds, and running through the system as it stands right now makes that time consuming.  Plus, the On Call information is left at the bottom of the "Manage Client" page.  Now I know you had reasons for changing the system as it was, but perhaps there is a compromise.  1) Move the On Call boxes to be directly to the right of the "Add/Edit a Client" box, and 2) auto populate that field if the "Manage Client" button is clicked from within the Message Form.  This way, from the main menu, we can click a client ID, then click Manage Client, and we are right there, ready to update.
 
-            </div>
-            <div id="menu">
-                <ul>
-                    <li class="first"><a href="#" title="">Main Menu</a></li>
-                    <!-- POPUP WITH FORM TO ADD NEW FACILITY -->
-                    <li><a href="addFacility.html" title="">Add Facility</a></li>
-                    <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-                    <li><a href="addClient.html" title="">Add Client</a></li>
-                </ul>
-            </div>
-            <div id="page">
-                <div id="banner-empty"></div>
-                <div id="content">
-                    <div class="box-style4">
-                        <div class="title">
-                            <h2>Add a Physician</h2>
-                        </div>
-                        <div class="entry">
-                            <div class="left leftCol">
-                                <div id="physicianTable">
-                                    <table width="100%">
-                                        <caption>All Physicians</caption>
-                                        <tr>
-                                            <th id="pName">Name</th>
-                                            <th id="pPhone">Phone</th>
-                                            <th id="pExt">Ext.</th>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">First Doc</a></td>
-                                            <td>123-123-1234</td>
-                                            <td>no</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Second Doc</a></td>
-                                            <td>123-123-1234</td>
-                                            <td>#345</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="right rightCol">
-                                <form id="addNewPhysician" action="#" method="post">
-                                    <div class="row">
-                                        <div class="left mr_10">
-                                            <label for="physicianFname">First Name</label><br />
-                                            <asp:TextBox ID="physicianFname" runat="server" Width="100"></asp:TextBox>
-                                        </div>
-                                        <div class="left">
-                                            <label for="physicianLname">Last Name</label><br />
-                                            <asp:TextBox ID="physicianLname" runat="server" Width="100"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="left mr_10">
-                                            <label for="physicianPhone">Physician Phone</label><br />
-                                            <asp:TextBox ID="physicianPhone" runat="server" Width="100"></asp:TextBox>
-                                        </div>
-                                        <div class="left">
-                                            <label for="physicianExt">Phone Ext.</label><br />
-                                            <asp:TextBox ID="physicianExt" runat="server" Width="50"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <input type="submit" value="Submit Physician" />
-                                </form>
-                            </div>
-                        </div>
-                        <div class="clearfix">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="clearfix">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <div id="footer">
-        <p>Copyright (c) 2014 Axios Communications. All rights reserved.</p>
-    </div>
-</body>
-</html>
+
+/** **/
+UPDATE
+I found a few more rather important things to update.
+1) One of the fields in the SCI Printed Page is "Name of person authorizing removal of patient".  This field MUST be filled out if the patient died at a hospital, so I need the following 2 fields added just below the Next of Kin Fields in the First Call Form.
+1) Person Authorizing Removal of Decedant  2) Relationship
+2) The First Call form has Reporting Party.  This should be on a line all by itself, because I need to add the following Fields next to it. 
+Reporting Party ________  Relation / Title  _________  Call Back Number
+The Relation / Title Field should be a drop down list.  I will send that list with the other list I mentioned before.  Also, we need to be able to add / overwrite these drop down fields if the current choices are not applicable.  For example, I would include Coroner, but some prefer Medical Examiner.  If Medical Examiner is not in the list, I need to be able to type it in.  Currently, we cannot do that.  For instance, I cannot manually type Board & Care into facility type.  Again, we will expand this list, but what if the place is a Hotel, State Park, or some other type that I would not currently think of.  Exceptions are a staple in this business, unfortunately.
+
+Issues:
+1) 2 more contact types need to be added to the On Call section, Vendors and Transport
+2) A Primary and Secondary Transport field need to be added to the Message and First Call forms.  Required information is Contact Name, Company Name, Phone Number, Email
+3) A 3rd and 4th Phone Number box need to be added to Client Information, those being Back Line 1 and Back Line 2
+4) In First Calls, the Facility Notes function does not seem to save.  This box should be used to give instructions on the Places of Death, to let us know if a particular Hospital has a morgue, Other names for certain skilled nursing facilities (They change owners and names quite frequently) and other notes on the facilities.  This should not be treated as a client based information box.  It is only relative to the auto-filled information from the places of death.
+5) In the First Call Form, Below the Facility Notes, we should have another copy of the On Call Directors and the On Call Removal Staff so we don't have to jump between pages in order to contact the right person for the calls.
+6) In First Calls, the NOK Relationship list needs to be updated.  I will send a full list with this email so you can simply overwrite the old list with the new one.
+7) In First Calls, When the Counselor Name is typed, the Date and Time Fields should be automatically populated with the current date and time.
+8) I'm not sure if I asked for it taken away, but looking at the First Call form, I'd like the Alternate Phone Number for the Next Of Kin added.
+9) I do not see a clone / copy button for either the Messages or First Call forms, and we do need this because we answer for the care center and we need to be able to clone the calls to the care center account, so that both accounts have their own versions of the call.   There are active changes that do occur between the original mortuary calls and the dispatch calls.
+10) Following the phone number, I want a pair of new fields added, the first being a drop down menu containing a list: Apt, Room, Unit, Space
+11) In both Messages and First Calls, I need to be able to change the date and time the call was taken.  This may not have to be done by everyone, but there are times when it is necessary, and right now there is no way to do so.
+12) When searching First calls, ALL times taken are listed at 12:00.  The searched messages are the same way.
+
+Notes:
+1) In First Calls, we need to add a few more facility types.  Coroner's Office, Assisted Living, Board & Care, Skilled Nursing, Convalescent, and Mortuary.
+2) Regarding phone numbers, the current requirement is to have the dashes input when typing.  Can this be automated?
+3) The message form should have, below the Client Instructions, a second box, essencially the same as the Client Instructions box, except it will be used for Additional Contacts and Vendors.
+
+Lastly, there is an issue with the GUI in general.  Attached in a copy of the screencap I took of my browser with the page up.  As you will notice, there is a significant empty space above the title of the database, and quite a bit of space on both sides.  Additionally, there are a few lines in the First Call form that contain only 1 field, such as the Ext field, because of the vertical page wrap.  It would be nice if this could be fixed.  I don't mind a little space on the sides, but with my wide-screen monitors, nearly half the screen is empty.

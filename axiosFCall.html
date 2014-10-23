@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+	<style>
+		@media print {
+			button {
+				display: none;
+			}
+		}
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		img {
+			border: 1px solid lightgray;
+		}
+		#while p {
+			font-family: 'Satisfy', cursive;
+		}
+		.left {
+			float: left;
+		}
+		.right {
+			float: right;
+		}
+		.clearfix {
+			clear:both;
+		}
+		
+		.mTB10 {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		
+		.border {
+			border: 1px solid #000;
+		}
+		
+		#fCall {
+			width: 760px;
+			margin: 0 auto;
+			position: relative;
+			z-index: 99;
+		}
+		.info {
+			position: absolute;
+			font-size: .65em;
+			z-index: 999;
+		}
+		#name {
+			left: 125px;
+			top: 44px;
+		}
+		#axios {
+			left: 96px;
+			top: 58px;
+		}
+		#callDate {
+			left: 288px;
+			top: 59px;
+		}
+		#callTime {
+			left: 409px;
+			top: 59px;
+		}
+		#specialInstructions {
+			width: 252px;
+			left: 305px;
+			top: 665px;
+		}
+		#physicianName {
+			left: 161px;
+			top: 545px;
+		}
+		#physicianPhone {
+			left: 425px;
+			top: 571px;
+		}
+		#responsibleParty {
+			left: 93px;
+			top: 321px;
+		}
+		#responsibleRelationship {
+			left: 455px;
+			top: 321px;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="fCall">
+		<p id="name" class="info">Some NewGuy</p>
+		<p id="axios" class="info">Axios Communications</p>
+		<p id="callDate" class="info">11-12-14</p>
+		<p id="callTime" class="info">6:00pm</p>
+		<p id="nameOfDeceased" class="info">Mr. Frank Hillman</p>
+		<p id="deceasedAddress" class="info">1234 Some St.</p>
+		<p id="deceasedSSN" class="info">123-12-1234</p>
+		<p id="DOB" class="info">06-23-1932</p>
+		<p id="age" class="info">82</p>
+		<p id="dateOfDeath" class="info">10-11-2014</p>
+		<p id="timeOfDeath" class="info">2:07 am</p>
+		<p id="placeOfDeath" class="info">Kaiser Hospital</p>
+		<p id="podAddress" class="info">1234 Facility St</p>
+		<p id="podCity" class="info">San Onofre</p>
+		<p id="podState" class="info">CA</p>
+		<p id="podZip" class="info">12345</p>
+		<p id="deceasedWeight" class="info">157lbs</p>
+		<p id="reportingParty" class="info">Gwen Stacey</p>
+		<p id="responsibleParty" class="info">Peter Parker</p>
+		<p id="responsibleRelationship" class="info">Brother</p>
+		<p id="responsiblePhone" class="info">Brother</p>
+		<p id="physicianName" class="info">James Howlett</p>
+		<p id="physicianPhone" class="info">435-543-5434</p>
+		<p id="specialInstructions" class="info">Some Instructions will go here for the deceased. Some Instructions will go here for the deceased.</p>
+		<img src="images/fCallPage.jpg" />
+		<button id="print" onclick="window.print()">Print</button>
+	</div>
+</body>
+</html>
