@@ -92,6 +92,25 @@
                   </asp:DropDownList>
                   <asp:RequiredFieldValidator ID="ReqQwkMessage" runat="server" ErrorMessage="Msg is required" ControlToValidate="QwkMessage" CssClass="ErrorMessage" Display="None" Text="*" InitialValue="-1"></asp:RequiredFieldValidator>
                   <br />
+        <!--
+                  <h2>Primary Transport</h2>
+                  <label for="primaryTransportName">Name:</label><br />
+
+                  <label for="primaryTransportCompany">Company:</label><br />
+
+                  <label for="primaryTransportPhone">Message:</label><br />
+
+                  <label for="primaryTransportEmail">Email:</label><br />
+
+                  <h2>Secondary Transport</h2>
+                  <label for="secondaryTransportName">Name:</label><br />
+
+                  <label for="secondaryTransportCompany">Company:</label><br />
+
+                  <label for="secondaryTransportPhone">Message:</label><br />
+
+                  <label for="secondaryTransportEmail">Message:</label><br />
+        -->
                   <label for="to">Message:</label><br />
                   <asp:TextBox ID="MessageText" runat="server" TextMode="MultiLine" CssClass="fields"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="ReqMessage" runat="server" ErrorMessage="A Message is required" ControlToValidate="MessageText" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
@@ -123,6 +142,7 @@
                   <input type="hidden" name="secondaryContactId" id="secondaryContactId" value="0" runat="server" />
                   <br />
                   <label for="onCallNotes">Additional Notes</label>
+                  <button id="updateAdditionalNotes" class="right">Update</button>
                   <textarea id="onCallNotes" class="onCall"><%=AdditionalNotes%></textarea>
                 </div>
                 <div id="mainInfo" class="right">
@@ -163,6 +183,12 @@
   </div>
   <div id="containerBg"></div>
     <script>
+        $("input").keypress(function (e) {
+            var charCode = e.charCode || e.keyCode;
+            if (charCode == 13) { //Enter key's keycode
+                return false;
+            }
+        });
         $('#menu ul li').on('click', function(e) {
             var url = $(this).children('a').attr('href');
             var urlID = $(this).children('a').attr('id');
@@ -176,7 +202,7 @@
                 }
             }
         });
-        $('#clientInfo input, #clientInfo textarea').prop('disabled', true)
+        $('#clientInfo input').prop('readonly', true)
     </script>
 </body>
 </html>

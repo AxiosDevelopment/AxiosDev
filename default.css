@@ -467,6 +467,13 @@ th, td {
 #facilityTable, #clientTable, #physicianTable {
     height: 100px;
     position: relative;
+    width: 320px;
+    float: left;
+}
+
+#ContactUpdatePanel {
+    float: right; 
+    width: 490px;
 }
 
 #pName {

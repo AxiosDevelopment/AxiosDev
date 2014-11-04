@@ -30,6 +30,23 @@ function openWindow(popUp) {
 }
 
 $(function () {
+	/** GET CURRENT TIME AND DATE **/
+	
+
+     $('#counselorName').on('focus', function () {
+         var start = new Date().toString();
+         var hours = new Date().getHours();
+         var splitDate = start.split(' ');
+         var getMonth = {
+             "Jan": '1',"Feb": "2","Mar": "3","Apr": "4", "May": "5","Jun": "6","Jul": "7","Aug": "8","Sep": "9","Oct": "10","Nov": "11","Dec": "12"
+         }
+         if (hours > 12) var timeOfDay = 'pm'
+         else var timeOfDay = 'am';
+         $('#coronerTime').val(splitDate[4] + timeOfDay);
+         $('#coronerDate').val(getMonth[splitDate[1]] + '/' + splitDate[2] + '/' + splitDate[3]);
+     });
+
+
   var clientId = $('#CompanyID').val();
   $('#searchMessages, #searchFirstCalls').on('click', function (e) {
     e.preventDefault();
@@ -447,36 +464,23 @@ $(function () {
   });
   */
 
-  /* NOT NEEDED ANYMORE - UPDATE BUTTONS WERE REMOVED */
+  /* Update Additional Notes */
   //*************************************************************************************/
-  /*
-  $('.updateCounselor').on('click', function () {
-    var updateId = $(this).attr('id');
-    var contactName = $(this).next('input').val();
-    var contactNumber = $(this).next().next('input').val();
-    var contactId = $(this).next().next().next().next('input').val();
+  
+  $('.updateAdditionalNotes').on('click', function () {
+      var notes = $('#onCallNotes').val();
+      var clientId = $('#clientMessageId').text()
     $.ajax({
       url: "UpdateInformation.aspx?",
-      data: "contactId=" + contactId + "&contactName=" + contactName + "&contactNumber=" + contactNumber + "&clientId=" + clientId + "&updateId=" + updateId,
+      data: "clientId=" + clientId + "&notes=" + notes,
       dataType: "text",
       cache: false
     }).done(function (data) {
-      if (updateId === 'updateMainCounselor') {
-        $('#updateMainCounselor').attr('disabled', true);
-      } else {
-        $('#updateSecondaryCounselor').attr('disabled', true);
-      }
       alert("Updated Successfully");
     }).fail(function (data, status, error) {
       alert(error);
     });
   });
-  $(document).on('click', function (e) {
-    if (!$(e.target).hasClass('stick')) {
-      $('.searchAuto').hide();
-    }
-  });
-  */
 
   /* NOT NEEDED ANYMORE - UPDATE BUTTONS WERE REMOVED */
   /** THIS IS FOR THE COUNSELOR ON CALL TO CONTROL THE BUTTON ONLY WHEN CHANGES **/
@@ -526,7 +530,6 @@ $(function () {
   var $msgID = $('#MessageID').val();
   var $fcID = $('#FirstCallID').val();
   if ($msgID == 0 || $fcID == 0) {
-    $('#RBMessageStatus input:radio[id^=RBMessageStatus]:last').attr('disabled', true);
+    $('#RBMessageStatus input:radio[id^=RBMessageStatus]:last').attr('readonly', true);
   }
-
 });

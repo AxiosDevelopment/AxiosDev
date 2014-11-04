@@ -97,6 +97,17 @@
                       <asp:RequiredFieldValidator ID="ReqReportingName" runat="server" ErrorMessage="Reporting Party Name is required" ControlToValidate="reportingName" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
+                          
+                      <label for="reportingPartyTitle">Relation / Title</label><br />
+                      <asp:TextBox ID="reportingPartyTitle" runat="server" Width="150"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                        <label for="reportingPartyPhone">Phone</label><br />
+                        <asp:TextBox ID="reportingPartyPhone" runat="server" class="facility" Width="100"></asp:TextBox>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
                       <label for="deceasedName">Deceased Name</label><br />
                       <asp:TextBox ID="deceasedName" runat="server" Width="200"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqDeceasedName" runat="server" ErrorMessage="Deceased Name is required" ControlToValidate="deceasedName" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
@@ -186,10 +197,15 @@
                       <asp:RequiredFieldValidator ID="ReqFacPhone" runat="server" ErrorMessage="Facility Phone is required" ControlToValidate="facilityPhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:RegularExpressionValidator ID="ReqExFacPhone" ControlToValidate="facilityPhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
                     </div>
-                    <!--<div class="left mr_10">
-                      <label for="phoneExt">Ext.</label><br />
-                      <asp:TextBox ID="phoneExt" runat="server" class="facility" Width="30"></asp:TextBox>
-                    </div>-->
+
+                      <!--ADDED THIS FOR "Apt, Room, Unit"-->
+                    <div class="left mr_10">
+                      <label for="areaOfDeath">Area of Death:</label><br />
+                      <asp:DropDownList ID="areaOfDeath" runat="server">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                      </asp:DropDownList>
+                    </div>
+
                   </div>
                   <div class="row">
                     <div class="left mr_10">
@@ -209,11 +225,33 @@
                       <asp:TextBox ID="responsiblePhone" runat="server" Width="100"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqResponibleParty" runat="server" ErrorMessage="Responsible Party Phone Number is required" ControlToValidate="responsiblePhone" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                       <asp:RegularExpressionValidator ID="RegExResponsibleParty" ControlToValidate="responsiblePhone" runat="server" ErrorMessage="Please enter a valid Phone Number (format: ###-###-####)" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" Display="None"></asp:RegularExpressionValidator>
+                      
+                    </div>
+                    <div class="left mr_10">
+                      <label for="responsibleAltPhone">Alt Phone</label><br />
+                      <asp:TextBox ID="responsibleAltPhone" runat="server" Width="100"></asp:TextBox>
                     </div>
                    <!-- <div class="left mr_10">
                       <label for="responsiblePhoneExt">Ext.</label><br />
                       <asp:TextBox ID="responsiblePhoneExt" runat="server" Width="30"></asp:TextBox>
                     </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="left mr_10">
+                      <label for="authorizedPerson">Person Authorizing Removal of Decedant</label><br />
+                      <asp:TextBox ID="authorizedPerson" runat="server" Width="225"></asp:TextBox>
+                    </div>
+                    <div class="left mr_10">
+                      <label for="authorizedPersonRelationship">Relationship</label><br />
+                      <asp:DropDownList ID="authorizedPersonRelationship" runat="server">
+                        <asp:ListItem Value="-1" Text="--Select--" />
+                      </asp:DropDownList>
+                     
+                    </div>
+                    <div class="left mr_10">
+                      <label for="authorizedPersonRelationshipPhone">Phone</label><br />
+                      <asp:TextBox ID="authorizedPersonRelationshipPhone" runat="server" Width="100"></asp:TextBox>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="left mr_10">
@@ -255,6 +293,8 @@
                       <asp:TextBox ID="caseNumber" runat="server" Width="100"></asp:TextBox>
                       <asp:RequiredFieldValidator ID="ReqCaseNumber" runat="server" ErrorMessage="Case Number is required" ControlToValidate="caseNumber" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
+                  </div>
+                  <div class="row">
                     <div class="left mr_10">
                       <label for="counselorName">Counselor Name</label><br />
                       <asp:TextBox ID="counselorName" runat="server" Width="200"></asp:TextBox>
@@ -299,7 +339,30 @@
                 <div class="right" id="fCallNotes">
                   <label for="facilityNotes" class="left pTop5">Facility Notes</label>
                   <asp:TextBox ID="facilityNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
-
+                  <br /><br />
+                  <!-- THIS IS TO LIST ON CALL PEOPLE -->
+                  <h2>Primary on call</h2>
+                  <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>Some person</td>
+                    </tr>
+                    <tr>
+                     <td>Phone:</td>
+                     <td>123-123-1234</td>
+                    </tr>
+                  </table><br /><br />
+                  <h2>Secondary on call</h2>
+                  <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>Some person</td>
+                    </tr>
+                    <tr>
+                     <td>Phone:</td>
+                     <td>123-123-1234</td>
+                    </tr>
+                  </table>
                 </div>
               </form>
             </div>
