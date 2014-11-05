@@ -133,6 +133,8 @@ Public Class AddClient
     company.Zip = nClientZip.Text
     company.MainTelephone = nClientPhone.Text
     company.MainTelephone2nd = nClientPhone2.Text
+    company.Backline1 = nBackline1.Text
+    company.Backline2 = nBackline2.Text
     company.Fax = nClientFax.Text
     company.PhoneAnswer = nClientGreeting.Text
     company.HoursOfOperation = nClientHours.Text
@@ -511,6 +513,8 @@ Public Class AddClient
     nClientZip.Text = company.Zip
     nClientPhone.Text = company.MainTelephone
     nClientPhone2.Text = company.MainTelephone2nd
+    nBackline1.Text = company.Backline1
+    nBackline2.Text = company.Backline2
     nClientFax.Text = company.Fax
     nClientGreeting.Text = company.PhoneAnswer
     nClientHours.Text = company.HoursOfOperation

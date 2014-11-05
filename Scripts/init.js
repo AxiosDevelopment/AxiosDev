@@ -284,6 +284,8 @@ $(function () {
                 $('#nClientZip').val(clientObj.Zip);
                 $('#nClientPhone').val(clientObj.MainTelephone);
                 $('#nClientPhone2').val(clientObj.MainTelephone2nd);
+                $('#nBackline1').val(clientObj.Backline1);
+                $('#nBackline2').val(clientObj.Backline2);
                 $('#nClientFax').val(clientObj.Fax);
                 $('#nClientGreeting').val(clientObj.PhoneAnswer);
                 $('#nClientHours').val(clientObj.HoursOfOperation);
@@ -369,6 +371,8 @@ $(function () {
       $('#nClientZip').val(clientObj.Zip);
       $('#nClientPhone').val(clientObj.MainTelephone);
       $('#nClientPhone2').val(clientObj.MainTelephone2nd);
+      $('#nBackline1').val(clientObj.Backline1);
+      $('#nBackline2').val(clientObj.Backline2);
       $('#nClientFax').val(clientObj.Fax);
       $('#nClientGreeting').val(clientObj.PhoneAnswer);
       $('#nClientHours').val(clientObj.HoursOfOperation);
@@ -467,12 +471,12 @@ $(function () {
   /* Update Additional Notes */
   //*************************************************************************************/
   
-  $('.updateAdditionalNotes').on('click', function () {
+  $('#updateAdditionalNotes').on('click', function () {
       var notes = $('#onCallNotes').val();
-      var clientId = $('#clientMessageId').text()
+      var clientId = $('#CompanyID').val();
     $.ajax({
       url: "UpdateInformation.aspx?",
-      data: "clientId=" + clientId + "&notes=" + notes,
+      data: "clientId=" + clientId + "&notes=" + notes + "&updateId=updateAdditionalNotes",
       dataType: "text",
       cache: false
     }).done(function (data) {

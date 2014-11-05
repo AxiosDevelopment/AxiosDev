@@ -23,6 +23,177 @@ Partial Public Class AddClient
   Protected WithEvents addNewClient As Global.System.Web.UI.HtmlControls.HtmlForm
 
   '''<summary>
+  '''MsgScriptManager control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents MsgScriptManager As Global.System.Web.UI.ScriptManager
+
+  '''<summary>
+  '''ClientIDText control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ClientIDText As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''btnTriggerUpdatePanel control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents btnTriggerUpdatePanel As Global.System.Web.UI.WebControls.Button
+
+  '''<summary>
+  '''ContactUpdatePanel control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ContactUpdatePanel As Global.System.Web.UI.UpdatePanel
+
+  '''<summary>
+  '''grvContacts control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents grvContacts As Global.System.Web.UI.WebControls.GridView
+
+  '''<summary>
+  '''hContactID control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents hContactID As Global.System.Web.UI.WebControls.HiddenField
+
+  '''<summary>
+  '''ddContactType control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ddContactType As Global.System.Web.UI.WebControls.DropDownList
+
+  '''<summary>
+  '''ReqContactType control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqContactType As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nContactName control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nContactName As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqContactName control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqContactName As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nContactJobTitle control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nContactJobTitle As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqContactJobTitle control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqContactJobTitle As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nContactPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nContactPhone As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''ReqContactPhone control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ReqContactPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+  '''<summary>
+  '''nContactEmail control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nContactEmail As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''nContactAdditionalInformation control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nContactAdditionalInformation As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''resetContactSession control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents resetContactSession As Global.System.Web.UI.HtmlControls.HtmlInputHidden
+
+  '''<summary>
+  '''ClearContact control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents ClearContact As Global.System.Web.UI.WebControls.Button
+
+  '''<summary>
+  '''SubmitContact control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents SubmitContact As Global.System.Web.UI.WebControls.Button
+
+  '''<summary>
   '''ValidationSummaryAddClient control.
   '''</summary>
   '''<remarks>
@@ -221,6 +392,24 @@ Partial Public Class AddClient
   Protected WithEvents ReqClientFax As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
   '''<summary>
+  '''nBackline1 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nBackline1 As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
+  '''nBackline2 control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents nBackline2 As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
   '''nClientGreeting control.
   '''</summary>
   '''<remarks>
@@ -282,177 +471,6 @@ Partial Public Class AddClient
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
   Protected WithEvents ReqClientSpecialInstructions As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
-  '''MsgScriptManager control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents MsgScriptManager As Global.System.Web.UI.ScriptManager
-
-  '''<summary>
-  '''ClientIDText control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ClientIDText As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''btnTriggerUpdatePanel control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents btnTriggerUpdatePanel As Global.System.Web.UI.WebControls.Button
-
-  '''<summary>
-  '''ContactUpdatePanel control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ContactUpdatePanel As Global.System.Web.UI.UpdatePanel
-
-  '''<summary>
-  '''grvContacts control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents grvContacts As Global.System.Web.UI.WebControls.GridView
-
-  '''<summary>
-  '''hContactID control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents hContactID As Global.System.Web.UI.WebControls.HiddenField
-
-  '''<summary>
-  '''ddContactType control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ddContactType As Global.System.Web.UI.WebControls.DropDownList
-
-  '''<summary>
-  '''ReqContactType control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ReqContactType As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
-  '''nContactName control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents nContactName As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''ReqContactName control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ReqContactName As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
-  '''nContactJobTitle control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents nContactJobTitle As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''ReqContactJobTitle control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ReqContactJobTitle As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
-  '''nContactPhone control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents nContactPhone As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''ReqContactPhone control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ReqContactPhone As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-  '''<summary>
-  '''nContactEmail control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents nContactEmail As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''nContactAdditionalInformation control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents nContactAdditionalInformation As Global.System.Web.UI.WebControls.TextBox
-
-  '''<summary>
-  '''resetContactSession control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents resetContactSession As Global.System.Web.UI.HtmlControls.HtmlInputHidden
-
-  '''<summary>
-  '''ClearContact control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents ClearContact As Global.System.Web.UI.WebControls.Button
-
-  '''<summary>
-  '''SubmitContact control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents SubmitContact As Global.System.Web.UI.WebControls.Button
 
   '''<summary>
   '''clientId control.

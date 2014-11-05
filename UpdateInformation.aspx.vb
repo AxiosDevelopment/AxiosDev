@@ -23,20 +23,20 @@ Public Class UpdateInformation
       Try
 
         updateId = Request.QueryString.Get("updateId")
-        If String.IsNullOrEmpty(updateId) Then
-          'GET VARIABLES FOR ADDITIONAL NOTES AND CLIENT INFO TEXTAREAS
-          updateId = Request.Form.Get("id").ToString()
-          'updateId = Request.QueryString.Get("id").ToString()
-          If Not String.IsNullOrEmpty(updateId) Then
-            dataInfo = Request.Form.Get("info").ToString()
-            cid = Request.Form.Get("clientId").ToString()
-          End If
-        Else
-          'GET VARIABLES FOR COUNSELOR ON CALL AND SECONDARY ON CALL
-          contactName = Request.QueryString.Get("contactName").ToString()
-          contactNumber = Request.QueryString.Get("contactNumber").ToString()
-          contactId = Request.QueryString.Get("contactId").ToString()
-
+        If Not String.IsNullOrEmpty(updateId) Then
+          '  'GET VARIABLES FOR ADDITIONAL NOTES AND CLIENT INFO TEXTAREAS
+          '  'updateId = Request.Form.Get("id").ToString()
+          '  updateId = Request.QueryString.Get("id").ToString()
+          '  If Not String.IsNullOrEmpty(updateId) Then
+          '    dataInfo = Request.Form.Get("info").ToString()
+          '    cid = Request.Form.Get("clientId").ToString()
+          '  End If
+          'Else
+          '  'GET VARIABLES FOR COUNSELOR ON CALL AND SECONDARY ON CALL
+          '  contactName = Request.QueryString.Get("contactName").ToString()
+          '  contactNumber = Request.QueryString.Get("contactNumber").ToString()
+          '  contactId = Request.QueryString.Get("contactId").ToString()
+          dataInfo = Request.QueryString.Get("notes").ToString()
           cid = Request.QueryString.Get("clientId").ToString()
         End If
 

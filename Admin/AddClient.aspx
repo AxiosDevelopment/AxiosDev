@@ -266,12 +266,12 @@
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="backline1">Backline1 (Inc. Ext)</label><br />
-                      <asp:TextBox ID="backline1" runat="server" CssClass="contacts"></asp:TextBox>
+                      <label for="nBackline1">Backline1 (Inc. Ext)</label><br />
+                      <asp:TextBox ID="nBackline1" runat="server" CssClass="ClientGroup"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
-                      <label for="backline2">Backline2 (Inc. Ext)</label><br />
-                      <asp:TextBox ID="backline2" runat="server" CssClass="contacts"></asp:TextBox>
+                      <label for="nBackline2">Backline2 (Inc. Ext)</label><br />
+                      <asp:TextBox ID="nBackline2" runat="server" CssClass="ClientGroup"></asp:TextBox>
                     </div>
                   </div>
                   <div class="row"></div>

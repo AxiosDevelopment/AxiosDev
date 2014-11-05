@@ -67,6 +67,27 @@ Public Class FirstCalls
     clientId.Text = company.Number
     clientName.Text = company.Name
 
+    Dim row As HtmlTableRow
+    Dim cell As HtmlTableCell
+
+    If company.Contacts.Count > 1 Then
+      For Each c As Contact In company.Contacts
+        Select Case c.TypeID
+          Case 1 'Primary Contact
+            PrimaryPerson.InnerText = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
+            PrimaryPhone.InnerText = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
+
+          Case 2 'Secondary Contact
+            SecondaryPerson.InnerText = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
+            SecondaryPhone.InnerText = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
+
+        End Select
+      Next
+    Else
+
+    End If
+
+
   End Sub
 
   ''' <summary>
@@ -101,7 +122,7 @@ Public Class FirstCalls
     facilityCounty.Text = If(Not String.IsNullOrEmpty(firstCall.County), firstCall.County, String.Empty)
     facilityZip.Text = If(Not String.IsNullOrEmpty(firstCall.Zip), firstCall.Zip, String.Empty)
     facilityPhone.Text = If(Not String.IsNullOrEmpty(firstCall.Phone), firstCall.Phone, String.Empty)
-    phoneExt.Text = If(Not String.IsNullOrEmpty(firstCall.PhoneExt), firstCall.PhoneExt, String.Empty)
+    'phoneExt.Text = If(Not String.IsNullOrEmpty(firstCall.PhoneExt), firstCall.PhoneExt, String.Empty)
     partyName.Text = If(Not String.IsNullOrEmpty(firstCall.NextOfKinName), firstCall.NextOfKinName, String.Empty)
     relationship.SelectedValue = relationship.Items.FindByValue(firstCall.NextOfKinRelationshipID).Value
     responsiblePhone.Text = If(Not String.IsNullOrEmpty(firstCall.NextOfKinPhone), firstCall.NextOfKinPhone, String.Empty)
@@ -137,10 +158,12 @@ Public Class FirstCalls
       Try
         Dim firstCall As New FirstCall
         firstCall = FillFirstCall(FirstCallID.Value)
+        'Always do an insert
         If firstCall.ID = "0" Then
           InsertFirstCall(firstCall)
         Else
-          UpdateFirstCall(firstCall)
+          InsertFirstCall(firstCall)
+          'UpdateFirstCall(firstCall)
         End If
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "SaveMessagePopup", "messagedSaved()", True)
 
@@ -196,12 +219,16 @@ Public Class FirstCalls
     'SQL.Append("NULL,") '[FirstPARelationship] *****
     firstCall.DeceasedName = deceasedName.Text '[FirstDeceasedName]
     'SQL.Append("NULL,") '[FirstPrefix] ******
-    firstCall.DateTimeOfDeath = FormatDateTime(dDate.Text & " " & dTime.Text, DateFormat.GeneralDate)  '[FirstDateTimeofDeath] *****
+    If (Not String.IsNullOrEmpty(dDate.Text) And Not String.IsNullOrEmpty(dTime.Text)) Then
+      firstCall.DateTimeOfDeath = FormatDateTime(dDate.Text & " " & dTime.Text, DateFormat.GeneralDate)  '[FirstDateTimeofDeath] *****
+    End If
     firstCall.PlaceOfDeath = placeOfDeath.Text '[FirstPlaceOfDeath]
     firstCall.FacilityTypeID = facTypes.SelectedValue '[BusinessTypeID]
     firstCall.SSN = ssn.Text '[FirstSSN]
     firstCall.Weight = weight.Text '[FirstWeight]
-    firstCall.DateOfBirth = dob.Text '[FirstDOB]
+    If (Not String.IsNullOrEmpty(dob.Text)) Then
+      firstCall.DateOfBirth = dob.Text '[FirstDOB]
+    End If
     firstCall.Address = facilityAddr.Text  '[FirstAddress]
     'SQL.Append("NULL,") '[FirstLocationType] *****
     firstCall.City = facCity.Text '[FirstCity]
@@ -209,7 +236,7 @@ Public Class FirstCalls
     firstCall.County = facilityCounty.Text '[FirstCounty]
     firstCall.Zip = facilityZip.Text  '[FirstZip]
     firstCall.Phone = facilityPhone.Text '[FirstPhone]
-    firstCall.PhoneExt = phoneExt.Text '[FirstExt]
+    'firstCall.PhoneExt = phoneExt.Text '[FirstExt]
     firstCall.NextOfKinName = partyName.Text '[FirstNextofKin]
     firstCall.NextOfKinRelationshipID = relationship.SelectedValue '[FirstRelationshipID]
     firstCall.NextOfKinPhone = responsiblePhone.Text '[FirstTelephoneofInforKin]
@@ -217,11 +244,15 @@ Public Class FirstCalls
     firstCall.NextOfKinWorkPhoneExt = responsiblePhoneExt.Text '[FirstWorkExt]
     firstCall.Doctor = physicianName.Text '[FirstDoctor]
     firstCall.DoctorPhone = physicianPhone.Text  '[FirstDoctorPhone]
-    firstCall.DatePatientSeen = physicianDate.Text '[FirstDatePatientSeen]
+    If (Not String.IsNullOrEmpty(physicianDate.Text)) Then
+      firstCall.DatePatientSeen = physicianDate.Text '[FirstDatePatientSeen]
+    End If
     firstCall.Coroner = coronerName.Text '[FirstCoroner]
     firstCall.CaseNumber = caseNumber.Text '[FirstFileNumber]
     firstCall.CounselorContacted = counselorName.Text '[FirstCounselorContacted]
-    firstCall.DateCounselorContacted = FormatDateTime(coronerDate.Text & " " & coronerTime.Text, DateFormat.GeneralDate)  '[FirstDateContacted]
+    If (Not String.IsNullOrEmpty(coronerDate.Text) And Not String.IsNullOrEmpty(coronerTime.Text)) Then
+      firstCall.DateCounselorContacted = FormatDateTime(coronerDate.Text & " " & coronerTime.Text, DateFormat.GeneralDate)  '[FirstDateContacted]
+    End If
     'SQL.Append("NULL,") '[FirstNotes] *****
     firstCall.OperatorCallNotes = operatorNotes.Text '[FirstOperatorCallNotes]
     If (RBMessageStatus.SelectedValue.ToUpper() = "DELIVER") Then

@@ -11,6 +11,8 @@
   Public Property Zip As String
   Public Property MainTelephone As String
   Public Property MainTelephone2nd As String
+  Public Property Backline1 As String
+  Public Property Backline2 As String
   Public Property Fax As String
   Public Property Email As String
   Public Property InstructionSheet As String

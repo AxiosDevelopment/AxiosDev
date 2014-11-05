@@ -32,7 +32,7 @@ Public Class FirstCallDA
       Do While rsData.Read()
         firstCall.ID = rsData("FirstCallID")
         firstCall.CompanyID = rsData("FirstCompanyID")
-        firstCall.CreatedDateTime = FormatDateTime(rsData("FirstCallDateTime"), DateFormat.LongDate)
+        firstCall.CreatedDateTime = FormatDateTime(rsData("FirstCallDateTime"), DateFormat.GeneralDate)
         firstCall.ReportingParty = If(Not String.IsNullOrEmpty(rsData("FirstReportingParty").ToString()), rsData("FirstReportingParty"), String.Empty)
         firstCall.DeceasedName = If(Not String.IsNullOrEmpty(rsData("FirstDeceasedName").ToString()), rsData("FirstDeceasedName"), String.Empty)
         firstCall.DateTimeOfDeath = If(Not String.IsNullOrEmpty(rsData("FirstDateTimeofDeath").ToString()), FormatDateTime(rsData("FirstDateTimeofDeath"), DateFormat.GeneralDate), Date.MinValue)
@@ -171,7 +171,7 @@ Public Class FirstCallDA
     db = New dbUtil()
 
     SQL.Append("INSERT INTO [dbo].[FIRST_CALL]([FirstCompanyID],[FirstCallDateTime],[FirstReportingParty],[FirstRPRelationshipID],[FirstPersonAuthorizingRemoval],[FirstPARelationship],[FirstDeceasedName],[FirstPrefix],[FirstDateTimeofDeath]")
-    SQL.Append(",[FirstPlaceOfDeath],[FirstFacilityTypeID],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
+    SQL.Append(",[FirstPlaceOfDeath],[FirstBusinessTypeID],[FirstSSN],[FirstWeight],[FirstDOB],[FirstAddress],[FirstLocationType],[FirstCity],[FirstState],[FirstCounty],[FirstZip],[FirstPhone],[FirstExt],[FirstNextofKin],[FirstRelationshipID]")
     SQL.Append(",[FirstTelephoneofInforKin],[FirstWorkPhoneForKin],[FirstWorkExt],[FirstDoctor],[FirstDoctorPhone],[FirstDatePatientSeen],[FirstCoroner],[FirstFileNumber],[FirstCounselorContacted],[FirstDateContacted]")
     SQL.Append(",[FirstNotes],[FirstOperatorCallNotes],[FirstDelivered],[FirstDateTimeDelivered],[FirstMedNoteBox],[FirstCustCallInfo],[FirstHold])")
     SQL.Append(" VALUES ")
@@ -183,12 +183,24 @@ Public Class FirstCallDA
     SQL.Append("NULL,") '[FirstPARelationship] *****
     SQL.Append("'" & fc.DeceasedName & "',") '[FirstDeceasedName]
     SQL.Append("NULL,") '[FirstPrefix] ******
-    SQL.Append("'" & fc.DateTimeOfDeath & "',") '[FirstDateTimeofDeath] *****
+    If (fc.DateTimeOfDeath = #12:00:00 AM#) Then
+      SQL.Append("NULL,")
+    Else
+      SQL.Append("'" & fc.DateTimeOfDeath & "',") '[FirstDateTimeofDeath] *****
+    End If
     SQL.Append("'" & fc.PlaceOfDeath & "',") '[FirstPlaceOfDeath]
-    SQL.Append("" & fc.FacilityTypeID & ",") '[FirstFacilityTypeID]
+    If (fc.FacilityTypeID = -1) Then
+      SQL.Append("NULL,")
+    Else
+      SQL.Append("" & fc.FacilityTypeID & ",") '[FirstFacilityTypeID]
+    End If
     SQL.Append("'" & fc.SSN & "',") '[FirstSSN]
     SQL.Append("'" & fc.Weight & "',") '[FirstWeight]
-    SQL.Append("'" & fc.DateOfBirth & "',") '[FirstDOB]
+    If (fc.DateOfBirth = #12:00:00 AM#) Then
+      SQL.Append("NULL,")
+    Else
+      SQL.Append("'" & fc.DateOfBirth & "',") '[FirstDOB]
+    End If
     SQL.Append("'" & fc.Address & "',") '[FirstAddress]
     SQL.Append("NULL,") '[FirstLocationType] *****
     SQL.Append("'" & fc.City & "',") '[FirstCity]
@@ -198,17 +210,29 @@ Public Class FirstCallDA
     SQL.Append("'" & fc.Phone & "',") '[FirstPhone]
     SQL.Append("'" & fc.PhoneExt & "',") '[FirstExt]
     SQL.Append("'" & fc.NextOfKinName & "',") '[FirstNextofKin]
-    SQL.Append(fc.NextOfKinRelationshipID & ",") '[FirstRelationshipID]
+    If (fc.NextOfKinRelationshipID = -1) Then
+      SQL.Append("NULL,")
+    Else
+      SQL.Append(fc.NextOfKinRelationshipID & ",") '[FirstRelationshipID]
+    End If
     SQL.Append("'" & fc.NextOfKinPhone & "',") '[FirstTelephoneofInforKin]
     SQL.Append("NULL,") '[FirstWorkPhoneForKin]
     SQL.Append("'" & fc.NextOfKinWorkPhoneExt & "',") '[FirstWorkExt]
     SQL.Append("'" & fc.Doctor & "',") '[FirstDoctor]
     SQL.Append("'" & fc.DoctorPhone & "',") '[FirstDoctorPhone]
-    SQL.Append("'" & fc.DatePatientSeen & "',") '[FirstDatePatientSeen]
+    If (fc.DatePatientSeen = #12:00:00 AM#) Then
+      SQL.Append("NULL,")
+    Else
+      SQL.Append("'" & fc.DatePatientSeen & "',") '[FirstDatePatientSeen]
+    End If
     SQL.Append("'" & fc.Coroner & "',") '[FirstCoroner]
     SQL.Append("'" & fc.CaseNumber & "',") '[FirstFileNumber]
     SQL.Append("'" & fc.CounselorContacted & "',") '[FirstCounselorContacted]
-    SQL.Append("'" & fc.DateCounselorContacted & "',") '[FirstDateContacted]
+    If (fc.DateCounselorContacted = #12:00:00 AM#) Then
+      SQL.Append("NULL,")
+    Else
+      SQL.Append("'" & fc.DateCounselorContacted & "',") '[FirstDateContacted]
+    End If
     SQL.Append("NULL,") '[FirstNotes] *****
     SQL.Append("'" & fc.OperatorCallNotes & "',") '[FirstOperatorCallNotes] *****
     SQL.Append(fc.Delivered & ",") '[FirstDelivered] *****

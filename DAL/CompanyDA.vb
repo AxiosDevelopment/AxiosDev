@@ -25,7 +25,7 @@ Public Class CompanyDA
     db = New dbUtil()
 
     SQL.Append("SELECT c.CompanyID, c.CompanyNumber, c.CompanyName, c.CompanyTypeID, ct.ClientType AS CompanyType, c.CompanyPhoneAnswer, c.CompanyAddress, c.CompanyCity, c.CompanyState, c.CompanyZip, c.CompanyMainTelephone")
-    SQL.Append(", c.CompanyMainTelephone2nd, c.CompanyFax, c.CompanyEmail, c.CompanyInstructionSheet, c.CompanyHoursOfOperation, ci.CompanyInformation, c.CompanyAdditionalNotes ")
+    SQL.Append(", c.CompanyMainTelephone2nd, c.CompanyBackline1, c.CompanyBackline2, c.CompanyFax, c.CompanyEmail, c.CompanyInstructionSheet, c.CompanyHoursOfOperation, ci.CompanyInformation, c.CompanyAdditionalNotes ")
     SQL.Append("FROM COMPANY c WITH (NOLOCK) INNER JOIN COMPANY_TYPE ct ON ct.ClientTypeID = c.CompanyTypeID LEFT JOIN COMPANY_INFO ci ON ci.CompanyID = c.CompanyID WHERE c.CompanyID = " + id)
 
     rsData = db.GetDataReader(SQL.ToString())
@@ -44,6 +44,8 @@ Public Class CompanyDA
         company.Zip = db.ClearNull(rsData("CompanyZip"))
         company.MainTelephone = db.ClearNull(rsData("CompanyMainTelephone"))
         company.MainTelephone2nd = db.ClearNull(rsData("CompanyMainTelephone2nd"))
+        company.Backline1 = db.ClearNull(rsData("CompanyBackline1"))
+        company.Backline2 = db.ClearNull(rsData("CompanyBackline2"))
         company.Fax = db.ClearNull(rsData("CompanyFax"))
         company.Email = db.ClearNull(rsData("CompanyEmail"))
         company.InstructionSheet = db.ClearNull(rsData("CompanyInstructionSheet"))
@@ -80,7 +82,7 @@ Public Class CompanyDA
     Dim newId As Integer
 
     SQL.Append("INSERT INTO [dbo].[COMPANY]([CompanyNumber],[CompanyName],[CompanyTypeID],[CompanyPhoneAnswer],[CompanyAddress],[CompanyCity],[CompanyState],[CompanyZip]")
-    SQL.Append(",[CompanyMainTelephone],[CompanyMainTelephone2nd],[CompanyFax],[CompanyEmail],[CompanyInstructionSheet],[CompanyHoursOfOperation],[CompanyAdditionalNotes])")
+    SQL.Append(",[CompanyMainTelephone],[CompanyMainTelephone2nd],[CompanyBackline1],[CompanyBackline2],[CompanyFax],[CompanyEmail],[CompanyInstructionSheet],[CompanyHoursOfOperation],[CompanyAdditionalNotes])")
     SQL.Append(" VALUES ")
     SQL.Append("(" & c.Number & ",")
     SQL.Append("'" & c.Name & "',")
@@ -92,6 +94,8 @@ Public Class CompanyDA
     SQL.Append("'" & c.Zip & "',")
     SQL.Append("'" & c.MainTelephone & "',")
     SQL.Append("'" & c.MainTelephone2nd & "',")
+    SQL.Append("'" & c.Backline1 & "',")
+    SQL.Append("'" & c.Backline2 & "',")
     SQL.Append("'" & c.Fax & "',")
     SQL.Append("'" & c.Email & "',")
     SQL.Append("'" & c.InstructionSheet & "',")
@@ -154,6 +158,8 @@ Public Class CompanyDA
     SQL.Append("[CompanyZip] = '" & c.Zip & "',")
     SQL.Append("[CompanyMainTelephone] = '" & c.MainTelephone & "',")
     SQL.Append("[CompanyMainTelephone2nd] = '" & c.MainTelephone2nd & "',")
+    SQL.Append("[CompanyBackline1] = '" & c.Backline1 & "',")
+    SQL.Append("[CompanyBackline2] = '" & c.Backline2 & "',")
     SQL.Append("[CompanyFax] = '" & c.Fax & "',")
     SQL.Append("[CompanyEmail] = '" & c.Email & "',")
     SQL.Append("[CompanyInstructionSheet] = '" & c.InstructionSheet & "',")
@@ -221,7 +227,7 @@ Public Class CompanyDA
     db = New dbUtil()
 
     sql.Append("SELECT [CompanyID],[CompanyNumber],[CompanyName],[CompanyTypeID],[CompanyPhoneAnswer],[CompanyAddress],[CompanyCity],[CompanyState],[CompanyZip]")
-    sql.Append(",[CompanyMainTelephone],[CompanyMainTelephone2nd],[CompanyFax],[CompanyEmail],[CompanyInstructionSheet],[CompanyHoursOfOperation],[CompanyAdditionalNotes]")
+    sql.Append(",[CompanyMainTelephone],[CompanyMainTelephone2nd],[CompanyBackline1],[CompanyBackline2],[CompanyFax],[CompanyEmail],[CompanyInstructionSheet],[CompanyHoursOfOperation],[CompanyAdditionalNotes]")
     sql.Append("FROM [dbo].[COMPANY] WITH (NOLOCK) WHERE CompanyName LIKE '" & search & "%' ORDER BY CompanyName ASC")
 
     rsData = db.GetDataReader(sql.ToString())
@@ -240,6 +246,8 @@ Public Class CompanyDA
         company.Zip = rsData("CompanyZip")
         company.MainTelephone = rsData("CompanyMainTelephone")
         company.MainTelephone2nd = rsData("CompanyMainTelephone2nd")
+        company.Backline1 = rsData("CompanyBackline1")
+        company.Backline2 = rsData("CompanyBackline2")
         company.Fax = rsData("CompanyFax")
         company.Email = rsData("CompanyEmail")
         company.InstructionSheet = rsData("CompanyInstructionSheet")
