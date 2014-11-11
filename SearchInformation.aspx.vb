@@ -76,7 +76,7 @@ Public Class SearchInformation
   End Sub
 
   ''' <summary>
-  ''' This will return the businesses for the place of dealth autocomplete textbox
+  ''' This will return the businesses for the place of death autocomplete textbox
   ''' </summary>
   ''' <remarks></remarks>
   Private Sub GetBusinesses(search As String)

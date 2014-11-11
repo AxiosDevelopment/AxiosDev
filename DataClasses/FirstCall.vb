@@ -8,6 +8,7 @@
   Public Property RPRelationshipID As Integer
   Public Property PersonAuthorizingRemoval As String
   Public Property PARelationship As String
+  Public Property CallBackPhone As String
   Public Property DeceasedName As String
   Public Property Prefix As Integer
   Public Property DateTimeOfDeath As Date
@@ -23,6 +24,7 @@
   Public Property County As String
   Public Property Zip As String
   Public Property Phone As String
+  Public Property AreaOfDeathTypeID As Integer
   Public Property PhoneExt As String
   Public Property NextOfKinName As String
   Public Property NextOfKinRelationshipID As Integer

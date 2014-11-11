@@ -26,6 +26,7 @@ Public Class FirstCalls
         ' Get Lookup Data
         GetRelationshipsLookup()
         GetFacilityTypesLookup()
+        GetAreaOfDeathTypesLookup()
 
         fcId = Convert.ToInt32(Request.QueryString.Get("FirstCallId"))
         clientId = Request.QueryString.Get("ClientId").ToString()
@@ -108,11 +109,25 @@ Public Class FirstCalls
     msgTime.Text = FormatDateTime(firstCall.CreatedDateTime, DateFormat.LongTime)
     msgDateTime.Value = FormatDateTime(firstCall.CreatedDateTime, DateFormat.GeneralDate)
     reportingName.Text = If(Not String.IsNullOrEmpty(firstCall.ReportingParty), firstCall.ReportingParty, String.Empty)
+    reportingPartyTitle.Text = If(Not String.IsNullOrEmpty(firstCall.PARelationship), firstCall.PARelationship, String.Empty)
+    reportingPartyPhone.Text = If(Not String.IsNullOrEmpty(firstCall.CallBackPhone), firstCall.CallBackPhone, String.Empty)
     deceasedName.Text = If(Not String.IsNullOrEmpty(firstCall.DeceasedName), firstCall.DeceasedName, String.Empty)
-    dDate.Text = FormatDateTime(firstCall.DateTimeOfDeath, DateFormat.ShortDate)
-    dTime.Text = FormatDateTime(firstCall.DateTimeOfDeath, DateFormat.LongTime)
+    If FormatDateTime(firstCall.DateTimeOfDeath, DateFormat.ShortDate) = "1/1/0001" Then
+      dDate.Text = ""
+    Else
+      dDate.Text = FormatDateTime(firstCall.DateTimeOfDeath, DateFormat.ShortDate)
+    End If
+    If FormatDateTime(firstCall.DateTimeOfDeath, DateFormat.LongTime) = #12:00:00 AM# Then
+      dTime.Text = ""
+    Else
+      dTime.Text = FormatDateTime(firstCall.DateTimeOfDeath, DateFormat.LongTime)
+    End If
     ssn.Text = If(Not String.IsNullOrEmpty(firstCall.SSN), firstCall.SSN, String.Empty)
-    dob.Text = If(Not String.IsNullOrEmpty(firstCall.DateOfBirth), firstCall.DateOfBirth, String.Empty)
+    If firstCall.DateOfBirth = #12:00:00 AM# Then
+      dob.Text = ""
+    Else
+      dob.Text = If(Not String.IsNullOrEmpty(firstCall.DateOfBirth), firstCall.DateOfBirth, String.Empty)
+    End If
     weight.Text = If(Not String.IsNullOrEmpty(firstCall.Weight), firstCall.Weight, String.Empty)
     placeOfDeath.Text = If(Not String.IsNullOrEmpty(firstCall.PlaceOfDeath), firstCall.PlaceOfDeath, String.Empty)
     facTypes.SelectedValue = facTypes.Items.FindByValue(firstCall.FacilityTypeID).Value
@@ -122,19 +137,32 @@ Public Class FirstCalls
     facilityCounty.Text = If(Not String.IsNullOrEmpty(firstCall.County), firstCall.County, String.Empty)
     facilityZip.Text = If(Not String.IsNullOrEmpty(firstCall.Zip), firstCall.Zip, String.Empty)
     facilityPhone.Text = If(Not String.IsNullOrEmpty(firstCall.Phone), firstCall.Phone, String.Empty)
+    areaOfDeathTypes.SelectedValue = areaOfDeathTypes.Items.FindByValue(firstCall.AreaOfDeathTypeID).Value
     'phoneExt.Text = If(Not String.IsNullOrEmpty(firstCall.PhoneExt), firstCall.PhoneExt, String.Empty)
     partyName.Text = If(Not String.IsNullOrEmpty(firstCall.NextOfKinName), firstCall.NextOfKinName, String.Empty)
     relationship.SelectedValue = relationship.Items.FindByValue(firstCall.NextOfKinRelationshipID).Value
     responsiblePhone.Text = If(Not String.IsNullOrEmpty(firstCall.NextOfKinPhone), firstCall.NextOfKinPhone, String.Empty)
-    responsiblePhoneExt.Text = If(Not String.IsNullOrEmpty(firstCall.NextOfKinWorkPhoneExt), firstCall.NextOfKinWorkPhoneExt, String.Empty)
+    responsibleAltPhone.Text = If(Not String.IsNullOrEmpty(firstCall.NextOfKinWorkPhone), firstCall.NextOfKinWorkPhone, String.Empty)
     physicianName.Text = If(Not String.IsNullOrEmpty(firstCall.Doctor), firstCall.Doctor, String.Empty)
     physicianPhone.Text = If(Not String.IsNullOrEmpty(firstCall.DoctorPhone), firstCall.DoctorPhone, String.Empty)
-    physicianDate.Text = If(Not String.IsNullOrEmpty(firstCall.DatePatientSeen), firstCall.DatePatientSeen, String.Empty)
+    If firstCall.DatePatientSeen = #12:00:00 AM# Then
+      physicianDate.Text = ""
+    Else
+      physicianDate.Text = If(Not String.IsNullOrEmpty(firstCall.DatePatientSeen), firstCall.DatePatientSeen, String.Empty)
+    End If
     coronerName.Text = If(Not String.IsNullOrEmpty(firstCall.Coroner), firstCall.Coroner, String.Empty)
     caseNumber.Text = If(Not String.IsNullOrEmpty(firstCall.CaseNumber), firstCall.CaseNumber, String.Empty)
     counselorName.Text = If(Not String.IsNullOrEmpty(firstCall.CounselorContacted), firstCall.CounselorContacted, String.Empty)
-    coronerDate.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.ShortDate)
-    coronerTime.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.LongTime)
+    If FormatDateTime(firstCall.DateCounselorContacted, DateFormat.ShortDate) = "1/1/0001" Then
+      coronerDate.Text = ""
+    Else
+      coronerDate.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.ShortDate)
+    End If
+    If FormatDateTime(firstCall.DateCounselorContacted, DateFormat.LongTime) = #12:00:00 AM# Then
+      coronerTime.Text = ""
+    Else
+      coronerTime.Text = FormatDateTime(firstCall.DateCounselorContacted, DateFormat.LongTime)
+    End If
     specialInstructionsR.Text = If(Not String.IsNullOrEmpty(firstCall.CustCallInfo), firstCall.CustCallInfo, String.Empty)
     operatorNotes.Text = If(Not String.IsNullOrEmpty(firstCall.OperatorCallNotes), firstCall.OperatorCallNotes, String.Empty)
     If (firstCall.Hold = 1) Then
@@ -212,15 +240,18 @@ Public Class FirstCalls
 
     firstCall.ID = fcID
     firstCall.CompanyID = CompanyID.Value '[FirstCompanyID]
-    firstCall.CreatedDateTime = FormatDateTime(msgDateTime.Value, DateFormat.GeneralDate) '[FirstCallDateTime]
+    firstCall.CreatedDateTime = FormatDateTime(msgDate.Text + " " + msgTime.Text, DateFormat.GeneralDate) '[FirstCallDateTime]
     firstCall.ReportingParty = reportingName.Text '[FirstReportingParty]
     'SQL.Append("NULL,") '[FirstRPRelationshipID]
     'SQL.Append("NULL,") '[FirstPersonAuthorizingRemoval] *****
-    'SQL.Append("NULL,") '[FirstPARelationship] *****
+    firstCall.PARelationship = reportingPartyTitle.Text '[FirstPARelationship]
+    firstCall.CallBackPhone = reportingPartyPhone.Text ' [FirstCallBackPhone]
     firstCall.DeceasedName = deceasedName.Text '[FirstDeceasedName]
     'SQL.Append("NULL,") '[FirstPrefix] ******
     If (Not String.IsNullOrEmpty(dDate.Text) And Not String.IsNullOrEmpty(dTime.Text)) Then
       firstCall.DateTimeOfDeath = FormatDateTime(dDate.Text & " " & dTime.Text, DateFormat.GeneralDate)  '[FirstDateTimeofDeath] *****
+    ElseIf (Not String.IsNullOrEmpty(dDate.Text) And String.IsNullOrEmpty(dTime.Text)) Then
+      firstCall.DateTimeOfDeath = FormatDateTime(dDate.Text, DateFormat.LongDate)  '[FirstDateTimeofDeath] *****
     End If
     firstCall.PlaceOfDeath = placeOfDeath.Text '[FirstPlaceOfDeath]
     firstCall.FacilityTypeID = facTypes.SelectedValue '[BusinessTypeID]
@@ -236,12 +267,13 @@ Public Class FirstCalls
     firstCall.County = facilityCounty.Text '[FirstCounty]
     firstCall.Zip = facilityZip.Text  '[FirstZip]
     firstCall.Phone = facilityPhone.Text '[FirstPhone]
+    firstCall.AreaOfDeathTypeID = areaOfDeathTypes.SelectedValue '[AreaOfDeathTypeID]
     'firstCall.PhoneExt = phoneExt.Text '[FirstExt]
     firstCall.NextOfKinName = partyName.Text '[FirstNextofKin]
     firstCall.NextOfKinRelationshipID = relationship.SelectedValue '[FirstRelationshipID]
     firstCall.NextOfKinPhone = responsiblePhone.Text '[FirstTelephoneofInforKin]
     'SQL.Append("NULL,") '[FirstWorkPhoneForKin]
-    firstCall.NextOfKinWorkPhoneExt = responsiblePhoneExt.Text '[FirstWorkExt]
+    firstCall.NextOfKinWorkPhone = responsibleAltPhone.Text '[FirstWorkExt]
     firstCall.Doctor = physicianName.Text '[FirstDoctor]
     firstCall.DoctorPhone = physicianPhone.Text  '[FirstDoctorPhone]
     If (Not String.IsNullOrEmpty(physicianDate.Text)) Then
@@ -305,4 +337,21 @@ Public Class FirstCalls
 
   End Sub
 
+  ''' <summary>
+  ''' 
+  ''' </summary>
+  ''' <remarks></remarks>
+  Private Sub GetAreaOfDeathTypesLookup()
+
+    Dim db As dbUtil 'access to db functions
+    Dim rsData As SqlDataReader
+
+    db = New dbUtil()
+    rsData = db.GetDataReader("SELECT AreaOfDeathTypeID, AreaOfDeathType FROM LK_AREA_OF_DEATH_TYPE WITH (NOLOCK) ORDER BY AreaOFDeathType ASC")
+
+    Do While rsData.Read()
+      areaOfDeathTypes.Items.Add(New ListItem(rsData("AreaOfDeathType").ToString(), rsData("AreaOfDeathTypeID").ToString()))
+    Loop
+
+  End Sub
 End Class

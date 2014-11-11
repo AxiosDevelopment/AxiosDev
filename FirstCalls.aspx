@@ -82,11 +82,11 @@
                     </div>
                     <div class="left mr_10">
                       <label for="msgDate">Date</label><br />
-                      <asp:TextBox ID="msgDate" runat="server" Width="80" ReadOnly="true"></asp:TextBox>
+                      <asp:TextBox ID="msgDate" runat="server" Width="80"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
                       <label for="msgTime">Time</label><br />
-                      <asp:TextBox ID="msgTime" runat="server" Width="80" ReadOnly="true"></asp:TextBox>
+                      <asp:TextBox ID="msgTime" runat="server" Width="80"></asp:TextBox>
                     </div>
                     <asp:HiddenField ID="msgDateTime" runat="server" />
                   </div>
@@ -188,8 +188,8 @@
 
                       <!--ADDED THIS FOR "Apt, Room, Unit"-->
                     <div class="left mr_10">
-                      <label for="areaOfDeath">Area of Death:</label><br />
-                      <asp:DropDownList ID="areaOfDeath" runat="server">
+                      <label for="areaOfDeathTypes">Area of Death:</label><br />
+                      <asp:DropDownList ID="areaOfDeathTypes" runat="server" class="facility">
                         <asp:ListItem Value="-1" Text="--Select--" />
                       </asp:DropDownList>
                     </div>
