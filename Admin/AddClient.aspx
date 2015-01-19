@@ -199,7 +199,7 @@
                 <asp:ValidationSummary ValidationGroup="ClientGroup" ID="ValidationSummaryAddClient" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
                 <asp:ValidationSummary ValidationGroup="ContactGroup" ID="ValidationSummaryContact" runat="server" CssClass="ErrorMessage" DisplayMode="BulletList" ShowMessageBox="true" ShowSummary="false" HeaderText="Please correct the following errors:" />
 
-                <div id="">
+                <div id="allClientInfo">
                   <div class="row">
                       <h2>General Info</h2>
                       <div class="left mr_10">

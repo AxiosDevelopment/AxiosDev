@@ -193,6 +193,11 @@
                         <asp:ListItem Value="-1" Text="--Select--" />
                       </asp:DropDownList>
                     </div>
+                      <!--ADDED THIS FOR "Apt, Room, Unit NUMBER"-->
+                    <div class="left mr_10">
+                      <label for="roomNumber">Room/Suite #:</label><br />
+                      <asp:TextBox ID="roomNumber" runat="server" class="facility" Width="100"></asp:TextBox>
+                    </div>
 
                   </div>
                   <div class="row">
@@ -292,7 +297,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <label for="specialInstructionsR">Special Instructions</label><br />
+                    <label for="specialInstructionsR">Additional Notes</label><br />
                     <asp:TextBox ID="specialInstructionsR" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
                   </div>
                   <div class="row">
@@ -303,7 +308,7 @@
                     </div>
                     <div class="left mr_10">
                       <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass="RadioListControl mTop20">
-                        <asp:ListItem Value="Deliver">Deliver Message</asp:ListItem>
+                        <asp:ListItem Value="Deliver">Complete Message</asp:ListItem>
                         <asp:ListItem Value="Hold">Hold Message</asp:ListItem>
                         <asp:ListItem Value="Remove">Remove Message</asp:ListItem>
                       </asp:RadioButtonList>

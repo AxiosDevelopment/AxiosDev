@@ -120,7 +120,7 @@
                   <br />
 
                   <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass ="RadioListControl">
-                    <asp:ListItem Value="Deliver">Deliver Message</asp:ListItem>
+                    <asp:ListItem Value="Deliver">Complete Message</asp:ListItem>
                     <asp:ListItem Value="Hold">Hold Message</asp:ListItem>
                     <asp:ListItem Value="Remove">Remove Message</asp:ListItem>
                   </asp:RadioButtonList>
@@ -131,7 +131,7 @@
               </div>
               <div class="right" id="clientInfo">
                 <div id="onCall" class="left">
-                  <label for="onCallInfo">Counselor On Call</label>
+                  <label for="onCallInfo">Primary On Call</label>
                   <input type="text" id="primaryOnCall" name="onCallInfo" class="onCall" value="<%=PrimaryContactName%>" />
                   <input type="text" id="primaryContact" name="onCallInfo" class="onCall mTop5" value="<%=PrimaryContactInfo%>" /><br />
                   <input type="hidden" name="primaryContactId" id="primaryContactId" value="0" runat="server" />
