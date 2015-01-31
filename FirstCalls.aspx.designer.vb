@@ -374,6 +374,15 @@ Partial Public Class FirstCalls
   Protected WithEvents areaOfDeathTypes As Global.System.Web.UI.WebControls.DropDownList
 
   '''<summary>
+  '''roomNumber control.
+  '''</summary>
+  '''<remarks>
+  '''Auto-generated field.
+  '''To modify move field declaration from designer file to code-behind file.
+  '''</remarks>
+  Protected WithEvents roomNumber As Global.System.Web.UI.WebControls.TextBox
+
+  '''<summary>
   '''partyName control.
   '''</summary>
   '''<remarks>
@@ -626,56 +635,11 @@ Partial Public Class FirstCalls
   Protected WithEvents facilityNotes As Global.System.Web.UI.WebControls.TextBox
 
   '''<summary>
-  '''cPrimaryOnCall control.
+  '''rpContacts control.
   '''</summary>
   '''<remarks>
   '''Auto-generated field.
   '''To modify move field declaration from designer file to code-behind file.
   '''</remarks>
-  Protected WithEvents cPrimaryOnCall As Global.System.Web.UI.HtmlControls.HtmlTable
-
-  '''<summary>
-  '''PrimaryPerson control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents PrimaryPerson As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
-  '''PrimaryPhone control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents PrimaryPhone As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
-  '''cSecondaryOnCall control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents cSecondaryOnCall As Global.System.Web.UI.HtmlControls.HtmlTable
-
-  '''<summary>
-  '''SecondaryPerson control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents SecondaryPerson As Global.System.Web.UI.HtmlControls.HtmlTableCell
-
-  '''<summary>
-  '''SecondaryPhone control.
-  '''</summary>
-  '''<remarks>
-  '''Auto-generated field.
-  '''To modify move field declaration from designer file to code-behind file.
-  '''</remarks>
-  Protected WithEvents SecondaryPhone As Global.System.Web.UI.HtmlControls.HtmlTableCell
+  Protected WithEvents rpContacts As Global.System.Web.UI.WebControls.Repeater
 End Class

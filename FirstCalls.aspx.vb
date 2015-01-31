@@ -68,22 +68,24 @@ Public Class FirstCalls
     clientId.Text = company.Number
     clientName.Text = company.Name
 
-    Dim row As HtmlTableRow
-    Dim cell As HtmlTableCell
+    'Dim row As HtmlTableRow
+    'Dim cell As HtmlTableCell
 
     If company.Contacts.Count > 1 Then
-      For Each c As Contact In company.Contacts
-        Select Case c.TypeID
-          Case 1 'Primary Contact
-            PrimaryPerson.InnerText = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
-            PrimaryPhone.InnerText = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
+      'For Each c As Contact In company.Contacts
+      '  Select Case c.TypeID
+      '    Case 1 'Primary Contact
+      '      PrimaryPerson.InnerText = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
+      '      PrimaryPhone.InnerText = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
 
-          Case 2 'Secondary Contact
-            SecondaryPerson.InnerText = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
-            SecondaryPhone.InnerText = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
+      '    Case 2 'Secondary Contact
+      '      SecondaryPerson.InnerText = If(Not String.IsNullOrEmpty(c.Name), c.Name, "")
+      '      SecondaryPhone.InnerText = If(Not String.IsNullOrEmpty(c.Phone), c.Phone, "")
 
-        End Select
-      Next
+      '  End Select
+      'Next
+      rpContacts.DataSource = company.Contacts
+      rpContacts.DataBind()
     Else
 
     End If
