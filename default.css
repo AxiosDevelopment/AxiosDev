@@ -173,7 +173,7 @@ caption {
 /** HEADER */
 
 #header {
-	height: 150px;
+	height: 65px;
 	padding: 0px 20px;
 }
 
@@ -870,4 +870,9 @@ input[type=radio] {
 
 .login .error .red {
 	color: red;
+}
+
+#allClientInfo textarea {
+    height: 100px;
+    width: 250px;
 }

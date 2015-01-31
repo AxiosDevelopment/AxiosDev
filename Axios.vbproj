@@ -90,6 +90,8 @@
     <Content Include="Admin\AddClient.aspx" />
     <Content Include="Admin\AddFacility.aspx" />
     <Content Include="Admin\AddPhysician.aspx" />
+    <Content Include="axiosFCall.html" />
+    <Content Include="axiosMessage.html" />
     <Content Include="bin\Axios.dll" />
     <Content Include="bin\Axios.pdb" />
     <Content Include="bin\Axios.xml" />

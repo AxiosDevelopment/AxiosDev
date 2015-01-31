@@ -64,7 +64,7 @@ $(function () {
     });
   });
 
-  $('#printMessage').on('click', function (e) {
+  /*$('#printMessage').on('click', function (e) {
     e.preventDefault();
     var window = $('#messagePop');
     openWindow(window);
@@ -78,7 +78,7 @@ $(function () {
     e.preventDefault();
     var window = $('#axiosFcall');
     openWindow(window);
-  });
+  });*/
   $('.exit').click(closeWindow);
 
   /** THIS IS THE AUTO COMPLETE FOR PLACE OF DEATH **/

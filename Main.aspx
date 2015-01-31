@@ -23,7 +23,7 @@
 		<div id="menu">
 			<ul>
 				<li class="first active"><a href="#" title="">Main Menu</a></li>
-                <li><a href="/Admin/AddClient.aspx" title="">Manage Cients</a></li>
+                <li><a href="/Admin/AddClient.aspx" title="">Manage Clients</a></li>
 				<!-- POPUP WITH FORM TO ADD NEW FACILITY -->
 				<li><a href="/Admin/AddFacility.aspx" title="">Manage Facilities</a></li>
 				<!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
