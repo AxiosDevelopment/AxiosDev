@@ -324,8 +324,28 @@
                   <asp:TextBox ID="facilityNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
                   <br /><br />
                   <!-- THIS IS TO LIST ON CALL PEOPLE -->
-                  <h2>Primary on call</h2>
-                  <table id="cPrimaryOnCall" runat="server">
+                  <h2>Contacts</h2>
+                  <asp:Repeater ID="rpContacts" runat="server">
+                    <HeaderTemplate>
+                      <table border="1">
+                        <tr>
+                          <th>Contact Type</th>
+                          <th>Name</th>
+                          <th>Phone</th>
+                        </tr>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                      <tr>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Type")%></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Name")%></td>
+                        <td><%#DataBinder.Eval(Container.DataItem, "Phone")%></td>
+                      </tr>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                      </table>
+                    </FooterTemplate>
+                  </asp:Repeater>
+                  <%--<table id="cPrimaryOnCall" runat="server">
                     <tr>
                         <td>Name:</td>
                         <td id="PrimaryPerson" runat="server"></td>
@@ -345,7 +365,7 @@
                      <td>Phone:</td>
                      <td id="SecondaryPhone" runat="server"></td>
                     </tr>
-                  </table>
+                  </table>--%>
                 </div>
               </form>
             </div>
