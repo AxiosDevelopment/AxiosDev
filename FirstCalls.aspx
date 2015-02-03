@@ -44,7 +44,7 @@
           <li><a href="admin/AddFacility.aspx" title="">Manage Facilities</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
           <li><a id="pFCall" href="#" title="">Print First Call</a></li>
-          <li><a id="sci" href="#" title="">Print SCI</a></li>
+          <li><a id="sci" href="axiosFCall.html" title="">Print SCI</a></li>
         </ul>
       </div>
       <div id="page">
