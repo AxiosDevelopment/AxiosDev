@@ -84,8 +84,7 @@
                   <asp:TextBox ID="nMsgPhoneX" runat="server" CssClass="fields"></asp:TextBox>
                   <label for="nMsgAlt">Alt:</label>
                   <asp:TextBox ID="nMsgAlt" runat="server" CssClass="fields"></asp:TextBox>
-                  <label for="nMsgAltX">Ext:</label>
-                  <asp:TextBox ID="nMsgAltX" runat="server" CssClass="fields"></asp:TextBox>
+                 <div class="clearfix"></div>
                   <label for="QwkMessage">Msg:</label>
                   <asp:DropDownList ID="QwkMessage" runat="server">
                     <asp:ListItem Value="-1" Text="--Select--" />
@@ -120,8 +119,8 @@
                   <br />
 
                   <asp:RadioButtonList ID="RBMessageStatus" runat="server" CssClass ="RadioListControl">
+                      <asp:ListItem Value="Hold">Hold Message</asp:ListItem>
                     <asp:ListItem Value="Deliver">Complete Message</asp:ListItem>
-                    <asp:ListItem Value="Hold">Hold Message</asp:ListItem>
                     <asp:ListItem Value="Remove">Remove Message</asp:ListItem>
                   </asp:RadioButtonList>
                   <asp:RequiredFieldValidator runat="server" ID="ValidatorStatusRadio" ControlToValidate="RBMessageStatus" CssClass="ErrorMessage" Display="None" Text="*" ErrorMessage="Deliver, Hold or Remove Message is required"></asp:RequiredFieldValidator>
@@ -141,7 +140,7 @@
                   <input type="text" id="secondaryContact" name="secondaryContact" class="onCall mTop5" value="<%=SecondaryContactInfo%>" /><br />
                   <input type="hidden" name="secondaryContactId" id="secondaryContactId" value="0" runat="server" />
                   <br />
-                  <label for="onCallNotes">Additional Notes</label>
+                  <label for="onCallNotes">Temporary Notes</label>
                   <button id="updateAdditionalNotes" class="right">Update</button>
                   <textarea id="onCallNotes" class="onCall"><%=AdditionalNotes%></textarea>
                 </div>

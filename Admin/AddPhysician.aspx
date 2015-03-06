@@ -60,6 +60,7 @@
                 </div>
                 <!--autocomplete end-->
               </div>
+              <div class="clearfix"></div>
               <div class="">
                 <h4>Add or edit existing physician:</h4>
                 <br />

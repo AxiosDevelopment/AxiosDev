@@ -34,7 +34,7 @@ $(function () {
 	
 
      $('#counselorName').on('focus', function () {
-         var start = new Date().toString();
+         var start = new Date().toString(); 
          var hours = new Date().getHours();
          var splitDate = start.split(' ');
          var getMonth = {
@@ -42,7 +42,7 @@ $(function () {
          }
          if (hours > 12) var timeOfDay = 'pm'
          else var timeOfDay = 'am';
-         $('#coronerTime').val(splitDate[4] + timeOfDay);
+         $('#coronerTime').val(splitDate[4].substring(0, splitDate[4].length - 3));
          $('#coronerDate').val(getMonth[splitDate[1]] + '/' + splitDate[2] + '/' + splitDate[3]);
      });
 

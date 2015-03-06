@@ -31,62 +31,65 @@
 		}
 		
 		.border {
-			border: 1px solid #000;
 		}
 		#message {
-			width: 410px;
+			width: auto;
 			margin: 0 auto;
+			position: relative;
 		}
 		#messagebody {
-			width: 400px;
-			margin: 20px auto;
-			padding: 5px;
-			min-height: 410px;
-			position: relative;
 		}
 		.row {
 			width: 100%;
 		}
 		#companyTitle {
-			margin: 0 0 5px;
-			text-align: center;
-			font-size: 1.5em;
+			font-size: 30px;
+			left: 19px;
+			position: absolute;
+			top: 16px;
 		}
 		#to {
-			width: 240px;
+			left: 49px;
+			position: absolute;
+			top: 113px;
+		}
+		#from {
+			left: 78px;
+			position: absolute;
+			top: 140px;
 		}
 		#date {
-			width: 80px;
+			left: 570px;
+			position: absolute;
+			top: 10px;
 		}
 		#time {
-			width: 80px;
-		}
-		#while {
-			font-size: 2em;
-			text-align: center;
-			width: 100%;
-			margin: 5px 0;
-		}
-		
-		.phone {
-			width: 30%;
-			text-align: center;
-		}
-		.ext {
-			width: 30%;
-			text-align: center;
-		}
-		#footer {
+			left: 569px;
 			position: absolute;
-			bottom: 0;
+			top: 34px;
 		}
 		
-		#footer p:last-of-type {
-			margin-right: 8px;
+		#phone {
+			left: 79px;
+			position: absolute;
+			top: 170px;
 		}
-		
-		#delivered {
-			margin-right: 34px;
+		#ext {
+			left: 259px;
+			position: absolute;
+			top: 171px;
+		}
+	
+		#altPhone {
+			 left: 437px;
+			position: absolute;
+			top: 171px;
+		}
+		#newMessage {
+			left: 16px;
+			position: absolute;
+			top: 234px;
+			width: 610px;
 		}
 	</style>
 	
@@ -94,62 +97,16 @@
 <body>
 	<div id="message">
 		<div id="messagebody" class="border">
-			<div id="row">
-				<div id="companyTitle" class="border">
-					<p><strong>Axios Services Inc</strong></p>
-				</div>
-			</div>
-			<div id="row">
-				<div id="to" class="left">
-					<p><strong>To:</strong></p>
-					<p>Some Guy</p>
-				</div>
-				<div id="date" class="left">
-					<p><strong>Date:</strong></p>
-					<p >8/23/14</p>
-				</div>
-				<div id="time" class="left">
-					<p><strong>Time:</strong></p>
-					<p>12:00 pm</p>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-			<div id="while">
-				<p>While You Were Away</p>
-			</div>
-			<div class="row mTB10">
-				<div id="from">
-					<p><strong>From:</strong></p>
-					<p>Some Random Dude</p>
-				</div>
-			</div>
-			<div class="row">
-				<div id="phone" class="left phone">
-					<p><strong>Phone:</strong></p>
-					<p>951-234-2345</p>
-				</div>
-				<div id="ext" class="left ext">
-					<p><strong>Ext. #:</strong></p>
-					<p>12345</p>
-				</div>
-				<div id="altPhone" class="left phone">
-					<p><strong>Alt Phone:</strong></p>
-					<p>951-123-4532</p>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row mTB10"> 
-				<div id="newMessage">
-					<p><strong>Message:</strong></p>
-					<p>This is a test Message fr new messages</p>
-				</div>
-			</div>
-			<div class="row" id="footer">
-				<p id="delivered" class="left">Delivered by</p>
-				<p class="left"><strong>Axios Communications</strong></p>
-				<p class="right">951-234-0214</p>
-			</div>
-		</div>
+		<div id="companyTitle"><p><strong>Axios Services Inc</strong></p></div>
+		<div id="to" class="left"><p>Some Guy</p></div>
+		<div id="date" class="left"><p >8/23/14</p></div>
+		<div id="time" class="left"><p>12:00 pm</p></div>
+		<div id="from"><p>Some Random Dude</p></div>
+		<div id="phone"><p>951-234-2345</p></div>
+		<div id="ext"><p>12345</p></div>
+		<div id="altPhone"><p>951-123-4532</p></div>
+		<div id="newMessage"><p>This is a test Message fr new messages</p></div>
+		<img src="print/msg.jpg" width="670px"/></div>
 		<button id="print" onclick="window.print()">Print</button>
 	</div>
 </body>

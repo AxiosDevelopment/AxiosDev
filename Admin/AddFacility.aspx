@@ -60,6 +60,7 @@
                 </div>
                 <!--autocomplete end-->
               </div>
+              <div class="clearfix"></div>
               <div id="newFacility">
                 <h4>Add or edit facility:</h4>
                 <br />

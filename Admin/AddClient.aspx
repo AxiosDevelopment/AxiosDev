@@ -291,17 +291,19 @@
                         <asp:RequiredFieldValidator ValidationGroup="ClientGroup" ID="ReqClientHours" runat="server" ErrorMessage="Client Hours is required" ControlToValidate="nClientHours" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                     <div class="left mr_10">
-                        <label for="nClientAdditionalInformation">Additional Information</label><br />
+                        <label for="nClientAdditionalInformation">Temporary Notes</label><br />
                         <asp:TextBox ID="nClientAdditionalInformation" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
-                        <label for="nClientSpecialInstructions">Other Client Info</label><br />
+                        <label for="nClientSpecialInstructions">Client Instructions</label><br />
                         <asp:TextBox ID="nClientSpecialInstructions" runat="server" TextMode="MultiLine"></asp:TextBox>
                         <asp:RequiredFieldValidator ValidationGroup="ClientGroup" ID="ReqClientSpecialInstructions" runat="server" ErrorMessage="Client Special Instructions is required" ControlToValidate="nClientSpecialInstructions" CssClass="ErrorMessage" Display="None" Text="*"></asp:RequiredFieldValidator>
                     </div>
                   </div>
 
-                  <div class="row"></div>
+                  <div class="row">
+                      <input type="checkbox" id="removeClient" name="removeClient" /> Remove this client
+                  </div>
                   <input type="hidden" name="clientId" id="clientId" value="0" runat="server" />
                   <asp:Button ID="resetForm" runat="server" Text="Clear Form" OnClick="resetForm_Click" />
                   <asp:Button Text="Submit Client" ValidationGroup="ClientGroup" runat="server" ID="SubmitClient" CausesValidation="true" />

@@ -43,8 +43,9 @@
           <li><a id="searchFirstCalls" href="#" title="">Search First Calls</a></li>
           <li><a href="admin/AddFacility.aspx" title="">Manage Facilities</a></li>
           <!-- POPUP WITH FORM TO ADD NEW DOCTOR -->
-          <li><a id="pFCall" href="#" title="">Print First Call</a></li>
-          <li><a id="sci" href="axiosFCall.html" title="">Print SCI</a></li>
+          <li><a id="pFCall" href="fcall.html" title="">Print First Call</a></li>
+          <li><a id="sci" href="axiosFCall.html" title="">Print SCI 1</a></li>
+            <li><a id="sci2" href="axiosFCall2.html" title="">Print SCI 2</a></li>
         </ul>
       </div>
       <div id="page">
@@ -135,7 +136,7 @@
                       <asp:CompareValidator ID="DOBValidator" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="dob" ErrorMessage="Please enter a valid Date of Birth" Display="None"></asp:CompareValidator>
                     </div>
                     <div class="left mr_10">
-                      <label for="weight">Weight</label><br />
+                      <label for="weight">Weight (LBS)</label><br />
                       <asp:TextBox ID="weight" runat="server" Width="50"></asp:TextBox>
                       <asp:RegularExpressionValidator ID="RegExWeight" ControlToValidate="weight" runat="server" ErrorMessage="Please enter a valid Weight (format: ###)" ValidationExpression="^\d{1,3}$" Display="None"></asp:RegularExpressionValidator>
                     </div>
@@ -229,7 +230,7 @@
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="authorizedPerson">Person Authorizing Removal of Decedant</label><br />
+                      <label for="authorizedPerson">Person Authorizing Removal of Decedent</label><br />
                       <asp:TextBox ID="authorizedPerson" runat="server" Width="225"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
@@ -282,7 +283,7 @@
                   </div>
                   <div class="row">
                     <div class="left mr_10">
-                      <label for="counselorName">Counselor Name</label><br />
+                      <label for="counselorName">Counselor / Removal Contacted</label><br />
                       <asp:TextBox ID="counselorName" runat="server" Width="200"></asp:TextBox>
                     </div>
                     <div class="left mr_10">
@@ -297,7 +298,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <label for="specialInstructionsR">Additional Notes</label><br />
+                    <label for="specialInstructionsR">Special Requests and Information</label><br />
                     <asp:TextBox ID="specialInstructionsR" runat="server" Width="400" TextMode="MultiLine"></asp:TextBox>
                   </div>
                   <div class="row">
@@ -320,7 +321,7 @@
                   </div>
                 </div>
                 <div class="right" id="fCallNotes">
-                  <label for="facilityNotes" class="left pTop5">Facility Notes</label>
+                  <label for="facilityNotes" class="left pTop5">Facility / Place of Death Notes</label>
                   <asp:TextBox ID="facilityNotes" runat="server" Width="190" TextMode="MultiLine"></asp:TextBox>
                   <br /><br />
                   <!-- THIS IS TO LIST ON CALL PEOPLE -->
